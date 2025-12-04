@@ -6,8 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 
-
-
 namespace CncApp_Final.Entities
 {
     public class Warehouse

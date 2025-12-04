@@ -9,6 +9,7 @@ namespace CncApp_Final.Data
         public DbSet<BankAccount> BankAccounts { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
         public DbSet<Receipt> Receipts { get; set; }
         public DbSet<Sheet> Sheets { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
@@ -26,9 +27,9 @@ namespace CncApp_Final.Data
                 .HasForeignKey(o => o.CustomerId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Order>()
+            modelBuilder.Entity<OrderDetails>()
                 .HasRequired(o => o.Sheet)
-                .WithMany(s => s.Orders)
+                .WithMany(s => s.OrderDetails)
                 .HasForeignKey(o => o.SheetId)
                 .WillCascadeOnDelete(false);
 

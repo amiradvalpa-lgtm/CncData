@@ -33,7 +33,7 @@ namespace CncApp_Final
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmOrderDetails());
+            Application.Run(new XtraForm1());
         }
     }
 }

@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Globalization;
 
 namespace CncApp_Final.Entities
 {
@@ -19,7 +17,7 @@ namespace CncApp_Final.Entities
 
         [DisplayName("شماره فاکتور")]
         [Description("شماره فاکتور مرتبط با سفارش")]
-        public string InvoiceNumber { get; set; }
+        public string InvoiceNumber { get; set; } = null;
 
         [DisplayName("شناسه مشتری")]
         [Description("شناسه مشتری مربوط به سفارش")]
@@ -27,51 +25,15 @@ namespace CncApp_Final.Entities
 
         [DisplayName("مشتری")]
         [Description("مشتری مربوط به سفارش")]
-        public virtual Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; } = null;
 
         [DisplayName("تاریخ سفارش")]
-        [Description("تاریخ ثبت سفارش")]
+        [Description("تاریخ ثبت سفارش (میلادی - در دیتابیس)")]
         public DateTime OrderDate { get; set; }
 
         [DisplayName("تاریخ تحویل")]
-        [Description("تاریخ تحویل سفارش")]
+        [Description("تاریخ تحویل سفارش (میلادی - در دیتابیس)")]
         public DateTime? DeliveryDate { get; set; }
-
-        [DisplayName("مسیر فایل")]
-        [Description("مسیر فایل مربوط به سفارش")]
-        public string FilePath { get; set; }
-
-        [DisplayName("شناسه ورق")]
-        [Description("ورق انتخاب شده برای سفارش")]
-        public int SheetId { get; set; }
-
-        [DisplayName("ورق")]
-        [Description("ورق مربوط به سفارش")]
-        public virtual Sheet Sheet { get; set; }
-
-        [DisplayName("تامین‌کننده")]
-        [Description("نوع تامین‌کننده سفارش")]
-        public SupplierType Supplier { get; set; }
-
-        [DisplayName("طول برش")]
-        [Description("طول برش ورق بر حسب میلی‌متر")]
-        public double CutLength { get; set; }
-
-        [DisplayName("عرض برش")]
-        [Description("عرض برش ورق بر حسب میلی‌متر")]
-        public double CutWidth { get; set; }
-
-        [DisplayName("هزینه نهایی ورق")]
-        [Description("هزینه نهایی ورق بعد از برش")]
-        public double FinalSheetCost { get; set; }
-
-        [DisplayName("طول شیار")]
-        [Description("مجموع طول شیارهای ایجاد شده بر روی ورق")]
-        public double GrooveLength { get; set; }
-
-        [DisplayName("هزینه CNC")]
-        [Description("هزینه ماشینکاری CNC")]
-        public double CncCost { get; set; }
 
         [DisplayName("هزینه حمل و نقل")]
         [Description("هزینه حمل و نقل سفارش")]
@@ -85,45 +47,85 @@ namespace CncApp_Final.Entities
         [Description("توضیحات اضافی سفارش")]
         public string Description { get; set; }
 
+        public virtual ICollection<OrderDetails> OrderDetails { get; set; } = new List<OrderDetails>();
 
-        // داخل کلاس Order اضافه کن (در انتهای کلاس، قبل از آخرین })
 
-        // نام مشتری (به جای نمایش CustomerId)
+
+
+
+
+        // ─── نام مشتری (NotMapped) ─────────────────────────────────────
         [NotMapped]
         [DisplayName("نام مشتری")]
         public string CustomerName => Customer?.CustomerName ?? "نامشخص";
 
-        // مشخصات کامل ورق: جنس + ضخامت + ابعاد (مثال: ST52 10mm 2000*4000)
+        // ─── تاریخ‌های شمسی با فرمت yyyy/MM/dd ─────────────────────────────
+
+        /// <summary>
+        /// تاریخ سفارش شمسی - فرمت دقیق: yyyy/MM/dd (مثال: 1404/09/11)
+        /// </summary>
         [NotMapped]
-        [DisplayName("مشخصات ورق")]
-        public string SheetDetails => Sheet != null
-            ? $"{Sheet.Material} {Sheet.Thickness}mm {Sheet.Length}*{Sheet.Width}"
-            : "ورق انتخاب نشده";
-
-        // قیمت ورق
-        [NotMapped]
-        [DisplayName("قیمت ورق")]
-        public double? SheetPrice => Sheet?.SheetPrice;
-
-        // قیمت تکه
-        [NotMapped]
-        [DisplayName("قیمت تکه")]
-        public double? PicesPrice => Sheet?.PicesPrice;
-
-        // اختیاری: اگر می‌خوای Description اتریبیوت رو هم از enum بخونی (روش حرفه‌ای‌تر)
-        [NotMapped]
-        [DisplayName("تامین‌کننده")]
-        public string SupplierTypeDescription => GetEnumDescription(Supplier);
-
-
-        /// متد کمکی برای خوندن Description از enum (یک بار در کلاس بنویس)
-        private static string GetEnumDescription(SupplierType value)
+        [DisplayName("تاریخ سفارش")]
+        public string FaOrderDate
         {
-            var field = value.GetType().GetField(value.ToString());
-            var attribute = field?.GetCustomAttributes(typeof(DescriptionAttribute), false)
-                .FirstOrDefault() as DescriptionAttribute;
-            return attribute?.Description ?? value.ToString();
+            get => ToPersianDateString(OrderDate);
+            set => OrderDate = string.IsNullOrWhiteSpace(value)
+                ? throw new ArgumentException("تاریخ سفارش الزامی است")
+                : ParsePersianDate(value);
+        }
+
+        [NotMapped]
+        [DisplayName("تاریخ تحویل")]
+        public string FaDeliveryDate
+        {
+            get => DeliveryDate.HasValue ? ToPersianDateString(DeliveryDate.Value) : "تحویل نشده";
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    DeliveryDate = null;
+                    return;
+                }
+
+                string v = value.Trim();
+                if (v == "تحویل نشده" || v == "-" || v == "")
+                {
+                    DeliveryDate = null;
+                }
+                else
+                {
+                    DeliveryDate = ParsePersianDate(v);
+                }
+            }
+        }
+
+        // ─── متدهای کمکی تبدیل تاریخ (فقط عددی yyyy/MM/dd) ─────────────────
+        private static string ToPersianDateString(DateTime date)
+        {
+            var pc = new PersianCalendar();
+            int year = pc.GetYear(date);
+            int month = pc.GetMonth(date);
+            int day = pc.GetDayOfMonth(date);
+            return $"{year:0000}/{month:00}/{day:00}";
+        }
+
+        private static DateTime ParsePersianDate(string persianDate)
+        {
+            string cleaned = persianDate.Replace('-', '/').Replace('\\', '/').Trim();
+            var parts = cleaned.Split('/');
+            if (parts.Length != 3 ||
+                !int.TryParse(parts[0], out int year) ||
+                !int.TryParse(parts[1], out int month) ||
+                !int.TryParse(parts[2], out int day))
+            {
+                throw new ArgumentException($"فرمت تاریخ شمسی صحیح نیست: '{persianDate}' — فرمت مورد قبول: yyyy/MM/dd (مثال: 1404/09/11)");
+            }
+
+            if (year < 1300 || year > 1500 || month < 1 || month > 12 || day < 1 || day > 31)
+                throw new ArgumentException($"تاریخ شمسی خارج از محدوده معتبر است: {persianDate}");
+
+            var pc = new PersianCalendar();
+            return pc.ToDateTime(year, month, day, 0, 0, 0, 0);
         }
     }
-
 }

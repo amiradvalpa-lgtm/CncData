@@ -87,6 +87,7 @@
     <Compile Include="Entities\BankAccount.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Order.cs" />
+    <Compile Include="Entities\OrderDetails.cs" />
     <Compile Include="Entities\Receipt.cs" />
     <Compile Include="Entities\Sheet.cs" />
     <Compile Include="Entities\SupplierType.cs" />

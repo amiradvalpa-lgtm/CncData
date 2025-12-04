@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CncApp_Final.Entities
 {
@@ -19,7 +16,7 @@ namespace CncApp_Final.Entities
 
         [DisplayName("جنس ورق")]
         [Description("جنس یا نوع ماده ورق")]
-        public string Material { get; set; }
+        public string Material { get; set; } = null;
 
         [DisplayName("ضخامت")]
         [Description("ضخامت ورق بر حسب میلی‌متر")]
@@ -34,21 +31,24 @@ namespace CncApp_Final.Entities
         public double Length { get; set; }
 
         [DisplayName("قیمت کامل")]
-        [Description("قیمت ورق")]
+        [Description("قیمت کل ورق کامل")]
         public double SheetPrice { get; set; }
 
         [DisplayName("قیمت تکه")]
-        [Description("قیمت تکه")]
+        [Description("قیمت هر تکه برش‌خورده از ورق")]
         public double PicesPrice { get; set; }
 
+        [DisplayName("قیمت خدمات CNC")]
+        [Description("هزینه خدمات CNC به ازای متر یا واحد")]
+        public double CNCPrice { get; set; }
 
+        // تغییر مهم: قبلاً به Order بود، حالا به OrderDetails است
+        [DisplayName("جزئیات سفارش‌هایی که از این ورق استفاده کرده‌اند")]
+        public virtual ICollection<OrderDetails> OrderDetails { get; set; } = new List<OrderDetails>();
 
-        [DisplayName("سفارش‌ها")]
-        [Description("لیست سفارش‌هایی که از این ورق استفاده کرده‌اند")]
-        public virtual ICollection<Order> Orders { get; set; }
-
-        [DisplayName("حساب بانکی")]
-        [Description("حساب بانکی مربوط به رسید")]
-        public virtual ICollection<Warehouse> Warehouse { get; set; }
+        // این رابطه همچنان درست است (انبار ← ورق)
+        [DisplayName("موجودی در انبار")]
+        [Description("لیست موجودی این ورق در انبار")]
+        public virtual ICollection<Warehouse> Warehouse { get; set; } = new List<Warehouse>();
     }
 }
