@@ -32,12 +32,6 @@ namespace CncApp_Final.Frm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.DataAccess.Sql.SelectQuery selectQuery1 = new DevExpress.DataAccess.Sql.SelectQuery();
-            DevExpress.DataAccess.Sql.Column column1 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression1 = new DevExpress.DataAccess.Sql.ColumnExpression();
-            DevExpress.DataAccess.Sql.Table table1 = new DevExpress.DataAccess.Sql.Table();
-            DevExpress.DataAccess.Sql.Column column2 = new DevExpress.DataAccess.Sql.Column();
-            DevExpress.DataAccess.Sql.ColumnExpression columnExpression2 = new DevExpress.DataAccess.Sql.ColumnExpression();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -122,7 +116,6 @@ namespace CncApp_Final.Frm
             this.rpsBtnDeleteRow = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.lueCustomer = new DevExpress.XtraEditors.LookUpEdit();
             this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -133,17 +126,6 @@ namespace CncApp_Final.Frm
             this.btnNewCustomer = new DevExpress.XtraEditors.SimpleButton();
             this.label7 = new System.Windows.Forms.Label();
             this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
-            this.grdcServices = new DevExpress.XtraGrid.GridControl();
-            this.grdvServices = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colService = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colUnitPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.txPrice = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.colDiscountedPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDiscount = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTable = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCount = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colNetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.txbTime = new DevExpress.XtraEditors.TimeEdit();
@@ -153,6 +135,28 @@ namespace CncApp_Final.Frm
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.label2 = new System.Windows.Forms.Label();
             this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
+            this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.orderDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOrderId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOrder = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDetailName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFilePath = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSheetId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSheet = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSupplier = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCutLength = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCutWidth = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFinalSheetCost = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colGrooveLength = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCncCost = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSheetDetails = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSheetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPicesPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSupplierTypeDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
@@ -192,9 +196,6 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.txbPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSumNetPrice.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdcServices)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdvServices)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
@@ -204,6 +205,10 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
             this.groupControl7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
@@ -228,6 +233,7 @@ namespace CncApp_Final.Frm
             // lueCustomer
             // 
             this.lueCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lueCustomer.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "CustomerId", true));
             this.lueCustomer.EnterMoveNextControl = true;
             this.lueCustomer.Location = new System.Drawing.Point(429, 15);
             this.lueCustomer.Name = "lueCustomer";
@@ -252,33 +258,6 @@ namespace CncApp_Final.Frm
             this.lueCustomer.TabIndex = 0;
             this.lueCustomer.Enter += new System.EventHandler(this.textBox_Enter);
             this.lueCustomer.Leave += new System.EventHandler(this.textBox_Leave);
-            // 
-            // customersBindingSource
-            // 
-            this.customersBindingSource.DataMember = "Customers";
-            this.customersBindingSource.DataSource = this.sqlDataSource1;
-            // 
-            // sqlDataSource1
-            // 
-            this.sqlDataSource1.ConnectionName = "CncData";
-            this.sqlDataSource1.Name = "sqlDataSource1";
-            columnExpression1.ColumnName = "Id";
-            table1.MetaSerializable = "<Meta X=\"30\" Y=\"30\" Width=\"125\" Height=\"183\" />";
-            table1.Name = "Customers";
-            columnExpression1.Table = table1;
-            column1.Expression = columnExpression1;
-            columnExpression2.ColumnName = "CustomerName";
-            columnExpression2.Table = table1;
-            column2.Expression = columnExpression2;
-            selectQuery1.Columns.Add(column1);
-            selectQuery1.Columns.Add(column2);
-            selectQuery1.Name = "Customers";
-            selectQuery1.Tables.Add(table1);
-            this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            selectQuery1});
-            this.sqlDataSource1.ResultSchemaSerializable = "PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IkN1c3RvbWVycyI+PEZpZWxkI" +
-    "E5hbWU9IklkIiBUeXBlPSJJbnQ2NCIgLz48RmllbGQgTmFtZT0iQ3VzdG9tZXJOYW1lIiBUeXBlPSJTd" +
-    "HJpbmciIC8+PC9WaWV3PjwvRGF0YVNldD4=";
             // 
             // label1
             // 
@@ -435,169 +414,6 @@ namespace CncApp_Final.Frm
             this.txbSumNetPrice.Size = new System.Drawing.Size(137, 30);
             this.txbSumNetPrice.TabIndex = 23;
             // 
-            // grdcServices
-            // 
-            this.grdcServices.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdcServices.Location = new System.Drawing.Point(2, 2);
-            this.grdcServices.MainView = this.grdvServices;
-            this.grdcServices.Name = "grdcServices";
-            this.grdcServices.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.txPrice});
-            this.grdcServices.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.grdcServices.Size = new System.Drawing.Size(728, 263);
-            this.grdcServices.TabIndex = 22;
-            this.grdcServices.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.grdvServices});
-            // 
-            // grdvServices
-            // 
-            this.grdvServices.Appearance.Empty.BackColor = System.Drawing.SystemColors.Control;
-            this.grdvServices.Appearance.Empty.Options.UseBackColor = true;
-            this.grdvServices.Appearance.FixedLine.Options.UseBorderColor = true;
-            this.grdvServices.Appearance.FocusedCell.BackColor = System.Drawing.Color.White;
-            this.grdvServices.Appearance.FocusedCell.ForeColor = System.Drawing.Color.Red;
-            this.grdvServices.Appearance.FocusedCell.Options.UseBackColor = true;
-            this.grdvServices.Appearance.FocusedCell.Options.UseForeColor = true;
-            this.grdvServices.Appearance.FocusedRow.BackColor = System.Drawing.Color.Gainsboro;
-            this.grdvServices.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.grdvServices.Appearance.GroupRow.BackColor = System.Drawing.Color.Transparent;
-            this.grdvServices.Appearance.GroupRow.Font = new System.Drawing.Font("IRANSans", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdvServices.Appearance.GroupRow.FontStyleDelta = System.Drawing.FontStyle.Bold;
-            this.grdvServices.Appearance.GroupRow.ForeColor = System.Drawing.Color.Black;
-            this.grdvServices.Appearance.GroupRow.Options.UseBackColor = true;
-            this.grdvServices.Appearance.GroupRow.Options.UseFont = true;
-            this.grdvServices.Appearance.GroupRow.Options.UseForeColor = true;
-            this.grdvServices.Appearance.HeaderPanel.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.grdvServices.Appearance.HeaderPanel.Options.UseFont = true;
-            this.grdvServices.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.grdvServices.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.grdvServices.Appearance.HorzLine.BackColor = System.Drawing.Color.Transparent;
-            this.grdvServices.Appearance.HorzLine.Options.UseBackColor = true;
-            this.grdvServices.Appearance.Row.BackColor = System.Drawing.SystemColors.Control;
-            this.grdvServices.Appearance.Row.Options.UseBackColor = true;
-            this.grdvServices.Appearance.SelectedRow.ForeColor = System.Drawing.Color.Red;
-            this.grdvServices.Appearance.SelectedRow.Options.UseForeColor = true;
-            this.grdvServices.Appearance.VertLine.BackColor = System.Drawing.Color.Transparent;
-            this.grdvServices.Appearance.VertLine.Options.UseBackColor = true;
-            this.grdvServices.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colId,
-            this.colService,
-            this.colUnitPrice,
-            this.colDiscountedPrice,
-            this.colDiscount,
-            this.colTable,
-            this.colCount,
-            this.colNetPrice});
-            this.grdvServices.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
-            this.grdvServices.GridControl = this.grdcServices;
-            this.grdvServices.GroupRowHeight = 25;
-            this.grdvServices.IndicatorWidth = 50;
-            this.grdvServices.Name = "grdvServices";
-            this.grdvServices.OptionsCustomization.AllowColumnMoving = false;
-            this.grdvServices.OptionsCustomization.AllowColumnResizing = false;
-            this.grdvServices.OptionsCustomization.AllowFilter = false;
-            this.grdvServices.OptionsCustomization.AllowQuickHideColumns = false;
-            this.grdvServices.OptionsCustomization.AllowSort = false;
-            this.grdvServices.OptionsFilter.AllowFilterEditor = false;
-            this.grdvServices.OptionsFind.AllowFindPanel = false;
-            this.grdvServices.OptionsFind.AllowMruItems = false;
-            this.grdvServices.OptionsView.ShowFooter = true;
-            this.grdvServices.OptionsView.ShowGroupPanel = false;
-            this.grdvServices.OptionsView.ShowIndicator = false;
-            this.grdvServices.PaintStyleName = "Skin";
-            this.grdvServices.RowHeight = 18;
-            this.grdvServices.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.grdvServices_CellValueChanged);
-            // 
-            // colId
-            // 
-            this.colId.Caption = "Id";
-            this.colId.FieldName = "Id";
-            this.colId.Name = "colId";
-            // 
-            // colService
-            // 
-            this.colService.Caption = "نوع خدمات";
-            this.colService.FieldName = "Service";
-            this.colService.Name = "colService";
-            this.colService.OptionsColumn.AllowEdit = false;
-            this.colService.OptionsColumn.AllowFocus = false;
-            this.colService.OptionsColumn.TabStop = false;
-            this.colService.Visible = true;
-            this.colService.VisibleIndex = 0;
-            this.colService.Width = 209;
-            // 
-            // colUnitPrice
-            // 
-            this.colUnitPrice.AppearanceCell.Options.UseTextOptions = true;
-            this.colUnitPrice.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.colUnitPrice.Caption = "فی قیمت";
-            this.colUnitPrice.ColumnEdit = this.txPrice;
-            this.colUnitPrice.FieldName = "UnitPrice";
-            this.colUnitPrice.MaxWidth = 95;
-            this.colUnitPrice.MinWidth = 95;
-            this.colUnitPrice.Name = "colUnitPrice";
-            this.colUnitPrice.OptionsColumn.AllowEdit = false;
-            this.colUnitPrice.OptionsColumn.AllowFocus = false;
-            this.colUnitPrice.OptionsColumn.TabStop = false;
-            this.colUnitPrice.Visible = true;
-            this.colUnitPrice.VisibleIndex = 1;
-            this.colUnitPrice.Width = 95;
-            // 
-            // txPrice
-            // 
-            this.txPrice.AutoHeight = false;
-            this.txPrice.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txPrice.MaskSettings.Set("mask", "c0");
-            this.txPrice.MaskSettings.Set("autoHideDecimalSeparator", false);
-            this.txPrice.Name = "txPrice";
-            this.txPrice.UseMaskAsDisplayFormat = true;
-            // 
-            // colDiscountedPrice
-            // 
-            this.colDiscountedPrice.AppearanceCell.Options.UseTextOptions = true;
-            this.colDiscountedPrice.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.colDiscountedPrice.Caption = "با تخفیف";
-            this.colDiscountedPrice.ColumnEdit = this.txPrice;
-            this.colDiscountedPrice.FieldName = "DiscountedPrice";
-            this.colDiscountedPrice.MaxWidth = 95;
-            this.colDiscountedPrice.MinWidth = 95;
-            this.colDiscountedPrice.Name = "colDiscountedPrice";
-            this.colDiscountedPrice.Visible = true;
-            this.colDiscountedPrice.VisibleIndex = 2;
-            this.colDiscountedPrice.Width = 95;
-            // 
-            // colDiscount
-            // 
-            this.colDiscount.Caption = "تخفیف";
-            this.colDiscount.FieldName = "Discount";
-            this.colDiscount.Name = "colDiscount";
-            this.colDiscount.UnboundDataType = typeof(int);
-            this.colDiscount.UnboundExpression = "[Price] - [NetPrice]";
-            // 
-            // colTable
-            // 
-            this.colTable.Caption = "جدول";
-            this.colTable.FieldName = "Table";
-            this.colTable.Name = "colTable";
-            // 
-            // colCount
-            // 
-            this.colCount.Caption = "تعداد";
-            this.colCount.FieldName = "Count";
-            this.colCount.Name = "colCount";
-            this.colCount.Width = 54;
-            // 
-            // colNetPrice
-            // 
-            this.colNetPrice.Caption = "قیمت کل";
-            this.colNetPrice.FieldName = "colNetPrice";
-            this.colNetPrice.Name = "colNetPrice";
-            this.colNetPrice.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
-            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "colNetPrice", "{0:#,###}")});
-            this.colNetPrice.UnboundDataType = typeof(int);
-            this.colNetPrice.UnboundExpression = "[DiscountedPrice] * [Count]";
-            this.colNetPrice.Width = 59;
-            // 
             // groupControl4
             // 
             this.groupControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -701,8 +517,8 @@ namespace CncApp_Final.Frm
             // 
             // groupControl7
             // 
+            this.groupControl7.Controls.Add(this.gridControl);
             this.groupControl7.Controls.Add(this.txbSumNetPrice);
-            this.groupControl7.Controls.Add(this.grdcServices);
             this.groupControl7.Controls.Add(this.label7);
             this.groupControl7.Location = new System.Drawing.Point(12, 449);
             this.groupControl7.Name = "groupControl7";
@@ -710,6 +526,198 @@ namespace CncApp_Final.Frm
             this.groupControl7.Size = new System.Drawing.Size(732, 267);
             this.groupControl7.TabIndex = 4;
             this.groupControl7.Text = "groupControl7";
+            // 
+            // gridControl
+            // 
+            this.gridControl.DataSource = this.orderDetailsBindingSource;
+            this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl.Location = new System.Drawing.Point(2, 2);
+            this.gridControl.MainView = this.gridView;
+            this.gridControl.Name = "gridControl";
+            this.gridControl.Size = new System.Drawing.Size(728, 263);
+            this.gridControl.TabIndex = 25;
+            this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView});
+            // 
+            // orderDetailsBindingSource
+            // 
+            this.orderDetailsBindingSource.DataSource = typeof(CncApp_Final.Entities.OrderDetails);
+            // 
+            // gridView
+            // 
+            this.gridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gridView.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gridView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridView.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.gridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridView.ColumnPanelRowHeight = 50;
+            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colId,
+            this.colOrderId,
+            this.colOrder,
+            this.colDetailName,
+            this.colFilePath,
+            this.colSheetId,
+            this.colSheet,
+            this.colSupplier,
+            this.colCutLength,
+            this.colCutWidth,
+            this.colFinalSheetCost,
+            this.colGrooveLength,
+            this.colCncCost,
+            this.colDescription,
+            this.colSheetDetails,
+            this.colSheetPrice,
+            this.colPicesPrice,
+            this.colSupplierTypeDescription});
+            this.gridView.GridControl = this.gridControl;
+            this.gridView.Name = "gridView";
+            this.gridView.OptionsBehavior.Editable = false;
+            this.gridView.OptionsBehavior.ReadOnly = true;
+            this.gridView.OptionsFind.AlwaysVisible = true;
+            this.gridView.OptionsFind.FindDelay = 500;
+            this.gridView.OptionsFind.FindNullPrompt = "برای جستجو در فاکتورها، کلمه مورد نظر را وارد کنید...";
+            this.gridView.OptionsView.ShowGroupPanel = false;
+            this.gridView.RowHeight = 30;
+            // 
+            // colId
+            // 
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            this.colId.Visible = true;
+            this.colId.VisibleIndex = 0;
+            // 
+            // colOrderId
+            // 
+            this.colOrderId.FieldName = "OrderId";
+            this.colOrderId.Name = "colOrderId";
+            this.colOrderId.Visible = true;
+            this.colOrderId.VisibleIndex = 1;
+            // 
+            // colOrder
+            // 
+            this.colOrder.FieldName = "Order";
+            this.colOrder.Name = "colOrder";
+            this.colOrder.Visible = true;
+            this.colOrder.VisibleIndex = 2;
+            // 
+            // colDetailName
+            // 
+            this.colDetailName.FieldName = "DetailName";
+            this.colDetailName.Name = "colDetailName";
+            this.colDetailName.Visible = true;
+            this.colDetailName.VisibleIndex = 3;
+            // 
+            // colFilePath
+            // 
+            this.colFilePath.FieldName = "FilePath";
+            this.colFilePath.Name = "colFilePath";
+            this.colFilePath.Visible = true;
+            this.colFilePath.VisibleIndex = 4;
+            // 
+            // colSheetId
+            // 
+            this.colSheetId.FieldName = "SheetId";
+            this.colSheetId.Name = "colSheetId";
+            this.colSheetId.Visible = true;
+            this.colSheetId.VisibleIndex = 5;
+            // 
+            // colSheet
+            // 
+            this.colSheet.FieldName = "Sheet";
+            this.colSheet.Name = "colSheet";
+            this.colSheet.Visible = true;
+            this.colSheet.VisibleIndex = 6;
+            // 
+            // colSupplier
+            // 
+            this.colSupplier.FieldName = "Supplier";
+            this.colSupplier.Name = "colSupplier";
+            this.colSupplier.Visible = true;
+            this.colSupplier.VisibleIndex = 7;
+            // 
+            // colCutLength
+            // 
+            this.colCutLength.FieldName = "CutLength";
+            this.colCutLength.Name = "colCutLength";
+            this.colCutLength.Visible = true;
+            this.colCutLength.VisibleIndex = 8;
+            // 
+            // colCutWidth
+            // 
+            this.colCutWidth.FieldName = "CutWidth";
+            this.colCutWidth.Name = "colCutWidth";
+            this.colCutWidth.Visible = true;
+            this.colCutWidth.VisibleIndex = 9;
+            // 
+            // colFinalSheetCost
+            // 
+            this.colFinalSheetCost.FieldName = "FinalSheetCost";
+            this.colFinalSheetCost.Name = "colFinalSheetCost";
+            this.colFinalSheetCost.Visible = true;
+            this.colFinalSheetCost.VisibleIndex = 10;
+            // 
+            // colGrooveLength
+            // 
+            this.colGrooveLength.FieldName = "GrooveLength";
+            this.colGrooveLength.Name = "colGrooveLength";
+            this.colGrooveLength.Visible = true;
+            this.colGrooveLength.VisibleIndex = 11;
+            // 
+            // colCncCost
+            // 
+            this.colCncCost.FieldName = "CncCost";
+            this.colCncCost.Name = "colCncCost";
+            this.colCncCost.Visible = true;
+            this.colCncCost.VisibleIndex = 12;
+            // 
+            // colDescription
+            // 
+            this.colDescription.FieldName = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.Visible = true;
+            this.colDescription.VisibleIndex = 13;
+            // 
+            // colSheetDetails
+            // 
+            this.colSheetDetails.FieldName = "SheetDetails";
+            this.colSheetDetails.Name = "colSheetDetails";
+            this.colSheetDetails.OptionsColumn.ReadOnly = true;
+            this.colSheetDetails.Visible = true;
+            this.colSheetDetails.VisibleIndex = 14;
+            // 
+            // colSheetPrice
+            // 
+            this.colSheetPrice.FieldName = "SheetPrice";
+            this.colSheetPrice.Name = "colSheetPrice";
+            this.colSheetPrice.OptionsColumn.ReadOnly = true;
+            this.colSheetPrice.Visible = true;
+            this.colSheetPrice.VisibleIndex = 15;
+            // 
+            // colPicesPrice
+            // 
+            this.colPicesPrice.FieldName = "PicesPrice";
+            this.colPicesPrice.Name = "colPicesPrice";
+            this.colPicesPrice.OptionsColumn.ReadOnly = true;
+            this.colPicesPrice.Visible = true;
+            this.colPicesPrice.VisibleIndex = 16;
+            // 
+            // colSupplierTypeDescription
+            // 
+            this.colSupplierTypeDescription.FieldName = "SupplierTypeDescription";
+            this.colSupplierTypeDescription.Name = "colSupplierTypeDescription";
+            this.colSupplierTypeDescription.OptionsColumn.ReadOnly = true;
+            this.colSupplierTypeDescription.Visible = true;
+            this.colSupplierTypeDescription.VisibleIndex = 17;
+            // 
+            // orderBindingSource
+            // 
+            this.orderBindingSource.DataSource = typeof(CncApp_Final.Entities.Order);
+            // 
+            // customerBindingSource
+            // 
+            this.customersBindingSource.DataSource = typeof(CncApp_Final.Entities.Customer);
             // 
             // ribbonControl1
             // 
@@ -1040,9 +1048,6 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.txbPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSumNetPrice.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdcServices)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.grdvServices)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
@@ -1054,6 +1059,10 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
             this.groupControl7.ResumeLayout(false);
             this.groupControl7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
@@ -1081,17 +1090,6 @@ namespace CncApp_Final.Frm
         private System.Windows.Forms.Label label11;
         private DevExpress.XtraEditors.SimpleButton btnNewCustomer;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit rpsBtnDeleteRow;
-        private DevExpress.XtraGrid.GridControl grdcServices;
-        private DevExpress.XtraGrid.Views.Grid.GridView grdvServices;
-        private DevExpress.XtraGrid.Columns.GridColumn colService;
-        private DevExpress.XtraGrid.Columns.GridColumn colUnitPrice;
-        private DevExpress.XtraGrid.Columns.GridColumn colDiscountedPrice;
-        private DevExpress.XtraGrid.Columns.GridColumn colDiscount;
-        private DevExpress.XtraGrid.Columns.GridColumn colTable;
-        private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit txPrice;
-        private DevExpress.XtraGrid.Columns.GridColumn colCount;
-        private DevExpress.XtraGrid.Columns.GridColumn colNetPrice;
         private DevExpress.XtraEditors.ButtonEdit txbSumNetPrice;
         private System.Windows.Forms.Label label7;
         private DevExpress.Utils.Behaviors.BehaviorManager behaviorManager1;
@@ -1132,11 +1130,32 @@ namespace CncApp_Final.Frm
         private DevExpress.XtraBars.BarButtonItem bbiPhoto;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.BarButtonItem bbiPrintPhoto;
-        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
         private BindingSource customersBindingSource;
         private DevExpress.XtraEditors.TimeEdit txbTime;
         private Label label8;
         private DevExpress.XtraEditors.TextEdit textEdit2;
         private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraGrid.GridControl gridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView;
+        private BindingSource orderBindingSource;
+        private BindingSource orderDetailsBindingSource;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colOrderId;
+        private DevExpress.XtraGrid.Columns.GridColumn colOrder;
+        private DevExpress.XtraGrid.Columns.GridColumn colDetailName;
+        private DevExpress.XtraGrid.Columns.GridColumn colFilePath;
+        private DevExpress.XtraGrid.Columns.GridColumn colSheetId;
+        private DevExpress.XtraGrid.Columns.GridColumn colSheet;
+        private DevExpress.XtraGrid.Columns.GridColumn colSupplier;
+        private DevExpress.XtraGrid.Columns.GridColumn colCutLength;
+        private DevExpress.XtraGrid.Columns.GridColumn colCutWidth;
+        private DevExpress.XtraGrid.Columns.GridColumn colFinalSheetCost;
+        private DevExpress.XtraGrid.Columns.GridColumn colGrooveLength;
+        private DevExpress.XtraGrid.Columns.GridColumn colCncCost;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
+        private DevExpress.XtraGrid.Columns.GridColumn colSheetDetails;
+        private DevExpress.XtraGrid.Columns.GridColumn colSheetPrice;
+        private DevExpress.XtraGrid.Columns.GridColumn colPicesPrice;
+        private DevExpress.XtraGrid.Columns.GridColumn colSupplierTypeDescription;
     }
 }

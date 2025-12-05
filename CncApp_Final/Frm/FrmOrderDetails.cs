@@ -48,5 +48,10 @@ namespace CncApp_Final.Frm
             // Handle this event to save modified data back to your data source
             // something = e.Value; /* TODO: Propagate the value into the storage.*/
         }
+
+        private void FrmOrderDetails_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

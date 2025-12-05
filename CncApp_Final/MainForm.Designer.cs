@@ -32,52 +32,46 @@ namespace CncApp_Final
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions7 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject25 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject26 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject27 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject28 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions8 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject29 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject30 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject31 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject32 = new DevExpress.Utils.SerializableAppearanceObject();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInvoiceNumber = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomer = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOrderDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDeliveryDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSheetDetails = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSupplier = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFinalSheetCost = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCncCost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTransportCost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMiscCost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCutLength = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCutWidth = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSheet = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colGrooveLength = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCustomerId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCustomer = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colFilePath = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSheetId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSheetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPicesPrice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSupplierTypeDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOrderDetails = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalSheetCost = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalCncCost = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalAmount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOrderTitle = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFaOrderDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFaDeliveryDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintSummary = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -153,29 +147,23 @@ namespace CncApp_Final
             this.gridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gridView.ColumnPanelRowHeight = 50;
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colId,
             this.colInvoiceNumber,
             this.colCustomerName,
-            this.colOrderDate,
-            this.colDeliveryDate,
-            this.colSheetDetails,
-            this.colSupplier,
-            this.colFinalSheetCost,
-            this.colCncCost,
+            this.colOrderTitle,
+            this.colFaOrderDate,
+            this.colFaDeliveryDate,
+            this.colTotalSheetCost,
+            this.colTotalCncCost,
             this.colTransportCost,
             this.colMiscCost,
+            this.colTotalAmount,
             this.colDescription,
-            this.colCutLength,
-            this.colCutWidth,
-            this.colSheet,
-            this.colGrooveLength,
-            this.colCustomerId,
             this.colCustomer,
-            this.colFilePath,
-            this.colSheetId,
-            this.colSheetPrice,
-            this.colPicesPrice,
-            this.colSupplierTypeDescription});
+            this.colOrderDetails,
+            this.colId,
+            this.colCustomerId,
+            this.colOrderDate,
+            this.colDeliveryDate});
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
@@ -191,7 +179,6 @@ namespace CncApp_Final
             // 
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
-            this.colId.OptionsColumn.AllowShowHide = false;
             // 
             // colInvoiceNumber
             // 
@@ -199,6 +186,84 @@ namespace CncApp_Final
             this.colInvoiceNumber.Name = "colInvoiceNumber";
             this.colInvoiceNumber.Visible = true;
             this.colInvoiceNumber.VisibleIndex = 0;
+            // 
+            // colCustomerId
+            // 
+            this.colCustomerId.FieldName = "CustomerId";
+            this.colCustomerId.Name = "colCustomerId";
+            // 
+            // colCustomer
+            // 
+            this.colCustomer.FieldName = "Customer";
+            this.colCustomer.Name = "colCustomer";
+            // 
+            // colOrderDate
+            // 
+            this.colOrderDate.FieldName = "OrderDate";
+            this.colOrderDate.Name = "colOrderDate";
+            // 
+            // colDeliveryDate
+            // 
+            this.colDeliveryDate.FieldName = "DeliveryDate";
+            this.colDeliveryDate.Name = "colDeliveryDate";
+            // 
+            // colTransportCost
+            // 
+            this.colTransportCost.FieldName = "TransportCost";
+            this.colTransportCost.Name = "colTransportCost";
+            this.colTransportCost.Visible = true;
+            this.colTransportCost.VisibleIndex = 7;
+            // 
+            // colMiscCost
+            // 
+            this.colMiscCost.FieldName = "MiscCost";
+            this.colMiscCost.Name = "colMiscCost";
+            this.colMiscCost.Visible = true;
+            this.colMiscCost.VisibleIndex = 8;
+            // 
+            // colDescription
+            // 
+            this.colDescription.FieldName = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.Visible = true;
+            this.colDescription.VisibleIndex = 10;
+            // 
+            // colOrderDetails
+            // 
+            this.colOrderDetails.FieldName = "OrderDetails";
+            this.colOrderDetails.Name = "colOrderDetails";
+            // 
+            // colTotalSheetCost
+            // 
+            this.colTotalSheetCost.FieldName = "TotalSheetCost";
+            this.colTotalSheetCost.Name = "colTotalSheetCost";
+            this.colTotalSheetCost.OptionsColumn.ReadOnly = true;
+            this.colTotalSheetCost.Visible = true;
+            this.colTotalSheetCost.VisibleIndex = 5;
+            // 
+            // colTotalCncCost
+            // 
+            this.colTotalCncCost.FieldName = "TotalCncCost";
+            this.colTotalCncCost.Name = "colTotalCncCost";
+            this.colTotalCncCost.OptionsColumn.ReadOnly = true;
+            this.colTotalCncCost.Visible = true;
+            this.colTotalCncCost.VisibleIndex = 6;
+            // 
+            // colTotalAmount
+            // 
+            this.colTotalAmount.FieldName = "TotalAmount";
+            this.colTotalAmount.Name = "colTotalAmount";
+            this.colTotalAmount.OptionsColumn.ReadOnly = true;
+            this.colTotalAmount.Visible = true;
+            this.colTotalAmount.VisibleIndex = 9;
+            // 
+            // colOrderTitle
+            // 
+            this.colOrderTitle.FieldName = "OrderTitle";
+            this.colOrderTitle.Name = "colOrderTitle";
+            this.colOrderTitle.OptionsColumn.ReadOnly = true;
+            this.colOrderTitle.Visible = true;
+            this.colOrderTitle.VisibleIndex = 2;
             // 
             // colCustomerName
             // 
@@ -208,159 +273,19 @@ namespace CncApp_Final
             this.colCustomerName.Visible = true;
             this.colCustomerName.VisibleIndex = 1;
             // 
-            // colOrderDate
+            // colFaOrderDate
             // 
-            this.colOrderDate.AppearanceCell.Options.UseTextOptions = true;
-            this.colOrderDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colOrderDate.DisplayFormat.FormatString = "yyyy/MM/dd";
-            this.colOrderDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.colOrderDate.FieldName = "OrderDate";
-            this.colOrderDate.Name = "colOrderDate";
-            this.colOrderDate.Visible = true;
-            this.colOrderDate.VisibleIndex = 2;
+            this.colFaOrderDate.FieldName = "FaOrderDate";
+            this.colFaOrderDate.Name = "colFaOrderDate";
+            this.colFaOrderDate.Visible = true;
+            this.colFaOrderDate.VisibleIndex = 3;
             // 
-            // colDeliveryDate
+            // colFaDeliveryDate
             // 
-            this.colDeliveryDate.AppearanceCell.Options.UseTextOptions = true;
-            this.colDeliveryDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colDeliveryDate.DisplayFormat.FormatString = "yyyy/MM/dd";
-            this.colDeliveryDate.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
-            this.colDeliveryDate.FieldName = "DeliveryDate";
-            this.colDeliveryDate.Name = "colDeliveryDate";
-            this.colDeliveryDate.Visible = true;
-            this.colDeliveryDate.VisibleIndex = 3;
-            // 
-            // colSheetDetails
-            // 
-            this.colSheetDetails.FieldName = "SheetDetails";
-            this.colSheetDetails.Name = "colSheetDetails";
-            this.colSheetDetails.OptionsColumn.ReadOnly = true;
-            this.colSheetDetails.Visible = true;
-            this.colSheetDetails.VisibleIndex = 4;
-            // 
-            // colSupplier
-            // 
-            this.colSupplier.FieldName = "Supplier";
-            this.colSupplier.Name = "colSupplier";
-            this.colSupplier.Visible = true;
-            this.colSupplier.VisibleIndex = 5;
-            // 
-            // colFinalSheetCost
-            // 
-            this.colFinalSheetCost.AppearanceCell.Options.UseTextOptions = true;
-            this.colFinalSheetCost.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.colFinalSheetCost.DisplayFormat.FormatString = "#,###";
-            this.colFinalSheetCost.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colFinalSheetCost.FieldName = "FinalSheetCost";
-            this.colFinalSheetCost.Name = "colFinalSheetCost";
-            this.colFinalSheetCost.Visible = true;
-            this.colFinalSheetCost.VisibleIndex = 6;
-            // 
-            // colCncCost
-            // 
-            this.colCncCost.AppearanceCell.Options.UseTextOptions = true;
-            this.colCncCost.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.colCncCost.DisplayFormat.FormatString = "#,###";
-            this.colCncCost.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colCncCost.FieldName = "CncCost";
-            this.colCncCost.Name = "colCncCost";
-            this.colCncCost.Visible = true;
-            this.colCncCost.VisibleIndex = 7;
-            // 
-            // colTransportCost
-            // 
-            this.colTransportCost.AppearanceCell.Options.UseTextOptions = true;
-            this.colTransportCost.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.colTransportCost.DisplayFormat.FormatString = "#,###";
-            this.colTransportCost.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colTransportCost.FieldName = "TransportCost";
-            this.colTransportCost.Name = "colTransportCost";
-            this.colTransportCost.Visible = true;
-            this.colTransportCost.VisibleIndex = 8;
-            // 
-            // colMiscCost
-            // 
-            this.colMiscCost.AppearanceCell.Options.UseTextOptions = true;
-            this.colMiscCost.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.colMiscCost.DisplayFormat.FormatString = "#,###";
-            this.colMiscCost.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colMiscCost.FieldName = "MiscCost";
-            this.colMiscCost.Name = "colMiscCost";
-            this.colMiscCost.Visible = true;
-            this.colMiscCost.VisibleIndex = 9;
-            // 
-            // colDescription
-            // 
-            this.colDescription.FieldName = "Description";
-            this.colDescription.Name = "colDescription";
-            this.colDescription.Visible = true;
-            this.colDescription.VisibleIndex = 10;
-            // 
-            // colCutLength
-            // 
-            this.colCutLength.FieldName = "CutLength";
-            this.colCutLength.Name = "colCutLength";
-            // 
-            // colCutWidth
-            // 
-            this.colCutWidth.FieldName = "CutWidth";
-            this.colCutWidth.Name = "colCutWidth";
-            // 
-            // colSheet
-            // 
-            this.colSheet.FieldName = "Sheet";
-            this.colSheet.Name = "colSheet";
-            this.colSheet.OptionsColumn.AllowShowHide = false;
-            // 
-            // colGrooveLength
-            // 
-            this.colGrooveLength.FieldName = "GrooveLength";
-            this.colGrooveLength.Name = "colGrooveLength";
-            this.colGrooveLength.OptionsColumn.AllowShowHide = false;
-            // 
-            // colCustomerId
-            // 
-            this.colCustomerId.FieldName = "CustomerId";
-            this.colCustomerId.Name = "colCustomerId";
-            this.colCustomerId.OptionsColumn.AllowShowHide = false;
-            // 
-            // colCustomer
-            // 
-            this.colCustomer.FieldName = "Customer";
-            this.colCustomer.Name = "colCustomer";
-            // 
-            // colFilePath
-            // 
-            this.colFilePath.FieldName = "FilePath";
-            this.colFilePath.Name = "colFilePath";
-            // 
-            // colSheetId
-            // 
-            this.colSheetId.FieldName = "SheetId";
-            this.colSheetId.Name = "colSheetId";
-            this.colSheetId.OptionsColumn.AllowShowHide = false;
-            // 
-            // colSheetPrice
-            // 
-            this.colSheetPrice.FieldName = "SheetPrice";
-            this.colSheetPrice.Name = "colSheetPrice";
-            this.colSheetPrice.OptionsColumn.AllowShowHide = false;
-            this.colSheetPrice.OptionsColumn.ReadOnly = true;
-            // 
-            // colPicesPrice
-            // 
-            this.colPicesPrice.FieldName = "PicesPrice";
-            this.colPicesPrice.Name = "colPicesPrice";
-            this.colPicesPrice.OptionsColumn.AllowShowHide = false;
-            this.colPicesPrice.OptionsColumn.ReadOnly = true;
-            // 
-            // colSupplierTypeDescription
-            // 
-            this.colSupplierTypeDescription.FieldName = "SupplierTypeDescription";
-            this.colSupplierTypeDescription.Name = "colSupplierTypeDescription";
-            this.colSupplierTypeDescription.OptionsColumn.ReadOnly = true;
-            this.colSupplierTypeDescription.Visible = true;
-            this.colSupplierTypeDescription.VisibleIndex = 11;
+            this.colFaDeliveryDate.FieldName = "FaDeliveryDate";
+            this.colFaDeliveryDate.Name = "colFaDeliveryDate";
+            this.colFaDeliveryDate.Visible = true;
+            this.colFaDeliveryDate.VisibleIndex = 4;
             // 
             // ribbonControl
             // 
@@ -626,10 +551,10 @@ namespace CncApp_Final
             this.repositoryItemRibbonSearchEdit1.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit1.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions1.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions5.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit1.Name = "repositoryItemRibbonSearchEdit1";
             this.repositoryItemRibbonSearchEdit1.NullText = "Search";
             // 
@@ -638,10 +563,10 @@ namespace CncApp_Final
             this.repositoryItemRibbonSearchEdit2.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit2.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions3.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions7.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions8, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject29, serializableAppearanceObject30, serializableAppearanceObject31, serializableAppearanceObject32, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit2.Name = "repositoryItemRibbonSearchEdit2";
             this.repositoryItemRibbonSearchEdit2.NullText = "Search";
             // 
@@ -729,22 +654,16 @@ namespace CncApp_Final
         private DevExpress.XtraGrid.Columns.GridColumn colCustomer;
         private DevExpress.XtraGrid.Columns.GridColumn colOrderDate;
         private DevExpress.XtraGrid.Columns.GridColumn colDeliveryDate;
-        private DevExpress.XtraGrid.Columns.GridColumn colFilePath;
-        private DevExpress.XtraGrid.Columns.GridColumn colSheetId;
-        private DevExpress.XtraGrid.Columns.GridColumn colSheet;
-        private DevExpress.XtraGrid.Columns.GridColumn colSupplier;
-        private DevExpress.XtraGrid.Columns.GridColumn colCutLength;
-        private DevExpress.XtraGrid.Columns.GridColumn colCutWidth;
-        private DevExpress.XtraGrid.Columns.GridColumn colFinalSheetCost;
-        private DevExpress.XtraGrid.Columns.GridColumn colGrooveLength;
-        private DevExpress.XtraGrid.Columns.GridColumn colCncCost;
         private DevExpress.XtraGrid.Columns.GridColumn colTransportCost;
         private DevExpress.XtraGrid.Columns.GridColumn colMiscCost;
         private DevExpress.XtraGrid.Columns.GridColumn colDescription;
+        private DevExpress.XtraGrid.Columns.GridColumn colOrderDetails;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotalSheetCost;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotalCncCost;
+        private DevExpress.XtraGrid.Columns.GridColumn colTotalAmount;
+        private DevExpress.XtraGrid.Columns.GridColumn colOrderTitle;
         private DevExpress.XtraGrid.Columns.GridColumn colCustomerName;
-        private DevExpress.XtraGrid.Columns.GridColumn colSheetDetails;
-        private DevExpress.XtraGrid.Columns.GridColumn colSheetPrice;
-        private DevExpress.XtraGrid.Columns.GridColumn colPicesPrice;
-        private DevExpress.XtraGrid.Columns.GridColumn colSupplierTypeDescription;
+        private DevExpress.XtraGrid.Columns.GridColumn colFaOrderDate;
+        private DevExpress.XtraGrid.Columns.GridColumn colFaDeliveryDate;
     }
 }

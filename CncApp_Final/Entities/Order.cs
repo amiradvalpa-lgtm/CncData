@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
+using System.Linq;
 
 namespace CncApp_Final.Entities
 {
@@ -50,7 +51,63 @@ namespace CncApp_Final.Entities
         public virtual ICollection<OrderDetails> OrderDetails { get; set; } = new List<OrderDetails>();
 
 
+        // ──────────────────────────────────────────────────────────────
+        // فیلدهای محاسباتی جدید (NotMapped)
+        // ──────────────────────────────────────────────────────────────
 
+        /// <summary>
+        /// مجموع هزینه نهایی ورق‌ها (FinalSheetCost) از تمام جزئیات سفارش
+        /// </summary>
+        [NotMapped]
+        [DisplayName("مبلغ کل ورق")]
+        [Description("مجموع هزینه ورق‌های استفاده شده در سفارش")]
+        public double TotalSheetCost => OrderDetails?.Sum(d => d.FinalSheetCost) ?? 0;
+
+        /// <summary>
+        /// مجموع هزینه CNC از تمام جزئیات سفارش
+        /// </summary>
+        [NotMapped]
+        [DisplayName("مبلغ کل CNC")]
+        [Description("مجموع هزینه ماشینکاری CNC تمام قطعات سفارش")]
+        public double TotalCncCost => OrderDetails?.Sum(d => d.CncCost) ?? 0;
+
+        /// <summary>
+        /// مبلغ کل سفارش = مجموع ورق + مجموع CNC + حمل و نقل + هزینه‌های جانبی
+        /// </summary>
+        [NotMapped]
+        [DisplayName("مبلغ کل سفارش")]
+        [Description("جمع کل هزینه‌های سفارش شامل ورق، CNC، حمل و نقل و هزینه‌های جانبی")]
+        public double TotalAmount => TotalSheetCost + TotalCncCost + TransportCost + MiscCost;
+
+        /// <summary>
+        /// عنوان ترکیبی از نام جزئیات سفارش (مثلاً: "کابینت بالا + درب کمد + کشو")
+        /// اگر بیش از 4 مورد بود، بقیه با "و ..." نمایش داده می‌شود
+        /// </summary>
+        [NotMapped]
+        [DisplayName("عنوان سفارش")]
+        [Description("ترکیب نام تمام قطعات سفارش")]
+        public string OrderTitle
+        {
+            get
+            {
+                if (OrderDetails == null || !OrderDetails.Any())
+                    return "بدون جزئیات";
+
+                var names = OrderDetails
+                    .Where(d => !string.IsNullOrWhiteSpace(d.DetailName))
+                    .Select(d => d.DetailName.Trim())
+                    .Distinct()
+                    .ToList();
+
+                if (names.Count == 0) return "بدون نام";
+                if (names.Count == 1) return names[0];
+                if (names.Count <= 4)
+                    return string.Join(" + ", names);
+
+                // اگر بیشتر از 4 تا بود، فقط 3 تا اول + "و ..."
+                return string.Join(" + ", names.Take(3)) + " و ...";
+            }
+        }
 
 
 
