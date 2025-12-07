@@ -16,7 +16,7 @@ namespace CncData.Entities
 
         [DisplayName("جنس ورق")]
         [Description("جنس یا نوع ماده ورق")]
-        public string Material { get; set; } = null!;
+        public string Material { get; set; } = null;
 
         [DisplayName("ضخامت")]
         [Description("ضخامت ورق بر حسب میلی‌متر")]

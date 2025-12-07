@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace CncData.Entities
 {
@@ -19,11 +20,11 @@ namespace CncData.Entities
 
         [DisplayName("نام سفارش")]
         [Description("نام سفارش")]
-        public string? DetailName { get; set; }
+        public string DetailName { get; set; }
 
         [DisplayName("مسیر فایل")]
         [Description("مسیر فایل مربوط به این جزئیات سفارش")]
-        public string? FilePath { get; set; }
+        public string FilePath { get; set; }
 
         [DisplayName("شناسه ورق")]
         [Description("ورق انتخاب شده برای این جزئیات")]
@@ -59,7 +60,7 @@ namespace CncData.Entities
 
         [DisplayName("توضیحات جزئیات")]
         [Description("توضیحات اضافی برای این جزئیات سفارش")]
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
         // ─── فیلدهای محاسباتی (NotMapped) ─────────────────────────────────────
 

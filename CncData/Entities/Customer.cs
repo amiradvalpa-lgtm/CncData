@@ -23,11 +23,11 @@ namespace CncData.Entities
 
         [DisplayName("تلفن")]
         [Description("شماره تماس مشتری")]
-        public string? Phone { get; set; }
+        public string Phone { get; set; }
 
         [DisplayName("آدرس")]
         [Description("آدرس کامل مشتری")]
-        public string? Address { get; set; }
+        public string Address { get; set; }
 
         [DisplayName("حساب اول دوره")]
         [Description("حساب اول دوره")]
@@ -35,7 +35,7 @@ namespace CncData.Entities
 
         [DisplayName("توضیحات")]
         [Description("توضیحات مربوط به مشتری")]
-        public string? Description { get; set; }
+        public string Description { get; set; }
 
 
 

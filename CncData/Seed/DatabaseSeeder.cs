@@ -13,8 +13,8 @@ namespace CncData.Seed
             if (!context.Customers.Any())
             {
                 context.Customers.AddRange(
-                    new Customer { CustomerName = "آقای عباسی", Phone = "0914000000", Address = "باکری", Beginning_Balance = 50000 },
-                    new Customer { CustomerName = "آقای گلستان", Phone = "0912000000", Address = "فلکه بازارباش" }
+                    new Customer { CustomerName = "آقای عباسی", Phone = "0914000000", Address = "باکری", Beginning_Balance = 50000 ,Description = ""},
+                    new Customer { CustomerName = "آقای گلستان", Phone = "0912000000", Address = "فلکه بازارباش",Description = "" }
                 );
             }
 
@@ -62,7 +62,8 @@ namespace CncData.Seed
                         FinalSheetCost = 2_850_000,
                         GrooveLength = 12.5,
                         CncCost = 980_000,
-                        Description = "برش ۴ گوشه + شیار V"     // اگر بخوای جزئیات فنی رو اینجا هم بذاری (اختیاری)
+                        Description = "برش ۴ گوشه + شیار V" ,    // اگر بخوای جزئیات فنی رو اینجا هم بذاری (اختیاری)
+                        DetailName = "order 2"
                     }
                 }
             };
@@ -89,7 +90,9 @@ namespace CncData.Seed
                         FinalSheetCost = 8_400_000,
                         GrooveLength = 28.0,
                         CncCost = 2_850_000,
-                        Description = "برش دایره‌ای + شیار عمیق 20mm"
+                        Description = "برش دایره‌ای + شیار عمیق 20mm",
+                        DetailName = "order 2"
+                        
                     }
                 }
             };

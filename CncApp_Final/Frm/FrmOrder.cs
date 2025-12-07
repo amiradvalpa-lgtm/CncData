@@ -135,8 +135,31 @@ namespace CncApp_Final.Frm
             }
             else
             {
-                //vCFXTableAdapter.FillBy(this.alpaDataSet.VCFX, _VCF_Id);
-                //ribbonControl1.ApplicationCaption = "ویرایش فاکتور";
+                int orderId = _VCF_Id; // یا از فرم بگیرید
+                CncApp_Final.Data.AppDbContext dbContext = new CncApp_Final.Data.AppDbContext();
+
+                var orderWithDetails = dbContext.Orders
+                    .Include(o => o.OrderDetails)
+                    .Include(o => o.Customer)
+                    .FirstOrDefault(o => o.Id == orderId);
+
+                if (orderWithDetails == null)
+                {
+                    MessageBox.Show("سفارش یافت نشد.");
+                    orderBindingSource.DataSource = null;
+                    orderDetailsBindingSource.DataSource = null;
+                    return;
+                }
+
+                // فقط سفارش انتخاب شده
+                orderBindingSource.DataSource = orderWithDetails;
+
+                // فقط جزئیات همین سفارش (بهترین روش برای BindingSource)
+                orderDetailsBindingSource.DataSource = orderWithDetails.OrderDetails;
+
+                //_VCF_Id = (int)vCFXTableAdapter.GetNewVCF_Id();
+                //InitNewRowVCF_X(_VCF_Id);
+                ribbonControl1.ApplicationCaption = "ویرایش فاکتور";
 
             }
 

@@ -61,15 +61,15 @@ namespace CncApp_Final
 
         private void bbiEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //ribbonControl.BeginInit();
-            //int vcf_Id = (int)gridView.GetFocusedRowCellValue(colVCF_Id);
-            //XfrmFacture frmFactureX = new XfrmFacture(vcf_Id);
-            //frmFactureX.ShowDialog();
-            //if (frmFactureX.DialogResult == DialogResult.OK)
-            //{
-            //    RefreshVCFX();
-            //}
-            //ribbonControl.EndInit();
+            ribbonControl.BeginInit();
+            int order_Id = (int)gridView.GetFocusedRowCellValue(colId);
+            FrmOrder frmFactureX = new FrmOrder(order_Id);
+            frmFactureX.ShowDialog();
+            if (frmFactureX.DialogResult == DialogResult.OK)
+            {
+                RefreshVCFX();
+            }
+            ribbonControl.EndInit();
         }
 
         private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)

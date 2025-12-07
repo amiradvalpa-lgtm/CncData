@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
@@ -33,6 +34,6 @@ namespace CncData.Entities
 
         [DisplayName("توضیحات")]
         [Description("توضیحات مربوط به خرید ورق")]
-        public string? Description { get; set; }
+        public string Description { get; set; }
     }
 }

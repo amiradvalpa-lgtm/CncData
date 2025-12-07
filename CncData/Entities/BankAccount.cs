@@ -31,15 +31,15 @@ namespace CncData.Entities
 
         [DisplayName("نام بانک")]
         [Description("نام بانک")]
-        public string? BankName { get; set; }
+        public string BankName { get; set; }
 
         [DisplayName("شماره کارت")]
         [Description("شماره کارت")]
-        public string? CardNumber { get; set; }
+        public string CardNumber { get; set; }
 
         [DisplayName("شماره شبا")]
         [Description("شماره شبا")]
-        public string? ShebaNumber { get; set; }
+        public string ShebaNumber { get; set; }
 
 
         [DisplayName("رسیدها")]
