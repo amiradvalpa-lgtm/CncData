@@ -36,21 +36,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.BonusSkins.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.CodeParser.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.Desktop.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.DataAccess.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Drawing.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Images.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v25.1.Core, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Xpo.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraBars.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.BonusSkins.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.CodeParser.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.Desktop.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Drawing.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v24.1.Core, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Xpo.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\CncData\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -92,55 +92,6 @@
     <Compile Include="Entities\Sheet.cs" />
     <Compile Include="Entities\SupplierType.cs" />
     <Compile Include="Entities\Warehouse.cs" />
-    <Compile Include="Frm\FrmCustomerEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmCustomerEdit.Designer.cs">
-      <DependentUpon>FrmCustomerEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmCustomers.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmCustomers.Designer.cs">
-      <DependentUpon>FrmCustomers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmReceiptEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmReceiptEdit.Designer.cs">
-      <DependentUpon>FrmReceiptEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmReceipts.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmReceipts.Designer.cs">
-      <DependentUpon>FrmReceipts.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmSheetEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmSheetEdit.Designer.cs">
-      <DependentUpon>FrmSheetEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmSheets.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmSheets.Designer.cs">
-      <DependentUpon>FrmSheets.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmWareHouse.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmWareHouse.Designer.cs">
-      <DependentUpon>FrmWareHouse.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmWareHouseEdit.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmWareHouseEdit.Designer.cs">
-      <DependentUpon>FrmWareHouseEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Helper\TextEditHelper.cs" />
     <Compile Include="TempFrm\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,18 +136,6 @@
     <Compile Include="TempFrm\XtraForm1.Designer.cs">
       <DependentUpon>XtraForm1.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Frm\FrmCustomers.resx">
-      <DependentUpon>FrmCustomers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmReceipts.resx">
-      <DependentUpon>FrmReceipts.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmSheets.resx">
-      <DependentUpon>FrmSheets.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmWareHouse.resx">
-      <DependentUpon>FrmWareHouse.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="TempFrm\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,8 +195,4 @@
   </Target>
   <Import Project="..\CncData\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\CncData\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <Import Project="..\CncData\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets" Condition="Exists('..\CncData\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.118.0\build\net46\Stub.System.Data.SQLite.Core.NetFramework.targets')" />
-  <ItemGroup>
-    <Analyzer Include="C:\Program Files\DevExpress 25.1\Components\Offline Packages\devexpress.data\25.1.5\analyzers\dotnet\DevExpress.Generator.dll" Visible="false" Condition="Exists('C:\Program Files\DevExpress 25.1\Components\Offline Packages\devexpress.data\25.1.5\analyzers\dotnet\DevExpress.Generator.dll')" />
-  </ItemGroup>
-  <ItemGroup />
 </Project>
