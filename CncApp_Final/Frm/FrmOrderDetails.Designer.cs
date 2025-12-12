@@ -32,7 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOrderDetails));
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.lueCustomer = new DevExpress.XtraEditors.LookUpEdit();
-            this.unboundSource1 = new DevExpress.Data.UnboundSource(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
@@ -58,16 +57,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textEdit5 = new DevExpress.XtraEditors.TextEdit();
             this.label13 = new System.Windows.Forms.Label();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnOk = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.label12 = new System.Windows.Forms.Label();
             this.textEdit9 = new DevExpress.XtraEditors.TextEdit();
             this.simpleButton3 = new DevExpress.XtraEditors.SimpleButton();
             this.textEdit10 = new DevExpress.XtraEditors.TextEdit();
             this.label14 = new System.Windows.Forms.Label();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.orderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.lueCustomer.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unboundSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
@@ -87,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEdit10.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // defaultLookAndFeel1
@@ -109,11 +109,9 @@
             this.lueCustomer.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 26, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "نام مشتری", 92, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.lueCustomer.Properties.DataSource = this.unboundSource1;
             this.lueCustomer.Properties.DropDownItemHeight = 25;
             this.lueCustomer.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
             this.lueCustomer.Properties.ShowHeader = false;
-            this.lueCustomer.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbDescription_KeyPress);
             this.lueCustomer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lueCustomer.Size = new System.Drawing.Size(240, 36);
             this.lueCustomer.TabIndex = 4;
@@ -163,7 +161,6 @@
             this.lookUpEdit1.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
             this.lookUpEdit1.Properties.ShowHeader = false;
             this.lookUpEdit1.Properties.ValueMember = "Id";
-            this.lookUpEdit1.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbDescription_KeyPress);
             this.lookUpEdit1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lookUpEdit1.Size = new System.Drawing.Size(240, 36);
             this.lookUpEdit1.TabIndex = 4;
@@ -204,7 +201,6 @@
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 5;
             this.label4.Text = "عرض ورق:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -424,31 +420,33 @@
             this.label13.TabIndex = 5;
             this.label13.Text = "طول برش:";
             // 
-            // simpleButton1
+            // btnOk
             // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
-            this.simpleButton1.ImageOptions.ImageToTextIndent = 5;
-            this.simpleButton1.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.simpleButton1.Location = new System.Drawing.Point(248, 304);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(91, 28);
-            this.simpleButton1.TabIndex = 9;
-            this.simpleButton1.Text = "&Ok";
+            this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOk.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnOk.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
+            this.btnOk.ImageOptions.ImageToTextIndent = 5;
+            this.btnOk.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
+            this.btnOk.Location = new System.Drawing.Point(248, 304);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(91, 28);
+            this.btnOk.TabIndex = 9;
+            this.btnOk.Text = "&Ok";
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // simpleButton2
+            // btnCancel
             // 
-            this.simpleButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.simpleButton2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
-            this.simpleButton2.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
-            this.simpleButton2.ImageOptions.ImageToTextIndent = 5;
-            this.simpleButton2.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.simpleButton2.Location = new System.Drawing.Point(28, 304);
-            this.simpleButton2.Name = "simpleButton2";
-            this.simpleButton2.Size = new System.Drawing.Size(91, 28);
-            this.simpleButton2.TabIndex = 9;
-            this.simpleButton2.Text = "&Cancel";
+            this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.btnCancel.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
+            this.btnCancel.ImageOptions.ImageToTextIndent = 5;
+            this.btnCancel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
+            this.btnCancel.Location = new System.Drawing.Point(28, 304);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(91, 28);
+            this.btnCancel.TabIndex = 9;
+            this.btnCancel.Text = "&Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // label12
             // 
@@ -519,8 +517,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(777, 344);
             this.Controls.Add(this.groupControl3);
-            this.Controls.Add(this.simpleButton2);
-            this.Controls.Add(this.simpleButton1);
+            this.Controls.Add(this.btnCancel);
+            this.Controls.Add(this.btnOk);
             this.Controls.Add(this.groupControl2);
             this.Controls.Add(this.groupControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -532,7 +530,6 @@
             this.Text = "جزئیات سفارش";
             this.Load += new System.EventHandler(this.FrmOrderDetails_Load);
             ((System.ComponentModel.ISupportInitialize)(this.lueCustomer.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unboundSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroup1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
@@ -555,6 +552,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -588,14 +586,14 @@
         private System.Windows.Forms.Label label10;
         private DevExpress.XtraEditors.TextEdit textEdit8;
         private System.Windows.Forms.Label label11;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton2;
+        private DevExpress.XtraEditors.SimpleButton btnOk;
+        private DevExpress.XtraEditors.SimpleButton btnCancel;
         private System.Windows.Forms.Label label12;
         private DevExpress.XtraEditors.TextEdit textEdit9;
         private DevExpress.XtraEditors.SimpleButton simpleButton3;
         private DevExpress.XtraEditors.TextEdit textEdit10;
         private System.Windows.Forms.Label label14;
         private DevExpress.XtraEditors.GroupControl groupControl3;
-        private DevExpress.Data.UnboundSource unboundSource1;
+        private System.Windows.Forms.BindingSource orderDetailBindingSource;
     }
 }

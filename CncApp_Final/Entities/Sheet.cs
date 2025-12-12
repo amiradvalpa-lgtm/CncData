@@ -49,6 +49,22 @@ namespace CncApp_Final.Entities
         // این رابطه همچنان درست است (انبار ← ورق)
         [DisplayName("موجودی در انبار")]
         [Description("لیست موجودی این ورق در انبار")]
-        public virtual ICollection<Warehouse> Warehouse { get; set; } = new List<Warehouse>();
+        public virtual ICollection<Warehouse> Warehouses { get; set; } = new List<Warehouse>();
+
+
+        // ─── ضخامت ورق (NotMapped) ─────────────────────────────────────
+        [NotMapped]
+        [DisplayName("نام ورق")]
+        public string SheetName => $"{Material} _ {Thickness}mm _ {Width} * {Length}";
+
+        // ─── ضخامت ورق (NotMapped) ─────────────────────────────────────
+        [NotMapped]
+        [DisplayName("ضخامت ورق")]
+        public string Thickness_mm => $"{Thickness}mm";
+
+        // ─── سایز ورق (NotMapped) ─────────────────────────────────────
+        [NotMapped]
+        [DisplayName("سایز ورق")]
+        public string SheetSize => $"{Length} * {Width}";
     }
 }

@@ -48,6 +48,56 @@ namespace CncData.Migrations
                     b.ToTable("BankAccounts");
                 });
 
+            modelBuilder.Entity("CncData.Entities.CncData.Entities.AppOption", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OptionKey")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("OptionValue")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppOptions");
+                });
+
+            modelBuilder.Entity("CncData.Entities.CncData.Entities.UserGridLayout", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("GridName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("TEXT");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("LayoutXml")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserGridLayouts");
+                });
+
             modelBuilder.Entity("CncData.Entities.Customer", b =>
                 {
                     b.Property<int>("Id")
@@ -66,6 +116,10 @@ namespace CncData.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("MhkCustomerId")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -93,6 +147,9 @@ namespace CncData.Migrations
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<double>("Discount")
+                        .HasColumnType("REAL");
 
                     b.Property<string>("InvoiceNumber")
                         .IsRequired()
@@ -248,7 +305,7 @@ namespace CncData.Migrations
 
                     b.HasIndex("SheetId");
 
-                    b.ToTable("Warehouse");
+                    b.ToTable("Warehouses");
                 });
 
             modelBuilder.Entity("CncData.Entities.Order", b =>
@@ -303,7 +360,7 @@ namespace CncData.Migrations
             modelBuilder.Entity("CncData.Entities.Warehouse", b =>
                 {
                     b.HasOne("CncData.Entities.Sheet", "Sheet")
-                        .WithMany("Warehouse")
+                        .WithMany("Warehouses")
                         .HasForeignKey("SheetId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -332,7 +389,7 @@ namespace CncData.Migrations
                 {
                     b.Navigation("OrderDetails");
 
-                    b.Navigation("Warehouse");
+                    b.Navigation("Warehouses");
                 });
 #pragma warning restore 612, 618
         }

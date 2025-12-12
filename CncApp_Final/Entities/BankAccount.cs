@@ -45,6 +45,12 @@ namespace CncApp_Final.Entities
         [DisplayName("رسیدها")]
         [Description("لیست رسیدهای مربوط به این حساب بانکی")]
         public virtual ICollection<Receipt> Receipts { get; set; }
+
+        // ─── نام خلاصه حساب (NotMapped) ─────────────────────────────────────
+        [NotMapped]
+        [DisplayName("نام حساب")]
+        public string ShortName => $"{Account_L_Name} - {BankName}";
+
     }
 
 }

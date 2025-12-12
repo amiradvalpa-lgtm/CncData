@@ -44,6 +44,11 @@ namespace CncData.Entities
         [Description("هزینه‌های متفرقه سفارش")]
         public double MiscCost { get; set; }
 
+        [DisplayName("تخفیف")]
+        [Description("هتخفیف فاکتور")]
+        public double Discount { get; set; }
+        
+
         [DisplayName("توضیحات")]
         [Description("توضیحات اضافی سفارش")]
         public string Description { get; set; }
@@ -77,7 +82,7 @@ namespace CncData.Entities
         [NotMapped]
         [DisplayName("مبلغ کل سفارش")]
         [Description("جمع کل هزینه‌های سفارش شامل ورق، CNC، حمل و نقل و هزینه‌های جانبی")]
-        public double TotalAmount => TotalSheetCost + TotalCncCost + TransportCost + MiscCost;
+        public double TotalAmount => TotalSheetCost + TotalCncCost + TransportCost + MiscCost - Discount;
 
         /// <summary>
         /// عنوان ترکیبی از نام جزئیات سفارش (مثلاً: "کابینت بالا + درب کمد + کشو")

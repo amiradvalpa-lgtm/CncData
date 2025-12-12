@@ -13,24 +13,47 @@ namespace CncData.Seed
             if (!context.Customers.Any())
             {
                 context.Customers.AddRange(
-                    new Customer { CustomerName = "آقای عباسی", Phone = "0914000000", Address = "باکری", Beginning_Balance = 50000 ,Description = ""},
-                    new Customer { CustomerName = "آقای گلستان", Phone = "0912000000", Address = "فلکه بازارباش",Description = "" }
+                    new Customer { CustomerName = "آقای عباسی", Phone = "0914000000", Address = "باکری", Beginning_Balance = 50000 ,Description = "", MhkCustomerId = ""},
+                    new Customer { CustomerName = "آقای گلستان", Phone = "0912000000", Address = "فلکه بازارباش",Description = "", MhkCustomerId = "" }
                 );
             }
 
             if (!context.BankAccounts.Any())
             {
                 context.BankAccounts.AddRange(
-                    new BankAccount { Account_F_Name = "امیرحسین", Account_L_Name = "حسنخانی", BankName = "ملی", CardNumber = "6037 XXXX XXXX XXXX", ShebaNumber = "IRXXXXXXXXXXXX" },
-                    new BankAccount { Account_F_Name = "رسول", Account_L_Name = "صحرانورد", BankName = "ملت", CardNumber = "6104 XXXX XXXX XXXX", ShebaNumber = "IRXXXXXXXXXXXX" }
+                    new BankAccount { Account_F_Name = "امیرحسین",
+                        Account_L_Name = "حسنخانی",
+                        BankName = "ملی",
+                        CardNumber = "6037 XXXX XXXX XXXX",
+                        ShebaNumber = "IRXXXXXXXXXXXX" 
+                    },
+                    new BankAccount { Account_F_Name = "رسول",
+                        Account_L_Name = "صحرانورد",
+                        BankName = "ملت",
+                        CardNumber = "6104 XXXX XXXX XXXX",
+                        ShebaNumber = "IRXXXXXXXXXXXX" 
+                    }
                 );
             }
 
             if (!context.Sheets.Any())
             {
                 context.Sheets.AddRange(
-                    new Sheet { Material = "ACM", Thickness = 4, Width = 125, Length = 320, SheetPrice = 50_000_000, PicesPrice = 1_500_000, CNCPrice = 85_000 },
-                    new Sheet { Material = "MDF", Thickness = 8, Width = 122, Length = 244, SheetPrice = 13_000_000, PicesPrice = 4_500_000, CNCPrice = 75_000 }
+                    new Sheet { Material = "MDF", Thickness = 8,  Width = 122, Length = 244, SheetPrice = 50_000_000, PicesPrice = 1_500_000, CNCPrice = 120_000 },
+                    new Sheet { Material = "MDF", Thickness = 12, Width = 122, Length = 244, SheetPrice = 13_000_000, PicesPrice = 4_500_000, CNCPrice = 120_000 },
+                    new Sheet { Material = "MDF", Thickness = 16, Width = 122, Length = 244, SheetPrice = 50_000_000, PicesPrice = 1_500_000, CNCPrice = 120_000 },
+                    new Sheet { Material = "PVC", Thickness = 8,  Width = 122, Length = 244, SheetPrice = 13_000_000, PicesPrice = 4_500_000, CNCPrice = 115_000 },
+                    new Sheet { Material = "PVC", Thickness = 10, Width = 122, Length = 244, SheetPrice = 50_000_000, PicesPrice = 1_500_000, CNCPrice = 115_000 },
+                    new Sheet { Material = "PVC", Thickness = 16, Width = 122, Length = 244, SheetPrice = 50_000_000, PicesPrice = 1_500_000, CNCPrice = 115_000 },
+                    new Sheet { Material = "ACM", Thickness = 4,  Width = 125, Length = 320, SheetPrice = 13_000_000, PicesPrice = 4_500_000, CNCPrice = 75_000 }
+                );
+            }
+
+            if (!context.Warehouses.Any())
+            {
+                context.Warehouses.AddRange(
+                    new Warehouse { SheetId = 1, OrderDate = DateTime.Now,   Description = "test1", SheetBasePrice = 1_500_000 },
+                    new Warehouse { SheetId = 2, OrderDate = DateTime.Now, Description = "test2", SheetBasePrice = 6_500_000 }
                 );
             }
 

@@ -32,46 +32,46 @@ namespace CncApp_Final
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions5 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject17 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject18 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject19 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject20 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions6 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject21 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject22 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject23 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject24 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions7 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject25 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject26 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject27 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject28 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions8 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject29 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject30 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject31 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject32 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colInvoiceNumber = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCustomerId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colCustomer = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOrderDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDeliveryDate = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTransportCost = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMiscCost = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOrderDetails = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTotalSheetCost = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTotalCncCost = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colTotalAmount = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOrderTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOrderTitle = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFaOrderDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFaDeliveryDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalSheetCost = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalCncCost = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTransportCost = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMiscCost = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTotalAmount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomer = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOrderDetails = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOrderDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDeliveryDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintSummary = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -87,9 +87,16 @@ namespace CncApp_Final
             this.bbiExportFaktorToMahak = new DevExpress.XtraBars.BarButtonItem();
             this.bbiHostForm = new DevExpress.XtraBars.BarButtonItem();
             this.bbiBackupDatabase = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiCustomers = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiReceipts = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiwareHouse = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTmpForm = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -175,11 +182,6 @@ namespace CncApp_Final
             this.gridView.RowHeight = 30;
             this.gridView.DoubleClick += new System.EventHandler(this.gridView_DoubleClick);
             // 
-            // colId
-            // 
-            this.colId.FieldName = "Id";
-            this.colId.Name = "colId";
-            // 
             // colInvoiceNumber
             // 
             this.colInvoiceNumber.FieldName = "InvoiceNumber";
@@ -187,51 +189,35 @@ namespace CncApp_Final
             this.colInvoiceNumber.Visible = true;
             this.colInvoiceNumber.VisibleIndex = 0;
             // 
-            // colCustomerId
+            // colCustomerName
             // 
-            this.colCustomerId.FieldName = "CustomerId";
-            this.colCustomerId.Name = "colCustomerId";
+            this.colCustomerName.FieldName = "CustomerName";
+            this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.OptionsColumn.ReadOnly = true;
+            this.colCustomerName.Visible = true;
+            this.colCustomerName.VisibleIndex = 1;
             // 
-            // colCustomer
+            // colOrderTitle
             // 
-            this.colCustomer.FieldName = "Customer";
-            this.colCustomer.Name = "colCustomer";
+            this.colOrderTitle.FieldName = "OrderTitle";
+            this.colOrderTitle.Name = "colOrderTitle";
+            this.colOrderTitle.OptionsColumn.ReadOnly = true;
+            this.colOrderTitle.Visible = true;
+            this.colOrderTitle.VisibleIndex = 2;
             // 
-            // colOrderDate
+            // colFaOrderDate
             // 
-            this.colOrderDate.FieldName = "OrderDate";
-            this.colOrderDate.Name = "colOrderDate";
+            this.colFaOrderDate.FieldName = "FaOrderDate";
+            this.colFaOrderDate.Name = "colFaOrderDate";
+            this.colFaOrderDate.Visible = true;
+            this.colFaOrderDate.VisibleIndex = 3;
             // 
-            // colDeliveryDate
+            // colFaDeliveryDate
             // 
-            this.colDeliveryDate.FieldName = "DeliveryDate";
-            this.colDeliveryDate.Name = "colDeliveryDate";
-            // 
-            // colTransportCost
-            // 
-            this.colTransportCost.FieldName = "TransportCost";
-            this.colTransportCost.Name = "colTransportCost";
-            this.colTransportCost.Visible = true;
-            this.colTransportCost.VisibleIndex = 7;
-            // 
-            // colMiscCost
-            // 
-            this.colMiscCost.FieldName = "MiscCost";
-            this.colMiscCost.Name = "colMiscCost";
-            this.colMiscCost.Visible = true;
-            this.colMiscCost.VisibleIndex = 8;
-            // 
-            // colDescription
-            // 
-            this.colDescription.FieldName = "Description";
-            this.colDescription.Name = "colDescription";
-            this.colDescription.Visible = true;
-            this.colDescription.VisibleIndex = 10;
-            // 
-            // colOrderDetails
-            // 
-            this.colOrderDetails.FieldName = "OrderDetails";
-            this.colOrderDetails.Name = "colOrderDetails";
+            this.colFaDeliveryDate.FieldName = "FaDeliveryDate";
+            this.colFaDeliveryDate.Name = "colFaDeliveryDate";
+            this.colFaDeliveryDate.Visible = true;
+            this.colFaDeliveryDate.VisibleIndex = 4;
             // 
             // colTotalSheetCost
             // 
@@ -249,6 +235,20 @@ namespace CncApp_Final
             this.colTotalCncCost.Visible = true;
             this.colTotalCncCost.VisibleIndex = 6;
             // 
+            // colTransportCost
+            // 
+            this.colTransportCost.FieldName = "TransportCost";
+            this.colTransportCost.Name = "colTransportCost";
+            this.colTransportCost.Visible = true;
+            this.colTransportCost.VisibleIndex = 7;
+            // 
+            // colMiscCost
+            // 
+            this.colMiscCost.FieldName = "MiscCost";
+            this.colMiscCost.Name = "colMiscCost";
+            this.colMiscCost.Visible = true;
+            this.colMiscCost.VisibleIndex = 8;
+            // 
             // colTotalAmount
             // 
             this.colTotalAmount.FieldName = "TotalAmount";
@@ -257,35 +257,42 @@ namespace CncApp_Final
             this.colTotalAmount.Visible = true;
             this.colTotalAmount.VisibleIndex = 9;
             // 
-            // colOrderTitle
+            // colDescription
             // 
-            this.colOrderTitle.FieldName = "OrderTitle";
-            this.colOrderTitle.Name = "colOrderTitle";
-            this.colOrderTitle.OptionsColumn.ReadOnly = true;
-            this.colOrderTitle.Visible = true;
-            this.colOrderTitle.VisibleIndex = 2;
+            this.colDescription.FieldName = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.Visible = true;
+            this.colDescription.VisibleIndex = 10;
             // 
-            // colCustomerName
+            // colCustomer
             // 
-            this.colCustomerName.FieldName = "CustomerName";
-            this.colCustomerName.Name = "colCustomerName";
-            this.colCustomerName.OptionsColumn.ReadOnly = true;
-            this.colCustomerName.Visible = true;
-            this.colCustomerName.VisibleIndex = 1;
+            this.colCustomer.FieldName = "Customer";
+            this.colCustomer.Name = "colCustomer";
             // 
-            // colFaOrderDate
+            // colOrderDetails
             // 
-            this.colFaOrderDate.FieldName = "FaOrderDate";
-            this.colFaOrderDate.Name = "colFaOrderDate";
-            this.colFaOrderDate.Visible = true;
-            this.colFaOrderDate.VisibleIndex = 3;
+            this.colOrderDetails.FieldName = "OrderDetails";
+            this.colOrderDetails.Name = "colOrderDetails";
             // 
-            // colFaDeliveryDate
+            // colId
             // 
-            this.colFaDeliveryDate.FieldName = "FaDeliveryDate";
-            this.colFaDeliveryDate.Name = "colFaDeliveryDate";
-            this.colFaDeliveryDate.Visible = true;
-            this.colFaDeliveryDate.VisibleIndex = 4;
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            // 
+            // colCustomerId
+            // 
+            this.colCustomerId.FieldName = "CustomerId";
+            this.colCustomerId.Name = "colCustomerId";
+            // 
+            // colOrderDate
+            // 
+            this.colOrderDate.FieldName = "OrderDate";
+            this.colOrderDate.Name = "colOrderDate";
+            // 
+            // colDeliveryDate
+            // 
+            this.colDeliveryDate.FieldName = "DeliveryDate";
+            this.colDeliveryDate.Name = "colDeliveryDate";
             // 
             // ribbonControl
             // 
@@ -306,9 +313,14 @@ namespace CncApp_Final
             this.bbiSyncCustomer,
             this.bbiExportFaktorToMahak,
             this.bbiHostForm,
-            this.bbiBackupDatabase});
+            this.bbiBackupDatabase,
+            this.bbiCustomers,
+            this.bbiReceipts,
+            this.barButtonItem1,
+            this.bbiwareHouse,
+            this.bbiTmpForm});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 29;
+            this.ribbonControl.MaxItemId = 34;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.OptionsPageCategories.ShowCaptions = false;
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -430,11 +442,56 @@ namespace CncApp_Final
             this.bbiBackupDatabase.Name = "bbiBackupDatabase";
             this.bbiBackupDatabase.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiBackupDatabase_ItemClick);
             // 
+            // bbiCustomers
+            // 
+            this.bbiCustomers.Caption = "مشتریان";
+            this.bbiCustomers.Id = 29;
+            this.bbiCustomers.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCustomers.ImageOptions.Image")));
+            this.bbiCustomers.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiCustomers.ImageOptions.LargeImage")));
+            this.bbiCustomers.Name = "bbiCustomers";
+            this.bbiCustomers.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCustomers_ItemClick);
+            // 
+            // bbiReceipts
+            // 
+            this.bbiReceipts.Caption = "لیست دریافت";
+            this.bbiReceipts.Id = 30;
+            this.bbiReceipts.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReceipts.ImageOptions.Image")));
+            this.bbiReceipts.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReceipts.ImageOptions.LargeImage")));
+            this.bbiReceipts.Name = "bbiReceipts";
+            this.bbiReceipts.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReceipts_ItemClick);
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "لیست ورق ها";
+            this.barButtonItem1.Id = 31;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSheets_ItemClick);
+            // 
+            // bbiwareHouse
+            // 
+            this.bbiwareHouse.Caption = "انبار";
+            this.bbiwareHouse.Id = 32;
+            this.bbiwareHouse.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiwareHouse.ImageOptions.Image")));
+            this.bbiwareHouse.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiwareHouse.ImageOptions.LargeImage")));
+            this.bbiwareHouse.Name = "bbiwareHouse";
+            this.bbiwareHouse.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiwareHouse_ItemClick);
+            // 
+            // bbiTmpForm
+            // 
+            this.bbiTmpForm.Caption = "barButtonItem2";
+            this.bbiTmpForm.Id = 33;
+            this.bbiTmpForm.Name = "bbiTmpForm";
+            this.bbiTmpForm.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTmpForm_ItemClick);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup1,
-            this.ribbonPageGroup2});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup8,
+            this.ribbonPageGroup9});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Home";
@@ -459,6 +516,21 @@ namespace CncApp_Final
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiPrintAll);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Print and Export";
+            // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.bbiCustomers);
+            this.ribbonPageGroup8.ItemLinks.Add(this.bbiReceipts);
+            this.ribbonPageGroup8.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup8.ItemLinks.Add(this.bbiwareHouse);
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            this.ribbonPageGroup8.Text = "ribbonPageGroup8";
+            // 
+            // ribbonPageGroup9
+            // 
+            this.ribbonPageGroup9.ItemLinks.Add(this.bbiTmpForm);
+            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
+            this.ribbonPageGroup9.Text = "ribbonPageGroup9";
             // 
             // ribbonPage2
             // 
@@ -543,7 +615,6 @@ namespace CncApp_Final
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(1079, 415);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // repositoryItemRibbonSearchEdit1
@@ -551,10 +622,10 @@ namespace CncApp_Final
             this.repositoryItemRibbonSearchEdit1.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit1.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions5.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions1.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit1.Name = "repositoryItemRibbonSearchEdit1";
             this.repositoryItemRibbonSearchEdit1.NullText = "Search";
             // 
@@ -563,10 +634,10 @@ namespace CncApp_Final
             this.repositoryItemRibbonSearchEdit2.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit2.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions7.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions3.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions8, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject29, serializableAppearanceObject30, serializableAppearanceObject31, serializableAppearanceObject32, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit2.Name = "repositoryItemRibbonSearchEdit2";
             this.repositoryItemRibbonSearchEdit2.NullText = "Search";
             // 
@@ -665,5 +736,12 @@ namespace CncApp_Final
         private DevExpress.XtraGrid.Columns.GridColumn colCustomerName;
         private DevExpress.XtraGrid.Columns.GridColumn colFaOrderDate;
         private DevExpress.XtraGrid.Columns.GridColumn colFaDeliveryDate;
+        private DevExpress.XtraBars.BarButtonItem bbiCustomers;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup8;
+        private DevExpress.XtraBars.BarButtonItem bbiReceipts;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem bbiwareHouse;
+        private DevExpress.XtraBars.BarButtonItem bbiTmpForm;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
     }
 }

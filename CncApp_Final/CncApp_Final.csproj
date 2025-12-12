@@ -98,23 +98,23 @@
     <Compile Include="Frm\FrmCustomerEdit.Designer.cs">
       <DependentUpon>FrmCustomerEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm\FrmCustomers.cs">
+    <Compile Include="Frm\FrmCustomersX.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm\FrmCustomers.Designer.cs">
-      <DependentUpon>FrmCustomers.cs</DependentUpon>
+    <Compile Include="Frm\FrmCustomersX.Designer.cs">
+      <DependentUpon>FrmCustomersX.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm\FrmReceiptEdit.cs">
+    <Compile Include="Frm\FrmReceiptEditX.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm\FrmReceiptEdit.Designer.cs">
-      <DependentUpon>FrmReceiptEdit.cs</DependentUpon>
+    <Compile Include="Frm\FrmReceiptEditX.Designer.cs">
+      <DependentUpon>FrmReceiptEditX.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm\FrmReceipts.cs">
+    <Compile Include="Frm\FrmReceiptsX.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm\FrmReceipts.Designer.cs">
-      <DependentUpon>FrmReceipts.cs</DependentUpon>
+    <Compile Include="Frm\FrmReceiptsX.Designer.cs">
+      <DependentUpon>FrmReceiptsX.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\FrmSheetEdit.cs">
       <SubType>Form</SubType>
@@ -140,6 +140,40 @@
     <Compile Include="Frm\FrmWareHouseEdit.Designer.cs">
       <DependentUpon>FrmWareHouseEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frm\FrmWareHouseX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmWareHouseX.Designer.cs">
+      <DependentUpon>FrmWareHouseX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\FrmWareHouseEditX.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmWareHouseEditX.Designer.cs">
+      <DependentUpon>FrmWareHouseEditX.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\FrmCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmCustomers.Designer.cs">
+      <DependentUpon>FrmCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\FrmReceiptEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmReceiptEdit.Designer.cs">
+      <DependentUpon>FrmReceiptEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\FrmReceipts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\FrmReceipts.Designer.cs">
+      <DependentUpon>FrmReceipts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\CalendarHelper.cs" />
+    <Compile Include="Helper\ControlExraInit.cs" />
+    <Compile Include="Helper\CustomValidationRule.cs" />
+    <Compile Include="Helper\PersianDateHelper.cs" />
     <Compile Include="Helper\TextEditHelper.cs" />
     <Compile Include="TempFrm\Form1.cs">
       <SubType>Form</SubType>
@@ -167,6 +201,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TempFrm\TemplateRiibonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TempFrm\TemplateRiibonForm.Designer.cs">
+      <DependentUpon>TemplateRiibonForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TempFrm\RibbonForm1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,23 +219,56 @@
     <Compile Include="TempFrm\RibbonForm2.Designer.cs">
       <DependentUpon>RibbonForm2.cs</DependentUpon>
     </Compile>
+    <Compile Include="TempFrm\tmpEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TempFrm\tmpEditForm.Designer.cs">
+      <DependentUpon>tmpEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="TempFrm\XtraForm1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TempFrm\XtraForm1.Designer.cs">
       <DependentUpon>XtraForm1.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Frm\FrmCustomers.resx">
-      <DependentUpon>FrmCustomers.cs</DependentUpon>
+    <EmbeddedResource Include="Frm\FrmCustomerEdit.resx">
+      <DependentUpon>FrmCustomerEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmReceipts.resx">
-      <DependentUpon>FrmReceipts.cs</DependentUpon>
+    <EmbeddedResource Include="Frm\FrmCustomersX.resx">
+      <DependentUpon>FrmCustomersX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmReceiptEditX.resx">
+      <DependentUpon>FrmReceiptEditX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmReceiptsX.resx">
+      <DependentUpon>FrmReceiptsX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmSheetEdit.resx">
+      <DependentUpon>FrmSheetEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmSheets.resx">
       <DependentUpon>FrmSheets.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmWareHouse.resx">
       <DependentUpon>FrmWareHouse.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmWareHouseEdit.resx">
+      <DependentUpon>FrmWareHouseEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmWareHouseX.resx">
+      <DependentUpon>FrmWareHouseX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmWareHouseEditX.resx">
+      <DependentUpon>FrmWareHouseEditX.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmCustomers.resx">
+      <DependentUpon>FrmCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmReceiptEdit.resx">
+      <DependentUpon>FrmReceiptEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\FrmReceipts.resx">
+      <DependentUpon>FrmReceipts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TempFrm\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -219,11 +292,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TempFrm\TemplateRiibonForm.resx">
+      <DependentUpon>TemplateRiibonForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TempFrm\RibbonForm1.resx">
       <DependentUpon>RibbonForm1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TempFrm\RibbonForm2.resx">
       <DependentUpon>RibbonForm2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TempFrm\tmpEditForm.resx">
+      <DependentUpon>tmpEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TempFrm\XtraForm1.resx">
       <DependentUpon>XtraForm1.cs</DependentUpon>

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Globalization;
 using System.Linq;
+using CncApp_Final.Helper;
 
 namespace CncApp_Final.Entities
 {
@@ -44,6 +45,11 @@ namespace CncApp_Final.Entities
         [Description("هزینه‌های متفرقه سفارش")]
         public double MiscCost { get; set; }
 
+        [DisplayName("تخفیف")]
+        [Description("هتخفیف فاکتور")]
+        public double Discount { get; set; }
+        
+
         [DisplayName("توضیحات")]
         [Description("توضیحات اضافی سفارش")]
         public string Description { get; set; }
@@ -77,7 +83,7 @@ namespace CncApp_Final.Entities
         [NotMapped]
         [DisplayName("مبلغ کل سفارش")]
         [Description("جمع کل هزینه‌های سفارش شامل ورق، CNC، حمل و نقل و هزینه‌های جانبی")]
-        public double TotalAmount => TotalSheetCost + TotalCncCost + TransportCost + MiscCost;
+        public double TotalAmount => TotalSheetCost + TotalCncCost + TransportCost + MiscCost - Discount;
 
         /// <summary>
         /// عنوان ترکیبی از نام جزئیات سفارش (مثلاً: "کابینت بالا + درب کمد + کشو")
@@ -125,17 +131,17 @@ namespace CncApp_Final.Entities
         [DisplayName("تاریخ سفارش")]
         public string FaOrderDate
         {
-            get => ToPersianDateString(OrderDate);
+            get => PersianDateHelper.ToPersianDateString(OrderDate);
             set => OrderDate = string.IsNullOrWhiteSpace(value)
                 ? throw new ArgumentException("تاریخ سفارش الزامی است")
-                : ParsePersianDate(value);
+                : PersianDateHelper.ParsePersianDate(value);
         }
 
         [NotMapped]
         [DisplayName("تاریخ تحویل")]
         public string FaDeliveryDate
         {
-            get => DeliveryDate.HasValue ? ToPersianDateString(DeliveryDate.Value) : "تحویل نشده";
+            get => DeliveryDate.HasValue ? PersianDateHelper.ToPersianDateString(DeliveryDate.Value) : "تحویل نشده";
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -151,38 +157,11 @@ namespace CncApp_Final.Entities
                 }
                 else
                 {
-                    DeliveryDate = ParsePersianDate(v);
+                    DeliveryDate = PersianDateHelper.ParsePersianDate(v);
                 }
             }
         }
 
-        // ─── متدهای کمکی تبدیل تاریخ (فقط عددی yyyy/MM/dd) ─────────────────
-        private static string ToPersianDateString(DateTime date)
-        {
-            var pc = new PersianCalendar();
-            int year = pc.GetYear(date);
-            int month = pc.GetMonth(date);
-            int day = pc.GetDayOfMonth(date);
-            return $"{year:0000}/{month:00}/{day:00}";
-        }
-
-        private static DateTime ParsePersianDate(string persianDate)
-        {
-            string cleaned = persianDate.Replace('-', '/').Replace('\\', '/').Trim();
-            var parts = cleaned.Split('/');
-            if (parts.Length != 3 ||
-                !int.TryParse(parts[0], out int year) ||
-                !int.TryParse(parts[1], out int month) ||
-                !int.TryParse(parts[2], out int day))
-            {
-                throw new ArgumentException($"فرمت تاریخ شمسی صحیح نیست: '{persianDate}' — فرمت مورد قبول: yyyy/MM/dd (مثال: 1404/09/11)");
-            }
-
-            if (year < 1300 || year > 1500 || month < 1 || month > 12 || day < 1 || day > 31)
-                throw new ArgumentException($"تاریخ شمسی خارج از محدوده معتبر است: {persianDate}");
-
-            var pc = new PersianCalendar();
-            return pc.ToDateTime(year, month, day, 0, 0, 0, 0);
-        }
+        
     }
 }

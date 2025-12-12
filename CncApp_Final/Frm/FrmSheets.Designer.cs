@@ -29,19 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSheets));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
-            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.rpsBtnOpenFolder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
-            this.label7 = new System.Windows.Forms.Label();
             this.sheetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMaterial = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colThickness = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -51,25 +48,32 @@
             this.colPicesPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCNCPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOrderDetails = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colWarehouse = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWarehouses = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.rpsBtnOpenFolder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
+            this.label7 = new System.Windows.Forms.Label();
+            this.colSheetSize = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colThickness_mm = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
             this.groupControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSumNetPrice.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupControl7
             // 
+            this.groupControl7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl7.Controls.Add(this.gridControl);
             this.groupControl7.Controls.Add(this.txbSumNetPrice);
             this.groupControl7.Controls.Add(this.label7);
-            this.groupControl7.Location = new System.Drawing.Point(118, 12);
+            this.groupControl7.Location = new System.Drawing.Point(12, 118);
             this.groupControl7.Name = "groupControl7";
             this.groupControl7.ShowCaption = false;
-            this.groupControl7.Size = new System.Drawing.Size(732, 407);
+            this.groupControl7.Size = new System.Drawing.Size(898, 301);
             this.groupControl7.TabIndex = 5;
             this.groupControl7.Text = "groupControl7";
             // 
@@ -82,10 +86,14 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rpsBtnOpenFolder});
-            this.gridControl.Size = new System.Drawing.Size(728, 403);
+            this.gridControl.Size = new System.Drawing.Size(894, 297);
             this.gridControl.TabIndex = 25;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
+            // 
+            // sheetsBindingSource
+            // 
+            this.sheetsBindingSource.DataSource = typeof(CncApp_Final.Entities.Sheet);
             // 
             // gridView
             // 
@@ -99,14 +107,16 @@
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colMaterial,
-            this.colThickness,
-            this.colWidth,
-            this.colLength,
+            this.colThickness_mm,
+            this.colSheetSize,
             this.colSheetPrice,
             this.colPicesPrice,
             this.colCNCPrice,
+            this.colThickness,
+            this.colWidth,
+            this.colLength,
             this.colOrderDetails,
-            this.colWarehouse});
+            this.colWarehouses});
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
@@ -117,12 +127,70 @@
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.RowHeight = 30;
             // 
+            // colId
+            // 
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            // 
+            // colMaterial
+            // 
+            this.colMaterial.FieldName = "Material";
+            this.colMaterial.Name = "colMaterial";
+            this.colMaterial.Visible = true;
+            this.colMaterial.VisibleIndex = 0;
+            // 
+            // colThickness
+            // 
+            this.colThickness.FieldName = "Thickness";
+            this.colThickness.Name = "colThickness";
+            // 
+            // colWidth
+            // 
+            this.colWidth.FieldName = "Width";
+            this.colWidth.Name = "colWidth";
+            // 
+            // colLength
+            // 
+            this.colLength.FieldName = "Length";
+            this.colLength.Name = "colLength";
+            // 
+            // colSheetPrice
+            // 
+            this.colSheetPrice.FieldName = "SheetPrice";
+            this.colSheetPrice.Name = "colSheetPrice";
+            this.colSheetPrice.Visible = true;
+            this.colSheetPrice.VisibleIndex = 3;
+            // 
+            // colPicesPrice
+            // 
+            this.colPicesPrice.FieldName = "PicesPrice";
+            this.colPicesPrice.Name = "colPicesPrice";
+            this.colPicesPrice.Visible = true;
+            this.colPicesPrice.VisibleIndex = 4;
+            // 
+            // colCNCPrice
+            // 
+            this.colCNCPrice.FieldName = "CNCPrice";
+            this.colCNCPrice.Name = "colCNCPrice";
+            this.colCNCPrice.Visible = true;
+            this.colCNCPrice.VisibleIndex = 5;
+            // 
+            // colOrderDetails
+            // 
+            this.colOrderDetails.FieldName = "OrderDetails";
+            this.colOrderDetails.Name = "colOrderDetails";
+            // 
+            // colWarehouses
+            // 
+            this.colWarehouses.FieldName = "Warehouses";
+            this.colWarehouses.Name = "colWarehouses";
+            // 
             // rpsBtnOpenFolder
             // 
             this.rpsBtnOpenFolder.AutoHeight = false;
-            editorButtonImageOptions4.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions4.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.rpsBtnOpenFolder.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rpsBtnOpenFolder.Name = "rpsBtnOpenFolder";
             this.rpsBtnOpenFolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -130,7 +198,7 @@
             // 
             this.txbSumNetPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txbSumNetPrice.EditValue = 0;
-            this.txbSumNetPrice.Location = new System.Drawing.Point(11, 367);
+            this.txbSumNetPrice.Location = new System.Drawing.Point(11, 261);
             this.txbSumNetPrice.Name = "txbSumNetPrice";
             this.txbSumNetPrice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
             this.txbSumNetPrice.Properties.Appearance.Options.UseFont = true;
@@ -151,85 +219,25 @@
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(149, 374);
+            this.label7.Location = new System.Drawing.Point(149, 268);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(142, 16);
             this.label7.TabIndex = 24;
             this.label7.Text = "مجموع قیمت خدمات :";
             // 
-            // sheetsBindingSource
+            // colSheetSize
             // 
-            this.sheetsBindingSource.DataSource = typeof(CncApp_Final.Entities.Sheet);
+            this.colSheetSize.FieldName = "SheetSize";
+            this.colSheetSize.Name = "colSheetSize";
+            this.colSheetSize.Visible = true;
+            this.colSheetSize.VisibleIndex = 2;
             // 
-            // colId
+            // colThickness_mm
             // 
-            this.colId.FieldName = "Id";
-            this.colId.Name = "colId";
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 0;
-            // 
-            // colMaterial
-            // 
-            this.colMaterial.FieldName = "Material";
-            this.colMaterial.Name = "colMaterial";
-            this.colMaterial.Visible = true;
-            this.colMaterial.VisibleIndex = 1;
-            // 
-            // colThickness
-            // 
-            this.colThickness.FieldName = "Thickness";
-            this.colThickness.Name = "colThickness";
-            this.colThickness.Visible = true;
-            this.colThickness.VisibleIndex = 2;
-            // 
-            // colWidth
-            // 
-            this.colWidth.FieldName = "Width";
-            this.colWidth.Name = "colWidth";
-            this.colWidth.Visible = true;
-            this.colWidth.VisibleIndex = 3;
-            // 
-            // colLength
-            // 
-            this.colLength.FieldName = "Length";
-            this.colLength.Name = "colLength";
-            this.colLength.Visible = true;
-            this.colLength.VisibleIndex = 4;
-            // 
-            // colSheetPrice
-            // 
-            this.colSheetPrice.FieldName = "SheetPrice";
-            this.colSheetPrice.Name = "colSheetPrice";
-            this.colSheetPrice.Visible = true;
-            this.colSheetPrice.VisibleIndex = 5;
-            // 
-            // colPicesPrice
-            // 
-            this.colPicesPrice.FieldName = "PicesPrice";
-            this.colPicesPrice.Name = "colPicesPrice";
-            this.colPicesPrice.Visible = true;
-            this.colPicesPrice.VisibleIndex = 6;
-            // 
-            // colCNCPrice
-            // 
-            this.colCNCPrice.FieldName = "CNCPrice";
-            this.colCNCPrice.Name = "colCNCPrice";
-            this.colCNCPrice.Visible = true;
-            this.colCNCPrice.VisibleIndex = 7;
-            // 
-            // colOrderDetails
-            // 
-            this.colOrderDetails.FieldName = "OrderDetails";
-            this.colOrderDetails.Name = "colOrderDetails";
-            this.colOrderDetails.Visible = true;
-            this.colOrderDetails.VisibleIndex = 8;
-            // 
-            // colWarehouse
-            // 
-            this.colWarehouse.FieldName = "Warehouse";
-            this.colWarehouse.Name = "colWarehouse";
-            this.colWarehouse.Visible = true;
-            this.colWarehouse.VisibleIndex = 9;
+            this.colThickness_mm.FieldName = "Thickness_mm";
+            this.colThickness_mm.Name = "colThickness_mm";
+            this.colThickness_mm.Visible = true;
+            this.colThickness_mm.VisibleIndex = 1;
             // 
             // FrmSheets
             // 
@@ -239,15 +247,17 @@
             this.Controls.Add(this.groupControl7);
             this.Name = "FrmSheets";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FrmSheets";
+            this.Load += new System.EventHandler(this.FrmSheets_Load);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
             this.groupControl7.ResumeLayout(false);
             this.groupControl7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSumNetPrice.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -270,6 +280,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPicesPrice;
         private DevExpress.XtraGrid.Columns.GridColumn colCNCPrice;
         private DevExpress.XtraGrid.Columns.GridColumn colOrderDetails;
-        private DevExpress.XtraGrid.Columns.GridColumn colWarehouse;
+        private DevExpress.XtraGrid.Columns.GridColumn colWarehouses;
+        private DevExpress.XtraGrid.Columns.GridColumn colThickness_mm;
+        private DevExpress.XtraGrid.Columns.GridColumn colSheetSize;
     }
 }

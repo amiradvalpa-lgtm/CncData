@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CncApp_Final.Helper;
 
 namespace CncApp_Final.Entities
 {
@@ -41,7 +42,29 @@ namespace CncApp_Final.Entities
         [Description("حساب بانکی مربوط به رسید")]
         public virtual BankAccount BankAccount { get; set; }
 
-        
+        // ─── نام مشتری (NotMapped) ─────────────────────────────────────
+        [NotMapped]
+        [DisplayName("نام مشتری")]
+        public string CustomerName => Customer?.CustomerName ?? "نامشخص";
+
+        // ─── نام حساب بانکی (NotMapped) ─────────────────────────────────────
+        [NotMapped]
+        [DisplayName("حساب بانکی")]
+        public string BankName => $"{BankAccount?.Account_L_Name} - {BankAccount?.BankName}" ?? "نامشخص";
+
+        /// <summary>
+        /// تاریخ سفارش شمسی - فرمت دقیق: yyyy/MM/dd (مثال: 1404/09/11)
+        /// </summary>
+        [NotMapped]
+        [DisplayName("تاریخ واریز")]
+        public string FaReceiptDate
+        {
+            get => PersianDateHelper.ToPersianDateString(Date);
+            set => Date = string.IsNullOrWhiteSpace(value)
+                ? throw new ArgumentException("تاریخ سفارش الزامی است")
+                : PersianDateHelper.ParsePersianDate(value);
+        }
+
     }
 
 

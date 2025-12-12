@@ -13,7 +13,7 @@ using CncApp_Final.Entities;
 
 namespace CncApp_Final.TempFrm
 {
-    public partial class XtraForm1 : DevExpress.XtraEditors.XtraForm
+    public partial class XtraForm1 : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         public XtraForm1()
         {

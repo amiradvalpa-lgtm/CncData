@@ -48,7 +48,7 @@ namespace CncApp_Final.Data
 
             modelBuilder.Entity<Warehouse>()
                 .HasRequired(r => r.Sheet)
-                .WithMany(b => b.Warehouse)
+                .WithMany(b => b.Warehouses)
                 .HasForeignKey(r => r.SheetId)
                 .WillCascadeOnDelete(false);
 

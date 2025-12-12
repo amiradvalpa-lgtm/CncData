@@ -67,7 +67,13 @@ namespace CncData.Entities
         [NotMapped]
         [DisplayName("مشخصات ورق")]
         public string SheetDetails => Sheet != null
-            ? $"{Sheet.Material} {Sheet.Thickness}mm {Sheet.Length}*{Sheet.Width}"
+            ? $"{Sheet.Material} {Sheet.Thickness}mm {Sheet.Width}*{Sheet.Length}"
+            : "ورق انتخاب نشده";
+
+        [NotMapped]
+        [DisplayName("مشخصات ورق برشی")]
+        public string CutSheetDetails => Sheet != null
+            ? $"{Sheet.Material} {Sheet.Thickness}mm {CutWidth}*{CutLength}"
             : "ورق انتخاب نشده";
 
         [NotMapped]

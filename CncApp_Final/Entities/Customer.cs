@@ -35,8 +35,11 @@ namespace CncApp_Final.Entities
 
         [DisplayName("توضیحات")]
         [Description("توضیحات مربوط به مشتری")]
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
+        [DisplayName("کد مشتری محک")]
+        [Description("کد مشتری در حسابداری مجک")]
+        public string MhkCustomerId { get; set; } =string.Empty;
 
 
         [DisplayName("سفارش‌ها")]

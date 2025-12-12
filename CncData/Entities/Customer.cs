@@ -37,7 +37,9 @@ namespace CncData.Entities
         [Description("توضیحات مربوط به مشتری")]
         public string Description { get; set; }
 
-
+        [DisplayName("کد مشتری محک")]
+        [Description("کد مشتری در حسابداری مجک")]
+        public string MhkCustomerId { get; set; }
 
         [DisplayName("سفارش‌ها")]
         [Description("لیست سفارش‌های مشتری")]

@@ -59,15 +59,26 @@ namespace CncApp_Final
             RestorePosition();
         }
 
+        // تابع کمکی برای بارگذاری مجدد داده‌ها در MainForm
+        private void RefreshOrdersList()
+        {
+            // در MainForm.cs:
+            // این منطق باید دوباره داده‌های ordersBindingSource را بارگذاری کند
+            CncApp_Final.Data.AppDbContext dbContext = new CncApp_Final.Data.AppDbContext();
+            dbContext.Orders.Load();
+            ordersBindingSource.DataSource = dbContext.Orders.Local.ToBindingList();
+            // همچنین می‌توانید RefreshVCFX() را صدا بزنید اگر این تابع در MainForm وجود دارد.
+        }
+
         private void bbiEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
             ribbonControl.BeginInit();
             int order_Id = (int)gridView.GetFocusedRowCellValue(colId);
-            FrmOrder frmFactureX = new FrmOrder(order_Id);
-            frmFactureX.ShowDialog();
-            if (frmFactureX.DialogResult == DialogResult.OK)
+            FrmOrder frmOrder = new FrmOrder(order_Id, false);
+            frmOrder.ShowDialog();
+            if (frmOrder.DialogResult == DialogResult.OK)
             {
-                RefreshVCFX();
+                RefreshOrdersList();
             }
             ribbonControl.EndInit();
         }
@@ -78,8 +89,8 @@ namespace CncApp_Final
             frmOrder.ShowDialog();
             if (frmOrder.DialogResult == DialogResult.OK)
             {
-                RefreshVCFX();
-                RestorePosition(frmOrder._VCF_Id);
+                //RefreshOrdersList();
+                //RestorePosition(frmOrder._Order_Id); 
             }
         }
 
@@ -182,6 +193,36 @@ namespace CncApp_Final
         private void ribbonControl_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void bbiCustomers_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmCustomers frmCustomers = new FrmCustomers();
+            frmCustomers.ShowDialog();
+        }
+
+        private void bbiReceipts_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmReceipts frmReceipts = new FrmReceipts();
+            frmReceipts.ShowDialog();
+        }
+
+        private void bbiSheets_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmSheets frmSheets = new FrmSheets();
+            frmSheets.ShowDialog();
+        }
+
+        private void bbiwareHouse_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmWareHouse frmWareHouse = new FrmWareHouse();
+            frmWareHouse.ShowDialog();
+        }
+
+        private void bbiTmpForm_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            TempFrm.tmpEditForm frmCustomerEdit = new TempFrm.tmpEditForm();
+            frmCustomerEdit.ShowDialog();
         }
     }
 }

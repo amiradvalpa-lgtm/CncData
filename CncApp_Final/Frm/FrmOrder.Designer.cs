@@ -122,7 +122,6 @@ namespace CncApp_Final.Frm
             this.label4 = new System.Windows.Forms.Label();
             this.txbPrice = new DevExpress.XtraEditors.SpinEdit();
             this.btnUpdateFaktorObject = new System.Windows.Forms.Button();
-            this.txbDescription = new DevExpress.XtraEditors.MemoEdit();
             this.label11 = new System.Windows.Forms.Label();
             this.btnNewCustomer = new DevExpress.XtraEditors.SimpleButton();
             this.label7 = new System.Windows.Forms.Label();
@@ -143,14 +142,14 @@ namespace CncApp_Final.Frm
             this.label10 = new System.Windows.Forms.Label();
             this.txbTotalCncCost = new DevExpress.XtraEditors.TextEdit();
             this.label12 = new System.Windows.Forms.Label();
-            this.textEdit2 = new DevExpress.XtraEditors.TextEdit();
-            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
-            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.txbFaDeliveryDate = new DevExpress.XtraEditors.TextEdit();
+            this.txbFaOrderDate = new DevExpress.XtraEditors.TextEdit();
+            this.txbDescription = new DevExpress.XtraEditors.MemoEdit();
             this.label2 = new System.Windows.Forms.Label();
             this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.orderDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.grdvOrderDetails = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCutSheetDetails = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSupplier = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -210,7 +209,6 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPrice.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSumNetPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
@@ -225,14 +223,14 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.txbMiscCost.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbTransportCost.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbTotalCncCost.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbFaDeliveryDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbFaOrderDate.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
             this.groupControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdvOrderDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
@@ -277,7 +275,6 @@ namespace CncApp_Final.Frm
             this.lueCustomer.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
             this.lueCustomer.Properties.ShowHeader = false;
             this.lueCustomer.Properties.ValueMember = "Id";
-            this.lueCustomer.Properties.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbDescription_KeyPress);
             this.lueCustomer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lueCustomer.Size = new System.Drawing.Size(221, 36);
             this.lueCustomer.TabIndex = 0;
@@ -379,17 +376,6 @@ namespace CncApp_Final.Frm
             this.btnUpdateFaktorObject.UseVisualStyleBackColor = true;
             this.btnUpdateFaktorObject.Visible = false;
             // 
-            // txbDescription
-            // 
-            this.txbDescription.Location = new System.Drawing.Point(30, 246);
-            this.txbDescription.Name = "txbDescription";
-            this.txbDescription.Properties.MaxLength = 4000;
-            this.txbDescription.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txbDescription.Size = new System.Drawing.Size(46, 69);
-            this.txbDescription.TabIndex = 5;
-            this.txbDescription.Visible = false;
-            this.txbDescription.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbDescription_KeyPress);
-            // 
             // label11
             // 
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
@@ -453,9 +439,9 @@ namespace CncApp_Final.Frm
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl4.Controls.Add(this.groupControl2);
             this.groupControl4.Controls.Add(this.groupControl1);
-            this.groupControl4.Controls.Add(this.textEdit2);
-            this.groupControl4.Controls.Add(this.textEdit1);
-            this.groupControl4.Controls.Add(this.memoEdit1);
+            this.groupControl4.Controls.Add(this.txbFaDeliveryDate);
+            this.groupControl4.Controls.Add(this.txbFaOrderDate);
+            this.groupControl4.Controls.Add(this.txbDescription);
             this.groupControl4.Controls.Add(this.lueCustomer);
             this.groupControl4.Controls.Add(this.label1);
             this.groupControl4.Controls.Add(this.btnNewCustomer);
@@ -565,6 +551,7 @@ namespace CncApp_Final.Frm
             // 
             this.textEdit7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.textEdit7.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "Discount", true));
             this.textEdit7.EditValue = "0";
             this.textEdit7.EnterMoveNextControl = true;
             this.textEdit7.Location = new System.Drawing.Point(5, 173);
@@ -678,43 +665,43 @@ namespace CncApp_Final.Frm
             this.label12.TabIndex = 3;
             this.label12.Text = "تخفیف:";
             // 
-            // textEdit2
+            // txbFaDeliveryDate
             // 
-            this.textEdit2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txbFaDeliveryDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit2.EditValue = "1404/09/11";
-            this.textEdit2.EnterMoveNextControl = true;
-            this.textEdit2.Location = new System.Drawing.Point(530, 99);
-            this.textEdit2.Name = "textEdit2";
-            this.textEdit2.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.textEdit2.Properties.Appearance.Options.UseFont = true;
-            this.textEdit2.Size = new System.Drawing.Size(120, 36);
-            this.textEdit2.TabIndex = 2;
+            this.txbFaDeliveryDate.EditValue = "1404/09/11";
+            this.txbFaDeliveryDate.EnterMoveNextControl = true;
+            this.txbFaDeliveryDate.Location = new System.Drawing.Point(530, 99);
+            this.txbFaDeliveryDate.Name = "txbFaDeliveryDate";
+            this.txbFaDeliveryDate.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbFaDeliveryDate.Properties.Appearance.Options.UseFont = true;
+            this.txbFaDeliveryDate.Size = new System.Drawing.Size(120, 36);
+            this.txbFaDeliveryDate.TabIndex = 2;
             // 
-            // textEdit1
+            // txbFaOrderDate
             // 
-            this.textEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txbFaOrderDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textEdit1.EditValue = "1404/09/11";
-            this.textEdit1.EnterMoveNextControl = true;
-            this.textEdit1.Location = new System.Drawing.Point(530, 57);
-            this.textEdit1.Name = "textEdit1";
-            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.textEdit1.Properties.Appearance.Options.UseFont = true;
-            this.textEdit1.Size = new System.Drawing.Size(120, 36);
-            this.textEdit1.TabIndex = 1;
+            this.txbFaOrderDate.EditValue = "1404/09/11";
+            this.txbFaOrderDate.EnterMoveNextControl = true;
+            this.txbFaOrderDate.Location = new System.Drawing.Point(530, 57);
+            this.txbFaOrderDate.Name = "txbFaOrderDate";
+            this.txbFaOrderDate.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbFaOrderDate.Properties.Appearance.Options.UseFont = true;
+            this.txbFaOrderDate.Size = new System.Drawing.Size(120, 36);
+            this.txbFaOrderDate.TabIndex = 1;
             // 
-            // memoEdit1
+            // txbDescription
             // 
-            this.memoEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.memoEdit1.Location = new System.Drawing.Point(387, 141);
-            this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.memoEdit1.Properties.Appearance.Options.UseFont = true;
-            this.memoEdit1.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.memoEdit1.Size = new System.Drawing.Size(263, 133);
-            this.memoEdit1.TabIndex = 3;
-            this.memoEdit1.TabStop = false;
+            this.txbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDescription.Location = new System.Drawing.Point(387, 141);
+            this.txbDescription.Name = "txbDescription";
+            this.txbDescription.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbDescription.Properties.Appearance.Options.UseFont = true;
+            this.txbDescription.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txbDescription.Size = new System.Drawing.Size(263, 133);
+            this.txbDescription.TabIndex = 3;
+            this.txbDescription.TabStop = false;
             // 
             // label2
             // 
@@ -745,29 +732,30 @@ namespace CncApp_Final.Frm
             this.gridControl.DataSource = this.orderDetailsBindingSource;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(2, 2);
-            this.gridControl.MainView = this.gridView;
+            this.gridControl.MainView = this.grdvOrderDetails;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rpsBtnOpenFolder});
             this.gridControl.Size = new System.Drawing.Size(728, 157);
             this.gridControl.TabIndex = 25;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView});
+            this.grdvOrderDetails});
+            this.gridControl.DoubleClick += new System.EventHandler(this.gridControl_DoubleClick);
             // 
             // orderDetailsBindingSource
             // 
             this.orderDetailsBindingSource.DataSource = typeof(CncApp_Final.Entities.OrderDetails);
             // 
-            // gridView
+            // grdvOrderDetails
             // 
-            this.gridView.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridView.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gridView.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.gridView.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gridView.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.gridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.gridView.ColumnPanelRowHeight = 50;
-            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.grdvOrderDetails.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdvOrderDetails.Appearance.HeaderPanel.Options.UseFont = true;
+            this.grdvOrderDetails.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.grdvOrderDetails.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.grdvOrderDetails.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.grdvOrderDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.grdvOrderDetails.ColumnPanelRowHeight = 50;
+            this.grdvOrderDetails.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colId,
             this.colCutSheetDetails,
             this.colSupplier,
@@ -788,17 +776,17 @@ namespace CncApp_Final.Frm
             this.colSheetPrice,
             this.colPicesPrice,
             this.colSupplierTypeDescription});
-            this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
-            this.gridView.GridControl = this.gridControl;
-            this.gridView.Name = "gridView";
-            this.gridView.OptionsBehavior.Editable = false;
-            this.gridView.OptionsBehavior.ReadOnly = true;
-            this.gridView.OptionsCustomization.AllowFilter = false;
-            this.gridView.OptionsCustomization.AllowSort = false;
-            this.gridView.OptionsFind.FindDelay = 500;
-            this.gridView.OptionsFind.FindNullPrompt = "برای جستجو در فاکتورها، کلمه مورد نظر را وارد کنید...";
-            this.gridView.OptionsView.ShowGroupPanel = false;
-            this.gridView.RowHeight = 30;
+            this.grdvOrderDetails.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
+            this.grdvOrderDetails.GridControl = this.gridControl;
+            this.grdvOrderDetails.Name = "grdvOrderDetails";
+            this.grdvOrderDetails.OptionsBehavior.Editable = false;
+            this.grdvOrderDetails.OptionsBehavior.ReadOnly = true;
+            this.grdvOrderDetails.OptionsCustomization.AllowFilter = false;
+            this.grdvOrderDetails.OptionsCustomization.AllowSort = false;
+            this.grdvOrderDetails.OptionsFind.FindDelay = 500;
+            this.grdvOrderDetails.OptionsFind.FindNullPrompt = "برای جستجو در فاکتورها، کلمه مورد نظر را وارد کنید...";
+            this.grdvOrderDetails.OptionsView.ShowGroupPanel = false;
+            this.grdvOrderDetails.RowHeight = 30;
             // 
             // colId
             // 
@@ -895,7 +883,6 @@ namespace CncApp_Final.Frm
             // rpsBtnOpenFolder
             // 
             this.rpsBtnOpenFolder.AutoHeight = false;
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.rpsBtnOpenFolder.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rpsBtnOpenFolder.Name = "rpsBtnOpenFolder";
@@ -1283,7 +1270,6 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPrice.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSumNetPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
@@ -1301,15 +1287,15 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.txbMiscCost.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbTransportCost.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbTotalCncCost.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit2.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbFaDeliveryDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbFaOrderDate.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
             this.groupControl7.ResumeLayout(false);
             this.groupControl7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdvOrderDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
@@ -1334,7 +1320,6 @@ namespace CncApp_Final.Frm
         private System.Windows.Forms.Label label4;
         private DevExpress.XtraEditors.SpinEdit txbPrice;
         private System.Windows.Forms.Button btnUpdateFaktorObject;
-        private DevExpress.XtraEditors.MemoEdit txbDescription;
         private System.Windows.Forms.Label label11;
         private DevExpress.XtraEditors.SimpleButton btnNewCustomer;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit rpsBtnDeleteRow;
@@ -1371,7 +1356,7 @@ namespace CncApp_Final.Frm
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraBars.BarButtonItem bbiSaveClose;
-        private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private DevExpress.XtraEditors.MemoEdit txbDescription;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraBars.Ribbon.Internal.RepositoryItemRibbonSearchEdit repositoryItemRibbonSearchEdit6;
         private DevExpress.XtraBars.Ribbon.Internal.RepositoryItemRibbonSearchEdit repositoryItemRibbonSearchEdit7;
@@ -1379,10 +1364,10 @@ namespace CncApp_Final.Frm
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.BarButtonItem bbiPrintPhoto;
         private BindingSource customersBindingSource;
-        private DevExpress.XtraEditors.TextEdit textEdit2;
-        private DevExpress.XtraEditors.TextEdit textEdit1;
+        private DevExpress.XtraEditors.TextEdit txbFaDeliveryDate;
+        private DevExpress.XtraEditors.TextEdit txbFaOrderDate;
         private DevExpress.XtraGrid.GridControl gridControl;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdvOrderDetails;
         private BindingSource orderBindingSource;
         private BindingSource orderDetailsBindingSource;
         private DevExpress.XtraGrid.Columns.GridColumn colId;

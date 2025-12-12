@@ -49,6 +49,6 @@ namespace CncData.Entities
         // این رابطه همچنان درست است (انبار ← ورق)
         [DisplayName("موجودی در انبار")]
         [Description("لیست موجودی این ورق در انبار")]
-        public virtual ICollection<Warehouse> Warehouse { get; set; } = new List<Warehouse>();
+        public virtual ICollection<Warehouse> Warehouses { get; set; } = new List<Warehouse>();
     }
 }

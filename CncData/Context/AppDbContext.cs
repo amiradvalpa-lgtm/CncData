@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using CncData.Entities;
+﻿using CncData.Entities;
+using CncData.Entities.CncData.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace CncData.Context
 {
@@ -11,7 +12,9 @@ namespace CncData.Context
         public DbSet<OrderDetails> OrderDetails { get; set; }  // اضافه شد
         public DbSet<Receipt> Receipts { get; set; }
         public DbSet<Sheet> Sheets { get; set; }
-        public DbSet<Warehouse> Warehouse { get; set; }
+        public DbSet<Warehouse> Warehouses { get; set; }
+        public DbSet<AppOption> AppOptions { get; set; }
+        public DbSet<UserGridLayout> UserGridLayouts { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -53,7 +56,7 @@ namespace CncData.Context
 
             modelBuilder.Entity<Warehouse>()
                 .HasOne(w => w.Sheet)
-                .WithMany(s => s.Warehouse)
+                .WithMany(s => s.Warehouses)
                 .HasForeignKey(w => w.SheetId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
