@@ -128,6 +128,7 @@ namespace CncApp_Final.Frm
             this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.btnNewDetail = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txbTotalAmount = new DevExpress.XtraEditors.TextEdit();
             this.label13 = new System.Windows.Forms.Label();
@@ -204,6 +205,9 @@ namespace CncApp_Final.Frm
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.repositoryItemRibbonSearchEdit6 = new DevExpress.XtraBars.Ribbon.Internal.RepositoryItemRibbonSearchEdit();
             this.repositoryItemRibbonSearchEdit7 = new DevExpress.XtraBars.Ribbon.Internal.RepositoryItemRibbonSearchEdit();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnDeleteRow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCustomer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
@@ -243,6 +247,8 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // rpsBtnDeleteRow
@@ -256,7 +262,7 @@ namespace CncApp_Final.Frm
             // lueCustomer
             // 
             this.lueCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lueCustomer.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "CustomerId", true));
+            this.lueCustomer.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "CustomerId", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.lueCustomer.EnterMoveNextControl = true;
             this.lueCustomer.Location = new System.Drawing.Point(429, 15);
             this.lueCustomer.Name = "lueCustomer";
@@ -278,8 +284,8 @@ namespace CncApp_Final.Frm
             this.lueCustomer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lueCustomer.Size = new System.Drawing.Size(221, 36);
             this.lueCustomer.TabIndex = 0;
-            this.lueCustomer.Enter += new System.EventHandler(this.textBox_Enter);
-            this.lueCustomer.Leave += new System.EventHandler(this.textBox_Leave);
+            this.lueCustomer.Enter += new System.EventHandler(this.textEdit_Enter);
+            this.lueCustomer.Leave += new System.EventHandler(this.textEdit_Leave);
             // 
             // orderBindingSource
             // 
@@ -437,6 +443,7 @@ namespace CncApp_Final.Frm
             // 
             this.groupControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl4.Controls.Add(this.btnNewDetail);
             this.groupControl4.Controls.Add(this.groupControl2);
             this.groupControl4.Controls.Add(this.groupControl1);
             this.groupControl4.Controls.Add(this.txbFaDeliveryDate);
@@ -455,6 +462,20 @@ namespace CncApp_Final.Frm
             this.groupControl4.Size = new System.Drawing.Size(730, 282);
             this.groupControl4.TabIndex = 26;
             this.groupControl4.Text = "groupControl4";
+            this.groupControl4.DoubleClick += new System.EventHandler(this.groupControl4_DoubleClick);
+            // 
+            // btnNewDetail
+            // 
+            this.btnNewDetail.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNewDetail.ImageOptions.Image")));
+            this.btnNewDetail.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnNewDetail.ImageOptions.ImageToTextIndent = 10;
+            this.btnNewDetail.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
+            this.btnNewDetail.Location = new System.Drawing.Point(387, 213);
+            this.btnNewDetail.Name = "btnNewDetail";
+            this.btnNewDetail.Size = new System.Drawing.Size(263, 64);
+            this.btnNewDetail.TabIndex = 20;
+            this.btnNewDetail.Text = "افزودن ردیف جدید";
+            this.btnNewDetail.Click += new System.EventHandler(this.btnNewDetail_Click);
             // 
             // groupControl2
             // 
@@ -699,7 +720,7 @@ namespace CncApp_Final.Frm
             this.txbDescription.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbDescription.Properties.Appearance.Options.UseFont = true;
             this.txbDescription.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txbDescription.Size = new System.Drawing.Size(263, 133);
+            this.txbDescription.Size = new System.Drawing.Size(263, 51);
             this.txbDescription.TabIndex = 3;
             this.txbDescription.TabStop = false;
             // 
@@ -818,7 +839,7 @@ namespace CncApp_Final.Frm
             // 
             this.colGrooveLength.AppearanceCell.Options.UseTextOptions = true;
             this.colGrooveLength.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colGrooveLength.DisplayFormat.FormatString = "#,### متر";
+            this.colGrooveLength.DisplayFormat.FormatString = "#,###.# متر";
             this.colGrooveLength.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colGrooveLength.FieldName = "GrooveLength";
             this.colGrooveLength.Name = "colGrooveLength";
@@ -983,7 +1004,6 @@ namespace CncApp_Final.Frm
             this.ribbonControl1.Size = new System.Drawing.Size(761, 181);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
-            this.ribbonControl1.Click += new System.EventHandler(this.ribbonControl1_Click);
             // 
             // bbiSave
             // 
@@ -1008,7 +1028,6 @@ namespace CncApp_Final.Frm
             this.bbiRefresh.Id = 5;
             this.bbiRefresh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiRefresh.ImageOptions.SvgImage")));
             this.bbiRefresh.Name = "bbiRefresh";
-            this.bbiRefresh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRefresh_ItemClick);
             // 
             // bbiPrint
             // 
@@ -1026,6 +1045,7 @@ namespace CncApp_Final.Frm
             // 
             // txbVCF_Id
             // 
+            this.txbVCF_Id.DataBindings.Add(new System.Windows.Forms.Binding("AccessibleDescription", this.orderBindingSource, "InvoiceNumber", true));
             this.txbVCF_Id.Edit = this.repositoryItemTextEdit2;
             this.txbVCF_Id.Id = 12;
             this.txbVCF_Id.Name = "txbVCF_Id";
@@ -1067,7 +1087,7 @@ namespace CncApp_Final.Frm
             this.bbiSaveClose.Id = 16;
             this.bbiSaveClose.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiSaveClose.ImageOptions.SvgImage")));
             this.bbiSaveClose.Name = "bbiSaveClose";
-            this.bbiSaveClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveClose_ItemClick);
+            this.bbiSaveClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveAndClose_ItemClick);
             // 
             // bbiPhoto
             // 
@@ -1243,6 +1263,19 @@ namespace CncApp_Final.Frm
             this.repositoryItemRibbonSearchEdit7.Name = "repositoryItemRibbonSearchEdit7";
             this.repositoryItemRibbonSearchEdit7.NullText = "Search";
             // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "WXI";
+            // 
+            // dxErrorProvider1
+            // 
+            this.dxErrorProvider1.ContainerControl = this;
+            this.dxErrorProvider1.DataSource = this.orderBindingSource;
+            // 
+            // dxValidationProvider1
+            // 
+            this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
+            // 
             // FrmOrder
             // 
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
@@ -1308,6 +1341,8 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1405,5 +1440,9 @@ namespace CncApp_Final.Frm
         private Label label13;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraEditors.SimpleButton btnNewDetail;
+        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
+        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
     }
 }

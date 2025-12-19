@@ -30,6 +30,11 @@ namespace CncData.Entities
         [Description("ورق انتخاب شده برای این جزئیات")]
         public int SheetId { get; set; }
 
+        [DisplayName("تعداد ورق")]
+        [Description("تعداد ورق انتخاب شده برای این جزئیات")]
+        public double SheetCount { get; set; }
+
+
         [DisplayName("ورق")]
         [Description("ورق مربوط به این جزئیات سفارش")]
         public virtual Sheet Sheet { get; set; }

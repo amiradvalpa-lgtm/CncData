@@ -32,7 +32,7 @@ namespace CncApp_Final.Entities
 
         [DisplayName("قیمت پایه کامل"),
             Required, Display(Order = 3),
-            DataType(DataType.Custom), Range(1, 1000000000)]
+            Range(1, 1000000000)]
         [Description("قیمت پایه ورق")]
         public double SheetBasePrice { get; set; }
 
@@ -77,20 +77,20 @@ namespace CncApp_Final.Entities
             Display(Order = 6),
             ReadOnly(true),
             DisplayFormat(DataFormatString = "n0"),
-            DataType(DataType.Custom), Range(1, 1000000000)]
+            Range(1, 999999999)]
         [Description("Sheet.SheetPrice")]
         // خواندن از شیء مرتبط Sheet
-        public double PreSheetPrice => Sheet.SheetPrice;
+        public double PreSheetPrice => Sheet?.SheetPrice ?? 0;
 
         [NotMapped]
         [DisplayName("تکه قبلی"),
             Display(Order = 8),
             ReadOnly(true),
             DisplayFormat(DataFormatString = "n0"),
-            DataType(DataType.Custom), Range(1, 1000000000)]
+            Range(1, 999999999)]
         [Description("Sheet.PicesPrice")]
         // خواندن از شیء مرتبط Sheet
-        public double PrePicesPrice => Sheet.PicesPrice;
+        public double PrePicesPrice => Sheet?.PicesPrice ?? 0;
 
 
 
@@ -103,7 +103,7 @@ namespace CncApp_Final.Entities
         [DisplayName("کامل جدید"),
             Required, Display(Order = 5),
             DisplayFormat(DataFormatString = "n0", ApplyFormatInEditMode = true),
-            DataType(DataType.Custom), Range(1, 1000000000)]
+            Range(1, 999999999)]
         [Description("SheetBasePrice * 1.25")]
         public double NewSheetPrice => SheetBasePrice * 1.25;
 
@@ -111,7 +111,7 @@ namespace CncApp_Final.Entities
         [DisplayName("تکه جدید"),
             Required, Display(Order = 7),
             DisplayFormat(DataFormatString = "n0", ApplyFormatInEditMode = true),
-            DataType(DataType.Custom), Range(1, 1000000000)]
+            Range(1, 999999999)]
         [Description("SheetBasePrice * 1.15")]
         public double NewPicesPrice => SheetBasePrice * 1.15;
         // ────────────────────────────────────────────────────────────────────────────

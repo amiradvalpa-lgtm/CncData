@@ -14,6 +14,10 @@ namespace CncApp_Final.Data
         public DbSet<Sheet> Sheets { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
 
+
+        public DbSet<AppSetting> AppSettings { get; set; }
+        public DbSet<UserGridLayout> UserGridLayouts { get; set; }
+
         public AppDbContext() : base("name=CncConnection")
         {
         }

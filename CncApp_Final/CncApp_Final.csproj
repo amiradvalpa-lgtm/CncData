@@ -51,6 +51,7 @@
     <Reference Include="DevExpress.XtraGrid.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraVerticalGrid.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\CncData\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -84,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\AppDbContext.cs" />
+    <Compile Include="Entities\AppSetting.cs" />
     <Compile Include="Entities\BankAccount.cs" />
     <Compile Include="Entities\Customer.cs" />
     <Compile Include="Entities\Order.cs" />
@@ -91,30 +93,13 @@
     <Compile Include="Entities\Receipt.cs" />
     <Compile Include="Entities\Sheet.cs" />
     <Compile Include="Entities\SupplierType.cs" />
+    <Compile Include="Entities\UserGridLayout.cs" />
     <Compile Include="Entities\Warehouse.cs" />
     <Compile Include="Frm\FrmCustomerEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frm\FrmCustomerEdit.Designer.cs">
       <DependentUpon>FrmCustomerEdit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmCustomersX.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmCustomersX.Designer.cs">
-      <DependentUpon>FrmCustomersX.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmReceiptEditX.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmReceiptEditX.Designer.cs">
-      <DependentUpon>FrmReceiptEditX.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmReceiptsX.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmReceiptsX.Designer.cs">
-      <DependentUpon>FrmReceiptsX.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\FrmSheetEdit.cs">
       <SubType>Form</SubType>
@@ -140,18 +125,6 @@
     <Compile Include="Frm\FrmWareHouseEdit.Designer.cs">
       <DependentUpon>FrmWareHouseEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm\FrmWareHouseX.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmWareHouseX.Designer.cs">
-      <DependentUpon>FrmWareHouseX.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmWareHouseEditX.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmWareHouseEditX.Designer.cs">
-      <DependentUpon>FrmWareHouseEditX.cs</DependentUpon>
-    </Compile>
     <Compile Include="Frm\FrmCustomers.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,11 +143,15 @@
     <Compile Include="Frm\FrmReceipts.Designer.cs">
       <DependentUpon>FrmReceipts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\AppSettingHelper.cs" />
     <Compile Include="Helper\CalendarHelper.cs" />
     <Compile Include="Helper\ControlExraInit.cs" />
     <Compile Include="Helper\CustomValidationRule.cs" />
+    <Compile Include="Helper\GetSheetPrice.cs" />
     <Compile Include="Helper\PersianDateHelper.cs" />
+    <Compile Include="Helper\SetupValidationProvider.cs" />
     <Compile Include="Helper\TextEditHelper.cs" />
+    <Compile Include="Models\OrderDetailsCalcModel.cs" />
     <Compile Include="TempFrm\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,6 +178,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TempFrm\FrmOrderDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TempFrm\FrmOrderDetails.Designer.cs">
+      <DependentUpon>FrmOrderDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="TempFrm\TemplateRiibonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -234,15 +217,6 @@
     <EmbeddedResource Include="Frm\FrmCustomerEdit.resx">
       <DependentUpon>FrmCustomerEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmCustomersX.resx">
-      <DependentUpon>FrmCustomersX.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmReceiptEditX.resx">
-      <DependentUpon>FrmReceiptEditX.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmReceiptsX.resx">
-      <DependentUpon>FrmReceiptsX.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmSheetEdit.resx">
       <DependentUpon>FrmSheetEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,12 +228,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmWareHouseEdit.resx">
       <DependentUpon>FrmWareHouseEdit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmWareHouseX.resx">
-      <DependentUpon>FrmWareHouseX.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmWareHouseEditX.resx">
-      <DependentUpon>FrmWareHouseEditX.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmCustomers.resx">
       <DependentUpon>FrmCustomers.cs</DependentUpon>
@@ -292,6 +260,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TempFrm\FrmOrderDetails.resx">
+      <DependentUpon>FrmOrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TempFrm\TemplateRiibonForm.resx">
       <DependentUpon>TemplateRiibonForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,7 +278,8 @@
     <EmbeddedResource Include="TempFrm\XtraForm1.resx">
       <DependentUpon>XtraForm1.cs</DependentUpon>
     </EmbeddedResource>
-    <Content Include="CncData.db">
+    <Content Include="..\CncData.SeedRunner\bin\Debug\net8.0\CncData.db">
+      <Link>CncData.db</Link>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />

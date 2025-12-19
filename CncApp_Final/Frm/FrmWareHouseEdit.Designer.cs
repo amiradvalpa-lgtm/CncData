@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            this.btnCopyPrice = new DevExpress.XtraEditors.SimpleButton();
             this.SheetIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.warehousesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -61,6 +62,7 @@
             this.ItemForPreSheetPrice = new DevExpress.XtraLayout.LayoutControlItem();
             this.ItemForPrePicesPrice = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SheetIdLookUpEdit.Properties)).BeginInit();
@@ -86,11 +88,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPreSheetPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPrePicesPrice)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.AllowCustomization = false;
+            this.dataLayoutControl1.Controls.Add(this.btnCopyPrice);
             this.dataLayoutControl1.Controls.Add(this.SheetIdLookUpEdit);
             this.dataLayoutControl1.Controls.Add(this.FaOrderDateTextEdit);
             this.dataLayoutControl1.Controls.Add(this.SheetBasePriceTextEdit);
@@ -106,8 +110,20 @@
             this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(772, 262, 785, 400);
             this.dataLayoutControl1.OptionsView.RightToLeftMirroringApplied = true;
             this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(396, 349);
+            this.dataLayoutControl1.Size = new System.Drawing.Size(396, 335);
             this.dataLayoutControl1.TabIndex = 0;
+            // 
+            // btnCopyPrice
+            // 
+            this.btnCopyPrice.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnCopyPrice.Location = new System.Drawing.Point(189, 228);
+            this.btnCopyPrice.MaximumSize = new System.Drawing.Size(20, 0);
+            this.btnCopyPrice.MinimumSize = new System.Drawing.Size(20, 73);
+            this.btnCopyPrice.Name = "btnCopyPrice";
+            this.btnCopyPrice.Size = new System.Drawing.Size(20, 73);
+            this.btnCopyPrice.StyleController = this.dataLayoutControl1;
+            this.btnCopyPrice.TabIndex = 13;
+            this.btnCopyPrice.Click += new System.EventHandler(this.btnCopyPrice_Click);
             // 
             // SheetIdLookUpEdit
             // 
@@ -261,6 +277,10 @@
             this.SheetBasePriceTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.SheetBasePriceTextEdit.Properties.EditFormat.FormatString = "n0";
             this.SheetBasePriceTextEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.SheetBasePriceTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.SheetBasePriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
+            this.SheetBasePriceTextEdit.Properties.MaxLength = 9;
+            this.SheetBasePriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
             this.SheetBasePriceTextEdit.Size = new System.Drawing.Size(279, 28);
             this.SheetBasePriceTextEdit.StyleController = this.dataLayoutControl1;
             this.SheetBasePriceTextEdit.TabIndex = 2;
@@ -281,7 +301,7 @@
             // 
             this.NewSheetPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "NewSheetPrice", true));
             this.NewSheetPriceTextEdit.EnterMoveNextControl = true;
-            this.NewSheetPriceTextEdit.Location = new System.Drawing.Point(200, 235);
+            this.NewSheetPriceTextEdit.Location = new System.Drawing.Point(219, 228);
             this.NewSheetPriceTextEdit.MenuManager = this.mainRibbonControl;
             this.NewSheetPriceTextEdit.Name = "NewSheetPriceTextEdit";
             this.NewSheetPriceTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
@@ -292,14 +312,14 @@
             this.NewSheetPriceTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.NewSheetPriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
             this.NewSheetPriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
-            this.NewSheetPriceTextEdit.Size = new System.Drawing.Size(95, 28);
+            this.NewSheetPriceTextEdit.Size = new System.Drawing.Size(83, 28);
             this.NewSheetPriceTextEdit.StyleController = this.dataLayoutControl1;
             this.NewSheetPriceTextEdit.TabIndex = 4;
             // 
             // PreSheetPriceTextEdit
             // 
             this.PreSheetPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "PreSheetPrice", true));
-            this.PreSheetPriceTextEdit.Location = new System.Drawing.Point(32, 235);
+            this.PreSheetPriceTextEdit.Location = new System.Drawing.Point(25, 228);
             this.PreSheetPriceTextEdit.MenuManager = this.mainRibbonControl;
             this.PreSheetPriceTextEdit.Name = "PreSheetPriceTextEdit";
             this.PreSheetPriceTextEdit.Properties.DisplayFormat.FormatString = "n0";
@@ -308,7 +328,7 @@
             this.PreSheetPriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
             this.PreSheetPriceTextEdit.Properties.ReadOnly = true;
             this.PreSheetPriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
-            this.PreSheetPriceTextEdit.Size = new System.Drawing.Size(82, 28);
+            this.PreSheetPriceTextEdit.Size = new System.Drawing.Size(79, 28);
             this.PreSheetPriceTextEdit.StyleController = this.dataLayoutControl1;
             this.PreSheetPriceTextEdit.TabIndex = 9;
             this.PreSheetPriceTextEdit.TabStop = false;
@@ -317,7 +337,7 @@
             // 
             this.NewPicesPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "NewPicesPrice", true));
             this.NewPicesPriceTextEdit.EnterMoveNextControl = true;
-            this.NewPicesPriceTextEdit.Location = new System.Drawing.Point(200, 279);
+            this.NewPicesPriceTextEdit.Location = new System.Drawing.Point(219, 272);
             this.NewPicesPriceTextEdit.MenuManager = this.mainRibbonControl;
             this.NewPicesPriceTextEdit.Name = "NewPicesPriceTextEdit";
             this.NewPicesPriceTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
@@ -328,14 +348,14 @@
             this.NewPicesPriceTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.NewPicesPriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
             this.NewPicesPriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
-            this.NewPicesPriceTextEdit.Size = new System.Drawing.Size(95, 28);
+            this.NewPicesPriceTextEdit.Size = new System.Drawing.Size(83, 28);
             this.NewPicesPriceTextEdit.StyleController = this.dataLayoutControl1;
             this.NewPicesPriceTextEdit.TabIndex = 5;
             // 
             // PrePicesPriceTextEdit
             // 
             this.PrePicesPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "PrePicesPrice", true));
-            this.PrePicesPriceTextEdit.Location = new System.Drawing.Point(32, 279);
+            this.PrePicesPriceTextEdit.Location = new System.Drawing.Point(25, 272);
             this.PrePicesPriceTextEdit.MenuManager = this.mainRibbonControl;
             this.PrePicesPriceTextEdit.Name = "PrePicesPriceTextEdit";
             this.PrePicesPriceTextEdit.Properties.DisplayFormat.FormatString = "n0";
@@ -344,7 +364,7 @@
             this.PrePicesPriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
             this.PrePicesPriceTextEdit.Properties.ReadOnly = true;
             this.PrePicesPriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
-            this.PrePicesPriceTextEdit.Size = new System.Drawing.Size(82, 28);
+            this.PrePicesPriceTextEdit.Size = new System.Drawing.Size(79, 28);
             this.PrePicesPriceTextEdit.StyleController = this.dataLayoutControl1;
             this.PrePicesPriceTextEdit.TabIndex = 11;
             this.PrePicesPriceTextEdit.TabStop = false;
@@ -357,7 +377,7 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlGroup2});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(396, 349);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(396, 335);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlGroup2
@@ -372,7 +392,7 @@
             this.layoutControlGroup3});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(370, 323);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(370, 309);
             // 
             // ItemForSheetId
             // 
@@ -421,19 +441,21 @@
             this.ItemForNewSheetPrice,
             this.ItemForPreSheetPrice,
             this.ItemForPrePicesPrice,
-            this.emptySpaceItem1});
+            this.emptySpaceItem1,
+            this.layoutControlItem2});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 176);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(370, 147);
+            this.layoutControlGroup3.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(370, 133);
             this.layoutControlGroup3.Text = "محاسبات قیمت ورق براساس قیمت پایه کامل";
             // 
             // ItemForNewPicesPrice
             // 
             this.ItemForNewPicesPrice.Control = this.NewPicesPriceTextEdit;
-            this.ItemForNewPicesPrice.Location = new System.Drawing.Point(168, 44);
+            this.ItemForNewPicesPrice.Location = new System.Drawing.Point(194, 44);
             this.ItemForNewPicesPrice.Name = "ItemForNewPicesPrice";
             this.ItemForNewPicesPrice.OptionsToolTip.ToolTip = "SheetBasePrice * 1.15";
-            this.ItemForNewPicesPrice.Size = new System.Drawing.Size(170, 44);
+            this.ItemForNewPicesPrice.Size = new System.Drawing.Size(158, 44);
             this.ItemForNewPicesPrice.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
             this.ItemForNewPicesPrice.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.ItemForNewPicesPrice.TextSize = new System.Drawing.Size(69, 13);
@@ -442,10 +464,10 @@
             // ItemForNewSheetPrice
             // 
             this.ItemForNewSheetPrice.Control = this.NewSheetPriceTextEdit;
-            this.ItemForNewSheetPrice.Location = new System.Drawing.Point(168, 0);
+            this.ItemForNewSheetPrice.Location = new System.Drawing.Point(194, 0);
             this.ItemForNewSheetPrice.Name = "ItemForNewSheetPrice";
             this.ItemForNewSheetPrice.OptionsToolTip.ToolTip = "SheetBasePrice * 1.25";
-            this.ItemForNewSheetPrice.Size = new System.Drawing.Size(170, 44);
+            this.ItemForNewSheetPrice.Size = new System.Drawing.Size(158, 44);
             this.ItemForNewSheetPrice.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
             this.ItemForNewSheetPrice.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.ItemForNewSheetPrice.TextSize = new System.Drawing.Size(69, 13);
@@ -457,7 +479,7 @@
             this.ItemForPreSheetPrice.Location = new System.Drawing.Point(0, 0);
             this.ItemForPreSheetPrice.Name = "ItemForPreSheetPrice";
             this.ItemForPreSheetPrice.OptionsToolTip.ToolTip = "Sheet.SheetPrice";
-            this.ItemForPreSheetPrice.Size = new System.Drawing.Size(157, 44);
+            this.ItemForPreSheetPrice.Size = new System.Drawing.Size(154, 44);
             this.ItemForPreSheetPrice.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
             this.ItemForPreSheetPrice.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.ItemForPreSheetPrice.TextSize = new System.Drawing.Size(69, 13);
@@ -469,7 +491,7 @@
             this.ItemForPrePicesPrice.Location = new System.Drawing.Point(0, 44);
             this.ItemForPrePicesPrice.Name = "ItemForPrePicesPrice";
             this.ItemForPrePicesPrice.OptionsToolTip.ToolTip = "Sheet.PicesPrice";
-            this.ItemForPrePicesPrice.Size = new System.Drawing.Size(157, 44);
+            this.ItemForPrePicesPrice.Size = new System.Drawing.Size(154, 44);
             this.ItemForPrePicesPrice.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
             this.ItemForPrePicesPrice.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
             this.ItemForPrePicesPrice.TextSize = new System.Drawing.Size(69, 13);
@@ -477,23 +499,36 @@
             // 
             // emptySpaceItem1
             // 
-            this.emptySpaceItem1.Location = new System.Drawing.Point(157, 0);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(154, 0);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(11, 88);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(10, 88);
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.btnCopyPrice;
+            this.layoutControlItem2.Location = new System.Drawing.Point(164, 0);
+            this.layoutControlItem2.MaxSize = new System.Drawing.Size(30, 79);
+            this.layoutControlItem2.MinSize = new System.Drawing.Size(30, 79);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(30, 88);
+            this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem2.TextVisible = false;
             // 
             // FrmWareHouseEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(396, 550);
+            this.ClientSize = new System.Drawing.Size(396, 536);
             this.Controls.Add(this.dataLayoutControl1);
             this.Controls.Add(this.mainRibbonControl);
             this.IconOptions.ShowIcon = false;
+            this.MaximizeBox = false;
             this.Name = "FrmWareHouseEdit";
             this.Ribbon = this.mainRibbonControl;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmWareHouseEdit_FormClosing);
             this.Load += new System.EventHandler(this.FrmWareHouseEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
@@ -520,6 +555,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPreSheetPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ItemForPrePicesPrice)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -558,5 +594,7 @@
         private DevExpress.XtraLayout.LayoutControlItem ItemForPrePicesPrice;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraEditors.SimpleButton btnCopyPrice;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
     }
 }

@@ -41,6 +41,10 @@ namespace CncData.Entities
         [Description("شماره شبا")]
         public string ShebaNumber { get; set; }
 
+        [DisplayName("توضیحات")]
+        [Description("توضیحات بانک")]
+        public string Description { get; set; }
+
 
         [DisplayName("رسیدها")]
         [Description("لیست رسیدهای مربوط به این حساب بانکی")]

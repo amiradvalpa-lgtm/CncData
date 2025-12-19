@@ -1,5 +1,10 @@
 ﻿
+using CncApp_Final.Data;
+using CncApp_Final.Entities;
+using CncApp_Final.Frm;
+using CncApp_Final.Helper; // فرض می‌کنیم این فضای نام برای کلاس‌های کمکی است.
 using DevExpress.Utils;
+using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
@@ -10,14 +15,12 @@ using System.Data.Entity;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using CncApp_Final.Data;
-using CncApp_Final.Entities;
-using CncApp_Final.Helper; // فرض می‌کنیم این فضای نام برای کلاس‌های کمکی است.
-using CncApp_Final.Frm;
+using DevExpress.XtraEditors.DXErrorProvider;
 
 
 namespace CncApp_Final.Frm
@@ -27,36 +30,107 @@ namespace CncApp_Final.Frm
 
         // خصوصیات برای نگهداری شناسه و وضعیت سفارش
         public int _Order_Id { get; private set; } = 0; // 0 for new order
-        private readonly int _Order_Id_Org = -1;
-        private bool _IsNewOrder = false;
         private readonly bool _IsOrderReadonly = false;
+        private bool _Save_SuccesFull = false;
+
 
         // کانکست پایگاه داده
-        private AppDbContext _dbContext;
+        private AppDbContext _dbContext = new CncApp_Final.Data.AppDbContext();
         private Order _currentOrder;
 
+        
 
-        // سازنده برای سفارش جدید (بدون پارامتر)
+
         public FrmOrder()
         {
             InitializeComponent();
-            _IsNewOrder = true;
-            _Order_Id = 0; // ID صفر به معنی جدید است
-            _dbContext = new AppDbContext(); // ایجاد یک کانکست جدید
         }
 
         // سازنده برای ویرایش سفارش موجود (با پارامتر)
         public FrmOrder(int order_Id, bool isOrderReadonly)
         {
             InitializeComponent();
+
+
+            ribbonControl1.ApplicationCaption = order_Id == 0 ? "ورود به انبار جدید" : "ویرایش ورودی انبار";
             _Order_Id = order_Id;
-            _Order_Id_Org = order_Id;
             _IsOrderReadonly = isOrderReadonly;
-            _IsNewOrder = false;
             _dbContext = new AppDbContext(); // ایجاد یک کانکست جدید
+
+
+            _dbContext.Customers.Load();
+            customersBindingSource.DataSource = _dbContext.Customers.Local.ToBindingList();
+
+
+            if (_Order_Id > 0)
+            {
+                // حالت ویرایش: بارگذاری یک رکورد مشخص
+                Order order = _dbContext.Orders.Include(o => o.OrderDetails)
+                                                     .FirstOrDefault(o => o.Id == _Order_Id);
+
+                if (order != null)
+                {
+                    orderBindingSource.DataSource = order;
+                    orderDetailsBindingSource.DataSource = order.OrderDetails;
+                }
+                else
+                {
+                    // اگر رکورد پیدا نشد، فرم را به حالت جدید ببرید
+                    orderBindingSource.DataSource = new Order() { OrderDate = DateTime.Now };
+                }
+            }
+            else
+            {
+                // حالت جدید: ایجاد یک رکورد جدید
+                orderBindingSource.DataSource = new Order() { OrderDate = DateTime.Now };
+            }
+
+            // 🆕 اعمال تنظیمات ReadOnly
+            if (_IsOrderReadonly)
+            {
+                SetReadOnly(this._IsOrderReadonly);
+            }
+
+            SetDxDalidation();
         }
 
+        private void SetDxDalidation()
+        {
+            // 🔑 فراخوانی برای تنظیم قوانین اعتبارسنجی Order Header
+            DxValidationHelper.SetupValidation<Order>(this, dxValidationProvider1, orderBindingSource);
+        }
 
+        // FrmOrder.cs
+
+        /// <summary>
+        /// تنظیم حالت فقط خواندنی برای تمام کنترل‌ها و دکمه‌های ریبون
+        /// </summary>
+        private void SetReadOnly(bool readOnly)
+        {
+            // الف) کنترل‌های Header (LookUpEdit, TextEdit, MemoEdit)
+            lueCustomer.Properties.ReadOnly = readOnly;
+            txbFaOrderDate.Properties.ReadOnly = readOnly;
+            txbFaDeliveryDate.Properties.ReadOnly = readOnly;
+            txbTransportCost.Properties.ReadOnly = readOnly;
+            txbMiscCost.Properties.ReadOnly = readOnly;
+            txbDescription.Properties.ReadOnly = readOnly;
+
+            // ب) کنترل‌های مرتبط با جزئیات (GridControl و دکمه‌های افزودن/حذف)
+            btnNewCustomer.Enabled = !readOnly;
+            btnNewDetail.Enabled = !readOnly;
+
+            // ج) غیرفعال کردن امکان ویرایش سطرها در GridControl
+            grdvOrderDetails.OptionsBehavior.Editable = !readOnly;
+            grdvOrderDetails.OptionsBehavior.ReadOnly = readOnly;
+
+            // د) دکمه‌های ریبون (ذخیره و حذف)
+            bbiSave.Enabled = !readOnly;
+            bbiSaveClose.Enabled = !readOnly;
+            bbiDelete.Enabled = !readOnly;
+
+            // فرض می‌کنیم bbiDeleteDetail برای حذف جزئیات در ریبون وجود دارد
+            // bbiDeleteDetail.Enabled = !readOnly; 
+        }
 
         //************************************************************************************************************************************
 
@@ -64,285 +138,85 @@ namespace CncApp_Final.Frm
 
         private void FrmFacture_Load(object sender, EventArgs e)
         {
-            //// This line of code is generated by Data Source Configuration Wizard
-            //// Instantiate a new DBContext
-            //CncApp_Final.Data.AppDbContext dbContext = new CncApp_Final.Data.AppDbContext();
-
-            //// Call the Load method to get the data for the given DbSet from the database.
-            //dbContext.Orders.Load();
-            //dbContext.OrderDetails.Load();
-            //dbContext.Customers.Load();
-
-            //// This line of code is generated by Data Source Configuration Wizard
-            //orderDetailsBindingSource.DataSource = dbContext.OrderDetails.Local.ToBindingList();
-            //orderBindingSource.DataSource = dbContext.Orders.Local.ToBindingList();
-            //customersBindingSource.DataSource = dbContext.Customers.Local.ToBindingList();
-
-
-            //InitControl();
-            //InitDataToControl();
-
-            // بارگذاری تمام مشتریان برای LookUpEdit
-            _dbContext.Customers.Load();
-            customersBindingSource.DataSource = _dbContext.Customers.Local.ToBindingList();
-
-            // بقیه داده‌ها بر اساس وضعیت جدید یا ویرایش بارگذاری می‌شوند
-            InitDataToControl();
-
-            // تنظیم حالت فقط خواندنی (اگر لازم باشد)
-            if (_IsOrderReadonly)
-            {
-                SetReadOnlyMode();
-            }
+            
         }
 
+
+
+
+
+        //***********************************************************************************************************************************
         //************************************************************************************************************************************
-
-        #region Load Data To Form Control
-
-        private void InitDataToControl()
-        {
-            if (_IsNewOrder)
-            {
-                // ایجاد شیء جدید و اتصال آن به BindingSource
-                _currentOrder = new Order()
-                {
-                    OrderDate = DateTime.Now,
-                    FaOrderDate = CalendarHelper.ToPersianDate(DateTime.Now),
-                    DeliveryDate = DateTime.Now.AddDays(7), // تاریخ تحویل پیش‌فرض
-                    FaDeliveryDate = CalendarHelper.ToPersianDate(DateTime.Now.AddDays(7)),
-                    TransportCost = 0,
-                    MiscCost = 0,
-                    Discount = 0,
-                    OrderDetails = new List<OrderDetails>() // لیست خالی جزئیات
-                };
-                orderBindingSource.DataSource = _currentOrder;
-                orderDetailsBindingSource.DataSource = _currentOrder.OrderDetails;
-
-                ribbonControl1.ApplicationCaption = "ثبت فاکتور جدید";
-                txbVCF_Id.EditValue = "(جدید)"; // نمایش وضعیت جدید بودن در Ribbon
-            }
-            else
-            {
-                // بارگذاری سفارش موجود به همراه جزئیات و مشتری مرتبط
-                var orderWithDetails = _dbContext.Orders
-                    .Include(o => o.OrderDetails)
-                    .Include(o => o.Customer)
-                    .FirstOrDefault(o => o.Id == _Order_Id);
-
-                if (orderWithDetails == null)
-                {
-                    MessageBox.Show("سفارش یافت نشد و بسته خواهد شد.", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.Close();
-                    return;
-                }
-
-                _currentOrder = orderWithDetails;
-                // اتصال به BindingSource
-                orderBindingSource.DataSource = _currentOrder;
-                orderDetailsBindingSource.DataSource = _currentOrder.OrderDetails;
-
-                ribbonControl1.ApplicationCaption = "ویرایش فاکتور: " + _Order_Id;
-                txbVCF_Id.EditValue = _Order_Id.ToString();
-            }
-
-            // متدهای کمکی برای تنظیمات اولیه
-            InitControl();
-            //CalculateTotalAmount(); // محاسبه اولیه قیمت‌ها
-        }
-
-        #endregion
-
         //************************************************************************************************************************************
-
-        #region Saving Logic
-
-        private bool SaveOrder(bool closeAfterSave)
-        {
-            try
-            {
-                // 1. قطع اتصال داده‌ها (End Edit)
-                orderBindingSource.EndEdit();
-                grdvOrderDetails.CloseEditor();
-                grdvOrderDetails.UpdateCurrentRow();
-
-                // به‌روزرسانی فیلدهای محاسبه شده (در صورت نیاز)
-                //CalculateTotalAmount();
-
-                // 2. به‌روزرسانی تاریخ‌ها از ورودی فارسی (اگر دستی تغییر کرده باشند)
-                _currentOrder.OrderDate = CalendarHelper.ToGregorianDate(txbFaOrderDate.Text);
-                _currentOrder.DeliveryDate = CalendarHelper.ToGregorianDate(txbFaDeliveryDate.Text);
-
-                if (_IsNewOrder)
-                {
-                    // افزودن سفارش جدید به DbSet
-                    _dbContext.Orders.Add(_currentOrder);
-                    // چون OrderDetails قبلاً به Order متصل شده، نیازی به افزودن صریح نیست.
-                }
-                else
-                {
-                    // پیوست کردن آبجکت در حالت ویرایش
-                    _dbContext.Orders.Attach(_currentOrder);
-                    _dbContext.Entry(_currentOrder).State = EntityState.Modified;
-                    // اگر تغییراتی در لیست OrderDetails داده شده باشد، باید وضعیت آیتم‌های آن نیز مدیریت شود
-                    // اما به دلیل استفاده از Local.ToBindingList در Load، EF معمولاً تغییرات را رهگیری می‌کند.
-                    // برای اطمینان بیشتر، می‌توانید قبل از ذخیره، تغییرات دستی را اعمال کنید.
-
-                    // حذف جزئیاتی که از گرید حذف شده‌اند (اگر قبلا حذف دستی نشده باشد)
-                    // این قسمت نیاز به پیاده‌سازی منطق حذف در رویدادهای گرید دارد،
-                    // اما به طور ساده، در اینجا تغییرات کلی را ذخیره می‌کنیم.
-                }
-
-                // 3. ذخیره تغییرات در پایگاه داده
-                _dbContext.SaveChanges();
-
-                // در صورت ذخیره موفق، شناسه جدید را به‌روزرسانی می‌کنیم
-                if (_IsNewOrder)
-                {
-                    _Order_Id = _currentOrder.Id;
-                    _IsNewOrder = false; // حالا دیگر جدید نیست
-                    ribbonControl1.ApplicationCaption = "ویرایش فاکتور: " + _Order_Id;
-                    txbVCF_Id.EditValue = _Order_Id.ToString();
-                }
-
-                MessageBox.Show("سفارش با موفقیت ذخیره شد.", "ذخیره", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                if (closeAfterSave)
-                {
-                    DialogResult = DialogResult.OK;
-                    this.Close();
-                }
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("خطا در ذخیره سفارش: " + ex.Message, "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-        }
-
-        #endregion
+        //************************************************************************************************************************************
         //************************************************************************************************************************************
 
 
 
-        //#region Load Data To Form Control
-
-
-        //private void InitDataToControl()
-        //{
-        //    if (_IsNewFaktor)
-        //    {
-        //        int orderId = _Order_Id; // یا از فرم بگیرید
-        //        CncApp_Final.Data.AppDbContext dbContext = new CncApp_Final.Data.AppDbContext();
-
-        //        var orderWithDetails = dbContext.Orders
-        //            .Include(o => o.OrderDetails)
-        //            .Include(o => o.Customer)
-        //            .FirstOrDefault(o => o.Id == orderId);
-
-        //        if (orderWithDetails == null)
-        //        {
-        //            MessageBox.Show("سفارش یافت نشد.");
-        //            orderBindingSource.DataSource = null;
-        //            orderDetailsBindingSource.DataSource = null;
-        //            return;
-        //        }
-
-        //        // فقط سفارش انتخاب شده
-        //        orderBindingSource.DataSource = orderWithDetails;
-
-        //        // فقط جزئیات همین سفارش (بهترین روش برای BindingSource)
-        //        orderDetailsBindingSource.DataSource = orderWithDetails.OrderDetails;
-
-        //        //_VCF_Id = (int)vCFXTableAdapter.GetNewVCF_Id();
-        //        //InitNewRowVCF_X(_VCF_Id);
-        //        ribbonControl1.ApplicationCaption = "ثبت فاکتور جدید";
-        //    }
-        //    else
-        //    {
-        //        int orderId = _Order_Id; // یا از فرم بگیرید
-        //        CncApp_Final.Data.AppDbContext dbContext = new CncApp_Final.Data.AppDbContext();
-
-        //        var orderWithDetails = dbContext.Orders
-        //            .Include(o => o.OrderDetails)
-        //            .Include(o => o.Customer)
-        //            .FirstOrDefault(o => o.Id == orderId);
-
-        //        if (orderWithDetails == null)
-        //        {
-        //            MessageBox.Show("سفارش یافت نشد.");
-        //            orderBindingSource.DataSource = null;
-        //            orderDetailsBindingSource.DataSource = null;
-        //            return;
-        //        }
-
-        //        // فقط سفارش انتخاب شده
-        //        orderBindingSource.DataSource = orderWithDetails;
-
-        //        // فقط جزئیات همین سفارش (بهترین روش برای BindingSource)
-        //        orderDetailsBindingSource.DataSource = orderWithDetails.OrderDetails;
-
-        //        //_VCF_Id = (int)vCFXTableAdapter.GetNewVCF_Id();
-        //        //InitNewRowVCF_X(_VCF_Id);
-        //        ribbonControl1.ApplicationCaption = "ویرایش فاکتور";
-
-        //    }
-
-
-
-        ////serviceTableAdapter.Fill(this.alpaDataSet.Service, _VCF_Id);
-
-        ////ucFrameSelector1.ServiceTable = alpaDataSet.Service;
-        //ucFrameSelector1.VCF_Id(_VCF_Id);
-        //ucAddress1.VCF_Id(_VCF_Id);
-        //ucCost1.VCF_Id(_VCF_Id);
-        //ucVCF_Space1.VCF_Id(_VCF_Id);
-
-        //Service_RowsChanged(this, EventArgs.Empty);
-
-        //if (_IsNewFaktor)
-        //{
-        //    lueCustomer.EditValue = "2";
-        //    lueCustomer.Focus();
-        //}
-
-        //lsbNavigationFrame.SelectedIndex = 0;
-
-        //}
-
-
-        //************************************************************************************************************************************
-
-        #region Events (Completed)
+        // ─── Event Handlers دکمه‌ها ────────────────────────────────────────────────────────
 
         private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SaveOrder(false); // ذخیره بدون بستن
+            Save();
         }
 
-        private void bbiSaveClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bbiSaveAndClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SaveOrder(true); // ذخیره و بستن
+            if (Save())
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
-        private void bbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bbiSaveAndNew_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // متد بازسازی UI و بارگذاری مجدد (Load مجدد)
-            // در محیط واقعی، ابتدا باید تغییرات ذخیره نشده را مدیریت کرد.
-            if (_Order_Id > 0 && !_IsNewOrder)
+            if (Save())
             {
-                // بارگذاری مجدد سفارش موجود
-                _dbContext = new AppDbContext();
-                InitDataToControl();
-                MessageBox.Show("داده‌ها مجدداً بارگذاری شدند.", "بارگذاری مجدد", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show("امکان بارگذاری مجدد برای سفارش جدید یا ذخیره‌نشده وجود ندارد.", "اطلاع", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // ایجاد شیء جدید برای ذخیره بعدی
+                orderBindingSource.DataSource = new Order() { OrderDate = DateTime.Now };
             }
         }
+
+        private void bbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (_IsOrderReadonly)
+            {
+                XtraMessageBox.Show("فرم در حالت فقط خواندنی است و امکان حذف وجود ندارد.", "هشدار", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            Order currentOrder = orderBindingSource.Current as Order;
+
+            if (currentOrder != null && currentOrder.Id > 0)
+            {
+                if (XtraMessageBox.Show("آیا مطمئن هستید که می‌خواهید این مورد را حذف کنید؟", "تأیید حذف", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    // از Local حذف نکنید، مستقیماً از DbContext حذف کنید
+                    _dbContext.Orders.Remove(currentOrder);
+                    _dbContext.SaveChanges();
+
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+            }
+        }
+
+        private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
+        }
+
+        
+
+        private void FrmOrders_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_Save_SuccesFull)
+            {
+                DialogResult = DialogResult.OK;
+            }
+        }
+
 
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
@@ -360,105 +234,91 @@ namespace CncApp_Final.Frm
             }
         }
 
-        //// این رویدادها را برای فراخوانی CalculateTotalAmount اضافه کنید:
-        //private void txbTransportCost_EditValueChanged(object sender, EventArgs e) => CalculateTotalAmount();
-        //private void txbMiscCost_EditValueChanged(object sender, EventArgs e) => CalculateTotalAmount();
-        //private void textEdit7_EditValueChanged(object sender, EventArgs e) => CalculateTotalAmount(); // تخفیف
-
-        // همچنین باید رویدادهای مربوط به تغییر در گرید (grdvOrderDetails) را نیز مدیریت کنید.
-        // مثلاً: grdvOrderDetails_CellValueChanged
-
-        #endregion
 
 
         //************************************************************************************************************************************
-
-        #region Helper & UI Methods
-
-        private void SetReadOnlyMode()
-        {
-            // غیرفعال کردن تمام کنترل‌های ورودی
-            groupControl4.Enabled = false;
-            groupControl1.Enabled = false;
-            gridControl.Enabled = false;
-            bbiSave.Enabled = false;
-            bbiSaveClose.Enabled = false;
-            btnNewCustomer.Enabled = false;
-            // ... سایر دکمه‌های ویرایش
-        }
-        private void InitNewRowVCF_X(int _VCF_Id)
-        {
-            //AlpaDataSet.VCFXRow newRow = this.alpaDataSet.VCFX.NewVCFXRow();
-            //newRow.VCF_Time = DateTime.Now.ToString("HH:mm");
-            //newRow.VCF_Id = _VCF_Id;
-
-            ////txbVCF_Id.EditValue = newRow.VCF_Id;
-            ////txbVCF_Id.EditValue = 77;
-
-            //newRow.VCF_NaghdB = 0;
-            //newRow.VCF_KartKhanB = 0;
-            //newRow.VCF_KartKhan = 0;
-            //newRow.VCF_Vasetehtype = false;
-            //newRow.VCF_VasetehPrice = 0;
-            //newRow.VCF_CountFirst = 0;
-            //newRow.VCF_Cust_Rent = 0;
-            //newRow.VC_Hazineh = 0;
-            //newRow.VCT_Price = 0;
-            //newRow.VCT_Day = 0;
-            //newRow.VCTName = "";
-            //newRow.VCT_LateDayPrice = 0;
-
-
-
-
-            //this.alpaDataSet.VCFX.AddVCFXRow(newRow);
-        }
-
-        #endregion
-
-
+        //************************************************************************************************************************************
+        //************************************************************************************************************************************
+        //************************************************************************************************************************************
         //************************************************************************************************************************************
 
 
+        #region Saving Logic
 
+        // FrmOrder.cs
 
-
-        #region ***************  Init control focused color    ***************
-
-        private void InitControl()
+        private bool Save()
         {
-            //txbTime.Properties.AppearanceFocused.BackColor = lueCustomer.Properties.AppearanceFocused.BackColor;
-            //txbDate.Properties.AppearanceFocused.BackColor = lueCustomer.Properties.AppearanceFocused.BackColor;
-            //txbRDate.Properties.AppearanceFocused.BackColor = lueCustomer.Properties.AppearanceFocused.BackColor;
-            //txbDays.Properties.AppearanceFocused.BackColor = lueCustomer.Properties.AppearanceFocused.BackColor;
-            ////txbPriceIndex.Properties.AppearanceFocused.BackColor = lueCustomer.Properties.AppearanceFocused.BackColor;
+            // 1. پایان ویرایش در BindingSource اصلی (Order Header)
+            orderBindingSource.EndEdit();
 
-            //txbComment.Properties.AppearanceFocused.BackColor = lueCustomer.Properties.AppearanceFocused.BackColor;
-            ////gridView1.Appearance.FocusedCell.BackColor = lueCustomer.Properties.AppearanceFocused.BackColor;
+            Order currentOrder = orderBindingSource.Current as Order;
+
+            if (currentOrder == null)
+            {
+                XtraMessageBox.Show("سفارشی برای ذخیره وجود ندارد.", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // 2. اعتبارسنجی اولیه Order Header
+            if (currentOrder.CustomerId <= 0 || currentOrder.Customer == null)
+            {
+                XtraMessageBox.Show("انتخاب مشتری الزامی است.", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (!currentOrder.OrderDetails.Any())
+            {
+                XtraMessageBox.Show("سفارش باید حداقل یک جزئیات داشته باشد.", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            // 3. افزودن به Context در صورت نیاز (حالت New)
+            if (currentOrder.Id == 0)
+            {
+                // اگر سفارش جدید است، آن را به Context اضافه می‌کنیم. 
+                // EF به طور خودکار OrderDetails مرتبط را نیز در حالت Added قرار می‌دهد.
+                _dbContext.Orders.Add(currentOrder);
+            }
+
+            // 4. SaveChanges - تراکنش نهایی
+            try
+            {
+                _dbContext.SaveChanges();
+
+                _Save_SuccesFull = true;
+                XtraMessageBox.Show("سفارش با موفقیت ذخیره شد.", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 5. به‌روزرسانی Id سفارش (اگر جدید بود)
+                if (_Order_Id == 0)
+                {
+                    _Order_Id = currentOrder.Id;
+                    ribbonControl1.ApplicationCaption = "ویرایش ورودی انبار";
+                    // مطمئن شوید که txbVCF_Id (شماره فاکتور) هم به‌روز شده است
+                }
+                return true;
+            }
+            // مدیریت خطاهای اعتبارسنجی
+            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            {
+                // ... (منطق نمایش خطای DbEntityValidationException)
+                XtraMessageBox.Show("خطای اعتبارسنجی در Entity Framework. جزئیات را چک کنید.", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"خطا در ذخیره سازی: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
-        private int _color;
-        private void gridControl1_Enter(object sender, EventArgs e)
-        {
-            //_color = gridView1.Appearance.FocusedCell.BackColor.ToArgb();
-            //gridView1.Appearance.FocusedCell.BackColor = lueCustomer.Properties.AppearanceFocused.BackColor;
+        #endregion
+        //************************************************************************************************************************************
 
-            //var culture = System.Globalization.CultureInfo.GetCultureInfo("fa-IR");
-            //var language = InputLanguage.FromCulture(culture);
-            //if (InputLanguage.InstalledInputLanguages.IndexOf(language) >= 0)
-            //    InputLanguage.CurrentInputLanguage = language;
-        }
-
-        private void gridControl1_Leave(object sender, EventArgs e)
-        {
-            //gridView1.PostEditor();
-
-            //gridView1.Appearance.FocusedCell.BackColor = Color.FromArgb(_color);
-        }
 
 
         InputLanguage original;
-        private void textBox_Enter(object sender, EventArgs e)
+        private void textEdit_Enter(object sender, EventArgs e)
         {
             original = InputLanguage.CurrentInputLanguage;
             var culture = System.Globalization.CultureInfo.GetCultureInfo("fa-IR");
@@ -469,29 +329,10 @@ namespace CncApp_Final.Frm
                 InputLanguage.CurrentInputLanguage = InputLanguage.DefaultInputLanguage;
         }
 
-        private void textBox_Leave(object sender, EventArgs e)
+        private void textEdit_Leave(object sender, EventArgs e)
         {
             InputLanguage.CurrentInputLanguage = original;
         }
-
-        #endregion
-
-
-        //************************************************************************************************************************************
-
-
-
-
-        //************************************************************************************************************************************
-
-
-
-
-        //************************************************************************************************************************************
-
-
-        #region Temp And Unused Method
-
 
 
         /// <summary>
@@ -520,54 +361,9 @@ namespace CncApp_Final.Frm
             }
         }
 
-        #endregion
 
 
-        //************************************************************************************************************************************
-
-
-        //private void btnNewCustomer_Click(object sender, EventArgs e)
-        //{
-        //    FrmCustomers frmCustomers = new FrmCustomers();
-        //    frmCustomers.ShowDialog();
-
-        //    //if (frmNewCustomer.C_Code != null)
-        //    //{
-        //    //    this.cUSTOMERTableAdapter.Fill(this.alpaDataSet.CUSTOMER);
-        //    //    lueCustomer.EditValue = frmNewCustomer.C_Code;
-        //    //}
-        //}
-
-
-
-
-        //************************************************************************************************************************************
-        //************************************************************************************************************************************
-
-
-        //private void bbiSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        //{
-        //    //UpdateRelaytedTable(_VCF_Id);
-        //    DialogResult = DialogResult.OK;
-        //}
-
-        //private void bbiSaveClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        //{
-        //    //UpdateRelaytedTable(_VCF_Id);
-        //    DialogResult = DialogResult.OK;
-        //    this.Close();
-        //}
-
-        private void ribbonControl1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-
-        }
-
+        
         private void bbiPrint_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //ReportHelper.PrintCurrent(_VCF_Id);
@@ -583,12 +379,7 @@ namespace CncApp_Final.Frm
             //ReportHelper.ExportPDFCurrent(_VCF_Id);
         }
 
-        //private void bbiRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        //{
-        //    //UserLookAndFeel defaultLF = UserLookAndFeel.Default;
-        //    //defaultLF.SkinName = "WXI MahakSkinPatch";
-        //}
-
+        
         private void bbiPhoto_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             //XfrmPhoto xfrmPhoto = new XfrmPhoto(_VCF_Id);
@@ -602,30 +393,42 @@ namespace CncApp_Final.Frm
         //*************************************************************************************************************************************
         //*************************************************************************************************************************************
         //*************************************************************************************************************************************
-        
-        
-        // در کلاس FrmOrder
-        // متد فراخوانی فرم ویرایش جزئیات
 
-        private void OpenOrderDetailForEdit(OrderDetails detailToEdit)
+
+        // FrmOrder.cs
+
+        private void OpenOrderDetailForEdit(OrderDetails originalDetail)
         {
-            FrmOrderDetails frmOrderDetailEdit = new FrmOrderDetails(detailToEdit, _dbContext);
-            DialogResult result = frmOrderDetailEdit.ShowDialog();
-            if (result == DialogResult.OK)
+            // 1. فرم فرعی را با شیء اصلی (ردیابی شده) باز می‌کنیم تا Clone در داخل فرم فرعی ایجاد شود.
+            // فرض می‌کنیم FrmOrderDetails یک سازنده public FrmOrderDetails(OrderDetails detailToClone, AppDbContext dbContext) دارد
+            using (CncApp_Final.TempFrm.FrmOrderDetails frmOrderDetailEdit = new CncApp_Final.TempFrm.FrmOrderDetails(originalDetail, _dbContext))
             {
-                grdvOrderDetails.RefreshData();
+                DialogResult result = frmOrderDetailEdit.ShowDialog();
 
-                // محاسبه مجدد مجموع هزینه‌ها
-                //CalculateTotalAmount();
-            }
-            else
-            {
-                // اگر کاربر Cancel کرد، باید تغییرات در شیء detailToEdit را Revert کنیم.
-                // این بخش پیچیده‌تر است و معمولاً نیاز به Clone کردن شیء قبل از ارسال دارد.
-                // در حالت ساده، فرض می‌کنیم کاربر اگر تغییرات را نخواهد، کل فرم Order را ذخیره نمی‌کند.
+                if (result == DialogResult.OK)
+                {
+                    OrderDetails finalClone = frmOrderDetailEdit.GetClonedDetail();
 
-                // اگر می‌خواهید حالت Cancel نیز کار کند، باید ابتدا از شیء یک کپی (Deep Clone) بگیرید و آن را به فرم ویرایش ارسال کنید، 
-                // و اگر OK شد، کپی را جایگزین شیء اصلی در Context کنید.
+                    // 🔑 اعمال منطق ویرایش: کپی Properties از Clone به Original
+                    // از آنجایی که ID اصلی حفظ شده، با کپی Properties، EF حالت Original را به Modified تغییر می‌دهد.
+
+                    // کپی دستی Propertyهای اصلی (برای جلوگیری از کپی ناخواسته OrderId و Id)
+                    originalDetail.DetailName = finalClone.DetailName;
+                    originalDetail.FilePath = finalClone.FilePath;
+                    originalDetail.Description = finalClone.Description;
+                    originalDetail.SheetId = finalClone.SheetId;
+                    originalDetail.Supplier = finalClone.Supplier;
+                    originalDetail.CutLength = finalClone.CutLength;
+                    originalDetail.CutWidth = finalClone.CutWidth;
+                    originalDetail.FinalSheetCost = finalClone.FinalSheetCost;
+                    originalDetail.GrooveLength = finalClone.GrooveLength;
+                    originalDetail.CncCost = finalClone.CncCost;
+
+                    // 3. رفرش DataGrid و فیلدهای محاسباتی Order
+                    orderDetailsBindingSource.ResetBindings(false);
+                    orderBindingSource.ResetBindings(false); // برای به‌روزرسانی TotalAmount در فرم مادر
+                }
+                // اگر Cancel شد، هیچ اتفاقی نمی‌افتد و Clone دور ریخته می‌شود.
             }
         }
 
@@ -651,41 +454,55 @@ namespace CncApp_Final.Frm
             }
         }
 
-        //// حفظ منطق ذخیره‌سازی اصلی:
-        //private bool SaveOrder(bool closeAfterSave)
-        //{
-        //    // ... (EndEdit, UpdateCurrentRow, CalculateTotalAmount)
+        // FrmOrder.cs
 
-        //    // در این مرحله، Context (DbContext_) ما تمام تغییرات (Modified/Added/Deleted) را ردیابی می‌کند.
+        private void btnNewDetail_Click(object sender, EventArgs e)
+        {
+            Order currentOrder = orderBindingSource.Current as Order;
 
-        //    // **فقط در صورتی که سفارش ویرایش شده باشد و تغییراتی در آن باشد:**
-        //    // if (_dbContext.ChangeTracker.HasChanges()) 
-        //    // {
-        //    _dbContext.SaveChanges(); // این خط تمام تغییرات ردیابی شده را به دیتابیس می‌فرستد.
-        //                              // ... (مدیریت ID جدید و پیام‌های موفقیت)
-        //                              // }
+            if (currentOrder == null)
+            {
+                XtraMessageBox.Show("ابتدا سفارش را ایجاد یا انتخاب کنید.", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-        //    // ...
-        //}
+            // 1. ایجاد یک شیء جدید OrderDetails
+            OrderDetails newDetail = new OrderDetails();
 
+            // اگر از قبل OrderId وجود داشت، آن را به Detail پاس می‌دهیم (اختیاری، اما مفید برای Navigation Property)
+            newDetail.OrderId = currentOrder.Id;
 
+            // 2. باز کردن فرم مودال برای افزودن جدید
+            using (CncApp_Final.TempFrm.FrmOrderDetails frmOrderDetailNew = new CncApp_Final.TempFrm.FrmOrderDetails(newDetail, _dbContext))
+            {
+                DialogResult result = frmOrderDetailNew.ShowDialog();
 
+                if (result == DialogResult.OK)
+                {
+                    OrderDetails finalClone = frmOrderDetailNew.GetClonedDetail();
 
+                    // 🔑 اعمال منطق افزودن جدید: تنظیم Id = 0 و افزودن به Collection اصلی
+                    // این اطمینان می‌دهد که EF آن را به عنوان یک ردیف جدید در دیتابیس درج کند.
+                    finalClone.Id = 0;
 
+                    // اگر OrderId از ابتدا ست نشده بود، اینجا ست شود:
+                    finalClone.OrderId = currentOrder.Id;
 
+                    // افزودن به Collection ناوبری Order اصلی
+                    currentOrder.OrderDetails.Add(finalClone);
 
+                    // برای اینکه DataGrid و فیلدهای محاسباتی Order به‌روز شوند:
+                    orderDetailsBindingSource.ResetBindings(false);
+                    orderBindingSource.ResetBindings(false);
+                }
+            }
+        }
 
+        private void groupControl4_DoubleClick(object sender, EventArgs e)
+        {
+            
+        }
 
-
-
-
-
-
-
-
-
-
-
-
+        
     }
 }

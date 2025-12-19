@@ -23,6 +23,7 @@ namespace CncApp_Final.Entities
 
         [DisplayName("شناسه مشتری")]
         [Description("شناسه مشتری مربوط به سفارش")]
+        [Required(ErrorMessage = "انتخاب مشتری الزامی است.")]
         public int CustomerId { get; set; }
 
         [DisplayName("مشتری")]
@@ -39,16 +40,22 @@ namespace CncApp_Final.Entities
 
         [DisplayName("هزینه حمل و نقل")]
         [Description("هزینه حمل و نقل سفارش")]
+        [Required(ErrorMessage = "وارد کردن {0} الزامی است.")]
+        [Range(0, double.MaxValue, ErrorMessage = "{0} نمی‌تواند منفی باشد.")]
         public double TransportCost { get; set; }
 
         [DisplayName("هزینه‌های جانبی")]
         [Description("هزینه‌های متفرقه سفارش")]
+        [Required(ErrorMessage = "وارد کردن {0} الزامی است.")]
+        [Range(0, double.MaxValue, ErrorMessage = "{0} نمی‌تواند منفی باشد.")]
         public double MiscCost { get; set; }
 
         [DisplayName("تخفیف")]
-        [Description("هتخفیف فاکتور")]
+        [Description("تخفیف فاکتور")]
+        [Required(ErrorMessage = "وارد کردن {0} الزامی است.")]
+        [Range(0, double.MaxValue, ErrorMessage = "{0} نمی‌تواند منفی باشد.")]
         public double Discount { get; set; }
-        
+
 
         [DisplayName("توضیحات")]
         [Description("توضیحات اضافی سفارش")]
@@ -122,6 +129,7 @@ namespace CncApp_Final.Entities
         [DisplayName("نام مشتری")]
         public string CustomerName => Customer?.CustomerName ?? "نامشخص";
 
+        
         // ─── تاریخ‌های شمسی با فرمت yyyy/MM/dd ─────────────────────────────
 
         /// <summary>

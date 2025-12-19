@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomerEdit));
             this.mainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
@@ -183,9 +182,6 @@
             this.txbCustomerName.Properties.ValidateOnEnterKey = true;
             this.txbCustomerName.Size = new System.Drawing.Size(324, 28);
             this.txbCustomerName.TabIndex = 0;
-            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
-            conditionValidationRule1.ErrorText = "This value is not valid";
-            this.dxValidationProvider1.SetValidationRule(this.txbCustomerName, conditionValidationRule1);
             this.txbCustomerName.EditValueChanged += new System.EventHandler(this.txbCustomerName_EditValueChanged);
             this.txbCustomerName.Leave += new System.EventHandler(this.txbCustomerName_Leave);
             this.txbCustomerName.Validating += new System.ComponentModel.CancelEventHandler(this.txbCustomerName_Validating);
@@ -308,6 +304,8 @@
             this.txbMhkCustomerId.EnterMoveNextControl = true;
             this.txbMhkCustomerId.Location = new System.Drawing.Point(19, 256);
             this.txbMhkCustomerId.Name = "txbMhkCustomerId";
+            this.txbMhkCustomerId.Properties.NullValuePrompt = "ثبت نشده است !";
+            this.txbMhkCustomerId.Properties.UseMaskAsDisplayFormat = true;
             this.txbMhkCustomerId.Size = new System.Drawing.Size(324, 28);
             this.txbMhkCustomerId.TabIndex = 6;
             // 

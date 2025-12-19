@@ -59,13 +59,15 @@
             // 
             // gridControl
             // 
+            this.gridControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControl.DataSource = this.warehousesBindingSource;
-            this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 201);
             this.gridControl.MainView = this.gridView;
             this.gridControl.MenuManager = this.ribbonControl;
             this.gridControl.Name = "gridControl";
-            this.gridControl.Size = new System.Drawing.Size(790, 398);
+            this.gridControl.Size = new System.Drawing.Size(790, 364);
             this.gridControl.TabIndex = 2;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -112,6 +114,8 @@
             // 
             this.colSheetBasePrice.AppearanceCell.Options.UseTextOptions = true;
             this.colSheetBasePrice.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colSheetBasePrice.DisplayFormat.FormatString = "n0";
+            this.colSheetBasePrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colSheetBasePrice.FieldName = "SheetBasePrice";
             this.colSheetBasePrice.Name = "colSheetBasePrice";
             this.colSheetBasePrice.Visible = true;

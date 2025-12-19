@@ -41,7 +41,11 @@ namespace CncData.Entities
         [Description("حساب بانکی مربوط به رسید")]
         public virtual BankAccount BankAccount { get; set; }
 
-        
+        [DisplayName("توضیحات")]
+        [Description("توضیحات دریافت")]
+        public string Description { get; set; }
+
+
     }
 
 

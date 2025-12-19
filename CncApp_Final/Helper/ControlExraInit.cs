@@ -50,9 +50,11 @@ namespace CncApp_Final.Helper
             lookUpEdit.Properties.DropDownItemHeight = 25;
             lookUpEdit.Properties.PopupSizeable = false;
             lookUpEdit.Properties.UseDropDownRowsAsMaxCount = true;
+            lookUpEdit.Properties.PopupFormMinSize = new System.Drawing.Size(20, 20);
             lookUpEdit.Properties.PopupWidthMode = DevExpress.XtraEditors.PopupWidthMode.UseEditorWidth;
             lookUpEdit.Properties.ShowFooter = false;
             lookUpEdit.Properties.ShowHeader = false;
+
         }
 
     }

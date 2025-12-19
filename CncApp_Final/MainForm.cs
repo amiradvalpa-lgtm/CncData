@@ -25,6 +25,8 @@ namespace CncApp_Final
 {
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+
+
         public MainForm()
         {
             InitializeComponent();
@@ -85,7 +87,7 @@ namespace CncApp_Final
 
         private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
-            FrmOrder frmOrder = new FrmOrder();
+            FrmOrder frmOrder = new FrmOrder(0, false);
             frmOrder.ShowDialog();
             if (frmOrder.DialogResult == DialogResult.OK)
             {

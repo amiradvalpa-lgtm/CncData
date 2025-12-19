@@ -38,9 +38,22 @@ namespace CncData.Entities
         [Description("قیمت هر تکه برش‌خورده از ورق")]
         public double PicesPrice { get; set; }
 
-        [DisplayName("قیمت خدمات CNC")]
-        [Description("هزینه خدمات CNC به ازای متر یا واحد")]
-        public double CNCPrice { get; set; }
+        [DisplayName("قیمت CNC (متر)")]
+        [Description("هزینه خدمات CNC به ازای متر")]
+        public double CNCPriceByMeter { get; set; }
+
+        [DisplayName("قیمت CNC (ورق)")]
+        [Description("هزینه خدمات CNC به ازای ورق کامل")]
+        public double CNCPriceBySheet { get; set; }
+
+        [DisplayName("قیمت CNC (تکه)")]
+        [Description("هزینه خدمات CNC به ازای ورق تکه")]
+        public double CNCPriceByPice { get; set; }
+
+        [DisplayName("توضیحات")]
+        [Description("توضیحات ورق")]
+        public string Description { get; set; }
+
 
         // تغییر مهم: قبلاً به Order بود، حالا به OrderDetails است
         [DisplayName("جزئیات سفارش‌هایی که از این ورق استفاده کرده‌اند")]

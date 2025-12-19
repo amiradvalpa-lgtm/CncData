@@ -3,6 +3,7 @@ using System;
 using CncData.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CncData.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251216093229_appsetting_tbl")]
+    partial class appsetting_tbl
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.11");
@@ -36,10 +39,6 @@ namespace CncData.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("CardNumber")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -217,9 +216,6 @@ namespace CncData.Migrations
                     b.Property<int>("OrderId")
                         .HasColumnType("INTEGER");
 
-                    b.Property<double>("SheetCount")
-                        .HasColumnType("REAL");
-
                     b.Property<int>("SheetId")
                         .HasColumnType("INTEGER");
 
@@ -253,10 +249,6 @@ namespace CncData.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.HasIndex("BankAccountId");
@@ -272,18 +264,8 @@ namespace CncData.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<double>("CNCPriceByMeter")
+                    b.Property<double>("CNCPrice")
                         .HasColumnType("REAL");
-
-                    b.Property<double>("CNCPriceByPice")
-                        .HasColumnType("REAL");
-
-                    b.Property<double>("CNCPriceBySheet")
-                        .HasColumnType("REAL");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<double>("Length")
                         .HasColumnType("REAL");

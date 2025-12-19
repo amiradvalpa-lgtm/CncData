@@ -38,6 +38,11 @@ namespace CncApp_Final.Entities
         [Description("حساب بانکی مربوط به رسید")]
         public int BankAccountId { get; set; }
 
+        [DisplayName("توضیحات")]
+        [Description("توضیحات دریافت")]
+        public string Description { get; set; }
+
+
         [DisplayName("حساب بانکی")]
         [Description("حساب بانکی مربوط به رسید")]
         public virtual BankAccount BankAccount { get; set; }

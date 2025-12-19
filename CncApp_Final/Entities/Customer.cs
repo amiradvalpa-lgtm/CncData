@@ -19,14 +19,17 @@ namespace CncApp_Final.Entities
 
         [DisplayName("نام مشتری")]
         [Description("نام کامل مشتری")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "وارد کردن {0} الزامی است.")]
         public string CustomerName { get; set; }
 
         [DisplayName("تلفن")]
         [Description("شماره تماس مشتری")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "وارد کردن {0} الزامی است.")]
         public string Phone { get; set; }
 
         [DisplayName("آدرس")]
         [Description("آدرس کامل مشتری")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = "وارد کردن {0} الزامی است.")]
         public string Address { get; set; }
 
         [DisplayName("حساب اول دوره")]

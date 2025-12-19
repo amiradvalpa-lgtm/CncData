@@ -23,7 +23,8 @@ namespace CncApp_Final.Frm
 
         private CncApp_Final.Data.AppDbContext dbContext = new CncApp_Final.Data.AppDbContext();
         private bool isReadOnly;
-
+        public int _New_Row_Id;
+        private bool _Save_SuccesFull = false;
 
         public FrmWareHouseEdit()
         {
@@ -77,6 +78,8 @@ namespace CncApp_Final.Frm
 
             // 🆕 اعمال تنظیمات ReadOnly
             SetReadOnly(this.isReadOnly);
+
+            SheetIdLookUpEdit.EditValueChanged += SheetIdLookUpEdit_EditValueChanged;
         }
 
 
@@ -84,6 +87,73 @@ namespace CncApp_Final.Frm
         {
             // بارگذاری در سازنده انجام شد، نیازی به AddNew یا چک کردن Current نیست.
         }
+
+
+
+        //*************************************************************************************************************************************
+        //*************************************************************************************************************************************
+        //*************************************************************************************************************************************
+        //*************************************************************************************************************************************
+
+
+
+
+
+        /// <summary>
+        /// 🆕 راه‌حل نهایی: به‌روزرسانی شیء Sheet و رفرش Binding با قطع و وصل موقت اتصال LookUpEdit
+        /// </summary>
+        private void SheetIdLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        {
+            if (SheetIdLookUpEdit.EditValue == null || SheetIdLookUpEdit.EditValue == DBNull.Value) return;
+
+            if (warehousesBindingSource.Current is Warehouse currentWarehouse)
+            {
+                int newSheetId = (int)SheetIdLookUpEdit.EditValue;
+
+                // اگر SheetId واقعاً تغییر نکرده و شیء Sheet وجود دارد، کاری نکنیم
+                if (currentWarehouse.SheetId == newSheetId && currentWarehouse.Sheet != null)
+                {
+                    return;
+                }
+
+                // 1. جستجوی شیء Sheet جدید
+                Sheet newSheet = dbContext.Sheets.Local.FirstOrDefault(s => s.Id == newSheetId);
+
+                if (newSheet != null)
+                {
+                    // 2. قطع اتصال LookUpEdit به BindingSource
+                    // این کار از فراخوانی مجدد EditValueChanged در حین ResetBindings جلوگیری می‌کند
+                    Binding lookUpBinding = SheetIdLookUpEdit.DataBindings["EditValue"];
+                    SheetIdLookUpEdit.DataBindings.Clear();
+
+                    try
+                    {
+                        // 3. انتساب شیء Sheet جدید و به‌روزرسانی SheetId در مدل
+                        currentWarehouse.Sheet = newSheet;
+                        // اگرچه LookUpEdit قطع شده، این خط مقدار نهایی را در مدل ذخیره می‌کند
+                        currentWarehouse.SheetId = newSheetId;
+
+                        // 4. رفرش BindingSource برای به‌روزرسانی فیلدهای محاسبه‌ای (PreSheetPrice, NewSheetPrice)
+                        warehousesBindingSource.ResetBindings(false);
+                    }
+                    catch (Exception ex)
+                    {
+                        // در صورت بروز خطا، آن را مدیریت کنید
+                        XtraMessageBox.Show($"خطا در به‌روزرسانی قیمت‌های ورق: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    finally
+                    {
+                        // 5. اتصال مجدد LookUpEdit
+                        if (lookUpBinding != null)
+                        {
+                            SheetIdLookUpEdit.DataBindings.Add(lookUpBinding);
+                        }
+                    }
+                }
+            }
+        }
+        
+
 
 
 
@@ -127,6 +197,8 @@ namespace CncApp_Final.Frm
                     Warehouse currentWarehouse = warehousesBindingSource.Current as Warehouse;
                     if (currentWarehouse == null) return false;
 
+                    bool isNewRecord = currentWarehouse.Id == 0; //
+
                     // 1. به‌روزرسانی قیمت‌های NewSheetPrice و NewPicesPrice در جدول Sheet
                     // اگر شیء Sheet قبلاً از طریق Include بارگذاری شده باشد، این خط کار می‌کند:
                     Sheet sheetToUpdate = currentWarehouse.Sheet;
@@ -153,8 +225,12 @@ namespace CncApp_Final.Frm
                     }
 
                     // 3. ذخیره تغییرات در Database
-                    dbContext.SaveChanges();
-
+                    int affectedRows = dbContext.SaveChanges();
+                    if (affectedRows > 0)
+                    {
+                        _New_Row_Id = currentWarehouse.Id;
+                    }
+                    _Save_SuccesFull = true;
                     return true;
                 }
                 catch (Exception ex)
@@ -242,6 +318,20 @@ namespace CncApp_Final.Frm
         private void bbiClose_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnCopyPrice_Click(object sender, EventArgs e)
+        {
+            NewSheetPriceTextEdit.EditValue = PreSheetPriceTextEdit.EditValue;
+            NewPicesPriceTextEdit.EditValue = PrePicesPriceTextEdit.EditValue;
+        }
+
+        private void FrmWareHouseEdit_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (_Save_SuccesFull )
+            {
+                DialogResult = DialogResult.OK;
+            }
         }
     }
 }

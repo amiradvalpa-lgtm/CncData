@@ -13,9 +13,30 @@ namespace CncData.Seed
             if (!context.Customers.Any())
             {
                 context.Customers.AddRange(
-                    new Customer { CustomerName = "آقای عباسی", Phone = "0914000000", Address = "باکری", Beginning_Balance = 50000 ,Description = "", MhkCustomerId = ""},
-                    new Customer { CustomerName = "آقای گلستان", Phone = "0912000000", Address = "فلکه بازارباش",Description = "", MhkCustomerId = "" }
-                );
+    new Customer { CustomerName = "آقای عباسی",           Phone = "09149691680", Address = "باکری روبروی بریده عارفیان", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای لطفی",            Phone = "09144476155", Address = "خیام جنوبی", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای صمد گلستان",      Phone = "09144461442", Address = "میدان بازار باش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای قادر",            Phone = "09147117316", Address = "باکری نبش اداره برق", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای داوود",           Phone = "0000000000",  Address = "میدان بازار باش", Description = "از طرف گلستان", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "حامد یگانه",           Phone = "09338259512", Address = "حافظ جنب مدرسه 16 آذر", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای بابایی (آتامان)", Phone = "09144418638", Address = "حافظ", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای سجاد",            Phone = "09143486895", Address = "باکر روبروی دانش (کشتگر)", Description = "تابلو ساز", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای علی جلیلی",       Phone = "0000000000",  Address = "", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای محمد گلستان",     Phone = "09143478274", Address = "میدان بازار باش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای امیر",            Phone = "09141469005", Address = "باکری", Description = "دوست سجاد", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای توحید گلستان",    Phone = "09144438519", Address = "میدان بازار باش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای آذری",            Phone = "09338259512", Address = "حافظ جنب مدرسه 16 آذر", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "چاپ ملل",              Phone = "09145450458", Address = "مدنی داخل کوچه آزمایشگاه میلان", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای آرش گلستان",      Phone = "09308358112", Address = "بازار باش بطرف بعثت", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای وحید شفق",        Phone = "09147107214", Address = "", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای محمدپور",         Phone = "09149688500", Address = "باکری نرسیده به وکیل باشی", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای محمد گلستان",     Phone = "09143895240", Address = "میدان بازار باش", Description = "(5240)", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای سلطانی",          Phone = "09199765273", Address = "بازار باش بطرف بعثت", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای شریفی",           Phone = "09143498039", Address = "باکری بریده وکیل باشی", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای حیدرزاده",        Phone = "09147250785", Address = "چهارراه عطایی بسمت بستنی داداش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای فرشید حسن زاده",  Phone = "09143435282", Address = "سه راهی دانش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" }
+);
+
             }
 
             if (!context.BankAccounts.Any())
@@ -25,13 +46,16 @@ namespace CncData.Seed
                         Account_L_Name = "حسنخانی",
                         BankName = "ملی",
                         CardNumber = "6037 XXXX XXXX XXXX",
-                        ShebaNumber = "IRXXXXXXXXXXXX" 
+                        ShebaNumber = "IRXXXXXXXXXXXX" ,
+                        Description = ""
+
                     },
                     new BankAccount { Account_F_Name = "رسول",
                         Account_L_Name = "صحرانورد",
                         BankName = "ملت",
                         CardNumber = "6104 XXXX XXXX XXXX",
-                        ShebaNumber = "IRXXXXXXXXXXXX" 
+                        ShebaNumber = "IRXXXXXXXXXXXX",
+                        Description = ""
                     }
                 );
             }
@@ -39,13 +63,14 @@ namespace CncData.Seed
             if (!context.Sheets.Any())
             {
                 context.Sheets.AddRange(
-                    new Sheet { Material = "MDF", Thickness = 8,  Width = 122, Length = 244, SheetPrice = 50_000_000, PicesPrice = 1_500_000, CNCPrice = 120_000 },
-                    new Sheet { Material = "MDF", Thickness = 12, Width = 122, Length = 244, SheetPrice = 13_000_000, PicesPrice = 4_500_000, CNCPrice = 120_000 },
-                    new Sheet { Material = "MDF", Thickness = 16, Width = 122, Length = 244, SheetPrice = 50_000_000, PicesPrice = 1_500_000, CNCPrice = 120_000 },
-                    new Sheet { Material = "PVC", Thickness = 8,  Width = 122, Length = 244, SheetPrice = 13_000_000, PicesPrice = 4_500_000, CNCPrice = 115_000 },
-                    new Sheet { Material = "PVC", Thickness = 10, Width = 122, Length = 244, SheetPrice = 50_000_000, PicesPrice = 1_500_000, CNCPrice = 115_000 },
-                    new Sheet { Material = "PVC", Thickness = 16, Width = 122, Length = 244, SheetPrice = 50_000_000, PicesPrice = 1_500_000, CNCPrice = 115_000 },
-                    new Sheet { Material = "ACM", Thickness = 4,  Width = 125, Length = 320, SheetPrice = 13_000_000, PicesPrice = 4_500_000, CNCPrice = 75_000 }
+                    new Sheet { Material = "MDF", Thickness = 8,  Width = 122, Length = 244, SheetPrice = 12_000_000, PicesPrice = 4_500_000,  CNCPriceByMeter = 120_000, CNCPriceBySheet = 3_000_000,  CNCPriceByPice = 2_000_000, Description = ""},
+                    new Sheet { Material = "MDF", Thickness = 8,  Width = 110, Length = 280, SheetPrice = 13_000_000, PicesPrice = 4_700_000,  CNCPriceByMeter = 120_000, CNCPriceBySheet = 3_000_000,  CNCPriceByPice = 2_000_000, Description = ""},
+                    new Sheet { Material = "MDF", Thickness = 12, Width = 122, Length = 244, SheetPrice = 18_000_000, PicesPrice = 6_500_000,  CNCPriceByMeter = 130_000, CNCPriceBySheet = 4_000_000,  CNCPriceByPice = 2_500_000, Description = ""},
+                    new Sheet { Material = "MDF", Thickness = 16, Width = 122, Length = 244, SheetPrice = 50_000_000, PicesPrice = 1_900_000,  CNCPriceByMeter = 200_000, CNCPriceBySheet = 5_500_000,  CNCPriceByPice = 3_000_000, Description = ""},
+                    new Sheet { Material = "PVC", Thickness = 8,  Width = 122, Length = 244, SheetPrice = 14_500_000, PicesPrice = 5_500_000,  CNCPriceByMeter = 115_000, CNCPriceBySheet = 3_000_000,  CNCPriceByPice = 2_000_000, Description = ""},
+                    new Sheet { Material = "PVC", Thickness = 10, Width = 122, Length = 244, SheetPrice = 17_000_000, PicesPrice = 6_100_000,  CNCPriceByMeter = 115_000, CNCPriceBySheet = 3_500_000,  CNCPriceByPice = 2_000_000, Description = ""},
+                    new Sheet { Material = "PVC", Thickness = 16, Width = 122, Length = 244, SheetPrice = 31_000_000, PicesPrice = 11_000_000, CNCPriceByMeter = 115_000, CNCPriceBySheet = 4_500_000,  CNCPriceByPice = 3_000_000, Description = ""},
+                    new Sheet { Material = "ACP", Thickness = 4,  Width = 125, Length = 320, SheetPrice = 45_000_000, PicesPrice = 12_000_000, CNCPriceByMeter = 150_000, CNCPriceBySheet = 4_700_000,  CNCPriceByPice = 3_500_000, Description = ""}
                 );
             }
 
@@ -80,8 +105,9 @@ namespace CncData.Seed
                         FilePath = @"C:\Orders\1404-00125.dxf",
                         SheetId = 2,                              // MDF
                         Supplier = SupplierType.Customer,         // از انبار خودمون
-                        CutLength = 2800,
-                        CutWidth = 1200,
+                        CutLength = 280,
+                        CutWidth = 120,
+                        SheetCount =   1_0,
                         FinalSheetCost = 2_850_000,
                         GrooveLength = 12.5,
                         CncCost = 980_000,
@@ -108,8 +134,9 @@ namespace CncData.Seed
                         FilePath = @"C:\Orders\1404-00126.dxf",
                         SheetId = 1, // یا SheetId = 1
                         Supplier = SupplierType.Warehouse,        // خرید از بیرون
-                        CutLength = 5000,
-                        CutWidth = 2000,
+                        CutLength = 500,
+                        CutWidth = 122,
+                        SheetCount =   1_0,
                         FinalSheetCost = 8_400_000,
                         GrooveLength = 28.0,
                         CncCost = 2_850_000,
@@ -128,7 +155,8 @@ namespace CncData.Seed
                 CustomerId = 1,
                 Date = new DateTime(2025, 11, 20),
                 Amount = 4_300_000,
-                BankAccountId = 1
+                BankAccountId = 1,
+                Description = ""
             };
 
             var receipt2 = new Receipt
@@ -136,7 +164,8 @@ namespace CncData.Seed
                 CustomerId = 2,
                 Date = new DateTime(2025, 11, 29),
                 Amount = 5_000_000,
-                BankAccountId = 1
+                BankAccountId = 1,
+                Description = ""
             };
 
             context.Receipts.AddRange(receipt1, receipt2);

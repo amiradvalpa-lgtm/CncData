@@ -13,7 +13,7 @@ namespace CncData.Context
         public DbSet<Receipt> Receipts { get; set; }
         public DbSet<Sheet> Sheets { get; set; }
         public DbSet<Warehouse> Warehouses { get; set; }
-        public DbSet<AppOption> AppOptions { get; set; }
+        public DbSet<AppSetting> AppSettings { get; set; }
         public DbSet<UserGridLayout> UserGridLayouts { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }

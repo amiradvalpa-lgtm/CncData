@@ -353,5 +353,10 @@ namespace CncApp_Final.Frm
                 this.Close();
             }
         }
+
+        private void lkpCustomer_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

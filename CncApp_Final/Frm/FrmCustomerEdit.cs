@@ -138,7 +138,8 @@ namespace CncApp_Final.Frm
         private void FrmCustomerEdit_Load(object sender, EventArgs e)
         {
             InitData();
-            
+            DxValidationHelper.SetupValidation<Customer>(this, dxValidationProvider1, customerBindingSource);
+
         }
 
         // ------------------------------------------------------------------
@@ -347,14 +348,14 @@ namespace CncApp_Final.Frm
 
         private void txbCustomerName_Validating(object sender, CancelEventArgs e)
         { 
-            //e.Cancel = true;
-            txbCustomerName.EditValue = txbCustomerName.Text.Trim();
-            var x = txbCustomerName.EditValue.GetType();
-            if (string.IsNullOrEmpty(txbCustomerName.Text))
-            {
-                txbCustomerName.EditValue = null;
-                dxValidationProvider1.Validate();
-            }
+            ////e.Cancel = true;
+            //txbCustomerName.EditValue = txbCustomerName.Text.Trim();
+            //var x = txbCustomerName.EditValue.GetType();
+            //if (string.IsNullOrEmpty(txbCustomerName.Text))
+            //{
+            //    txbCustomerName.EditValue = null;
+            //    dxValidationProvider1.Validate();
+            //}
         }
 
         private void txbCustomerName_Validated(object sender, EventArgs e)
