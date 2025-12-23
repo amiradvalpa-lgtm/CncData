@@ -1,21 +1,25 @@
 ﻿using CncApp_Final.Data;
 using CncApp_Final.Entities;
 using CncApp_Final.Helper;
+using CncApp_Final.Models;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.DXErrorProvider;
 using DevExpress.XtraPrinting;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using CncApp_Final.Models;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace CncApp_Final.TempFrm
 {
@@ -27,53 +31,42 @@ namespace CncApp_Final.TempFrm
 
         private OrderDetails _originalDetail;
         private OrderDetails _cloneDetail; // شیء Sandbox
-        private Sheet _sheet; // شیء Sandbox
+        private Sheet _sheet;
 
 
-        OrderDetailsCalcModel _calcModel;
+        private OrderDetailsCalcModel _calcModel;
+
+
+        private string _lastDirectory;
+
+
 
         public FrmOrderDetails()
         {
             InitializeComponent();
         }
 
-        public FrmOrderDetails(OrderDetails detailToClone, AppDbContext dbContext)
+        public FrmOrderDetails(OrderDetails orderDetail, AppDbContext dbContext)
         {
             InitializeComponent();
-
+            
             ControlExraInit.InitLookupEdit(lkpMaterial);
             ControlExraInit.InitLookupEdit(lkpThickness);
             ControlExraInit.InitLookupEdit(lkpSheetId);
 
 
+
             //InitControls();
 
-
-            _originalDetail = detailToClone;
-            //////_cloneDetail = (OrderDetails)_originalDetail.Clone(); // 🔑 انجام Clone در اینجا
-            //////                                                      //_sheet = (Sheet)_originalDetail.Sheet.Clone();
-            ///
-
-
-
+            _dbContext = dbContext;
+            _originalDetail = orderDetail;
+            
             _calcModel = new OrderDetailsCalcModel();
             orderDetailBindingSource.DataSource = _calcModel;
 
             BindControls();
 
             FillMaterial();
-
-            //_calcModel = new OrderDetailsCalcModel();
-            //_calcModel.LoadFrom(detailToClone);
-            ////calcModel.ApplyTo(detailToClone);
-            //LoadSheetInfo(_calcModel.SheetId);
-            //InitControls();
-
-
-
-
-
-            //////orderDetailBindingSource.DataSource = _cloneDetail;
 
         }
 
@@ -84,29 +77,6 @@ namespace CncApp_Final.TempFrm
             return _sheet;
         }
 
-
-        //
-        //////private void CalculateCncPrice()
-        //////{
-        //////    if (_sheet != null)
-        //////    {
-        //////        var z0 = double.TryParse(txbGrooveLength.EditValue?.ToString(), out double grooveLength) ? grooveLength : 0d;
-        //////        var z1 = double.TryParse(txbPiceArea.EditValue?.ToString(), out double area) ? area : 0d;
-        //////        var z2 = double.TryParse(spnSheetCount.EditValue?.ToString(), out double sheetCount) ? sheetCount : 0d;
-
-        //////        txbCncSuggestionPrice.EditValue = _sheet.CNCPriceByMeter * grooveLength;
-        //////        txbCncBasePrice.EditValue = _sheet.CNCPriceByMeter;
-
-        //////        double cncPriceByPiceTotal  = 0;
-        //////        if (area < 2)
-        //////            cncPriceByPiceTotal = _sheet.CNCPriceByPice;
-        //////        else
-        //////            cncPriceByPiceTotal = _sheet.CNCPriceBySheet;
-        //////            txbCncCost.EditValue = cncPriceByPiceTotal + sheetCount * _sheet.CNCPriceBySheet;
-
-        //////    }
-
-        //////}
 
         public OrderDetails GetClonedDetail() // 🔑 متد در فرم جزئیات است
         {
@@ -119,11 +89,10 @@ namespace CncApp_Final.TempFrm
             rgpSheetType.Properties.Items.AddEnum(typeof(SheetType));
 
 
-
-
-
             if (_originalDetail.SheetId == 0)
             {
+                this.Text = "جدید";
+
                 rgpSheetType.SelectedIndex = 0;
                 rgpSuplier.SelectedIndex = 0;
 
@@ -131,12 +100,14 @@ namespace CncApp_Final.TempFrm
                 _sheet = GetSheetInfo(defoultSheetId);
                 lkpMaterial.EditValue = _sheet.Material;
                 lkpThickness.EditValue = _sheet.Thickness;
-                FillSizeByMaterialAndThickness();
-                _calcModel.SheetId = defoultSheetId;
+                //FillSizeByMaterialAndThickness();
+                //_calcModel.SheetId = defoultSheetId;
                 lkpSheetId.EditValue = defoultSheetId;
             }
             else
             {
+                this.Text = "ویرایش";
+
                 int orderDetailSheetId = _originalDetail.SheetId;
                 _sheet = GetSheetInfo(orderDetailSheetId);
                 lkpMaterial.EditValue = _sheet.Material;
@@ -201,24 +172,138 @@ namespace CncApp_Final.TempFrm
             _isLoading = false;
         }
 
+        public static void ApplyFocusColor(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if(control.Name == "spnSheetCount")
+                {
+                    
+                }
+                if (control is DevExpress.XtraEditors.BaseEdit editor)
+                {
+                    // اگر کنترل DevExpress و TabStop فعال بود
+                    if (editor.TabStop)
+                    {
+                        editor.Properties.AppearanceFocused.BackColor =
+                            Color.FromArgb(255, 255, 192);
+
+                        editor.Properties.AppearanceFocused.Options.UseBackColor = true;
+                    }
+                }
+                if (control.HasChildren)
+                {
+                    ApplyFocusColor(control);
+                }
+
+                //// اگر کنترل DevExpress و TabStop فعال بود
+                //if (control.TabStop && control is BaseEdit editor)
+                //{
+                //    //if(control is DevExpress.XtraEditors.ButtonEdit buttontEdit)
+                //    //{
+                //    //    buttontEdit.Properties.TextEditStyle
+                //    //}
+                //    editor.Properties.AppearanceFocused.BackColor =
+                //        Color.FromArgb(255, 255, 192);
+
+                //    editor.Properties.AppearanceFocused.Options.UseBackColor = true;
+                //}
+
+                // اگر این کنترل خودش بچه دارد (Group, Panel, Layout, ...)
+            }
+        }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
+            ApplyValidationRules(_calcModel);
+
+            if (!dxValidationProvider1.Validate())
+                return;
+
+            _originalDetail.Sheet = GetSheetInfo(_originalDetail.SheetId);
             orderDetailBindingSource.EndEdit();
-
-            DialogResult = DialogResult.OK; // تأیید موفقیت ویرایش
-            this.Close();
-
-
-            //orderDetailBindingSource.EndEdit();
-            //_calcModel.ApplyTo(_originalDetail);
-            //DialogResult = DialogResult.OK;
+            _calcModel.ApplyTo(_originalDetail);
+            DialogResult = DialogResult.OK;
         }
+
+        private void ApplyValidationRules(OrderDetailsCalcModel m)
+        {
+            // اول همه Validationها پاک شود
+            ClearValidation(txbDetailName);
+            ClearValidation(lkpSheetId);
+            ClearValidation(spnSheetCount);
+            ClearValidation(txbCutLength);
+            ClearValidation(txbCutWidth);
+            ClearValidation(txbGrooveLength);
+            ClearValidation(txbFinalSheetCost);
+            ClearValidation(txbCncCost);
+
+            // 🔹 همیشه لازم
+            Required(txbDetailName, "نام سفارش الزامی است");
+            Required(lkpSheetId, "ورق باید انتخاب شود");
+            GreaterThanZero(txbGrooveLength, "طول شیار باید بزرگتر از صفر باشد");
+
+            // 🔹 SheetType logic
+            switch (m.SheetType)
+            {
+                case SheetType.Full:
+                    GreaterThanZero(spnSheetCount, "تعداد ورق باید بزرگتر از صفر باشد");
+                    break;
+
+                case SheetType.Piece:
+                    GreaterThanZero(txbCutLength, "طول برش الزامی است");
+                    GreaterThanZero(txbCutWidth, "عرض برش الزامی است");
+                    break;
+
+                case SheetType.Both:
+                    GreaterThanZero(spnSheetCount, "تعداد ورق باید بزرگتر از صفر باشد");
+                    GreaterThanZero(txbCutLength, "طول برش الزامی است");
+                    GreaterThanZero(txbCutWidth, "عرض برش الزامی است");
+                    break;
+            }
+
+            // 🔹 Supplier logic
+            if (m.Supplier == SupplierType.Warehouse)
+            {
+                GreaterThanZero(txbFinalSheetCost, "هزینه نهایی ورق باید مشخص شود");
+            }
+            // اگر Customer است → Validation ندارد (صفر می‌شود)
+        }
+
+        private void ClearValidation(BaseEdit ctrl)
+        {
+            dxValidationProvider1.RemoveControlError(ctrl);
+            dxValidationProvider1.SetValidationRule(ctrl, null);
+        }
+
+        private void Required(BaseEdit ctrl, string message)
+        {
+            var rule = new ConditionValidationRule
+            {
+                ConditionOperator = ConditionOperator.IsNotBlank,
+                ErrorText = message,
+                ErrorType = ErrorType.Critical
+            };
+            dxValidationProvider1.SetValidationRule(ctrl, rule);
+        }
+
+        private void GreaterThanZero(BaseEdit ctrl, string message)
+        {
+            var rule = new ConditionValidationRule
+            {
+                ConditionOperator = ConditionOperator.Greater,
+                Value1 = 0,
+                ErrorText = message,
+                ErrorType = ErrorType.Critical
+            };
+            dxValidationProvider1.SetValidationRule(ctrl, rule);
+        }
+
+
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
-            //DialogResult = DialogResult.Cancel;
+            DialogResult = DialogResult.Cancel;
         }
 
 
@@ -340,6 +425,9 @@ namespace CncApp_Final.TempFrm
                 txbCutWidth.ReadOnly = false;
                 txbCutLength.ReadOnly = false;
             }
+            ApplyTabStopRules(_calcModel);
+            ApplyValidationRules(_calcModel);
+            ApplyFocusColor(this);
         }
 
         private void rgpSuplier_SelectedIndexChanged(object sender, EventArgs e)
@@ -359,18 +447,6 @@ namespace CncApp_Final.TempFrm
         //**********************************************************************************************************************************
 
 
-        private void txbGrooveLength_EditValueChanged(object sender, EventArgs e)
-        {
-
-
-            //////CalculateCncPrice();
-
-            ////////int sheetId = (int)lkpSheetId.EditValue;
-            ////////Sheet sheet = _dbContext.Sheets.FirstOrDefault(o => o.Id == sheetId);
-
-            ////////txbCncSuggestionPrice.EditValue = (double)txbGrooveLength.EditValue * sheet.CNCPrice;
-            ////////txbCncCost.EditValue = sheet.CNCPrice;
-        }
 
 
         private void lkpMaterial_EditValueChanged(object sender, EventArgs e)
@@ -384,7 +460,6 @@ namespace CncApp_Final.TempFrm
             FillSizeByMaterialAndThickness();
 
         }
-
 
         private void lkpSheetId_EditValueChanged(object sender, EventArgs e)
         {
@@ -530,132 +605,6 @@ namespace CncApp_Final.TempFrm
         //**********************************************************************************************************************
         //**********************************************************************************************************************
 
-        private void spnSheetCount_EditValueChanged(object sender, EventArgs e)
-        {
-
-            //////CalCulateArea();
-        }
-
-        private void txbCutLength_EditValueChanged(object sender, EventArgs e)
-        {
-
-            //////txbPiceArea.EditValue =
-            //////                        (double.TryParse(txbCutLength.EditValue?.ToString(), out double length) ? length : 0d) *
-            //////                        (double.TryParse(txbCutWidth.EditValue?.ToString(), out double width) ? width : 0d)
-            //////                        / 10000d;
-
-            ////////orderDetailBindingSource.EndEdit();
-            //////CalCulateArea();
-
-            ////////Binding txbBinding = txbCutLength.DataBindings["EditValue"];
-            ////////txbCutLength.DataBindings.Clear();
-
-            ////////try
-            ////////{
-            ////////    var x = txbCutLength.EditValue;
-            ////////    _cloneDetail.CutLength = (double)x;
-            ////////    CalCulateArea();
-            ////////}
-            ////////catch (Exception ex)
-            ////////{
-            ////////    // در صورت بروز خطا، آن را مدیریت کنید
-            ////////    XtraMessageBox.Show($"خطا در به‌روزرسانی قیمت‌های ورق: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            ////////}
-            ////////finally
-            ////////{
-            ////////    // 5. اتصال مجدد LookUpEdit
-            ////////    if (txbBinding != null)
-            ////////    {
-            ////////        txbCutLength.DataBindings.Add(txbBinding);
-            ////////    }
-            ////////}
-        }
-
-        private void txbCutWidt_EditValueChanged(object sender, EventArgs e)
-        {
-
-            //////txbPiceArea.EditValue =
-            //////                        (double.TryParse(txbCutLength.EditValue?.ToString(), out double length) ? length : 0d) *
-            //////                        (double.TryParse(txbCutWidth.EditValue?.ToString(), out double width) ? width : 0d)
-            //////                        / 10000d;
-            //////CalCulateArea();
-            ////////        BindingHelper.UpdateTextEditSafely(
-            ////////txbCutLength,
-            ////////orderDetailBindingSource,
-            ////////() =>
-            ////////{
-            ////////    _cloneDetail.CutLength = 120;
-            ////////});
-            //////////orderDetailBindingSource.ResetBindings(false);
-        }
-
-        private void CalCulateArea()
-        {
-
-            ////orderDetailBindingSource.EndEdit();
-            ////int  sheetId = (int)lkpSheetId.EditValue;
-            ////Sheet sheet = _dbContext.Sheets.FirstOrDefault(o => o.Id == sheetId);
-
-
-            ////if (sheet == null)
-            ////{
-            ////    txbFinalSheetCost.EditValue = 0d;
-            ////    return;
-            ////}
-
-            ////double sheetCount = Convert.ToDouble(spnSheetCount.EditValue);
-            ////double cutLength = Convert.ToDouble(txbCutLength.EditValue);
-            ////double cutWidth = Convert.ToDouble(txbCutWidth.EditValue);
-            ////double sheetPrice = sheetCount * sheet.SheetPrice;
-
-            ////double sheetArea = sheet.Width * sheet.Length;
-            ////double cutArea = cutLength * cutWidth;
-            ////double picePrice = cutArea/10000d * sheet.PicesPrice;
-
-            ////double finalArea = (sheetCount * sheetArea + cutArea) / 10000d;
-
-            ////txbSheetArea.EditValue = finalArea;
-
-
-            ////if (_cloneDetail != null)
-            ////{
-            ////    //_cloneDetail.FinalSheetCost = finalArea * (double)txbBasePrice.EditValue;
-            ////    txbFinalSheetCost.EditValue = sheetPrice + picePrice;
-            ////    //orderDetailBindingSource.EndEdit();
-            ////}
-        }
-
-        private void CalculateSheetPrice(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CalculatePicePrice(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbSheetTotalPrice_EditValueChanged(object sender, EventArgs e)
-        {
-            //////orderDetailBindingSource.EndEdit();
-            //////if (_cloneDetail != null)
-            //////    _cloneDetail.FinalSheetCost = (double.TryParse(txbSheetTotalPrice.EditValue?.ToString(), out double length) ? length : 0d) +
-            //////                           (double.TryParse(txbPiceTotalPrice.EditValue?.ToString(), out double width) ? width : 0d);
-
-
-
-
-
-            ////////txbFinalSheetCost.EditValue = (double.TryParse(txbSheetTotalPrice.EditValue?.ToString(), out double length) ? length : 0d) +
-            ////////                        (double.TryParse(txbPiceTotalPrice.EditValue?.ToString(), out double width) ? width : 0d);
-            ////////orderDetailBindingSource.EndEdit();
-        }
-
-        private void orderDetailBindingSource_BindingComplete(object sender, BindingCompleteEventArgs e)
-        {
-
-        }
-
 
 
         //**********************************************************************************************************************
@@ -787,22 +736,23 @@ namespace CncApp_Final.TempFrm
                 DataSourceUpdateMode.OnPropertyChanged
             );
 
-            ////// ===== Text Fields =====
-            ////txbDelailName.DataBindings.Add(
-            ////    "EditValue",
-            ////    orderDetailBindingSource,
-            ////    nameof(OrderDetailsCalcModel.DetailName),
-            ////    true,
-            ////    DataSourceUpdateMode.OnPropertyChanged
-            ////);
+            // ===== Text Fields =====
+            txbDetailName.DataBindings.Add(
+                "EditValue",
+                orderDetailBindingSource,
+                nameof(OrderDetailsCalcModel.DetailName),
+                true,
+                DataSourceUpdateMode.OnPropertyChanged
+            );
 
-            ////txbDescription.DataBindings.Add(
-            ////    "EditValue",
-            ////    orderDetailBindingSource,
-            ////    nameof(OrderDetailsCalcModel.Description),
-            ////    true,
-            ////    DataSourceUpdateMode.OnPropertyChanged
-            ////);
+
+            txbDescription.DataBindings.Add(
+                "EditValue",
+                orderDetailBindingSource,
+                nameof(OrderDetailsCalcModel.Description),
+                true,
+                DataSourceUpdateMode.OnPropertyChanged
+            );
 
             // ===== READ ONLY FIELDS =====
             BindReadOnly(txbSheetTotalPrice, nameof(OrderDetailsCalcModel.SheetTotalPrice));
@@ -849,6 +799,107 @@ namespace CncApp_Final.TempFrm
             orderDetailBindingSource.ResetBindings(false);
         }
 
+        private void btnOpenFile_Click(object sender, EventArgs e)
+        {
+            string filePath = OpenDesignFile();
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                _calcModel.FilePath = filePath;
+                orderDetailBindingSource.ResetBindings(false);
+                var x = btnOpenFile.EditValue;
+            }
+            this.SelectNextControl(
+                                    this.ActiveControl,   // کنترل فعلی
+                                    true,                 // forward
+                                    true,                 // tabStopOnly
+                                    true,                 // nested
+                                    true                  // wrap
+                                );
+
+        }
+
+        private string OpenDesignFile()
+        {
+            using (var dlg = new OpenFileDialog())
+            {
+                dlg.RestoreDirectory = true;
+                dlg.Title = "انتخاب فایل";
+                dlg.Filter =
+                    "CorelDraw (*.cdr)|*.cdr|" +
+                    "AutoCAD DXF (*.dxf)|*.dxf|" +
+                    "همه فایل‌ها (*.*)|*.*";
+
+                dlg.FilterIndex = 1; // پیش‌فرض CDR
+                dlg.Multiselect = false;
+
+                if (!string.IsNullOrEmpty(_lastDirectory))
+                    dlg.InitialDirectory = _lastDirectory;
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    _lastDirectory = Path.GetDirectoryName(dlg.FileName);
+                    return dlg.FileName; // مسیر کامل + نام فایل
+                }
+            }
+
+            return null;
+        }
+
+
+        
+
+        private void SetTab(DevExpress.XtraEditors.BaseEdit ctrl, bool enable)
+        {
+            ctrl.TabStop = enable;
+            ctrl.Properties.AllowFocused = enable;
+        }
+
+        private void ApplyTabStopRules(OrderDetailsCalcModel m)
+        {
+            // ورودی‌های همیشه فعال
+            SetTab(rgpSheetType, true);
+            SetTab(lkpSheetId, true);
+            SetTab(rgpSuplier, true);
+            SetTab(txbGrooveLength, true);
+            SetTab(txbDetailName, true);
+            SetTab(txbDescription, true);
+
+            // SheetType logic
+            SetTab(spnSheetCount, m.SheetType != SheetType.Piece);
+            SetTab(txbCutLength, m.SheetType != SheetType.Full);
+            SetTab(txbCutWidth, m.SheetType != SheetType.Full);
+
+            // Supplier logic
+            SetTab(txbFinalSheetCost, m.Supplier == SupplierType.Warehouse);
+
+            // خروجی‌های محاسباتی
+            SetTab(txbSheetBasePrice, false);
+            SetTab(txbSheetTotalPrice, false);
+            SetTab(txbPiceArea, false);
+            SetTab(txbPiceBasePrice, false);
+            SetTab(txbPiceTotalPrice, false);
+            SetTab(txbCncBasePrice, false);
+            //SetTab(FinalCNCPriceByMeter, false);
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            ApplyTabStopRules(_calcModel);
+            ApplyValidationRules(_calcModel);
+            ApplyFocusColor(this);
+
+        }
+
+        private void orderDetailBindingSource_BindingComplete(object sender, BindingCompleteEventArgs e)
+        {
+
+        }
+
+        private void btnOpenFile_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

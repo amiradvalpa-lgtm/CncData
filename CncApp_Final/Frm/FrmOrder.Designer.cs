@@ -692,11 +692,12 @@ namespace CncApp_Final.Frm
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbFaDeliveryDate.EditValue = "1404/09/11";
             this.txbFaDeliveryDate.EnterMoveNextControl = true;
-            this.txbFaDeliveryDate.Location = new System.Drawing.Point(530, 99);
+            this.txbFaDeliveryDate.Location = new System.Drawing.Point(568, 99);
             this.txbFaDeliveryDate.Name = "txbFaDeliveryDate";
             this.txbFaDeliveryDate.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbFaDeliveryDate.Properties.Appearance.Options.UseFont = true;
-            this.txbFaDeliveryDate.Size = new System.Drawing.Size(120, 36);
+            this.txbFaDeliveryDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txbFaDeliveryDate.Size = new System.Drawing.Size(82, 36);
             this.txbFaDeliveryDate.TabIndex = 2;
             // 
             // txbFaOrderDate
@@ -705,11 +706,12 @@ namespace CncApp_Final.Frm
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbFaOrderDate.EditValue = "1404/09/11";
             this.txbFaOrderDate.EnterMoveNextControl = true;
-            this.txbFaOrderDate.Location = new System.Drawing.Point(530, 57);
+            this.txbFaOrderDate.Location = new System.Drawing.Point(568, 57);
             this.txbFaOrderDate.Name = "txbFaOrderDate";
             this.txbFaOrderDate.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbFaOrderDate.Properties.Appearance.Options.UseFont = true;
-            this.txbFaOrderDate.Size = new System.Drawing.Size(120, 36);
+            this.txbFaOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txbFaOrderDate.Size = new System.Drawing.Size(82, 36);
             this.txbFaOrderDate.TabIndex = 1;
             // 
             // txbDescription
@@ -1263,10 +1265,6 @@ namespace CncApp_Final.Frm
             this.repositoryItemRibbonSearchEdit7.Name = "repositoryItemRibbonSearchEdit7";
             this.repositoryItemRibbonSearchEdit7.NullText = "Search";
             // 
-            // defaultLookAndFeel1
-            // 
-            this.defaultLookAndFeel1.LookAndFeel.SkinName = "WXI";
-            // 
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
@@ -1297,6 +1295,7 @@ namespace CncApp_Final.Frm
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar1;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmOrder_FormClosing);
             this.Load += new System.EventHandler(this.FrmFacture_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnDeleteRow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCustomer.Properties)).EndInit();

@@ -136,6 +136,10 @@ namespace CncApp_Final.Models
             }
         }
 
+        public string DetailName { get; set; }
+        public string FilePath { get; set; }
+        public string Description { get; set; }
+
         public CncPricingMode CncPricingMode { get; set; }
         #endregion
 
@@ -271,6 +275,10 @@ namespace CncApp_Final.Models
             FinalSheetCost = source.FinalSheetCost;
             CncCost = source.CncCost;
 
+            DetailName = source.DetailName;
+            FilePath = source.FilePath;
+            Description = source.Description;
+
             IsFinalSheetCostUserEdited = true;
             IsCncCostUserEdited = true;
         }
@@ -286,6 +294,10 @@ namespace CncApp_Final.Models
 
             target.FinalSheetCost = FinalSheetCost;
             target.CncCost = CncCost;
+
+            target.DetailName = DetailName;
+            target.FilePath = FilePath;
+            target.Description = Description;
         }
         #endregion
     }

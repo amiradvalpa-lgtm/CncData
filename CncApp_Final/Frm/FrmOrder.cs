@@ -3,8 +3,11 @@ using CncApp_Final.Data;
 using CncApp_Final.Entities;
 using CncApp_Final.Frm;
 using CncApp_Final.Helper; // فرض می‌کنیم این فضای نام برای کلاس‌های کمکی است.
+using CncApp_Final.Helpers;
 using DevExpress.Utils;
 using DevExpress.XtraEditors;
+using DevExpress.XtraEditors.DXErrorProvider;
+using DevExpress.XtraExport.Helpers;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
@@ -20,7 +23,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using DevExpress.XtraEditors.DXErrorProvider;
 
 
 namespace CncApp_Final.Frm
@@ -138,8 +140,13 @@ namespace CncApp_Final.Frm
 
         private void FrmFacture_Load(object sender, EventArgs e)
         {
-            
+            GridLayoutHelper.LoadLayout(
+                                        _dbContext,
+                                        grdvOrderDetails,
+                                        1,
+                                        this.Name);
         }
+       
 
 
 
@@ -399,36 +406,16 @@ namespace CncApp_Final.Frm
 
         private void OpenOrderDetailForEdit(OrderDetails originalDetail)
         {
-            // 1. فرم فرعی را با شیء اصلی (ردیابی شده) باز می‌کنیم تا Clone در داخل فرم فرعی ایجاد شود.
-            // فرض می‌کنیم FrmOrderDetails یک سازنده public FrmOrderDetails(OrderDetails detailToClone, AppDbContext dbContext) دارد
             using (CncApp_Final.TempFrm.FrmOrderDetails frmOrderDetailEdit = new CncApp_Final.TempFrm.FrmOrderDetails(originalDetail, _dbContext))
             {
                 DialogResult result = frmOrderDetailEdit.ShowDialog();
 
                 if (result == DialogResult.OK)
                 {
-                    OrderDetails finalClone = frmOrderDetailEdit.GetClonedDetail();
-
-                    // 🔑 اعمال منطق ویرایش: کپی Properties از Clone به Original
-                    // از آنجایی که ID اصلی حفظ شده، با کپی Properties، EF حالت Original را به Modified تغییر می‌دهد.
-
-                    // کپی دستی Propertyهای اصلی (برای جلوگیری از کپی ناخواسته OrderId و Id)
-                    originalDetail.DetailName = finalClone.DetailName;
-                    originalDetail.FilePath = finalClone.FilePath;
-                    originalDetail.Description = finalClone.Description;
-                    originalDetail.SheetId = finalClone.SheetId;
-                    originalDetail.Supplier = finalClone.Supplier;
-                    originalDetail.CutLength = finalClone.CutLength;
-                    originalDetail.CutWidth = finalClone.CutWidth;
-                    originalDetail.FinalSheetCost = finalClone.FinalSheetCost;
-                    originalDetail.GrooveLength = finalClone.GrooveLength;
-                    originalDetail.CncCost = finalClone.CncCost;
-
                     // 3. رفرش DataGrid و فیلدهای محاسباتی Order
                     orderDetailsBindingSource.ResetBindings(false);
                     orderBindingSource.ResetBindings(false); // برای به‌روزرسانی TotalAmount در فرم مادر
                 }
-                // اگر Cancel شد، هیچ اتفاقی نمی‌افتد و Clone دور ریخته می‌شود.
             }
         }
 
@@ -454,8 +441,6 @@ namespace CncApp_Final.Frm
             }
         }
 
-        // FrmOrder.cs
-
         private void btnNewDetail_Click(object sender, EventArgs e)
         {
             Order currentOrder = orderBindingSource.Current as Order;
@@ -479,17 +464,15 @@ namespace CncApp_Final.Frm
 
                 if (result == DialogResult.OK)
                 {
-                    OrderDetails finalClone = frmOrderDetailNew.GetClonedDetail();
-
                     // 🔑 اعمال منطق افزودن جدید: تنظیم Id = 0 و افزودن به Collection اصلی
                     // این اطمینان می‌دهد که EF آن را به عنوان یک ردیف جدید در دیتابیس درج کند.
-                    finalClone.Id = 0;
+                    newDetail.Id = 0;
 
                     // اگر OrderId از ابتدا ست نشده بود، اینجا ست شود:
-                    finalClone.OrderId = currentOrder.Id;
+                    newDetail.OrderId = currentOrder.Id;
 
                     // افزودن به Collection ناوبری Order اصلی
-                    currentOrder.OrderDetails.Add(finalClone);
+                    currentOrder.OrderDetails.Add(newDetail);
 
                     // برای اینکه DataGrid و فیلدهای محاسباتی Order به‌روز شوند:
                     orderDetailsBindingSource.ResetBindings(false);
@@ -503,6 +486,13 @@ namespace CncApp_Final.Frm
             
         }
 
-        
+        private void FrmOrder_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            GridLayoutHelper.SaveLayout(
+                                        _dbContext,
+                                        grdvOrderDetails,
+                                        1,
+                                        this.Name);
+        }
     }
 }

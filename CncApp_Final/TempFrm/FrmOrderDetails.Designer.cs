@@ -30,6 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmOrderDetails));
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule2 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             this.lkpMaterial = new DevExpress.XtraEditors.LookUpEdit();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,37 +71,39 @@
             this.txbPiceArea = new DevExpress.XtraEditors.ButtonEdit();
             this.label11 = new System.Windows.Forms.Label();
             this.txbSheetCount = new DevExpress.XtraEditors.ButtonEdit();
+            this.orderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
-            this.txbCncCost = new DevExpress.XtraEditors.TextEdit();
-            this.txbCncBasePrice = new DevExpress.XtraEditors.ButtonEdit();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txbGrooveLength = new DevExpress.XtraEditors.TextEdit();
-            this.label22 = new System.Windows.Forms.Label();
+            this.groupControl8 = new DevExpress.XtraEditors.GroupControl();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txbCNCPriceBySheet = new DevExpress.XtraEditors.ButtonEdit();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txbFinalCNCPriceBySheet = new DevExpress.XtraEditors.ButtonEdit();
+            this.txbCNCPriceByPice = new DevExpress.XtraEditors.ButtonEdit();
+            this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
             this.label13 = new System.Windows.Forms.Label();
+            this.txbCncBasePrice = new DevExpress.XtraEditors.ButtonEdit();
+            this.label22 = new System.Windows.Forms.Label();
+            this.txbGrooveLength = new DevExpress.XtraEditors.TextEdit();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txbFinalCNCPriceByMeter = new DevExpress.XtraEditors.ButtonEdit();
+            this.txbCncCost = new DevExpress.XtraEditors.TextEdit();
+            this.label9 = new System.Windows.Forms.Label();
             this.btnOk = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.label12 = new System.Windows.Forms.Label();
-            this.txbDelailName = new DevExpress.XtraEditors.TextEdit();
-            this.btnOpenFile = new DevExpress.XtraEditors.SimpleButton();
+            this.txbDetailName = new DevExpress.XtraEditors.TextEdit();
             this.txbDescription = new DevExpress.XtraEditors.TextEdit();
             this.label14 = new System.Windows.Forms.Label();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
+            this.btnOpenFile = new DevExpress.XtraEditors.ButtonEdit();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
-            this.label23 = new System.Windows.Forms.Label();
-            this.txbCNCPriceBySheet = new DevExpress.XtraEditors.ButtonEdit();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
-            this.groupControl8 = new DevExpress.XtraEditors.GroupControl();
-            this.txbFinalCNCPriceBySheet = new DevExpress.XtraEditors.ButtonEdit();
-            this.txbFinalCNCPriceByMeter = new DevExpress.XtraEditors.ButtonEdit();
-            this.txbCNCPriceByPice = new DevExpress.XtraEditors.ButtonEdit();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.btnRecalculate = new DevExpress.XtraEditors.SimpleButton();
-            this.orderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             this.sheetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.lkpMaterial.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpThickness.Properties)).BeginInit();
@@ -119,27 +128,29 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetBasePrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPiceArea.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetCount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txbCncCost.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).BeginInit();
+            this.groupControl8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txbCNCPriceBySheet.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbFinalCNCPriceBySheet.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbCNCPriceByPice.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
+            this.groupControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txbCncBasePrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbGrooveLength.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbDelailName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbFinalCNCPriceByMeter.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbCncCost.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbDetailName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).BeginInit();
             this.groupControl3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOpenFile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txbCNCPriceBySheet.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
-            this.groupControl7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).BeginInit();
-            this.groupControl8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txbFinalCNCPriceBySheet.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbFinalCNCPriceByMeter.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbCNCPriceByPice.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -202,7 +213,7 @@
             this.lkpThickness.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lkpThickness.Properties.DropDownItemHeight = 25;
-            this.lkpThickness.Properties.NullText = "؟";
+            this.lkpThickness.Properties.NullText = "  ؟";
             this.lkpThickness.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
             this.lkpThickness.Properties.ShowHeader = false;
             this.lkpThickness.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -253,7 +264,6 @@
             this.txbCutLength.Properties.UseMaskAsDisplayFormat = true;
             this.txbCutLength.Size = new System.Drawing.Size(73, 36);
             this.txbCutLength.TabIndex = 3;
-            this.txbCutLength.EditValueChanged += new System.EventHandler(this.txbCutLength_EditValueChanged);
             // 
             // txbCutWidth
             // 
@@ -271,7 +281,6 @@
             this.txbCutWidth.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.txbCutWidth.Size = new System.Drawing.Size(76, 36);
             this.txbCutWidth.TabIndex = 4;
-            this.txbCutWidth.EditValueChanged += new System.EventHandler(this.txbCutWidt_EditValueChanged);
             // 
             // label6
             // 
@@ -389,7 +398,6 @@
             this.spnSheetCount.Properties.UseMaskAsDisplayFormat = true;
             this.spnSheetCount.Size = new System.Drawing.Size(63, 36);
             this.spnSheetCount.TabIndex = 2;
-            this.spnSheetCount.EditValueChanged += new System.EventHandler(this.spnSheetCount_EditValueChanged);
             // 
             // label15
             // 
@@ -440,7 +448,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CNCPrice", "قیمت خدمات CNC", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SheetSize", "سایز ورق", 5, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.lkpSheetId.Properties.DropDownItemHeight = 25;
-            this.lkpSheetId.Properties.NullText = "؟";
+            this.lkpSheetId.Properties.NullText = "  ؟";
             this.lkpSheetId.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
             this.lkpSheetId.Properties.PopupWidth = 60;
             this.lkpSheetId.Properties.ShowHeader = false;
@@ -513,15 +521,17 @@
             this.txbPiceTotalPrice.Properties.AllowFocused = false;
             this.txbPiceTotalPrice.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbPiceTotalPrice.Properties.Appearance.Options.UseFont = true;
+            this.txbPiceTotalPrice.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbPiceTotalPrice.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txbPiceTotalPrice.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.txbPiceTotalPrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txbPiceTotalPrice.Properties.MaskSettings.Set("mask", "n0");
+            this.txbPiceTotalPrice.Properties.ReadOnly = true;
             this.txbPiceTotalPrice.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txbPiceTotalPrice.Properties.UseMaskAsDisplayFormat = true;
             this.txbPiceTotalPrice.Size = new System.Drawing.Size(100, 36);
             this.txbPiceTotalPrice.TabIndex = 5;
             this.txbPiceTotalPrice.TabStop = false;
-            this.txbPiceTotalPrice.EditValueChanged += new System.EventHandler(this.txbSheetTotalPrice_EditValueChanged);
             // 
             // txbSheetTotalPrice
             // 
@@ -531,15 +541,17 @@
             this.txbSheetTotalPrice.Properties.AllowFocused = false;
             this.txbSheetTotalPrice.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbSheetTotalPrice.Properties.Appearance.Options.UseFont = true;
+            this.txbSheetTotalPrice.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbSheetTotalPrice.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txbSheetTotalPrice.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.txbSheetTotalPrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txbSheetTotalPrice.Properties.MaskSettings.Set("mask", "n0");
+            this.txbSheetTotalPrice.Properties.ReadOnly = true;
             this.txbSheetTotalPrice.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txbSheetTotalPrice.Properties.UseMaskAsDisplayFormat = true;
             this.txbSheetTotalPrice.Size = new System.Drawing.Size(100, 36);
             this.txbSheetTotalPrice.TabIndex = 5;
             this.txbSheetTotalPrice.TabStop = false;
-            this.txbSheetTotalPrice.EditValueChanged += new System.EventHandler(this.txbSheetTotalPrice_EditValueChanged);
             // 
             // txbPiceBasePrice
             // 
@@ -549,15 +561,17 @@
             this.txbPiceBasePrice.Properties.AllowFocused = false;
             this.txbPiceBasePrice.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbPiceBasePrice.Properties.Appearance.Options.UseFont = true;
+            this.txbPiceBasePrice.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbPiceBasePrice.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txbPiceBasePrice.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.txbPiceBasePrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txbPiceBasePrice.Properties.MaskSettings.Set("mask", "n0");
+            this.txbPiceBasePrice.Properties.ReadOnly = true;
             this.txbPiceBasePrice.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txbPiceBasePrice.Properties.UseMaskAsDisplayFormat = true;
             this.txbPiceBasePrice.Size = new System.Drawing.Size(100, 36);
             this.txbPiceBasePrice.TabIndex = 5;
             this.txbPiceBasePrice.TabStop = false;
-            this.txbPiceBasePrice.EditValueChanged += new System.EventHandler(this.CalculatePicePrice);
             // 
             // txbSheetBasePrice
             // 
@@ -567,9 +581,12 @@
             this.txbSheetBasePrice.Properties.AllowFocused = false;
             this.txbSheetBasePrice.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbSheetBasePrice.Properties.Appearance.Options.UseFont = true;
+            this.txbSheetBasePrice.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbSheetBasePrice.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txbSheetBasePrice.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.txbSheetBasePrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txbSheetBasePrice.Properties.MaskSettings.Set("mask", "n0");
+            this.txbSheetBasePrice.Properties.ReadOnly = true;
             this.txbSheetBasePrice.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txbSheetBasePrice.Properties.UseMaskAsDisplayFormat = true;
             this.txbSheetBasePrice.Size = new System.Drawing.Size(100, 36);
@@ -643,13 +660,15 @@
             this.txbPiceArea.Properties.AllowFocused = false;
             this.txbPiceArea.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbPiceArea.Properties.Appearance.Options.UseFont = true;
+            this.txbPiceArea.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbPiceArea.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txbPiceArea.Properties.DisplayFormat.FormatString = "#,##0.0    مترمربع";
             this.txbPiceArea.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.txbPiceArea.Properties.ReadOnly = true;
             this.txbPiceArea.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.txbPiceArea.Size = new System.Drawing.Size(114, 36);
             this.txbPiceArea.TabIndex = 0;
             this.txbPiceArea.TabStop = false;
-            this.txbPiceArea.EditValueChanged += new System.EventHandler(this.CalculatePicePrice);
             // 
             // label11
             // 
@@ -673,6 +692,8 @@
             this.txbSheetCount.Properties.AllowFocused = false;
             this.txbSheetCount.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbSheetCount.Properties.Appearance.Options.UseFont = true;
+            this.txbSheetCount.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbSheetCount.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txbSheetCount.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.txbSheetCount.Properties.DisplayFormat.FormatString = "#,###         ورق کامل";
             this.txbSheetCount.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -681,6 +702,10 @@
             this.txbSheetCount.Size = new System.Drawing.Size(114, 36);
             this.txbSheetCount.TabIndex = 0;
             this.txbSheetCount.TabStop = false;
+            // 
+            // orderDetailBindingSource
+            // 
+            this.orderDetailBindingSource.DataSource = typeof(CncApp_Final.Entities.OrderDetails);
             // 
             // label5
             // 
@@ -704,6 +729,230 @@
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "مشخصات برش";
             // 
+            // groupControl8
+            // 
+            this.groupControl8.Controls.Add(this.label24);
+            this.groupControl8.Controls.Add(this.txbCNCPriceBySheet);
+            this.groupControl8.Controls.Add(this.label25);
+            this.groupControl8.Controls.Add(this.label23);
+            this.groupControl8.Controls.Add(this.txbFinalCNCPriceBySheet);
+            this.groupControl8.Controls.Add(this.txbCNCPriceByPice);
+            this.groupControl8.Location = new System.Drawing.Point(10, 85);
+            this.groupControl8.Name = "groupControl8";
+            this.groupControl8.ShowCaption = false;
+            this.groupControl8.Size = new System.Drawing.Size(449, 48);
+            this.groupControl8.TabIndex = 1;
+            this.groupControl8.Text = "groupControl8";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label24.Location = new System.Drawing.Point(371, 16);
+            this.label24.Name = "label24";
+            this.label24.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label24.Size = new System.Drawing.Size(48, 13);
+            this.label24.TabIndex = 5;
+            this.label24.Text = "ورق تکه:";
+            // 
+            // txbCNCPriceBySheet
+            // 
+            this.txbCNCPriceBySheet.EditValue = "12,3456";
+            this.txbCNCPriceBySheet.Location = new System.Drawing.Point(158, 5);
+            this.txbCNCPriceBySheet.Name = "txbCNCPriceBySheet";
+            this.txbCNCPriceBySheet.Properties.AllowFocused = false;
+            this.txbCNCPriceBySheet.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbCNCPriceBySheet.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbCNCPriceBySheet.Properties.Appearance.Options.UseFont = true;
+            this.txbCNCPriceBySheet.Properties.Appearance.Options.UseForeColor = true;
+            this.txbCNCPriceBySheet.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbCNCPriceBySheet.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txbCNCPriceBySheet.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txbCNCPriceBySheet.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txbCNCPriceBySheet.Properties.MaskSettings.Set("mask", "n0");
+            this.txbCNCPriceBySheet.Properties.ReadOnly = true;
+            this.txbCNCPriceBySheet.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.txbCNCPriceBySheet.Properties.UseMaskAsDisplayFormat = true;
+            this.txbCNCPriceBySheet.Size = new System.Drawing.Size(69, 36);
+            this.txbCNCPriceBySheet.TabIndex = 5;
+            this.txbCNCPriceBySheet.TabStop = false;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label25.Location = new System.Drawing.Point(233, 16);
+            this.label25.Name = "label25";
+            this.label25.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label25.Size = new System.Drawing.Size(55, 13);
+            this.label25.TabIndex = 5;
+            this.label25.Text = "ورق کامل:";
+            // 
+            // label23
+            // 
+            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label23.Location = new System.Drawing.Point(87, 15);
+            this.label23.Name = "label23";
+            this.label23.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label23.Size = new System.Drawing.Size(65, 13);
+            this.label23.TabIndex = 5;
+            this.label23.Text = "قیمت ورقی:";
+            // 
+            // txbFinalCNCPriceBySheet
+            // 
+            this.txbFinalCNCPriceBySheet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbFinalCNCPriceBySheet.EditValue = 12345678D;
+            this.txbFinalCNCPriceBySheet.Location = new System.Drawing.Point(5, 5);
+            this.txbFinalCNCPriceBySheet.Name = "txbFinalCNCPriceBySheet";
+            this.txbFinalCNCPriceBySheet.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbFinalCNCPriceBySheet.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbFinalCNCPriceBySheet.Properties.Appearance.Options.UseFont = true;
+            this.txbFinalCNCPriceBySheet.Properties.Appearance.Options.UseForeColor = true;
+            this.txbFinalCNCPriceBySheet.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbFinalCNCPriceBySheet.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txbFinalCNCPriceBySheet.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txbFinalCNCPriceBySheet.Properties.MaskSettings.Set("mask", "n0");
+            this.txbFinalCNCPriceBySheet.Properties.ReadOnly = true;
+            this.txbFinalCNCPriceBySheet.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.txbFinalCNCPriceBySheet.Properties.UseMaskAsDisplayFormat = true;
+            this.txbFinalCNCPriceBySheet.Size = new System.Drawing.Size(77, 36);
+            this.txbFinalCNCPriceBySheet.TabIndex = 7;
+            this.txbFinalCNCPriceBySheet.TabStop = false;
+            // 
+            // txbCNCPriceByPice
+            // 
+            this.txbCNCPriceByPice.EditValue = 999D;
+            this.txbCNCPriceByPice.Location = new System.Drawing.Point(294, 6);
+            this.txbCNCPriceByPice.Name = "txbCNCPriceByPice";
+            this.txbCNCPriceByPice.Properties.AllowFocused = false;
+            this.txbCNCPriceByPice.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbCNCPriceByPice.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbCNCPriceByPice.Properties.Appearance.Options.UseFont = true;
+            this.txbCNCPriceByPice.Properties.Appearance.Options.UseForeColor = true;
+            this.txbCNCPriceByPice.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbCNCPriceByPice.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txbCNCPriceByPice.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txbCNCPriceByPice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txbCNCPriceByPice.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
+            this.txbCNCPriceByPice.Properties.MaskSettings.Set("mask", "n0");
+            this.txbCNCPriceByPice.Properties.ReadOnly = true;
+            this.txbCNCPriceByPice.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.txbCNCPriceByPice.Properties.UseMaskAsDisplayFormat = true;
+            this.txbCNCPriceByPice.Size = new System.Drawing.Size(72, 36);
+            this.txbCNCPriceByPice.TabIndex = 0;
+            this.txbCNCPriceByPice.TabStop = false;
+            // 
+            // groupControl7
+            // 
+            this.groupControl7.Controls.Add(this.label13);
+            this.groupControl7.Controls.Add(this.txbCncBasePrice);
+            this.groupControl7.Controls.Add(this.label22);
+            this.groupControl7.Controls.Add(this.txbGrooveLength);
+            this.groupControl7.Controls.Add(this.label8);
+            this.groupControl7.Controls.Add(this.txbFinalCNCPriceByMeter);
+            this.groupControl7.Location = new System.Drawing.Point(10, 32);
+            this.groupControl7.Name = "groupControl7";
+            this.groupControl7.ShowCaption = false;
+            this.groupControl7.Size = new System.Drawing.Size(449, 46);
+            this.groupControl7.TabIndex = 0;
+            this.groupControl7.Text = "groupControl7";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label13.Location = new System.Drawing.Point(372, 15);
+            this.label13.Name = "label13";
+            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label13.Size = new System.Drawing.Size(54, 13);
+            this.label13.TabIndex = 5;
+            this.label13.Text = "طول برش:";
+            // 
+            // txbCncBasePrice
+            // 
+            this.txbCncBasePrice.EditValue = "12,3456";
+            this.txbCncBasePrice.Location = new System.Drawing.Point(158, 5);
+            this.txbCncBasePrice.Name = "txbCncBasePrice";
+            this.txbCncBasePrice.Properties.AllowFocused = false;
+            this.txbCncBasePrice.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbCncBasePrice.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbCncBasePrice.Properties.Appearance.Options.UseFont = true;
+            this.txbCncBasePrice.Properties.Appearance.Options.UseForeColor = true;
+            this.txbCncBasePrice.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbCncBasePrice.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txbCncBasePrice.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.txbCncBasePrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txbCncBasePrice.Properties.MaskSettings.Set("mask", "n0");
+            this.txbCncBasePrice.Properties.ReadOnly = true;
+            this.txbCncBasePrice.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.txbCncBasePrice.Properties.UseMaskAsDisplayFormat = true;
+            this.txbCncBasePrice.Size = new System.Drawing.Size(69, 36);
+            this.txbCncBasePrice.TabIndex = 5;
+            this.txbCncBasePrice.TabStop = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label22.Location = new System.Drawing.Point(234, 15);
+            this.label22.Name = "label22";
+            this.label22.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label22.Size = new System.Drawing.Size(55, 13);
+            this.label22.TabIndex = 5;
+            this.label22.Text = "قیمت پایه:";
+            // 
+            // txbGrooveLength
+            // 
+            this.txbGrooveLength.EditValue = 999D;
+            this.txbGrooveLength.EnterMoveNextControl = true;
+            this.txbGrooveLength.Location = new System.Drawing.Point(294, 5);
+            this.txbGrooveLength.Name = "txbGrooveLength";
+            this.txbGrooveLength.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbGrooveLength.Properties.Appearance.Options.UseFont = true;
+            this.txbGrooveLength.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txbGrooveLength.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
+            this.txbGrooveLength.Properties.MaskSettings.Set("mask", "n0");
+            this.txbGrooveLength.Properties.UseMaskAsDisplayFormat = true;
+            this.txbGrooveLength.Size = new System.Drawing.Size(72, 36);
+            this.txbGrooveLength.TabIndex = 0;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label8.Location = new System.Drawing.Point(87, 15);
+            this.label8.Name = "label8";
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label8.Size = new System.Drawing.Size(65, 13);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "قیمت متری:";
+            // 
+            // txbFinalCNCPriceByMeter
+            // 
+            this.txbFinalCNCPriceByMeter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbFinalCNCPriceByMeter.EditValue = 12345678D;
+            this.txbFinalCNCPriceByMeter.Location = new System.Drawing.Point(5, 5);
+            this.txbFinalCNCPriceByMeter.Name = "txbFinalCNCPriceByMeter";
+            this.txbFinalCNCPriceByMeter.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbFinalCNCPriceByMeter.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbFinalCNCPriceByMeter.Properties.Appearance.Options.UseFont = true;
+            this.txbFinalCNCPriceByMeter.Properties.Appearance.Options.UseForeColor = true;
+            this.txbFinalCNCPriceByMeter.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbFinalCNCPriceByMeter.Properties.AppearanceReadOnly.Options.UseForeColor = true;
+            this.txbFinalCNCPriceByMeter.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txbFinalCNCPriceByMeter.Properties.MaskSettings.Set("mask", "n0");
+            this.txbFinalCNCPriceByMeter.Properties.ReadOnly = true;
+            this.txbFinalCNCPriceByMeter.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.txbFinalCNCPriceByMeter.Properties.UseMaskAsDisplayFormat = true;
+            this.txbFinalCNCPriceByMeter.Size = new System.Drawing.Size(77, 36);
+            this.txbFinalCNCPriceByMeter.TabIndex = 7;
+            this.txbFinalCNCPriceByMeter.TabStop = false;
+            // 
             // txbCncCost
             // 
             this.txbCncCost.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -720,25 +969,6 @@
             this.txbCncCost.Size = new System.Drawing.Size(77, 36);
             this.txbCncCost.TabIndex = 1;
             // 
-            // txbCncBasePrice
-            // 
-            this.txbCncBasePrice.EditValue = "12,3456";
-            this.txbCncBasePrice.Location = new System.Drawing.Point(158, 5);
-            this.txbCncBasePrice.Name = "txbCncBasePrice";
-            this.txbCncBasePrice.Properties.AllowFocused = false;
-            this.txbCncBasePrice.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbCncBasePrice.Properties.Appearance.Options.UseFont = true;
-            this.txbCncBasePrice.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.txbCncBasePrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txbCncBasePrice.Properties.MaskSettings.Set("mask", "n0");
-            this.txbCncBasePrice.Properties.ReadOnly = true;
-            this.txbCncBasePrice.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.txbCncBasePrice.Properties.UseMaskAsDisplayFormat = true;
-            this.txbCncBasePrice.Size = new System.Drawing.Size(69, 36);
-            this.txbCncBasePrice.TabIndex = 5;
-            this.txbCncBasePrice.TabStop = false;
-            this.txbCncBasePrice.EditValueChanged += new System.EventHandler(this.txbSheetTotalPrice_EditValueChanged);
-            // 
             // label9
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -751,56 +981,6 @@
             this.label9.TabIndex = 5;
             this.label9.Text = "هزینه CNC :";
             // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label8.Location = new System.Drawing.Point(87, 15);
-            this.label8.Name = "label8";
-            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label8.Size = new System.Drawing.Size(65, 13);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "قیمت متری:";
-            // 
-            // txbGrooveLength
-            // 
-            this.txbGrooveLength.EditValue = 999D;
-            this.txbGrooveLength.EnterMoveNextControl = true;
-            this.txbGrooveLength.Location = new System.Drawing.Point(294, 5);
-            this.txbGrooveLength.Name = "txbGrooveLength";
-            this.txbGrooveLength.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbGrooveLength.Properties.Appearance.Options.UseFont = true;
-            this.txbGrooveLength.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txbGrooveLength.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.txbGrooveLength.Properties.MaskSettings.Set("mask", "n0");
-            this.txbGrooveLength.Properties.UseMaskAsDisplayFormat = true;
-            this.txbGrooveLength.Size = new System.Drawing.Size(72, 36);
-            this.txbGrooveLength.TabIndex = 0;
-            this.txbGrooveLength.EditValueChanged += new System.EventHandler(this.txbGrooveLength_EditValueChanged);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label22.Location = new System.Drawing.Point(234, 15);
-            this.label22.Name = "label22";
-            this.label22.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label22.Size = new System.Drawing.Size(55, 13);
-            this.label22.TabIndex = 5;
-            this.label22.Text = "قیمت پایه:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label13.Location = new System.Drawing.Point(372, 15);
-            this.label13.Name = "label13";
-            this.label13.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label13.Size = new System.Drawing.Size(54, 13);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "طول برش:";
-            // 
             // btnOk
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -808,10 +988,10 @@
             this.btnOk.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btnOk.ImageOptions.ImageToTextIndent = 5;
             this.btnOk.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.btnOk.Location = new System.Drawing.Point(257, 493);
+            this.btnOk.Location = new System.Drawing.Point(257, 495);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(91, 28);
-            this.btnOk.TabIndex = 3;
+            this.btnOk.TabIndex = 5;
             this.btnOk.Text = "&Ok";
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -822,10 +1002,10 @@
             this.btnCancel.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btnCancel.ImageOptions.ImageToTextIndent = 5;
             this.btnCancel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.btnCancel.Location = new System.Drawing.Point(37, 493);
+            this.btnCancel.Location = new System.Drawing.Point(37, 495);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 28);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "&Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
@@ -841,29 +1021,20 @@
             this.label12.TabIndex = 5;
             this.label12.Text = "عنوان سفارش:";
             // 
-            // txbDelailName
+            // txbDetailName
             // 
-            this.txbDelailName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txbDetailName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbDelailName.EnterMoveNextControl = true;
-            this.txbDelailName.Location = new System.Drawing.Point(106, 35);
-            this.txbDelailName.Name = "txbDelailName";
-            this.txbDelailName.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbDelailName.Properties.Appearance.Options.UseFont = true;
-            this.txbDelailName.Size = new System.Drawing.Size(273, 36);
-            this.txbDelailName.TabIndex = 0;
-            // 
-            // btnOpenFile
-            // 
-            this.btnOpenFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnOpenFile.ImageOptions.Image")));
-            this.btnOpenFile.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
-            this.btnOpenFile.ImageOptions.ImageToTextIndent = 5;
-            this.btnOpenFile.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.btnOpenFile.Location = new System.Drawing.Point(21, 35);
-            this.btnOpenFile.Name = "btnOpenFile";
-            this.btnOpenFile.Size = new System.Drawing.Size(65, 36);
-            this.btnOpenFile.TabIndex = 1;
-            this.btnOpenFile.Text = "فایل";
+            this.txbDetailName.EnterMoveNextControl = true;
+            this.txbDetailName.Location = new System.Drawing.Point(106, 35);
+            this.txbDetailName.Name = "txbDetailName";
+            this.txbDetailName.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbDetailName.Properties.Appearance.Options.UseFont = true;
+            this.txbDetailName.Size = new System.Drawing.Size(273, 36);
+            this.txbDetailName.TabIndex = 0;
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "عنوان سفارش را وارد کنید";
+            this.dxValidationProvider1.SetValidationRule(this.txbDetailName, conditionValidationRule1);
             // 
             // txbDescription
             // 
@@ -891,16 +1062,36 @@
             // 
             // groupControl3
             // 
-            this.groupControl3.Controls.Add(this.txbDelailName);
             this.groupControl3.Controls.Add(this.btnOpenFile);
+            this.groupControl3.Controls.Add(this.txbDetailName);
             this.groupControl3.Controls.Add(this.txbDescription);
             this.groupControl3.Controls.Add(this.label12);
             this.groupControl3.Controls.Add(this.label14);
             this.groupControl3.Location = new System.Drawing.Point(10, 364);
             this.groupControl3.Name = "groupControl3";
             this.groupControl3.Size = new System.Drawing.Size(470, 123);
-            this.groupControl3.TabIndex = 2;
+            this.groupControl3.TabIndex = 4;
             this.groupControl3.Text = "مشخصات سفارش";
+            // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderDetailBindingSource, "FilePath", true));
+            this.btnOpenFile.Location = new System.Drawing.Point(25, 35);
+            this.btnOpenFile.MinimumSize = new System.Drawing.Size(60, 36);
+            this.btnOpenFile.Name = "btnOpenFile";
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions1.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            editorButtonImageOptions1.ImageToTextIndent = 5;
+            this.btnOpenFile.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "فایل", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnOpenFile.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnOpenFile.Size = new System.Drawing.Size(75, 36);
+            this.btnOpenFile.TabIndex = 1;
+            conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule2.ErrorText = "فایل مربوطه را انتخاب کنید";
+            this.dxValidationProvider1.SetValidationRule(this.btnOpenFile, conditionValidationRule2);
+            this.btnOpenFile.EditValueChanged += new System.EventHandler(this.btnOpenFile_EditValueChanged);
+            this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
             // groupControl6
             // 
@@ -911,147 +1102,8 @@
             this.groupControl6.Location = new System.Drawing.Point(10, 191);
             this.groupControl6.Name = "groupControl6";
             this.groupControl6.Size = new System.Drawing.Size(470, 80);
-            this.groupControl6.TabIndex = 6;
+            this.groupControl6.TabIndex = 2;
             this.groupControl6.Text = "قیمت نهایی";
-            // 
-            // label23
-            // 
-            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label23.Location = new System.Drawing.Point(87, 15);
-            this.label23.Name = "label23";
-            this.label23.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label23.Size = new System.Drawing.Size(65, 13);
-            this.label23.TabIndex = 5;
-            this.label23.Text = "قیمت ورقی:";
-            // 
-            // txbCNCPriceBySheet
-            // 
-            this.txbCNCPriceBySheet.EditValue = "12,3456";
-            this.txbCNCPriceBySheet.Location = new System.Drawing.Point(158, 5);
-            this.txbCNCPriceBySheet.Name = "txbCNCPriceBySheet";
-            this.txbCNCPriceBySheet.Properties.AllowFocused = false;
-            this.txbCNCPriceBySheet.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbCNCPriceBySheet.Properties.Appearance.Options.UseFont = true;
-            this.txbCNCPriceBySheet.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.txbCNCPriceBySheet.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txbCNCPriceBySheet.Properties.MaskSettings.Set("mask", "n0");
-            this.txbCNCPriceBySheet.Properties.ReadOnly = true;
-            this.txbCNCPriceBySheet.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.txbCNCPriceBySheet.Properties.UseMaskAsDisplayFormat = true;
-            this.txbCNCPriceBySheet.Size = new System.Drawing.Size(69, 36);
-            this.txbCNCPriceBySheet.TabIndex = 5;
-            this.txbCNCPriceBySheet.TabStop = false;
-            this.txbCNCPriceBySheet.EditValueChanged += new System.EventHandler(this.txbSheetTotalPrice_EditValueChanged);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label24.Location = new System.Drawing.Point(371, 16);
-            this.label24.Name = "label24";
-            this.label24.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label24.Size = new System.Drawing.Size(48, 13);
-            this.label24.TabIndex = 5;
-            this.label24.Text = "ورق تکه:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label25.Location = new System.Drawing.Point(233, 16);
-            this.label25.Name = "label25";
-            this.label25.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label25.Size = new System.Drawing.Size(55, 13);
-            this.label25.TabIndex = 5;
-            this.label25.Text = "ورق کامل:";
-            // 
-            // groupControl7
-            // 
-            this.groupControl7.Controls.Add(this.label13);
-            this.groupControl7.Controls.Add(this.txbCncBasePrice);
-            this.groupControl7.Controls.Add(this.label22);
-            this.groupControl7.Controls.Add(this.txbGrooveLength);
-            this.groupControl7.Controls.Add(this.label8);
-            this.groupControl7.Controls.Add(this.txbFinalCNCPriceByMeter);
-            this.groupControl7.Location = new System.Drawing.Point(10, 32);
-            this.groupControl7.Name = "groupControl7";
-            this.groupControl7.ShowCaption = false;
-            this.groupControl7.Size = new System.Drawing.Size(449, 46);
-            this.groupControl7.TabIndex = 8;
-            this.groupControl7.Text = "groupControl7";
-            // 
-            // groupControl8
-            // 
-            this.groupControl8.Controls.Add(this.label24);
-            this.groupControl8.Controls.Add(this.txbCNCPriceBySheet);
-            this.groupControl8.Controls.Add(this.label25);
-            this.groupControl8.Controls.Add(this.label23);
-            this.groupControl8.Controls.Add(this.txbFinalCNCPriceBySheet);
-            this.groupControl8.Controls.Add(this.txbCNCPriceByPice);
-            this.groupControl8.Location = new System.Drawing.Point(10, 85);
-            this.groupControl8.Name = "groupControl8";
-            this.groupControl8.ShowCaption = false;
-            this.groupControl8.Size = new System.Drawing.Size(449, 48);
-            this.groupControl8.TabIndex = 9;
-            this.groupControl8.Text = "groupControl8";
-            // 
-            // txbFinalCNCPriceBySheet
-            // 
-            this.txbFinalCNCPriceBySheet.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbFinalCNCPriceBySheet.EditValue = 12345678D;
-            this.txbFinalCNCPriceBySheet.Location = new System.Drawing.Point(5, 5);
-            this.txbFinalCNCPriceBySheet.Name = "txbFinalCNCPriceBySheet";
-            this.txbFinalCNCPriceBySheet.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbFinalCNCPriceBySheet.Properties.Appearance.Options.UseFont = true;
-            this.txbFinalCNCPriceBySheet.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txbFinalCNCPriceBySheet.Properties.MaskSettings.Set("mask", "n0");
-            this.txbFinalCNCPriceBySheet.Properties.ReadOnly = true;
-            this.txbFinalCNCPriceBySheet.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.txbFinalCNCPriceBySheet.Properties.UseMaskAsDisplayFormat = true;
-            this.txbFinalCNCPriceBySheet.Size = new System.Drawing.Size(77, 36);
-            this.txbFinalCNCPriceBySheet.TabIndex = 7;
-            this.txbFinalCNCPriceBySheet.TabStop = false;
-            // 
-            // txbFinalCNCPriceByMeter
-            // 
-            this.txbFinalCNCPriceByMeter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbFinalCNCPriceByMeter.EditValue = 12345678D;
-            this.txbFinalCNCPriceByMeter.Location = new System.Drawing.Point(5, 5);
-            this.txbFinalCNCPriceByMeter.Name = "txbFinalCNCPriceByMeter";
-            this.txbFinalCNCPriceByMeter.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbFinalCNCPriceByMeter.Properties.Appearance.Options.UseFont = true;
-            this.txbFinalCNCPriceByMeter.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txbFinalCNCPriceByMeter.Properties.MaskSettings.Set("mask", "n0");
-            this.txbFinalCNCPriceByMeter.Properties.ReadOnly = true;
-            this.txbFinalCNCPriceByMeter.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.txbFinalCNCPriceByMeter.Properties.UseMaskAsDisplayFormat = true;
-            this.txbFinalCNCPriceByMeter.Size = new System.Drawing.Size(77, 36);
-            this.txbFinalCNCPriceByMeter.TabIndex = 7;
-            this.txbFinalCNCPriceByMeter.TabStop = false;
-            // 
-            // txbCNCPriceByPice
-            // 
-            this.txbCNCPriceByPice.EditValue = 999D;
-            this.txbCNCPriceByPice.Location = new System.Drawing.Point(294, 6);
-            this.txbCNCPriceByPice.Name = "txbCNCPriceByPice";
-            this.txbCNCPriceByPice.Properties.AllowFocused = false;
-            this.txbCNCPriceByPice.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbCNCPriceByPice.Properties.Appearance.Options.UseFont = true;
-            this.txbCNCPriceByPice.Properties.ButtonsStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.txbCNCPriceByPice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txbCNCPriceByPice.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.txbCNCPriceByPice.Properties.MaskSettings.Set("mask", "n0");
-            this.txbCNCPriceByPice.Properties.ReadOnly = true;
-            this.txbCNCPriceByPice.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.txbCNCPriceByPice.Properties.UseMaskAsDisplayFormat = true;
-            this.txbCNCPriceByPice.Size = new System.Drawing.Size(72, 36);
-            this.txbCNCPriceByPice.TabIndex = 0;
-            this.txbCNCPriceByPice.TabStop = false;
-            this.txbCNCPriceByPice.EditValueChanged += new System.EventHandler(this.txbGrooveLength_EditValueChanged);
             // 
             // defaultLookAndFeel1
             // 
@@ -1062,17 +1114,20 @@
             this.btnRecalculate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRecalculate.ImageOptions.Image")));
             this.btnRecalculate.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftTop;
             this.btnRecalculate.ImageOptions.ImageToTextIndent = 10;
-            this.btnRecalculate.Location = new System.Drawing.Point(10, 294);
+            this.btnRecalculate.Location = new System.Drawing.Point(25, 287);
             this.btnRecalculate.Name = "btnRecalculate";
-            this.btnRecalculate.Size = new System.Drawing.Size(468, 23);
-            this.btnRecalculate.TabIndex = 7;
+            this.btnRecalculate.Size = new System.Drawing.Size(162, 50);
+            this.btnRecalculate.TabIndex = 3;
             this.btnRecalculate.Text = "محاسبات مجدد";
             this.btnRecalculate.Click += new System.EventHandler(this.btnRecalculate_Click);
             // 
-            // orderDetailBindingSource
+            // xtraOpenFileDialog1
             // 
-            this.orderDetailBindingSource.DataSource = typeof(CncApp_Final.Entities.OrderDetails);
-            this.orderDetailBindingSource.BindingComplete += new System.Windows.Forms.BindingCompleteEventHandler(this.orderDetailBindingSource_BindingComplete);
+            this.xtraOpenFileDialog1.FileName = "xtraOpenFileDialog1";
+            // 
+            // dxValidationProvider1
+            // 
+            this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
             // 
             // sheetsBindingSource
             // 
@@ -1082,7 +1137,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 530);
+            this.ClientSize = new System.Drawing.Size(900, 532);
             this.Controls.Add(this.btnRecalculate);
             this.Controls.Add(this.groupControl6);
             this.Controls.Add(this.groupControl3);
@@ -1125,31 +1180,33 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetBasePrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPiceArea.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetCount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txbCncCost.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).EndInit();
+            this.groupControl8.ResumeLayout(false);
+            this.groupControl8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txbCNCPriceBySheet.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbFinalCNCPriceBySheet.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbCNCPriceByPice.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
+            this.groupControl7.ResumeLayout(false);
+            this.groupControl7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txbCncBasePrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbGrooveLength.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbDelailName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbFinalCNCPriceByMeter.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbCncCost.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txbDetailName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl3)).EndInit();
             this.groupControl3.ResumeLayout(false);
             this.groupControl3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOpenFile.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).EndInit();
             this.groupControl6.ResumeLayout(false);
             this.groupControl6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txbCNCPriceBySheet.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
-            this.groupControl7.ResumeLayout(false);
-            this.groupControl7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).EndInit();
-            this.groupControl8.ResumeLayout(false);
-            this.groupControl8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txbFinalCNCPriceBySheet.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbFinalCNCPriceByMeter.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbCNCPriceByPice.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -1180,8 +1237,7 @@
         private DevExpress.XtraEditors.SimpleButton btnOk;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private System.Windows.Forms.Label label12;
-        private DevExpress.XtraEditors.TextEdit txbDelailName;
-        private DevExpress.XtraEditors.SimpleButton btnOpenFile;
+        private DevExpress.XtraEditors.TextEdit txbDetailName;
         private DevExpress.XtraEditors.TextEdit txbDescription;
         private System.Windows.Forms.Label label14;
         private DevExpress.XtraEditors.GroupControl groupControl3;
@@ -1222,5 +1278,8 @@
         private DevExpress.XtraEditors.ButtonEdit txbFinalCNCPriceByMeter;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraEditors.SimpleButton btnRecalculate;
+        private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialog1;
+        private DevExpress.XtraEditors.ButtonEdit btnOpenFile;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
     }
 }
