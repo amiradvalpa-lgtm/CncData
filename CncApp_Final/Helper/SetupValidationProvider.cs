@@ -53,6 +53,7 @@ namespace CncApp_Final.Helper
                                 .OfType<BaseEdit>()
                                 .Where(c => c.DataBindings.Count > 0);
 
+            
             foreach (BaseEdit control in boundControls)
             {
                 // یافتن Binding مرتبط با Model Type
@@ -122,7 +123,20 @@ namespace CncApp_Final.Helper
                     }
                     // Note: اگر Range پیچیده‌تری نیاز بود، باید ConditionOperator را گسترش داد.
                 }
+
             }
+
+            // اضافه کردن قانون مخصوص PersianDateTextEdit
+            var persianDateTextEditBoundControls = GetAllControls(form)
+                                .OfType<PersianDateTextEdit>()
+                                .Where(c => c.DataBindings.Count > 0);
+
+
+            foreach (var control in persianDateTextEditBoundControls)
+            {
+                validationProvider.SetValidationRule(control.InnerTextEdit, new PersianDateValidationRule());
+            }
+
         }
     }
 }

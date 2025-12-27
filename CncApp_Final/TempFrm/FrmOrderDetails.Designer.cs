@@ -71,7 +71,6 @@
             this.txbPiceArea = new DevExpress.XtraEditors.ButtonEdit();
             this.label11 = new System.Windows.Forms.Label();
             this.txbSheetCount = new DevExpress.XtraEditors.ButtonEdit();
-            this.orderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl8 = new DevExpress.XtraEditors.GroupControl();
@@ -104,6 +103,7 @@
             this.btnRecalculate = new DevExpress.XtraEditors.SimpleButton();
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.orderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sheetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.lkpMaterial.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpThickness.Properties)).BeginInit();
@@ -128,7 +128,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetBasePrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPiceArea.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetCount.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).BeginInit();
@@ -151,6 +150,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -703,10 +703,6 @@
             this.txbSheetCount.TabIndex = 0;
             this.txbSheetCount.TabStop = false;
             // 
-            // orderDetailBindingSource
-            // 
-            this.orderDetailBindingSource.DataSource = typeof(CncApp_Final.Entities.OrderDetails);
-            // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1129,6 +1125,10 @@
             // 
             this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
             // 
+            // orderDetailBindingSource
+            // 
+            this.orderDetailBindingSource.DataSource = typeof(CncApp_Final.Entities.OrderDetails);
+            // 
             // sheetsBindingSource
             // 
             this.sheetsBindingSource.DataSource = typeof(CncApp_Final.Entities.Sheet);
@@ -1180,7 +1180,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetBasePrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPiceArea.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetCount.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).EndInit();
@@ -1207,6 +1206,7 @@
             this.groupControl6.ResumeLayout(false);
             this.groupControl6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).EndInit();
             this.ResumeLayout(false);
 

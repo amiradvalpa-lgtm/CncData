@@ -152,7 +152,17 @@
     <Compile Include="Helper\CustomValidationRule.cs" />
     <Compile Include="Helper\GetSheetPrice.cs" />
     <Compile Include="Helper\GridLayoutHelper.cs" />
+    <Compile Include="Helper\PersianDateEdit.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Helper\PersianDateHelper.cs" />
+    <Compile Include="Helper\PersianDateHelper1.cs" />
+    <Compile Include="Helper\PersianDateTextEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Helper\PersianDateTextEdit.Designer.cs">
+      <DependentUpon>PersianDateTextEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helper\SetupValidationProvider.cs" />
     <Compile Include="Helper\TextEditHelper.cs" />
     <Compile Include="Models\OrderDetailsCalcModel.cs" />
@@ -187,6 +197,9 @@
     </Compile>
     <Compile Include="TempFrm\FrmOrderDetails.Designer.cs">
       <DependentUpon>FrmOrderDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TempFrm\PersianDateTextEdit.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="TempFrm\TemplateRiibonForm.cs">
       <SubType>Form</SubType>
@@ -241,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmReceipts.resx">
       <DependentUpon>FrmReceipts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Helper\PersianDateTextEdit.resx">
+      <DependentUpon>PersianDateTextEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TempFrm\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

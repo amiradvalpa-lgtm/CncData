@@ -54,10 +54,10 @@ namespace CncApp_Final.Entities
         [DisplayName("تاریخ خرید"), Required, Display(Order = 2)]
         public string FaOrderDate
         {
-            get => PersianDateHelper.ToPersianDateString(OrderDate);
+            get => PersianDateHelper1.ToPersianDateString(OrderDate);
             set => OrderDate = string.IsNullOrWhiteSpace(value)
                 ? throw new ArgumentException("تاریخ سفارش الزامی است")
-                : PersianDateHelper.ParsePersianDate(value);
+                : PersianDateHelper1.ParsePersianDate(value);
         }
 
 

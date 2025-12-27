@@ -64,10 +64,10 @@ namespace CncApp_Final.Entities
         [DisplayName("تاریخ واریز")]
         public string FaReceiptDate
         {
-            get => PersianDateHelper.ToPersianDateString(Date);
+            get => PersianDateHelper1.ToPersianDateString(Date);
             set => Date = string.IsNullOrWhiteSpace(value)
                 ? throw new ArgumentException("تاریخ سفارش الزامی است")
-                : PersianDateHelper.ParsePersianDate(value);
+                : PersianDateHelper1.ParsePersianDate(value);
         }
 
     }

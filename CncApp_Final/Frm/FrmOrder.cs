@@ -23,6 +23,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 
 namespace CncApp_Final.Frm
@@ -111,8 +112,8 @@ namespace CncApp_Final.Frm
         {
             // الف) کنترل‌های Header (LookUpEdit, TextEdit, MemoEdit)
             lueCustomer.Properties.ReadOnly = readOnly;
-            txbFaOrderDate.Properties.ReadOnly = readOnly;
-            txbFaDeliveryDate.Properties.ReadOnly = readOnly;
+            txbFaOrderDate.InnerTextEdit.Properties.ReadOnly = readOnly;
+            txbFaDeliveryDate.InnerTextEdit.Properties.ReadOnly = readOnly;
             txbTransportCost.Properties.ReadOnly = readOnly;
             txbMiscCost.Properties.ReadOnly = readOnly;
             txbDescription.Properties.ReadOnly = readOnly;
@@ -141,12 +142,80 @@ namespace CncApp_Final.Frm
         private void FrmFacture_Load(object sender, EventArgs e)
         {
             GridLayoutHelper.LoadLayout(
-                                        _dbContext,
                                         grdvOrderDetails,
                                         1,
                                         this.Name);
+
+            //dxValidationProvider1.SetValidationRule(txbFaDeliveryDate,
+            //        new DevExpress.XtraEditors.DXErrorProvider.CustomValidationRule()
+            //        {
+            //            ErrorText = "",
+            //            Validate = (ctrl, value) =>
+            //            {
+            //                DateTime dt;
+            //                string err;
+
+            //                bool ok = PersianDate.TryParse(Convert.ToString(value), out dt, out err);
+
+            //                if (!ok)
+            //                    ErrorText = err;
+
+            //                return ok;
+            //            }
+            //        });
+
+            //            dxValidationProvider1.SetValidationRule(
+            //    txbFaDeliveryDate,
+            //    new PersianDateValidationRule()
+            //);
+
+
+            //// Validation روی TextEdit
+            //dxValidationProvider1.SetValidationRule(txbFaDeliveryDate,
+            //    new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule()
+            //    {
+            //        ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator..Custom,
+            //        ErrorText = "", // پیام را در PersianDateValidationRule می‌دهیم
+            //        ValidationCallback = (ctrl, value) =>
+            //        {
+            //            DateTime dt;
+            //            string err;
+            //            bool ok = PersianDate.TryParse(Convert.ToString(value), out dt, out err);
+            //            if (!ok)
+            //            {
+            //                dxValidationProvider1.SetError(ctrl, err, DevExpress.XtraEditors.DXErrorProvider.ErrorType.Critical);
+            //            }
+            //            return ok;
+            //        }
+            //    });
+
+
+
+
+//            // txbFaDeliveryDate اسم TextEdit
+//            dxValidationProvider1.SetValidationRule(
+//                txbFaDeliveryDate,
+//                new PersianDateValidationRule()
+//            );
+
+//            dxValidationProvider1.SetValidationRule(
+//    persianDateTextEdit1.InnerTextEdit,
+//    new PersianDateValidationRule()
+//);
+
+//            dxValidationProvider1.SetValidationRule(
+//    persianDateTextEdit2.InnerTextEdit,
+//    new PersianDateValidationRule()
+//);
+
+//            dxValidationProvider1.SetValidationRule(
+//    persianDateTextEdit3.InnerTextEdit,
+//    new PersianDateValidationRule()
+//);
+
+
         }
-       
+
 
 
 
@@ -489,10 +558,190 @@ namespace CncApp_Final.Frm
         private void FrmOrder_FormClosing(object sender, FormClosingEventArgs e)
         {
             GridLayoutHelper.SaveLayout(
-                                        _dbContext,
                                         grdvOrderDetails,
                                         1,
                                         this.Name);
+        }
+
+        
+
+        private void dxValidationProvider1_ValidationSucceeded(object sender, ValidationSucceededEventArgs e)
+        {
+            
+        }
+
+        private void dxValidationProvider1_ValidationFailed(object sender, ValidationFailedEventArgs e)
+        {
+
+        }
+
+        //private void simpleButton1_Click(object sender, EventArgs e)
+        //{
+        //    txbFaDeliveryDate.IsModified = true;
+        //    txbFaDeliveryDate.ErrorText = "";
+        //    var z = dxValidationProvider1.Validate((Control)sender);
+        //}
+
+        ////////private void txbFaDeliveryDate_EditValueChanged(object sender, EventArgs e)
+        ////////{
+        ////////    if (dxValidationProvider1.Validate((Control)sender))
+        ////////    {
+        ////////        txbFaDeliveryDate.ErrorText = "";
+        ////////    }
+        ////////    else
+        ////////    {
+
+        ////////    }
+
+        ////////}
+        ////////private void txbFaDeliveryDate_Leave(object sender, EventArgs e)
+        ////////{
+        ////////    txbFaDeliveryDate.IsModified = true;
+        ////////    var x = dxValidationProvider1.Validate((Control)sender);
+
+
+        ////////    //var x= dxValidationProvider1.GetInvalidControls();
+        ////////    //var z = dxValidationProvider1.GetValidationRule(txbFaDeliveryDate);
+        ////////    ////dxValidationProvider1.Validate();
+        ////////    ////dxValidationProvider1.RemoveControlError(txbFaDeliveryDate);
+
+        ////////    //dxValidationProvider1.Validate((Control)sender);
+        ////////    //dxValidationProvider1.Validate();
+        ////////    //dxValidationProvider1.RemoveControlError(txbFaDeliveryDate);
+
+        ////////    //dxValidationProvider1.Dispose();
+
+        ////////    ////dxValidationProvider1.SetValidationRule(txbFaDeliveryDate, null);  // rule رو حذف کن
+        ////////    //txbFaDeliveryDate.ErrorText = "";
+
+
+
+        ////////    _ = DelayAndExecuteAsync();  // بهترین روش
+        ////////}
+
+        ////////private async Task DelayAndExecuteAsync()
+        ////////{
+        ////////    await Task.Delay(20);
+
+        ////////    // کدهایی که می‌خوای بعد از تأخیر اجرا بشن
+        ////////    string text = txbFaDeliveryDate.Text.Trim();
+
+        ////////    if (string.IsNullOrWhiteSpace(text))
+        ////////    {
+        ////////        txbFaDeliveryDate.ErrorText = string.Empty;
+        ////////        return;
+        ////////    }
+        ////////    if (PersianDate.TryParse(text, out _, out string err))
+        ////////    {
+        ////////        txbFaDeliveryDate.ErrorText = string.Empty;
+        ////////    }
+        ////////    else
+        ////////    {
+        ////////        txbFaDeliveryDate.ErrorText = err;
+        ////////    }
+        ////////}
+
+        //private void txbFaDeliveryDate_Properties_ParseEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
+        //{
+        //    var x = dxValidationProvider1.Validate((Control)sender);
+        //    if (dxValidationProvider1.Validate((Control)sender))
+        //    {
+        //        txbFaDeliveryDate.ErrorText = "";
+        //    }
+        //    else
+        //    {
+
+        //    }
+        //}
+
+        //private void txbFaDeliveryDate_Properties_Validating(object sender, CancelEventArgs e)
+        //{
+        //    if (dxValidationProvider1.Validate((Control)sender))
+        //    {
+        //        txbFaDeliveryDate.ErrorText = "";
+        //    }
+        //    else
+        //    {
+
+        //    }
+        //}
+
+        //private void txbFaDeliveryDate_Validated(object sender, EventArgs e)
+        //{
+        //    if (dxValidationProvider1.Validate((Control)sender))
+        //    {
+        //        txbFaDeliveryDate.ErrorText = "";
+        //    }
+        //    else
+        //    {
+
+        //    }
+        //}
+
+        private void txbFaDeliveryDate_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txbFaDeliveryDate_EditValueChanged(object sender, EventArgs e)
+        {
+            UpdateErrorDisplay(sender as DevExpress.XtraEditors.TextEdit);
+        }
+
+
+        private void txbFaDeliveryDate_Leave(object sender, EventArgs e)
+        {
+            _ = DelayAndExecuteAsync(sender as DevExpress.XtraEditors.TextEdit);
+        }
+
+        private async Task DelayAndExecuteAsync(DevExpress.XtraEditors.TextEdit textEdit)
+        {
+            if (textEdit == null) return;
+
+            await Task.Delay(20);
+
+            // چون ممکنه بعد از delay در thread دیگه باشیم، از Invoke استفاده کن
+            if (textEdit.InvokeRequired)
+            {
+                textEdit.Invoke(new Action(() => UpdateErrorDisplay(textEdit)));
+            }
+            else
+            {
+                UpdateErrorDisplay(textEdit);
+            }
+        }
+
+        /// <summary>
+        /// بروزرسانی آیکن خطا و tooltip برای یک TextEdit که تاریخ شمسی وارد می‌شود
+        /// </summary>
+        /// <param name="textEdit">کنترل TextEdit که باید اعتبارسنجی شود</param>
+        private void UpdateErrorDisplay(DevExpress.XtraEditors.TextEdit textEdit)
+        {
+            if (textEdit == null) return;
+
+            string text = textEdit.Text?.Trim() ?? string.Empty;
+
+            // اگر خالی باشد → آیکن پاک شود (Required جداگانه مدیریت شود)
+            if (string.IsNullOrWhiteSpace(text))
+            {
+                textEdit.ErrorText = string.Empty;
+                return;
+            }
+
+            // اعتبارسنجی تاریخ شمسی
+            if (PersianDate.TryParse(text, out _, out string err))
+            {
+                textEdit.ErrorText = string.Empty;  // معتبر → آیکن پاک شود
+            }
+            else
+            {
+                textEdit.ErrorText = err;  // نامعتبر → آیکن قرمز + پیام فارسی
+            }
+        }
+
+        private void persianDateEdit1_EditValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

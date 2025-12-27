@@ -139,17 +139,17 @@ namespace CncApp_Final.Entities
         [DisplayName("تاریخ سفارش")]
         public string FaOrderDate
         {
-            get => PersianDateHelper.ToPersianDateString(OrderDate);
+            get => PersianDateHelper1.ToPersianDateString(OrderDate);
             set => OrderDate = string.IsNullOrWhiteSpace(value)
                 ? throw new ArgumentException("تاریخ سفارش الزامی است")
-                : PersianDateHelper.ParsePersianDate(value);
+                : PersianDateHelper1.ParsePersianDate(value);
         }
 
         [NotMapped]
         [DisplayName("تاریخ تحویل")]
         public string FaDeliveryDate
         {
-            get => DeliveryDate.HasValue ? PersianDateHelper.ToPersianDateString(DeliveryDate.Value) : "تحویل نشده";
+            get => DeliveryDate.HasValue ? PersianDateHelper1.ToPersianDateString(DeliveryDate.Value) : "تحویل نشده";
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
@@ -165,11 +165,92 @@ namespace CncApp_Final.Entities
                 }
                 else
                 {
-                    DeliveryDate = PersianDateHelper.ParsePersianDate(v);
+                    DeliveryDate = PersianDateHelper1.ParsePersianDate(v);
                 }
             }
         }
 
-        
+
+        //[NotMapped]
+        //[DisplayName("تاریخ تحویل")]
+        //[PersianDate]
+        //public PersianDate? FaDeliveryDateTest
+        //{
+        //    get
+        //    {
+        //        return DeliveryDate.HasValue
+        //            ? new PersianDate(DeliveryDate.Value)
+        //            : (PersianDate?)null;
+        //    }
+        //    set
+        //    {
+        //        DeliveryDate = value.HasValue
+        //            ? (DateTime)value.Value
+        //            : (DateTime?)null;
+        //    }
+        //}
+
+        //[NotMapped]
+        //[DisplayName("تاریخ تحویل")]
+        //[PersianDate] // DataAnnotation برای DXValidation
+        //public PersianDate? FaDeliveryDateTest
+        //{
+        //    get
+        //    {
+        //        // اگر DeliveryDate مقدار داشته باشد، PersianDate می‌سازد
+        //        return DeliveryDate.HasValue
+        //            ? new PersianDate(DeliveryDate.Value)
+        //            : (PersianDate?)null;
+        //    }
+        //    set
+        //    {
+        //        // اگر مقدار null بود، DeliveryDate هم null شود
+        //        if (!value.HasValue)
+        //        {
+        //            DeliveryDate = null;
+        //            return;
+        //        }
+
+        //        // اگر مقدار معتبر PersianDate باشد، به DateTime تبدیل و نگهداری می‌شود
+        //        DeliveryDate = value.Value.GregorianDate;
+        //    }
+        //}
+
+        //[NotMapped]
+        //[DisplayName("تاریخ تحویل")]
+        ////[PersianDate] // DataAnnotation برای DXValidation
+        //public PersianDate? FaDeliveryDateTest
+        //{
+        //    get
+        //    {
+        //        return DeliveryDate.HasValue
+        //            ? new PersianDate(DeliveryDate.Value)
+        //            : (PersianDate?)null;
+        //    }
+        //    set
+        //    {
+        //        // فقط مقدار DateTime را ذخیره می‌کنیم، هیچ Parse یا Exception داخل setter نیست
+        //        if (value.HasValue)
+        //            DeliveryDate = value.Value.GregorianDate;
+        //        else
+        //            DeliveryDate = null;
+        //    }
+
+        //}
+
+        [NotMapped]
+        [DisplayName("تاریخ تحویل")]
+        public PersianDate? FaDeliveryDateTest
+        {
+            get => DeliveryDate.HasValue ? new PersianDate(DeliveryDate.Value) : (PersianDate?)null;
+            set => DeliveryDate = value.HasValue ? value.Value.GregorianDate : (DateTime?)null;
+        }
+
+
+
+
+
+
+
     }
 }

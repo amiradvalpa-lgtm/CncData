@@ -11,82 +11,88 @@ namespace CncApp_Final.Helpers
     public static class GridLayoutHelper
     {
         /// <summary>
-        /// بارگذاری Layout گرید از دیتابیس
+        /// بارگذاری Layout گرید با استفاده از یک Context ایزوله
         /// </summary>
         public static void LoadLayout(
-            AppDbContext db,
             GridView gridView,
             int userId,
             string formName)
         {
             if (gridView == null) return;
 
-            string gridName = formName; // طبق خواسته شما
-
-            var layout = db.UserGridLayouts
-                .FirstOrDefault(x =>
-                    x.UserId == userId &&
-                    x.GridName == gridName);
-
-            if (layout == null || string.IsNullOrWhiteSpace(layout.LayoutXml))
-                return;
-
             try
             {
-                using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(layout.LayoutXml)))
+                // استفاده از using برای بستن خودکار اتصال و پاکسازی حافظه
+                using (var db = new AppDbContext())
                 {
-                    gridView.RestoreLayoutFromStream(stream);
+                    var layout = db.UserGridLayouts
+                        .AsNoTracking() // برای سرعت بیشتر و عدم اشغال حافظه کش
+                        .FirstOrDefault(x => x.UserId == userId && x.GridName == formName);
+
+                    if (layout != null && !string.IsNullOrWhiteSpace(layout.LayoutXml))
+                    {
+                        using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(layout.LayoutXml)))
+                        {
+                            gridView.RestoreLayoutFromStream(stream);
+                        }
+                    }
                 }
             }
             catch
             {
-                // اگر XML خراب بود، بی‌صدا رد می‌شیم
+                // لود نشدن لایوت نباید مانع باز شدن فرم شود
             }
         }
 
         /// <summary>
-        /// ذخیره Layout گرید در دیتابیس
+        /// ذخیره Layout گرید بدون تاثیر روی اطلاعات ذخیره نشده فرم
         /// </summary>
         public static void SaveLayout(
-            AppDbContext db,
             GridView gridView,
             int userId,
             string formName)
         {
             if (gridView == null) return;
 
-            string gridName = formName;
-
-            string layoutXml;
-            using (var stream = new MemoryStream())
+            try
             {
-                gridView.SaveLayoutToStream(stream);
-                layoutXml = Encoding.UTF8.GetString(stream.ToArray());
-            }
-
-            var entity = db.UserGridLayouts
-                .FirstOrDefault(x =>
-                    x.UserId == userId &&
-                    x.GridName == gridName);
-
-            if (entity == null)
-            {
-                entity = new UserGridLayout
+                string layoutXml;
+                using (var stream = new MemoryStream())
                 {
-                    UserId = userId,
-                    GridName = gridName,
-                    LayoutXml = layoutXml,
-                    LastUpdated = DateTime.Now
-                };
-                db.UserGridLayouts.Add(entity);
-            }
-            else
-            {
-                entity.LayoutXml = layoutXml;
-                entity.LastUpdated = DateTime.Now;
-            }
+                    // تنظیمات اختیاری برای سبک‌تر شدن فایل XML
+                    gridView.OptionsLayout.StoreAllOptions = false;
+                    gridView.SaveLayoutToStream(stream);
+                    layoutXml = Encoding.UTF8.GetString(stream.ToArray());
+                }
 
-            db.SaveChanges();
+                using (var db = new AppDbContext())
+                {
+                    var entity = db.UserGridLayouts
+                        .FirstOrDefault(x => x.UserId == userId && x.GridName == formName);
+
+                    if (entity == null)
+                    {
+                        db.UserGridLayouts.Add(new UserGridLayout
+                        {
+                            UserId = userId,
+                            GridName = formName,
+                            LayoutXml = layoutXml,
+                            LastUpdated = DateTime.Now
+                        });
+                    }
+                    else
+                    {
+                        entity.LayoutXml = layoutXml;
+                        entity.LastUpdated = DateTime.Now;
+                    }
+
+                    db.SaveChanges(); // فقط لایوت ذخیره می‌شود چون Context اختصاصی است
+                }
+            }
+            catch
+            {
+                // خطا در ذخیره لایوت نباید مانع بسته شدن فرم شود
+            }
         }
     }
 }

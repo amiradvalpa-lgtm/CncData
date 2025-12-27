@@ -128,6 +128,8 @@ namespace CncApp_Final.Frm
             this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.persianDateTextEdit1 = new CncApp_Final.Helper.PersianDateTextEdit();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnNewDetail = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txbTotalAmount = new DevExpress.XtraEditors.TextEdit();
@@ -143,10 +145,31 @@ namespace CncApp_Final.Frm
             this.label10 = new System.Windows.Forms.Label();
             this.txbTotalCncCost = new DevExpress.XtraEditors.TextEdit();
             this.label12 = new System.Windows.Forms.Label();
-            this.txbFaDeliveryDate = new DevExpress.XtraEditors.TextEdit();
-            this.txbFaOrderDate = new DevExpress.XtraEditors.TextEdit();
             this.txbDescription = new DevExpress.XtraEditors.MemoEdit();
             this.label2 = new System.Windows.Forms.Label();
+            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiPrint = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.txbVCF_Id = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.bbiExportPDF = new DevExpress.XtraBars.BarButtonItem();
+            this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
+            this.bbiSaveClose = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiPhoto = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiPrintPhoto = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.repositoryItemHypertextLabel1 = new DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel();
+            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.orderDetailsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -172,29 +195,6 @@ namespace CncApp_Final.Frm
             this.colSheetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPicesPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSupplierTypeDescription = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiPrint = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.txbVCF_Id = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
-            this.bbiExportPDF = new DevExpress.XtraBars.BarButtonItem();
-            this.skinRibbonGalleryBarItem1 = new DevExpress.XtraBars.SkinRibbonGalleryBarItem();
-            this.bbiSaveClose = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiPhoto = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiPrintPhoto = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
-            this.repositoryItemHypertextLabel1 = new DevExpress.XtraEditors.Repository.RepositoryItemHypertextLabel();
-            this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.repositoryItemRibbonSearchEdit1 = new DevExpress.XtraBars.Ribbon.Internal.RepositoryItemRibbonSearchEdit();
             this.repositoryItemRibbonSearchEdit2 = new DevExpress.XtraBars.Ribbon.Internal.RepositoryItemRibbonSearchEdit();
@@ -208,6 +208,8 @@ namespace CncApp_Final.Frm
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.txbFaOrderDate = new CncApp_Final.Helper.PersianDateTextEdit();
+            this.txbFaDeliveryDate = new CncApp_Final.Helper.PersianDateTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnDeleteRow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCustomer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
@@ -227,19 +229,17 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.txbMiscCost.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbTransportCost.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbTotalCncCost.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbFaDeliveryDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbFaOrderDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
             this.groupControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdvOrderDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit3)).BeginInit();
@@ -443,11 +443,13 @@ namespace CncApp_Final.Frm
             // 
             this.groupControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl4.Controls.Add(this.txbFaDeliveryDate);
+            this.groupControl4.Controls.Add(this.txbFaOrderDate);
+            this.groupControl4.Controls.Add(this.persianDateTextEdit1);
+            this.groupControl4.Controls.Add(this.simpleButton1);
             this.groupControl4.Controls.Add(this.btnNewDetail);
             this.groupControl4.Controls.Add(this.groupControl2);
             this.groupControl4.Controls.Add(this.groupControl1);
-            this.groupControl4.Controls.Add(this.txbFaDeliveryDate);
-            this.groupControl4.Controls.Add(this.txbFaOrderDate);
             this.groupControl4.Controls.Add(this.txbDescription);
             this.groupControl4.Controls.Add(this.lueCustomer);
             this.groupControl4.Controls.Add(this.label1);
@@ -463,6 +465,27 @@ namespace CncApp_Final.Frm
             this.groupControl4.TabIndex = 26;
             this.groupControl4.Text = "groupControl4";
             this.groupControl4.DoubleClick += new System.EventHandler(this.groupControl4_DoubleClick);
+            // 
+            // persianDateTextEdit1
+            // 
+            this.persianDateTextEdit1.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.persianDateTextEdit1.Appearance.Options.UseFont = true;
+            this.persianDateTextEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "DeliveryDate", true));
+            this.persianDateTextEdit1.EditValue = new System.DateTime(2025, 12, 26, 0, 0, 0, 0);
+            this.persianDateTextEdit1.Location = new System.Drawing.Point(340, 59);
+            this.persianDateTextEdit1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.persianDateTextEdit1.Name = "persianDateTextEdit1";
+            this.persianDateTextEdit1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.persianDateTextEdit1.Size = new System.Drawing.Size(100, 36);
+            this.persianDateTextEdit1.TabIndex = 22;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(463, 103);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 21;
+            this.simpleButton1.Text = "simpleButton1";
             // 
             // btnNewDetail
             // 
@@ -547,7 +570,11 @@ namespace CncApp_Final.Frm
             this.txbTotalShetCost.Location = new System.Drawing.Point(5, 5);
             this.txbTotalShetCost.Name = "txbTotalShetCost";
             this.txbTotalShetCost.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbTotalShetCost.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txbTotalShetCost.Properties.Appearance.Options.UseFont = true;
+            this.txbTotalShetCost.Properties.Appearance.Options.UseForeColor = true;
+            this.txbTotalShetCost.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbTotalShetCost.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txbTotalShetCost.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txbTotalShetCost.Properties.MaskSettings.Set("mask", "n0");
             this.txbTotalShetCost.Properties.ReadOnly = true;
@@ -665,7 +692,11 @@ namespace CncApp_Final.Frm
             this.txbTotalCncCost.Location = new System.Drawing.Point(5, 47);
             this.txbTotalCncCost.Name = "txbTotalCncCost";
             this.txbTotalCncCost.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbTotalCncCost.Properties.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.txbTotalCncCost.Properties.Appearance.Options.UseFont = true;
+            this.txbTotalCncCost.Properties.Appearance.Options.UseForeColor = true;
+            this.txbTotalCncCost.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.txbTotalCncCost.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.txbTotalCncCost.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txbTotalCncCost.Properties.MaskSettings.Set("mask", "n0");
             this.txbTotalCncCost.Properties.ReadOnly = true;
@@ -685,34 +716,6 @@ namespace CncApp_Final.Frm
             this.label12.Size = new System.Drawing.Size(41, 13);
             this.label12.TabIndex = 3;
             this.label12.Text = "تخفیف:";
-            // 
-            // txbFaDeliveryDate
-            // 
-            this.txbFaDeliveryDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbFaDeliveryDate.EditValue = "1404/09/11";
-            this.txbFaDeliveryDate.EnterMoveNextControl = true;
-            this.txbFaDeliveryDate.Location = new System.Drawing.Point(568, 99);
-            this.txbFaDeliveryDate.Name = "txbFaDeliveryDate";
-            this.txbFaDeliveryDate.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbFaDeliveryDate.Properties.Appearance.Options.UseFont = true;
-            this.txbFaDeliveryDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txbFaDeliveryDate.Size = new System.Drawing.Size(82, 36);
-            this.txbFaDeliveryDate.TabIndex = 2;
-            // 
-            // txbFaOrderDate
-            // 
-            this.txbFaOrderDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbFaOrderDate.EditValue = "1404/09/11";
-            this.txbFaOrderDate.EnterMoveNextControl = true;
-            this.txbFaOrderDate.Location = new System.Drawing.Point(568, 57);
-            this.txbFaOrderDate.Name = "txbFaOrderDate";
-            this.txbFaOrderDate.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbFaOrderDate.Properties.Appearance.Options.UseFont = true;
-            this.txbFaOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txbFaOrderDate.Size = new System.Drawing.Size(82, 36);
-            this.txbFaOrderDate.TabIndex = 1;
             // 
             // txbDescription
             // 
@@ -737,6 +740,208 @@ namespace CncApp_Final.Frm
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "توضیحات :";
+            // 
+            // ribbonControl1
+            // 
+            this.ribbonControl1.ApplicationCaption = "---";
+            this.ribbonControl1.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.ExpandCollapseItem.Id = 0;
+            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbonControl1.ExpandCollapseItem,
+            this.bbiSave,
+            this.bbiDelete,
+            this.bbiRefresh,
+            this.bbiPrint,
+            this.barButtonItem2,
+            this.txbVCF_Id,
+            this.barStaticItem1,
+            this.bbiExportPDF,
+            this.skinRibbonGalleryBarItem1,
+            this.bbiSaveClose,
+            this.bbiPhoto,
+            this.bbiPrintPhoto});
+            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControl1.MaxItemId = 19;
+            this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.OptionsExpandCollapseMenu.ShowQuickAccessToolbarItem = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.OptionsExpandCollapseMenu.ShowRibbonGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.OptionsExpandCollapseMenu.ShowRibbonLayoutGroup = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.OptionsPageCategories.ShowCaptions = false;
+            this.ribbonControl1.PageHeaderItemLinks.Add(this.skinRibbonGalleryBarItem1);
+            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.ribbonPage1});
+            this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.repositoryItemTextEdit1,
+            this.repositoryItemHypertextLabel1,
+            this.repositoryItemTextEdit2});
+            this.ribbonControl1.RibbonCaptionAlignment = DevExpress.XtraBars.Ribbon.RibbonCaptionAlignment.Right;
+            this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
+            this.ribbonControl1.ShowToolbarCustomizeItem = false;
+            this.ribbonControl1.Size = new System.Drawing.Size(761, 181);
+            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
+            this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
+            // 
+            // bbiSave
+            // 
+            this.bbiSave.Caption = "ذخیره فاکتور";
+            this.bbiSave.Id = 2;
+            this.bbiSave.ImageOptions.ImageUri.Uri = "Edit";
+            this.bbiSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiSave.ImageOptions.SvgImage")));
+            this.bbiSave.LargeWidth = 80;
+            this.bbiSave.Name = "bbiSave";
+            this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSave_ItemClick);
+            // 
+            // bbiDelete
+            // 
+            this.bbiDelete.Caption = "حذف فاکتور";
+            this.bbiDelete.Id = 3;
+            this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
+            this.bbiDelete.Name = "bbiDelete";
+            // 
+            // bbiRefresh
+            // 
+            this.bbiRefresh.Caption = "بارگزاری دوباره";
+            this.bbiRefresh.Id = 5;
+            this.bbiRefresh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiRefresh.ImageOptions.SvgImage")));
+            this.bbiRefresh.Name = "bbiRefresh";
+            // 
+            // bbiPrint
+            // 
+            this.bbiPrint.Caption = "چاپ فاکتور";
+            this.bbiPrint.Id = 6;
+            this.bbiPrint.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiPrint.ImageOptions.SvgImage")));
+            this.bbiPrint.Name = "bbiPrint";
+            this.bbiPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrint_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "barButtonItem2";
+            this.barButtonItem2.Id = 9;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // txbVCF_Id
+            // 
+            this.txbVCF_Id.DataBindings.Add(new System.Windows.Forms.Binding("AccessibleDescription", this.orderBindingSource, "InvoiceNumber", true));
+            this.txbVCF_Id.Edit = this.repositoryItemTextEdit2;
+            this.txbVCF_Id.Id = 12;
+            this.txbVCF_Id.Name = "txbVCF_Id";
+            // 
+            // repositoryItemTextEdit2
+            // 
+            this.repositoryItemTextEdit2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.repositoryItemTextEdit2.Appearance.Options.UseFont = true;
+            this.repositoryItemTextEdit2.Appearance.Options.UseTextOptions = true;
+            this.repositoryItemTextEdit2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.repositoryItemTextEdit2.AutoHeight = false;
+            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
+            this.repositoryItemTextEdit2.ReadOnly = true;
+            // 
+            // barStaticItem1
+            // 
+            this.barStaticItem1.Caption = "شماره فاکتور";
+            this.barStaticItem1.Id = 13;
+            this.barStaticItem1.Name = "barStaticItem1";
+            // 
+            // bbiExportPDF
+            // 
+            this.bbiExportPDF.Caption = "ذخیره PDF";
+            this.bbiExportPDF.Id = 14;
+            this.bbiExportPDF.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiExportPDF.ImageOptions.SvgImage")));
+            this.bbiExportPDF.LargeWidth = 60;
+            this.bbiExportPDF.Name = "bbiExportPDF";
+            this.bbiExportPDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExportPDF_ItemClick);
+            // 
+            // skinRibbonGalleryBarItem1
+            // 
+            this.skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
+            this.skinRibbonGalleryBarItem1.Id = 15;
+            this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
+            // 
+            // bbiSaveClose
+            // 
+            this.bbiSaveClose.Caption = "ذخیره فاکتور و خروج";
+            this.bbiSaveClose.Id = 16;
+            this.bbiSaveClose.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiSaveClose.ImageOptions.SvgImage")));
+            this.bbiSaveClose.Name = "bbiSaveClose";
+            this.bbiSaveClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveAndClose_ItemClick);
+            // 
+            // bbiPhoto
+            // 
+            this.bbiPhoto.Caption = "مدیریت تصاویر";
+            this.bbiPhoto.Id = 17;
+            this.bbiPhoto.LargeWidth = 70;
+            this.bbiPhoto.Name = "bbiPhoto";
+            this.bbiPhoto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPhoto_ItemClick);
+            // 
+            // bbiPrintPhoto
+            // 
+            this.bbiPrintPhoto.Caption = "چاپ تصاویر";
+            this.bbiPrintPhoto.Id = 18;
+            this.bbiPrintPhoto.Name = "bbiPrintPhoto";
+            this.bbiPrintPhoto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintPhoto_ItemClick);
+            // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup3,
+            this.ribbonPageGroup4,
+            this.ribbonPageGroup5});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Home";
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiSave);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbiSaveClose);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiDelete);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            // 
+            // ribbonPageGroup3
+            // 
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiPrint);
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbiExportPDF);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            // 
+            // ribbonPageGroup4
+            // 
+            this.ribbonPageGroup4.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
+            this.ribbonPageGroup4.ItemLinks.Add(this.barStaticItem1);
+            this.ribbonPageGroup4.ItemLinks.Add(this.txbVCF_Id);
+            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
+            // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.ItemLinks.Add(this.bbiPhoto);
+            this.ribbonPageGroup5.ItemLinks.Add(this.bbiPrintPhoto);
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "ribbonPageGroup5";
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
+            // repositoryItemHypertextLabel1
+            // 
+            this.repositoryItemHypertextLabel1.Name = "repositoryItemHypertextLabel1";
+            // 
+            // ribbonStatusBar1
+            // 
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 619);
+            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
+            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(761, 37);
+            this.ribbonStatusBar1.Visible = false;
             // 
             // groupControl7
             // 
@@ -964,208 +1169,6 @@ namespace CncApp_Final.Frm
             this.colSupplierTypeDescription.Name = "colSupplierTypeDescription";
             this.colSupplierTypeDescription.OptionsColumn.ReadOnly = true;
             // 
-            // ribbonControl1
-            // 
-            this.ribbonControl1.ApplicationCaption = "---";
-            this.ribbonControl1.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl1.ExpandCollapseItem.Id = 0;
-            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl1.ExpandCollapseItem,
-            this.bbiSave,
-            this.bbiDelete,
-            this.bbiRefresh,
-            this.bbiPrint,
-            this.barButtonItem2,
-            this.txbVCF_Id,
-            this.barStaticItem1,
-            this.bbiExportPDF,
-            this.skinRibbonGalleryBarItem1,
-            this.bbiSaveClose,
-            this.bbiPhoto,
-            this.bbiPrintPhoto});
-            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 19;
-            this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.OptionsExpandCollapseMenu.ShowQuickAccessToolbarItem = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl1.OptionsExpandCollapseMenu.ShowRibbonGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl1.OptionsExpandCollapseMenu.ShowRibbonLayoutGroup = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl1.OptionsPageCategories.ShowCaptions = false;
-            this.ribbonControl1.PageHeaderItemLinks.Add(this.skinRibbonGalleryBarItem1);
-            this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.ribbonPage1});
-            this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemTextEdit1,
-            this.repositoryItemHypertextLabel1,
-            this.repositoryItemTextEdit2});
-            this.ribbonControl1.RibbonCaptionAlignment = DevExpress.XtraBars.Ribbon.RibbonCaptionAlignment.Right;
-            this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl1.ShowDisplayOptionsMenuButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl1.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
-            this.ribbonControl1.ShowToolbarCustomizeItem = false;
-            this.ribbonControl1.Size = new System.Drawing.Size(761, 181);
-            this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
-            this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
-            // 
-            // bbiSave
-            // 
-            this.bbiSave.Caption = "ذخیره فاکتور";
-            this.bbiSave.Id = 2;
-            this.bbiSave.ImageOptions.ImageUri.Uri = "Edit";
-            this.bbiSave.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiSave.ImageOptions.SvgImage")));
-            this.bbiSave.LargeWidth = 80;
-            this.bbiSave.Name = "bbiSave";
-            this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSave_ItemClick);
-            // 
-            // bbiDelete
-            // 
-            this.bbiDelete.Caption = "حذف فاکتور";
-            this.bbiDelete.Id = 3;
-            this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
-            this.bbiDelete.Name = "bbiDelete";
-            // 
-            // bbiRefresh
-            // 
-            this.bbiRefresh.Caption = "بارگزاری دوباره";
-            this.bbiRefresh.Id = 5;
-            this.bbiRefresh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiRefresh.ImageOptions.SvgImage")));
-            this.bbiRefresh.Name = "bbiRefresh";
-            // 
-            // bbiPrint
-            // 
-            this.bbiPrint.Caption = "چاپ فاکتور";
-            this.bbiPrint.Id = 6;
-            this.bbiPrint.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiPrint.ImageOptions.SvgImage")));
-            this.bbiPrint.Name = "bbiPrint";
-            this.bbiPrint.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrint_ItemClick);
-            // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "barButtonItem2";
-            this.barButtonItem2.Id = 9;
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
-            // txbVCF_Id
-            // 
-            this.txbVCF_Id.DataBindings.Add(new System.Windows.Forms.Binding("AccessibleDescription", this.orderBindingSource, "InvoiceNumber", true));
-            this.txbVCF_Id.Edit = this.repositoryItemTextEdit2;
-            this.txbVCF_Id.Id = 12;
-            this.txbVCF_Id.Name = "txbVCF_Id";
-            // 
-            // repositoryItemTextEdit2
-            // 
-            this.repositoryItemTextEdit2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.repositoryItemTextEdit2.Appearance.Options.UseFont = true;
-            this.repositoryItemTextEdit2.Appearance.Options.UseTextOptions = true;
-            this.repositoryItemTextEdit2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.repositoryItemTextEdit2.AutoHeight = false;
-            this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
-            this.repositoryItemTextEdit2.ReadOnly = true;
-            // 
-            // barStaticItem1
-            // 
-            this.barStaticItem1.Caption = "شماره فاکتور";
-            this.barStaticItem1.Id = 13;
-            this.barStaticItem1.Name = "barStaticItem1";
-            // 
-            // bbiExportPDF
-            // 
-            this.bbiExportPDF.Caption = "ذخیره PDF";
-            this.bbiExportPDF.Id = 14;
-            this.bbiExportPDF.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiExportPDF.ImageOptions.SvgImage")));
-            this.bbiExportPDF.LargeWidth = 60;
-            this.bbiExportPDF.Name = "bbiExportPDF";
-            this.bbiExportPDF.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiExportPDF_ItemClick);
-            // 
-            // skinRibbonGalleryBarItem1
-            // 
-            this.skinRibbonGalleryBarItem1.Caption = "skinRibbonGalleryBarItem1";
-            this.skinRibbonGalleryBarItem1.Id = 15;
-            this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
-            // 
-            // bbiSaveClose
-            // 
-            this.bbiSaveClose.Caption = "ذخیره فاکتور و خروج";
-            this.bbiSaveClose.Id = 16;
-            this.bbiSaveClose.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiSaveClose.ImageOptions.SvgImage")));
-            this.bbiSaveClose.Name = "bbiSaveClose";
-            this.bbiSaveClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveAndClose_ItemClick);
-            // 
-            // bbiPhoto
-            // 
-            this.bbiPhoto.Caption = "مدیریت تصاویر";
-            this.bbiPhoto.Id = 17;
-            this.bbiPhoto.LargeWidth = 70;
-            this.bbiPhoto.Name = "bbiPhoto";
-            this.bbiPhoto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPhoto_ItemClick);
-            // 
-            // bbiPrintPhoto
-            // 
-            this.bbiPrintPhoto.Caption = "چاپ تصاویر";
-            this.bbiPrintPhoto.Id = 18;
-            this.bbiPrintPhoto.Name = "bbiPrintPhoto";
-            this.bbiPrintPhoto.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiPrintPhoto_ItemClick);
-            // 
-            // ribbonPage1
-            // 
-            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2,
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup3,
-            this.ribbonPageGroup4,
-            this.ribbonPageGroup5});
-            this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Home";
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.bbiSave);
-            this.ribbonPageGroup2.ItemLinks.Add(this.bbiSaveClose);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiDelete);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.bbiPrint);
-            this.ribbonPageGroup3.ItemLinks.Add(this.bbiExportPDF);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            // 
-            // ribbonPageGroup4
-            // 
-            this.ribbonPageGroup4.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
-            this.ribbonPageGroup4.ItemLinks.Add(this.barStaticItem1);
-            this.ribbonPageGroup4.ItemLinks.Add(this.txbVCF_Id);
-            this.ribbonPageGroup4.Name = "ribbonPageGroup4";
-            // 
-            // ribbonPageGroup5
-            // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.bbiPhoto);
-            this.ribbonPageGroup5.ItemLinks.Add(this.bbiPrintPhoto);
-            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
-            this.ribbonPageGroup5.Text = "ribbonPageGroup5";
-            // 
-            // repositoryItemTextEdit1
-            // 
-            this.repositoryItemTextEdit1.AutoHeight = false;
-            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
-            // 
-            // repositoryItemHypertextLabel1
-            // 
-            this.repositoryItemHypertextLabel1.Name = "repositoryItemHypertextLabel1";
-            // 
-            // ribbonStatusBar1
-            // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 619);
-            this.ribbonStatusBar1.Name = "ribbonStatusBar1";
-            this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(761, 37);
-            this.ribbonStatusBar1.Visible = false;
-            // 
             // ribbonPage2
             // 
             this.ribbonPage2.Name = "ribbonPage2";
@@ -1265,6 +1268,10 @@ namespace CncApp_Final.Frm
             this.repositoryItemRibbonSearchEdit7.Name = "repositoryItemRibbonSearchEdit7";
             this.repositoryItemRibbonSearchEdit7.NullText = "Search";
             // 
+            // defaultLookAndFeel1
+            // 
+            this.defaultLookAndFeel1.LookAndFeel.SkinName = "WXI";
+            // 
             // dxErrorProvider1
             // 
             this.dxErrorProvider1.ContainerControl = this;
@@ -1273,6 +1280,34 @@ namespace CncApp_Final.Frm
             // dxValidationProvider1
             // 
             this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
+            this.dxValidationProvider1.ValidationFailed += new DevExpress.XtraEditors.DXErrorProvider.ValidationFailedEventHandler(this.dxValidationProvider1_ValidationFailed);
+            this.dxValidationProvider1.ValidationSucceeded += new DevExpress.XtraEditors.DXErrorProvider.ValidationSucceededEventHandler(this.dxValidationProvider1_ValidationSucceeded);
+            // 
+            // txbFaOrderDate
+            // 
+            this.txbFaOrderDate.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbFaOrderDate.Appearance.Options.UseFont = true;
+            this.txbFaOrderDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "OrderDate", true));
+            this.txbFaOrderDate.EditValue = null;
+            this.txbFaOrderDate.Location = new System.Drawing.Point(551, 59);
+            this.txbFaOrderDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txbFaOrderDate.Name = "txbFaOrderDate";
+            this.txbFaOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txbFaOrderDate.Size = new System.Drawing.Size(98, 36);
+            this.txbFaOrderDate.TabIndex = 23;
+            // 
+            // txbFaDeliveryDate
+            // 
+            this.txbFaDeliveryDate.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbFaDeliveryDate.Appearance.Options.UseFont = true;
+            this.txbFaDeliveryDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "DeliveryDate", true));
+            this.txbFaDeliveryDate.EditValue = null;
+            this.txbFaDeliveryDate.Location = new System.Drawing.Point(551, 100);
+            this.txbFaDeliveryDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txbFaDeliveryDate.Name = "txbFaDeliveryDate";
+            this.txbFaDeliveryDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txbFaDeliveryDate.Size = new System.Drawing.Size(98, 36);
+            this.txbFaDeliveryDate.TabIndex = 23;
             // 
             // FrmOrder
             // 
@@ -1319,9 +1354,11 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.txbMiscCost.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbTransportCost.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbTotalCncCost.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbFaDeliveryDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbFaOrderDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
             this.groupControl7.ResumeLayout(false);
             this.groupControl7.PerformLayout();
@@ -1329,10 +1366,6 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdvOrderDetails)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemHypertextLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit3)).EndInit();
@@ -1398,8 +1431,6 @@ namespace CncApp_Final.Frm
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
         private DevExpress.XtraBars.BarButtonItem bbiPrintPhoto;
         private BindingSource customersBindingSource;
-        private DevExpress.XtraEditors.TextEdit txbFaDeliveryDate;
-        private DevExpress.XtraEditors.TextEdit txbFaOrderDate;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView grdvOrderDetails;
         private BindingSource orderBindingSource;
@@ -1443,5 +1474,9 @@ namespace CncApp_Final.Frm
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private Helper.PersianDateTextEdit persianDateTextEdit1;
+        private Helper.PersianDateTextEdit txbFaDeliveryDate;
+        private Helper.PersianDateTextEdit txbFaOrderDate;
     }
 }
