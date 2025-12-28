@@ -2,9 +2,11 @@
 using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace CncApp_Final.Helper
 {
@@ -55,6 +57,29 @@ namespace CncApp_Final.Helper
             lookUpEdit.Properties.ShowFooter = false;
             lookUpEdit.Properties.ShowHeader = false;
 
+        }
+
+        public static void ApplyFocusColor(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (control is DevExpress.XtraEditors.BaseEdit editor)
+                {
+                    // اگر کنترل DevExpress و TabStop فعال بود
+                    if (editor.TabStop)
+                    {
+                        editor.Properties.AppearanceFocused.BackColor =
+                            Color.FromArgb(255, 255, 192);
+
+                        editor.Properties.AppearanceFocused.Options.UseBackColor = true;
+                    }
+                }
+                if (control.HasChildren)
+                {
+                    ApplyFocusColor(control);
+                }
+                
+            }
         }
 
     }

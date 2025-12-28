@@ -19,6 +19,7 @@ using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CncApp_Final.Helper;
 
 namespace CncApp_Final.Frm
 {
@@ -139,7 +140,9 @@ namespace CncApp_Final.Frm
         {
             InitData();
             DxValidationHelper.SetupValidation<Customer>(this, dxValidationProvider1, customerBindingSource);
+            ControlExraInit.ApplyFocusColor(this);
 
+            txbPhone.ErrorImageOptions.Alignment = ErrorIconAlignment.MiddleRight;
         }
 
         // ------------------------------------------------------------------

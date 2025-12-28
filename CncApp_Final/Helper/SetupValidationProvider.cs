@@ -124,6 +124,7 @@ namespace CncApp_Final.Helper
                     // Note: اگر Range پیچیده‌تری نیاز بود، باید ConditionOperator را گسترش داد.
                 }
 
+                
             }
 
             // اضافه کردن قانون مخصوص PersianDateTextEdit

@@ -128,8 +128,8 @@ namespace CncApp_Final.Frm
             this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
-            this.persianDateTextEdit1 = new CncApp_Final.Helper.PersianDateTextEdit();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.txbFaDeliveryDate = new CncApp_Final.Helper.PersianDateTextEdit();
+            this.txbFaOrderDate = new CncApp_Final.Helper.PersianDateTextEdit();
             this.btnNewDetail = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txbTotalAmount = new DevExpress.XtraEditors.TextEdit();
@@ -153,7 +153,7 @@ namespace CncApp_Final.Frm
             this.bbiRefresh = new DevExpress.XtraBars.BarButtonItem();
             this.bbiPrint = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.txbVCF_Id = new DevExpress.XtraBars.BarEditItem();
+            this.txbInvoiceNumber = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemTextEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.bbiExportPDF = new DevExpress.XtraBars.BarButtonItem();
@@ -176,13 +176,14 @@ namespace CncApp_Final.Frm
             this.grdvOrderDetails = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCutSheetDetails = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             this.colSupplier = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGrooveLength = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFinalSheetCostDisplay = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFinalSheetCost = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCncCost = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDetailName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOpenFolder = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rpsBtnOpenFolder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.colOrderId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -206,10 +207,7 @@ namespace CncApp_Final.Frm
             this.repositoryItemRibbonSearchEdit6 = new DevExpress.XtraBars.Ribbon.Internal.RepositoryItemRibbonSearchEdit();
             this.repositoryItemRibbonSearchEdit7 = new DevExpress.XtraBars.Ribbon.Internal.RepositoryItemRibbonSearchEdit();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.dxErrorProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider(this.components);
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
-            this.txbFaOrderDate = new CncApp_Final.Helper.PersianDateTextEdit();
-            this.txbFaDeliveryDate = new CncApp_Final.Helper.PersianDateTextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnDeleteRow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueCustomer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderBindingSource)).BeginInit();
@@ -239,6 +237,7 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdvOrderDetails)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit2)).BeginInit();
@@ -247,7 +246,6 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -274,9 +272,9 @@ namespace CncApp_Final.Frm
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lueCustomer.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 26, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "نام مشتری", 92, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerFullName", "نام مشتری", 92, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.lueCustomer.Properties.DataSource = this.customersBindingSource;
-            this.lueCustomer.Properties.DisplayMember = "CustomerName";
+            this.lueCustomer.Properties.DisplayMember = "CustomerFullName";
             this.lueCustomer.Properties.DropDownItemHeight = 25;
             this.lueCustomer.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
             this.lueCustomer.Properties.ShowHeader = false;
@@ -445,8 +443,6 @@ namespace CncApp_Final.Frm
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupControl4.Controls.Add(this.txbFaDeliveryDate);
             this.groupControl4.Controls.Add(this.txbFaOrderDate);
-            this.groupControl4.Controls.Add(this.persianDateTextEdit1);
-            this.groupControl4.Controls.Add(this.simpleButton1);
             this.groupControl4.Controls.Add(this.btnNewDetail);
             this.groupControl4.Controls.Add(this.groupControl2);
             this.groupControl4.Controls.Add(this.groupControl1);
@@ -464,28 +460,33 @@ namespace CncApp_Final.Frm
             this.groupControl4.Size = new System.Drawing.Size(730, 282);
             this.groupControl4.TabIndex = 26;
             this.groupControl4.Text = "groupControl4";
-            this.groupControl4.DoubleClick += new System.EventHandler(this.groupControl4_DoubleClick);
             // 
-            // persianDateTextEdit1
+            // txbFaDeliveryDate
             // 
-            this.persianDateTextEdit1.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.persianDateTextEdit1.Appearance.Options.UseFont = true;
-            this.persianDateTextEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "DeliveryDate", true));
-            this.persianDateTextEdit1.EditValue = new System.DateTime(2025, 12, 26, 0, 0, 0, 0);
-            this.persianDateTextEdit1.Location = new System.Drawing.Point(340, 59);
-            this.persianDateTextEdit1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.persianDateTextEdit1.Name = "persianDateTextEdit1";
-            this.persianDateTextEdit1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.persianDateTextEdit1.Size = new System.Drawing.Size(100, 36);
-            this.persianDateTextEdit1.TabIndex = 22;
+            this.txbFaDeliveryDate.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbFaDeliveryDate.Appearance.Options.UseFont = true;
+            this.txbFaDeliveryDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "DeliveryDate", true));
+            this.txbFaDeliveryDate.EditValue = null;
+            this.txbFaDeliveryDate.Location = new System.Drawing.Point(551, 100);
+            this.txbFaDeliveryDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txbFaDeliveryDate.Name = "txbFaDeliveryDate";
+            this.txbFaDeliveryDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txbFaDeliveryDate.Size = new System.Drawing.Size(98, 36);
+            this.txbFaDeliveryDate.TabIndex = 23;
+            this.txbFaDeliveryDate.TabStop = false;
             // 
-            // simpleButton1
+            // txbFaOrderDate
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(463, 103);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 21;
-            this.simpleButton1.Text = "simpleButton1";
+            this.txbFaOrderDate.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbFaOrderDate.Appearance.Options.UseFont = true;
+            this.txbFaOrderDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "OrderDate", true));
+            this.txbFaOrderDate.EditValue = null;
+            this.txbFaOrderDate.Location = new System.Drawing.Point(551, 59);
+            this.txbFaOrderDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txbFaOrderDate.Name = "txbFaOrderDate";
+            this.txbFaOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txbFaOrderDate.Size = new System.Drawing.Size(98, 36);
+            this.txbFaOrderDate.TabIndex = 1;
             // 
             // btnNewDetail
             // 
@@ -496,7 +497,7 @@ namespace CncApp_Final.Frm
             this.btnNewDetail.Location = new System.Drawing.Point(387, 213);
             this.btnNewDetail.Name = "btnNewDetail";
             this.btnNewDetail.Size = new System.Drawing.Size(263, 64);
-            this.btnNewDetail.TabIndex = 20;
+            this.btnNewDetail.TabIndex = 3;
             this.btnNewDetail.Text = "افزودن ردیف جدید";
             this.btnNewDetail.Click += new System.EventHandler(this.btnNewDetail_Click);
             // 
@@ -610,7 +611,7 @@ namespace CncApp_Final.Frm
             this.textEdit7.Properties.MaskSettings.Set("mask", "n0");
             this.textEdit7.Properties.UseMaskAsDisplayFormat = true;
             this.textEdit7.Size = new System.Drawing.Size(163, 36);
-            this.textEdit7.TabIndex = 4;
+            this.textEdit7.TabIndex = 2;
             // 
             // label6
             // 
@@ -639,7 +640,7 @@ namespace CncApp_Final.Frm
             this.txbMiscCost.Properties.MaskSettings.Set("mask", "n0");
             this.txbMiscCost.Properties.UseMaskAsDisplayFormat = true;
             this.txbMiscCost.Size = new System.Drawing.Size(163, 36);
-            this.txbMiscCost.TabIndex = 3;
+            this.txbMiscCost.TabIndex = 1;
             // 
             // label9
             // 
@@ -668,7 +669,7 @@ namespace CncApp_Final.Frm
             this.txbTransportCost.Properties.MaskSettings.Set("mask", "n0");
             this.txbTransportCost.Properties.UseMaskAsDisplayFormat = true;
             this.txbTransportCost.Size = new System.Drawing.Size(163, 36);
-            this.txbTransportCost.TabIndex = 2;
+            this.txbTransportCost.TabIndex = 0;
             // 
             // label10
             // 
@@ -726,7 +727,7 @@ namespace CncApp_Final.Frm
             this.txbDescription.Properties.Appearance.Options.UseFont = true;
             this.txbDescription.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txbDescription.Size = new System.Drawing.Size(263, 51);
-            this.txbDescription.TabIndex = 3;
+            this.txbDescription.TabIndex = 2;
             this.txbDescription.TabStop = false;
             // 
             // label2
@@ -753,7 +754,7 @@ namespace CncApp_Final.Frm
             this.bbiRefresh,
             this.bbiPrint,
             this.barButtonItem2,
-            this.txbVCF_Id,
+            this.txbInvoiceNumber,
             this.barStaticItem1,
             this.bbiExportPDF,
             this.skinRibbonGalleryBarItem1,
@@ -822,28 +823,40 @@ namespace CncApp_Final.Frm
             this.barButtonItem2.Id = 9;
             this.barButtonItem2.Name = "barButtonItem2";
             // 
-            // txbVCF_Id
+            // txbInvoiceNumber
             // 
-            this.txbVCF_Id.DataBindings.Add(new System.Windows.Forms.Binding("AccessibleDescription", this.orderBindingSource, "InvoiceNumber", true));
-            this.txbVCF_Id.Edit = this.repositoryItemTextEdit2;
-            this.txbVCF_Id.Id = 12;
-            this.txbVCF_Id.Name = "txbVCF_Id";
+            this.txbInvoiceNumber.DataBindings.Add(new System.Windows.Forms.Binding("AccessibleDescription", this.orderBindingSource, "InvoiceNumber", true));
+            this.txbInvoiceNumber.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "InvoiceNumber", true));
+            this.txbInvoiceNumber.Edit = this.repositoryItemTextEdit2;
+            this.txbInvoiceNumber.EditValue = "F04-0101";
+            this.txbInvoiceNumber.EditWidth = 80;
+            this.txbInvoiceNumber.Enabled = false;
+            this.txbInvoiceNumber.Id = 12;
+            this.txbInvoiceNumber.Name = "txbInvoiceNumber";
+            this.txbInvoiceNumber.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.txbInvoiceNumber_ItemClick);
             // 
             // repositoryItemTextEdit2
             // 
-            this.repositoryItemTextEdit2.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.repositoryItemTextEdit2.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.repositoryItemTextEdit2.Appearance.ForeColor = System.Drawing.Color.Red;
             this.repositoryItemTextEdit2.Appearance.Options.UseFont = true;
+            this.repositoryItemTextEdit2.Appearance.Options.UseForeColor = true;
             this.repositoryItemTextEdit2.Appearance.Options.UseTextOptions = true;
             this.repositoryItemTextEdit2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.repositoryItemTextEdit2.AppearanceDisabled.ForeColor = System.Drawing.Color.Red;
+            this.repositoryItemTextEdit2.AppearanceDisabled.Options.UseForeColor = true;
             this.repositoryItemTextEdit2.AutoHeight = false;
             this.repositoryItemTextEdit2.Name = "repositoryItemTextEdit2";
             this.repositoryItemTextEdit2.ReadOnly = true;
             // 
             // barStaticItem1
             // 
+            this.barStaticItem1.AllowFocus = DevExpress.Utils.DefaultBoolean.False;
             this.barStaticItem1.Caption = "شماره فاکتور";
             this.barStaticItem1.Id = 13;
             this.barStaticItem1.Name = "barStaticItem1";
+            this.barStaticItem1.RightIndent = 11;
+            this.barStaticItem1.Width = 70;
             // 
             // bbiExportPDF
             // 
@@ -916,7 +929,7 @@ namespace CncApp_Final.Frm
             // 
             this.ribbonPageGroup4.Alignment = DevExpress.XtraBars.Ribbon.RibbonPageGroupAlignment.Far;
             this.ribbonPageGroup4.ItemLinks.Add(this.barStaticItem1);
-            this.ribbonPageGroup4.ItemLinks.Add(this.txbVCF_Id);
+            this.ribbonPageGroup4.ItemLinks.Add(this.txbInvoiceNumber);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             // 
             // ribbonPageGroup5
@@ -963,9 +976,11 @@ namespace CncApp_Final.Frm
             this.gridControl.MainView = this.grdvOrderDetails;
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.rpsBtnOpenFolder});
+            this.rpsBtnOpenFolder,
+            this.repositoryItemMemoEdit1});
             this.gridControl.Size = new System.Drawing.Size(728, 157);
             this.gridControl.TabIndex = 25;
+            this.gridControl.TabStop = false;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.grdvOrderDetails});
             this.gridControl.DoubleClick += new System.EventHandler(this.gridControl_DoubleClick);
@@ -981,6 +996,10 @@ namespace CncApp_Final.Frm
             this.grdvOrderDetails.Appearance.HeaderPanel.Options.UseTextOptions = true;
             this.grdvOrderDetails.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.grdvOrderDetails.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.grdvOrderDetails.Appearance.HideSelectionRow.BackColor = System.Drawing.Color.White;
+            this.grdvOrderDetails.Appearance.HideSelectionRow.Options.UseBackColor = true;
+            this.grdvOrderDetails.Appearance.Row.Options.UseTextOptions = true;
+            this.grdvOrderDetails.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.grdvOrderDetails.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.grdvOrderDetails.ColumnPanelRowHeight = 50;
             this.grdvOrderDetails.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -991,8 +1010,8 @@ namespace CncApp_Final.Frm
             this.colFinalSheetCostDisplay,
             this.colFinalSheetCost,
             this.colCncCost,
-            this.colDescription,
             this.colDetailName,
+            this.colDescription,
             this.colOpenFolder,
             this.colOrderId,
             this.colOrder,
@@ -1013,8 +1032,10 @@ namespace CncApp_Final.Frm
             this.grdvOrderDetails.OptionsCustomization.AllowSort = false;
             this.grdvOrderDetails.OptionsFind.FindDelay = 500;
             this.grdvOrderDetails.OptionsFind.FindNullPrompt = "برای جستجو در فاکتورها، کلمه مورد نظر را وارد کنید...";
+            this.grdvOrderDetails.OptionsSelection.EnableAppearanceFocusedCell = false;
+            this.grdvOrderDetails.OptionsView.RowAutoHeight = true;
             this.grdvOrderDetails.OptionsView.ShowGroupPanel = false;
-            this.grdvOrderDetails.RowHeight = 30;
+            this.grdvOrderDetails.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.grdvOrderDetails_CustomColumnDisplayText);
             // 
             // colId
             // 
@@ -1027,11 +1048,20 @@ namespace CncApp_Final.Frm
             // 
             this.colCutSheetDetails.AppearanceCell.Options.UseTextOptions = true;
             this.colCutSheetDetails.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colCutSheetDetails.ColumnEdit = this.repositoryItemMemoEdit1;
             this.colCutSheetDetails.FieldName = "CutSheetDetails";
             this.colCutSheetDetails.Name = "colCutSheetDetails";
             this.colCutSheetDetails.OptionsColumn.ReadOnly = true;
             this.colCutSheetDetails.Visible = true;
             this.colCutSheetDetails.VisibleIndex = 0;
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.AcceptsTab = true;
+            this.repositoryItemMemoEdit1.Appearance.Options.UseTextOptions = true;
+            this.repositoryItemMemoEdit1.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.repositoryItemMemoEdit1.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // colSupplier
             // 
@@ -1065,6 +1095,7 @@ namespace CncApp_Final.Frm
             // 
             this.colFinalSheetCost.AppearanceCell.Options.UseTextOptions = true;
             this.colFinalSheetCost.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colFinalSheetCost.Caption = "هزینه ورق";
             this.colFinalSheetCost.DisplayFormat.FormatString = "n0";
             this.colFinalSheetCost.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colFinalSheetCost.FieldName = "FinalSheetCost";
@@ -1083,19 +1114,19 @@ namespace CncApp_Final.Frm
             this.colCncCost.Visible = true;
             this.colCncCost.VisibleIndex = 4;
             // 
-            // colDescription
-            // 
-            this.colDescription.FieldName = "Description";
-            this.colDescription.Name = "colDescription";
-            this.colDescription.Visible = true;
-            this.colDescription.VisibleIndex = 5;
-            // 
             // colDetailName
             // 
             this.colDetailName.FieldName = "DetailName";
             this.colDetailName.Name = "colDetailName";
             this.colDetailName.Visible = true;
-            this.colDetailName.VisibleIndex = 6;
+            this.colDetailName.VisibleIndex = 5;
+            // 
+            // colDescription
+            // 
+            this.colDescription.FieldName = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.Visible = true;
+            this.colDescription.VisibleIndex = 6;
             // 
             // colOpenFolder
             // 
@@ -1111,6 +1142,7 @@ namespace CncApp_Final.Frm
             // rpsBtnOpenFolder
             // 
             this.rpsBtnOpenFolder.AutoHeight = false;
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.rpsBtnOpenFolder.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rpsBtnOpenFolder.Name = "rpsBtnOpenFolder";
@@ -1272,42 +1304,9 @@ namespace CncApp_Final.Frm
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "WXI";
             // 
-            // dxErrorProvider1
-            // 
-            this.dxErrorProvider1.ContainerControl = this;
-            this.dxErrorProvider1.DataSource = this.orderBindingSource;
-            // 
             // dxValidationProvider1
             // 
             this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
-            this.dxValidationProvider1.ValidationFailed += new DevExpress.XtraEditors.DXErrorProvider.ValidationFailedEventHandler(this.dxValidationProvider1_ValidationFailed);
-            this.dxValidationProvider1.ValidationSucceeded += new DevExpress.XtraEditors.DXErrorProvider.ValidationSucceededEventHandler(this.dxValidationProvider1_ValidationSucceeded);
-            // 
-            // txbFaOrderDate
-            // 
-            this.txbFaOrderDate.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbFaOrderDate.Appearance.Options.UseFont = true;
-            this.txbFaOrderDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "OrderDate", true));
-            this.txbFaOrderDate.EditValue = null;
-            this.txbFaOrderDate.Location = new System.Drawing.Point(551, 59);
-            this.txbFaOrderDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txbFaOrderDate.Name = "txbFaOrderDate";
-            this.txbFaOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txbFaOrderDate.Size = new System.Drawing.Size(98, 36);
-            this.txbFaOrderDate.TabIndex = 23;
-            // 
-            // txbFaDeliveryDate
-            // 
-            this.txbFaDeliveryDate.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbFaDeliveryDate.Appearance.Options.UseFont = true;
-            this.txbFaDeliveryDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "DeliveryDate", true));
-            this.txbFaDeliveryDate.EditValue = null;
-            this.txbFaDeliveryDate.Location = new System.Drawing.Point(551, 100);
-            this.txbFaDeliveryDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.txbFaDeliveryDate.Name = "txbFaDeliveryDate";
-            this.txbFaDeliveryDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.txbFaDeliveryDate.Size = new System.Drawing.Size(98, 36);
-            this.txbFaDeliveryDate.TabIndex = 23;
             // 
             // FrmOrder
             // 
@@ -1365,6 +1364,7 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.orderDetailsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdvOrderDetails)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit2)).EndInit();
@@ -1373,7 +1373,6 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRibbonSearchEdit7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dxErrorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1413,7 +1412,7 @@ namespace CncApp_Final.Frm
         private DevExpress.XtraBars.BarButtonItem bbiNew;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Ribbon.Internal.RepositoryItemRibbonSearchEdit repositoryItemRibbonSearchEdit4;
-        private DevExpress.XtraBars.BarEditItem txbVCF_Id;
+        private DevExpress.XtraBars.BarEditItem txbInvoiceNumber;
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit2;
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup4;
@@ -1472,11 +1471,9 @@ namespace CncApp_Final.Frm
         private DevExpress.XtraEditors.GroupControl groupControl2;
         private DevExpress.XtraEditors.SimpleButton btnNewDetail;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
-        private DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider dxErrorProvider1;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private Helper.PersianDateTextEdit persianDateTextEdit1;
         private Helper.PersianDateTextEdit txbFaDeliveryDate;
         private Helper.PersianDateTextEdit txbFaOrderDate;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }

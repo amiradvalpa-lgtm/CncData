@@ -141,11 +141,49 @@ namespace CncApp_Final.Entities
 
 
 
+        //[NotMapped]
+        //[DisplayName("مشخصات ورق برشی")]
+        //public string CutSheetDetails => Sheet != null
+        //    ? $"{Sheet.Material} {Sheet.Thickness}mm {Sheet.Width}*{Sheet.Length}  ا  {SheetCount} عدد"
+        //    : "ورق انتخاب نشده";
+
+
+
         [NotMapped]
         [DisplayName("مشخصات ورق برشی")]
-        public string CutSheetDetails => Sheet != null
-            ? $"{Sheet.Material} {Sheet.Thickness}mm {CutWidth}*{CutLength}"
-            : "ورق انتخاب نشده";
+        public string CutSheetDetails
+        {
+            get
+            {
+                if (Sheet == null)
+                    return "ورق انتخاب نشده";
+
+                var baseInfo = $"{Sheet.Material} {Sheet.Thickness}mm";
+
+                bool hasSheetCount = SheetCount > 0;
+                bool hasCutSize = (CutWidth > 0 && CutLength > 0);
+
+                // فقط SheetCount
+                if (hasSheetCount && !hasCutSize)
+                    return $"{baseInfo} {Sheet.Width}*{Sheet.Length} - {SheetCount} pcs";
+
+                // فقط Cut Size
+                if (!hasSheetCount && hasCutSize)
+                    return $"{baseInfo} {CutWidth}*{CutLength} Cm";
+
+                // هر دو برقرار → دو خط
+                if (hasSheetCount && hasCutSize)
+                {
+                    string line1 = $"{baseInfo} {Sheet.Width}*{Sheet.Length} - {SheetCount} pcs";
+                    string line2 = $"{baseInfo} {CutWidth}*{CutLength} Cm";
+                    return line1 + Environment.NewLine + line2;
+                }
+
+                // اگر هیچ‌کدام برقرار نبود
+                return $"{baseInfo} {Sheet.Width}*{Sheet.Length}";
+            }
+        }
+
 
         [NotMapped]
         [DisplayName("قیمت ورق")]
@@ -200,5 +238,7 @@ namespace CncApp_Final.Entities
 
             return clone;
         }
+
     }
+    
 }

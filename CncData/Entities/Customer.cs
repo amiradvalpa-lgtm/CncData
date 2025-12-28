@@ -21,6 +21,11 @@ namespace CncData.Entities
         [Description("نام کامل مشتری")]
         public string CustomerName { get; set; }
 
+        [DisplayName("راهنما")]
+        [Description("راهنما در مورد نام مشتری")]
+        public string Hint { get; set; }
+
+
         [DisplayName("تلفن")]
         [Description("شماره تماس مشتری")]
         public string Phone { get; set; }

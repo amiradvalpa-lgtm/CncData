@@ -22,6 +22,11 @@ namespace CncApp_Final.Entities
         [Required(AllowEmptyStrings = false, ErrorMessage = "وارد کردن {0} الزامی است.")]
         public string CustomerName { get; set; }
 
+        [DisplayName("راهنما")]
+        [Description("راهنما در مورد نام مشتری")]
+        public string Hint { get; set; } = string.Empty;
+
+
         [DisplayName("تلفن")]
         [Description("شماره تماس مشتری")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "وارد کردن {0} الزامی است.")]
@@ -52,6 +57,24 @@ namespace CncApp_Final.Entities
         [DisplayName("رسیدها")]
         [Description("لیست رسیدهای مشتری")]
         public virtual ICollection<Receipt> Receipts { get; set; }
+
+        [NotMapped]
+        public string CustomerFullName
+        {
+            get
+            {
+                return string.IsNullOrWhiteSpace(Hint)
+                    ? CustomerName
+                    : $"{CustomerName} - {Hint}";
+            }
+        }
+
+        public Customer() 
+        {
+            Hint = string.Empty;
+            Description = string.Empty;
+            MhkCustomerId = string.Empty;
+        }
     }
 
 }

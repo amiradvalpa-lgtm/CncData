@@ -50,12 +50,14 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.txbMhkCustomerId = new DevExpress.XtraEditors.TextEdit();
             this.txbBeginning_Balance = new DevExpress.XtraEditors.TextEdit();
             this.txbDescription = new DevExpress.XtraEditors.TextEdit();
             this.txbAddress = new DevExpress.XtraEditors.TextEdit();
             this.txbPhone = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbCustomerName.Properties)).BeginInit();
@@ -69,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPhone.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -176,11 +179,13 @@
             // 
             this.txbCustomerName.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "CustomerName", true));
             this.txbCustomerName.EnterMoveNextControl = true;
-            this.txbCustomerName.Location = new System.Drawing.Point(19, 46);
+            this.txbCustomerName.Location = new System.Drawing.Point(177, 46);
             this.txbCustomerName.MenuManager = this.mainRibbonControl;
             this.txbCustomerName.Name = "txbCustomerName";
+            this.txbCustomerName.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbCustomerName.Properties.Appearance.Options.UseFont = true;
             this.txbCustomerName.Properties.ValidateOnEnterKey = true;
-            this.txbCustomerName.Size = new System.Drawing.Size(324, 28);
+            this.txbCustomerName.Size = new System.Drawing.Size(166, 36);
             this.txbCustomerName.TabIndex = 0;
             this.txbCustomerName.EditValueChanged += new System.EventHandler(this.txbCustomerName_EditValueChanged);
             this.txbCustomerName.Leave += new System.EventHandler(this.txbCustomerName_Leave);
@@ -203,12 +208,14 @@
             this.groupControl1.Controls.Add(this.labelControl4);
             this.groupControl1.Controls.Add(this.labelControl3);
             this.groupControl1.Controls.Add(this.labelControl2);
+            this.groupControl1.Controls.Add(this.labelControl8);
             this.groupControl1.Controls.Add(this.labelControl1);
             this.groupControl1.Controls.Add(this.txbMhkCustomerId);
             this.groupControl1.Controls.Add(this.txbBeginning_Balance);
             this.groupControl1.Controls.Add(this.txbDescription);
             this.groupControl1.Controls.Add(this.txbAddress);
             this.groupControl1.Controls.Add(this.txbPhone);
+            this.groupControl1.Controls.Add(this.textEdit1);
             this.groupControl1.Controls.Add(this.txbCustomerName);
             this.groupControl1.Location = new System.Drawing.Point(12, 220);
             this.groupControl1.Name = "groupControl1";
@@ -222,6 +229,8 @@
             this.cmbBanalceMode.Location = new System.Drawing.Point(19, 214);
             this.cmbBanalceMode.MenuManager = this.mainRibbonControl;
             this.cmbBanalceMode.Name = "cmbBanalceMode";
+            this.cmbBanalceMode.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.cmbBanalceMode.Properties.Appearance.Options.UseFont = true;
             this.cmbBanalceMode.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbBanalceMode.Properties.Items.AddRange(new DevExpress.XtraEditors.Controls.ImageComboBoxItem[] {
@@ -229,8 +238,8 @@
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("بدهکار", -1D, 1),
             new DevExpress.XtraEditors.Controls.ImageComboBoxItem("بستانکار", 1D, 2)});
             this.cmbBanalceMode.Properties.SmallImages = this.imageCollection1;
-            this.cmbBanalceMode.Size = new System.Drawing.Size(121, 28);
-            this.cmbBanalceMode.TabIndex = 5;
+            this.cmbBanalceMode.Size = new System.Drawing.Size(121, 36);
+            this.cmbBanalceMode.TabIndex = 6;
             // 
             // imageCollection1
             // 
@@ -244,7 +253,7 @@
             // 
             // labelControl6
             // 
-            this.labelControl6.Location = new System.Drawing.Point(349, 263);
+            this.labelControl6.Location = new System.Drawing.Point(349, 266);
             this.labelControl6.Name = "labelControl6";
             this.labelControl6.Size = new System.Drawing.Size(82, 13);
             this.labelControl6.TabIndex = 3;
@@ -252,7 +261,7 @@
             // 
             // labelControl7
             // 
-            this.labelControl7.Location = new System.Drawing.Point(146, 221);
+            this.labelControl7.Location = new System.Drawing.Point(146, 224);
             this.labelControl7.Name = "labelControl7";
             this.labelControl7.Size = new System.Drawing.Size(75, 13);
             this.labelControl7.TabIndex = 3;
@@ -260,7 +269,7 @@
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(349, 221);
+            this.labelControl5.Location = new System.Drawing.Point(349, 224);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(67, 13);
             this.labelControl5.TabIndex = 3;
@@ -268,7 +277,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(349, 179);
+            this.labelControl4.Location = new System.Drawing.Point(349, 182);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(44, 13);
             this.labelControl4.TabIndex = 3;
@@ -276,7 +285,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(349, 137);
+            this.labelControl3.Location = new System.Drawing.Point(349, 140);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(29, 13);
             this.labelControl3.TabIndex = 3;
@@ -284,15 +293,23 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(349, 95);
+            this.labelControl2.Location = new System.Drawing.Point(349, 98);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(63, 13);
             this.labelControl2.TabIndex = 3;
             this.labelControl2.Text = "شماره تماس:";
             // 
+            // labelControl8
+            // 
+            this.labelControl8.Location = new System.Drawing.Point(138, 56);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(33, 13);
+            this.labelControl8.TabIndex = 3;
+            this.labelControl8.Text = "راهنما:";
+            // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(349, 53);
+            this.labelControl1.Location = new System.Drawing.Point(349, 56);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(57, 13);
             this.labelControl1.TabIndex = 3;
@@ -304,10 +321,12 @@
             this.txbMhkCustomerId.EnterMoveNextControl = true;
             this.txbMhkCustomerId.Location = new System.Drawing.Point(19, 256);
             this.txbMhkCustomerId.Name = "txbMhkCustomerId";
+            this.txbMhkCustomerId.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbMhkCustomerId.Properties.Appearance.Options.UseFont = true;
             this.txbMhkCustomerId.Properties.NullValuePrompt = "ثبت نشده است !";
             this.txbMhkCustomerId.Properties.UseMaskAsDisplayFormat = true;
-            this.txbMhkCustomerId.Size = new System.Drawing.Size(324, 28);
-            this.txbMhkCustomerId.TabIndex = 6;
+            this.txbMhkCustomerId.Size = new System.Drawing.Size(324, 36);
+            this.txbMhkCustomerId.TabIndex = 7;
             // 
             // txbBeginning_Balance
             // 
@@ -315,12 +334,14 @@
             this.txbBeginning_Balance.EnterMoveNextControl = true;
             this.txbBeginning_Balance.Location = new System.Drawing.Point(238, 214);
             this.txbBeginning_Balance.Name = "txbBeginning_Balance";
+            this.txbBeginning_Balance.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbBeginning_Balance.Properties.Appearance.Options.UseFont = true;
             this.txbBeginning_Balance.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.txbBeginning_Balance.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
             this.txbBeginning_Balance.Properties.MaskSettings.Set("mask", "n0");
             this.txbBeginning_Balance.Properties.UseMaskAsDisplayFormat = true;
-            this.txbBeginning_Balance.Size = new System.Drawing.Size(105, 28);
-            this.txbBeginning_Balance.TabIndex = 4;
+            this.txbBeginning_Balance.Size = new System.Drawing.Size(105, 36);
+            this.txbBeginning_Balance.TabIndex = 5;
             // 
             // txbDescription
             // 
@@ -328,8 +349,10 @@
             this.txbDescription.EnterMoveNextControl = true;
             this.txbDescription.Location = new System.Drawing.Point(19, 172);
             this.txbDescription.Name = "txbDescription";
-            this.txbDescription.Size = new System.Drawing.Size(324, 28);
-            this.txbDescription.TabIndex = 3;
+            this.txbDescription.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbDescription.Properties.Appearance.Options.UseFont = true;
+            this.txbDescription.Size = new System.Drawing.Size(324, 36);
+            this.txbDescription.TabIndex = 4;
             // 
             // txbAddress
             // 
@@ -337,8 +360,10 @@
             this.txbAddress.EnterMoveNextControl = true;
             this.txbAddress.Location = new System.Drawing.Point(19, 130);
             this.txbAddress.Name = "txbAddress";
-            this.txbAddress.Size = new System.Drawing.Size(324, 28);
-            this.txbAddress.TabIndex = 2;
+            this.txbAddress.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbAddress.Properties.Appearance.Options.UseFont = true;
+            this.txbAddress.Size = new System.Drawing.Size(324, 36);
+            this.txbAddress.TabIndex = 3;
             this.txbAddress.EditValueChanged += new System.EventHandler(this.txbAddress_EditValueChanged);
             // 
             // txbPhone
@@ -348,14 +373,32 @@
             this.txbPhone.EnterMoveNextControl = true;
             this.txbPhone.Location = new System.Drawing.Point(19, 88);
             this.txbPhone.Name = "txbPhone";
+            this.txbPhone.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbPhone.Properties.Appearance.Options.UseFont = true;
             this.txbPhone.Properties.Appearance.Options.UseTextOptions = true;
             this.txbPhone.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
             this.txbPhone.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.SimpleMaskManager));
             this.txbPhone.Properties.MaskSettings.Set("mask", "0000 000 0000");
             this.txbPhone.Properties.UseMaskAsDisplayFormat = true;
             this.txbPhone.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txbPhone.Size = new System.Drawing.Size(324, 28);
-            this.txbPhone.TabIndex = 1;
+            this.txbPhone.Size = new System.Drawing.Size(324, 36);
+            this.txbPhone.TabIndex = 2;
+            // 
+            // textEdit1
+            // 
+            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "Hint", true));
+            this.textEdit1.EnterMoveNextControl = true;
+            this.textEdit1.Location = new System.Drawing.Point(19, 46);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.textEdit1.Properties.Appearance.Options.UseFont = true;
+            this.textEdit1.Properties.ValidateOnEnterKey = true;
+            this.textEdit1.Size = new System.Drawing.Size(113, 36);
+            this.textEdit1.TabIndex = 1;
+            this.textEdit1.EditValueChanged += new System.EventHandler(this.txbCustomerName_EditValueChanged);
+            this.textEdit1.Leave += new System.EventHandler(this.txbCustomerName_Leave);
+            this.textEdit1.Validating += new System.ComponentModel.CancelEventHandler(this.txbCustomerName_Validating);
+            this.textEdit1.Validated += new System.EventHandler(this.txbCustomerName_Validated);
             // 
             // dxValidationProvider1
             // 
@@ -389,6 +432,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPhone.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -423,5 +467,7 @@
         private DevExpress.Utils.ImageCollection imageCollection1;
         private System.Windows.Forms.BindingSource customerBindingSource;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
     }
 }

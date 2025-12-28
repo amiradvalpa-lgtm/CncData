@@ -55,7 +55,7 @@ namespace CncApp_Final.Frm
             InitializeComponent();
 
 
-            ribbonControl1.ApplicationCaption = order_Id == 0 ? "ورود به انبار جدید" : "ویرایش ورودی انبار";
+            ribbonControl1.ApplicationCaption = order_Id == 0 ? "سفارش جدید" : "ویرایش سفارش";
             _Order_Id = order_Id;
             _IsOrderReadonly = isOrderReadonly;
             _dbContext = new AppDbContext(); // ایجاد یک کانکست جدید
@@ -65,35 +65,48 @@ namespace CncApp_Final.Frm
             customersBindingSource.DataSource = _dbContext.Customers.Local.ToBindingList();
 
 
+
+
+            //
+            //*******************************************************************************************
+            //
+
+            Order order = _dbContext.Orders.Include(o => o.OrderDetails)
+                                                     .FirstOrDefault(o => o.Id == _Order_Id);
             if (_Order_Id > 0)
             {
                 // حالت ویرایش: بارگذاری یک رکورد مشخص
-                Order order = _dbContext.Orders.Include(o => o.OrderDetails)
+                order = _dbContext.Orders.Include(o => o.OrderDetails)
                                                      .FirstOrDefault(o => o.Id == _Order_Id);
-
                 if (order != null)
                 {
-                    orderBindingSource.DataSource = order;
-                    orderDetailsBindingSource.DataSource = order.OrderDetails;
+
                 }
                 else
                 {
                     // اگر رکورد پیدا نشد، فرم را به حالت جدید ببرید
-                    orderBindingSource.DataSource = new Order() { OrderDate = DateTime.Now };
+                    order = new Order() { OrderDate = DateTime.Now, InvoiceNumber = GetNextInvoiceNumber() };
                 }
             }
             else
             {
                 // حالت جدید: ایجاد یک رکورد جدید
-                orderBindingSource.DataSource = new Order() { OrderDate = DateTime.Now };
+                order = new Order() { OrderDate = DateTime.Now ,InvoiceNumber= GetNextInvoiceNumber() };
             }
+            orderBindingSource.DataSource = order;
+            orderDetailsBindingSource.DataSource = order.OrderDetails;
+
+            //
+            //*******************************************************************************************
+            //
+
+
 
             // 🆕 اعمال تنظیمات ReadOnly
             if (_IsOrderReadonly)
             {
                 SetReadOnly(this._IsOrderReadonly);
             }
-
             SetDxDalidation();
         }
 
@@ -146,6 +159,37 @@ namespace CncApp_Final.Frm
                                         1,
                                         this.Name);
 
+
+
+            // حالا تنظیمات را مجدداً به اجبار (Force) اعمال کنید
+            var view = gridControl.MainView as DevExpress.XtraGrid.Views.Grid.GridView;
+            if (view != null)
+            {
+                view.OptionsView.RowAutoHeight = true;
+
+                // ستون مورد نظر را پیدا کنید و دوباره تنظیم کنید
+                var column = view.Columns["CutSheetDetails"];
+                if (column != null)
+                {
+                    column.ColumnEdit = repositoryItemMemoEdit1; // حتماً دوباره انتساب دهید
+                    column.AppearanceCell.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+
+                    // 2. حالا تنظیمات تراز عمودی را به اجبار اعمال کنید
+                    // تنظیم برای تمام سطرها
+                    grdvOrderDetails.Appearance.Row.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+                    grdvOrderDetails.Appearance.Row.Options.UseTextOptions = true;
+
+                    // اگر می‌خواهید فقط ستون مشخصات وسط‌چین شود:
+                    column.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+                    column.AppearanceCell.Options.UseTextOptions = true;
+
+                    column.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+                    column.AppearanceCell.Options.UseTextOptions = true;
+
+
+                }
+            }
+
             //dxValidationProvider1.SetValidationRule(txbFaDeliveryDate,
             //        new DevExpress.XtraEditors.DXErrorProvider.CustomValidationRule()
             //        {
@@ -192,26 +236,26 @@ namespace CncApp_Final.Frm
 
 
 
-//            // txbFaDeliveryDate اسم TextEdit
-//            dxValidationProvider1.SetValidationRule(
-//                txbFaDeliveryDate,
-//                new PersianDateValidationRule()
-//            );
+            //            // txbFaDeliveryDate اسم TextEdit
+            //            dxValidationProvider1.SetValidationRule(
+            //                txbFaDeliveryDate,
+            //                new PersianDateValidationRule()
+            //            );
 
-//            dxValidationProvider1.SetValidationRule(
-//    persianDateTextEdit1.InnerTextEdit,
-//    new PersianDateValidationRule()
-//);
+            //            dxValidationProvider1.SetValidationRule(
+            //    persianDateTextEdit1.InnerTextEdit,
+            //    new PersianDateValidationRule()
+            //);
 
-//            dxValidationProvider1.SetValidationRule(
-//    persianDateTextEdit2.InnerTextEdit,
-//    new PersianDateValidationRule()
-//);
+            //            dxValidationProvider1.SetValidationRule(
+            //    persianDateTextEdit2.InnerTextEdit,
+            //    new PersianDateValidationRule()
+            //);
 
-//            dxValidationProvider1.SetValidationRule(
-//    persianDateTextEdit3.InnerTextEdit,
-//    new PersianDateValidationRule()
-//);
+            //            dxValidationProvider1.SetValidationRule(
+            //    persianDateTextEdit3.InnerTextEdit,
+            //    new PersianDateValidationRule()
+            //);
 
 
         }
@@ -328,6 +372,9 @@ namespace CncApp_Final.Frm
             // 1. پایان ویرایش در BindingSource اصلی (Order Header)
             orderBindingSource.EndEdit();
 
+            if(!dxValidationProvider1.Validate())
+                return false;
+
             Order currentOrder = orderBindingSource.Current as Order;
 
             if (currentOrder == null)
@@ -336,12 +383,12 @@ namespace CncApp_Final.Frm
                 return false;
             }
 
-            // 2. اعتبارسنجی اولیه Order Header
-            if (currentOrder.CustomerId <= 0 || currentOrder.Customer == null)
-            {
-                XtraMessageBox.Show("انتخاب مشتری الزامی است.", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
+            //// 2. اعتبارسنجی اولیه Order Header
+            //if (currentOrder.CustomerId <= 0 )
+            //{
+            //    XtraMessageBox.Show("انتخاب مشتری الزامی است.", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return false;
+            //}
 
             if (!currentOrder.OrderDetails.Any())
             {
@@ -369,7 +416,7 @@ namespace CncApp_Final.Frm
                 if (_Order_Id == 0)
                 {
                     _Order_Id = currentOrder.Id;
-                    ribbonControl1.ApplicationCaption = "ویرایش ورودی انبار";
+                    ribbonControl1.ApplicationCaption = "ویرایش سفارش";
                     // مطمئن شوید که txbVCF_Id (شماره فاکتور) هم به‌روز شده است
                 }
                 return true;
@@ -471,7 +518,7 @@ namespace CncApp_Final.Frm
         //*************************************************************************************************************************************
 
 
-        // FrmOrder.cs
+      
 
         private void OpenOrderDetailForEdit(OrderDetails originalDetail)
         {
@@ -481,7 +528,8 @@ namespace CncApp_Final.Frm
 
                 if (result == DialogResult.OK)
                 {
-                    // 3. رفرش DataGrid و فیلدهای محاسباتی Order
+                    _dbContext.Entry(originalDetail).Reference(x => x.Sheet).Load();
+
                     orderDetailsBindingSource.ResetBindings(false);
                     orderBindingSource.ResetBindings(false); // برای به‌روزرسانی TotalAmount در فرم مادر
                 }
@@ -496,12 +544,10 @@ namespace CncApp_Final.Frm
 
             if ((info.InRow || info.InRowCell) && view.IsDataRow(info.RowHandle))
             {
-                // دریافت شیء کامل OrderDetails از سطر فوکوس شده
                 OrderDetails detailToEdit = view.GetRow(info.RowHandle) as OrderDetails;
 
                 if (detailToEdit != null)
                 {
-                    // EndEdit برای اطمینان از اعمال هرگونه تغییرات ناتمام در سطر
                     view.CloseEditor();
                     view.UpdateCurrentRow();
 
@@ -512,6 +558,7 @@ namespace CncApp_Final.Frm
 
         private void btnNewDetail_Click(object sender, EventArgs e)
         {
+            grdvOrderDetails.RefreshData();
             Order currentOrder = orderBindingSource.Current as Order;
 
             if (currentOrder == null)
@@ -520,40 +567,27 @@ namespace CncApp_Final.Frm
                 return;
             }
 
-            // 1. ایجاد یک شیء جدید OrderDetails
             OrderDetails newDetail = new OrderDetails();
-
-            // اگر از قبل OrderId وجود داشت، آن را به Detail پاس می‌دهیم (اختیاری، اما مفید برای Navigation Property)
             newDetail.OrderId = currentOrder.Id;
 
-            // 2. باز کردن فرم مودال برای افزودن جدید
             using (CncApp_Final.TempFrm.FrmOrderDetails frmOrderDetailNew = new CncApp_Final.TempFrm.FrmOrderDetails(newDetail, _dbContext))
             {
                 DialogResult result = frmOrderDetailNew.ShowDialog();
 
                 if (result == DialogResult.OK)
                 {
-                    // 🔑 اعمال منطق افزودن جدید: تنظیم Id = 0 و افزودن به Collection اصلی
-                    // این اطمینان می‌دهد که EF آن را به عنوان یک ردیف جدید در دیتابیس درج کند.
                     newDetail.Id = 0;
-
-                    // اگر OrderId از ابتدا ست نشده بود، اینجا ست شود:
                     newDetail.OrderId = currentOrder.Id;
 
-                    // افزودن به Collection ناوبری Order اصلی
-                    currentOrder.OrderDetails.Add(newDetail);
+                    _dbContext.Entry(newDetail).Reference(x => x.Sheet).Load();
 
-                    // برای اینکه DataGrid و فیلدهای محاسباتی Order به‌روز شوند:
+                    currentOrder.OrderDetails.Add(newDetail);
                     orderDetailsBindingSource.ResetBindings(false);
                     orderBindingSource.ResetBindings(false);
                 }
             }
         }
 
-        private void groupControl4_DoubleClick(object sender, EventArgs e)
-        {
-            
-        }
 
         private void FrmOrder_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -563,183 +597,41 @@ namespace CncApp_Final.Frm
                                         this.Name);
         }
 
-        
-
-        private void dxValidationProvider1_ValidationSucceeded(object sender, ValidationSucceededEventArgs e)
+        public string GetNextInvoiceNumber()
         {
-            
-        }
+            var pc = new PersianCalendar();
+            int year = pc.GetYear(DateTime.Now);
+            int yy = year % 100; // دو رقم آخر سال
 
-        private void dxValidationProvider1_ValidationFailed(object sender, ValidationFailedEventArgs e)
-        {
+            string prefix = $"F{yy:D2}-";
 
-        }
+            var lastInvoice = _dbContext.Orders
+                .Where(o => o.InvoiceNumber.StartsWith(prefix))
+                .Select(o => o.InvoiceNumber)
+                .OrderByDescending(x => x)
+                .FirstOrDefault();
 
-        //private void simpleButton1_Click(object sender, EventArgs e)
-        //{
-        //    txbFaDeliveryDate.IsModified = true;
-        //    txbFaDeliveryDate.ErrorText = "";
-        //    var z = dxValidationProvider1.Validate((Control)sender);
-        //}
+            int nextNumber;
 
-        ////////private void txbFaDeliveryDate_EditValueChanged(object sender, EventArgs e)
-        ////////{
-        ////////    if (dxValidationProvider1.Validate((Control)sender))
-        ////////    {
-        ////////        txbFaDeliveryDate.ErrorText = "";
-        ////////    }
-        ////////    else
-        ////////    {
-
-        ////////    }
-
-        ////////}
-        ////////private void txbFaDeliveryDate_Leave(object sender, EventArgs e)
-        ////////{
-        ////////    txbFaDeliveryDate.IsModified = true;
-        ////////    var x = dxValidationProvider1.Validate((Control)sender);
-
-
-        ////////    //var x= dxValidationProvider1.GetInvalidControls();
-        ////////    //var z = dxValidationProvider1.GetValidationRule(txbFaDeliveryDate);
-        ////////    ////dxValidationProvider1.Validate();
-        ////////    ////dxValidationProvider1.RemoveControlError(txbFaDeliveryDate);
-
-        ////////    //dxValidationProvider1.Validate((Control)sender);
-        ////////    //dxValidationProvider1.Validate();
-        ////////    //dxValidationProvider1.RemoveControlError(txbFaDeliveryDate);
-
-        ////////    //dxValidationProvider1.Dispose();
-
-        ////////    ////dxValidationProvider1.SetValidationRule(txbFaDeliveryDate, null);  // rule رو حذف کن
-        ////////    //txbFaDeliveryDate.ErrorText = "";
-
-
-
-        ////////    _ = DelayAndExecuteAsync();  // بهترین روش
-        ////////}
-
-        ////////private async Task DelayAndExecuteAsync()
-        ////////{
-        ////////    await Task.Delay(20);
-
-        ////////    // کدهایی که می‌خوای بعد از تأخیر اجرا بشن
-        ////////    string text = txbFaDeliveryDate.Text.Trim();
-
-        ////////    if (string.IsNullOrWhiteSpace(text))
-        ////////    {
-        ////////        txbFaDeliveryDate.ErrorText = string.Empty;
-        ////////        return;
-        ////////    }
-        ////////    if (PersianDate.TryParse(text, out _, out string err))
-        ////////    {
-        ////////        txbFaDeliveryDate.ErrorText = string.Empty;
-        ////////    }
-        ////////    else
-        ////////    {
-        ////////        txbFaDeliveryDate.ErrorText = err;
-        ////////    }
-        ////////}
-
-        //private void txbFaDeliveryDate_Properties_ParseEditValue(object sender, DevExpress.XtraEditors.Controls.ConvertEditValueEventArgs e)
-        //{
-        //    var x = dxValidationProvider1.Validate((Control)sender);
-        //    if (dxValidationProvider1.Validate((Control)sender))
-        //    {
-        //        txbFaDeliveryDate.ErrorText = "";
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //}
-
-        //private void txbFaDeliveryDate_Properties_Validating(object sender, CancelEventArgs e)
-        //{
-        //    if (dxValidationProvider1.Validate((Control)sender))
-        //    {
-        //        txbFaDeliveryDate.ErrorText = "";
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //}
-
-        //private void txbFaDeliveryDate_Validated(object sender, EventArgs e)
-        //{
-        //    if (dxValidationProvider1.Validate((Control)sender))
-        //    {
-        //        txbFaDeliveryDate.ErrorText = "";
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //}
-
-        private void txbFaDeliveryDate_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txbFaDeliveryDate_EditValueChanged(object sender, EventArgs e)
-        {
-            UpdateErrorDisplay(sender as DevExpress.XtraEditors.TextEdit);
-        }
-
-
-        private void txbFaDeliveryDate_Leave(object sender, EventArgs e)
-        {
-            _ = DelayAndExecuteAsync(sender as DevExpress.XtraEditors.TextEdit);
-        }
-
-        private async Task DelayAndExecuteAsync(DevExpress.XtraEditors.TextEdit textEdit)
-        {
-            if (textEdit == null) return;
-
-            await Task.Delay(20);
-
-            // چون ممکنه بعد از delay در thread دیگه باشیم، از Invoke استفاده کن
-            if (textEdit.InvokeRequired)
+            if (string.IsNullOrEmpty(lastInvoice))
             {
-                textEdit.Invoke(new Action(() => UpdateErrorDisplay(textEdit)));
+                nextNumber = 101;   // مقدار اولیه طبق حرفت
             }
             else
             {
-                UpdateErrorDisplay(textEdit);
+                var numberPart = lastInvoice.Substring(prefix.Length);
+                nextNumber = int.Parse(numberPart) + 1;
             }
+
+            return $"{prefix}{nextNumber:0000}";
         }
 
-        /// <summary>
-        /// بروزرسانی آیکن خطا و tooltip برای یک TextEdit که تاریخ شمسی وارد می‌شود
-        /// </summary>
-        /// <param name="textEdit">کنترل TextEdit که باید اعتبارسنجی شود</param>
-        private void UpdateErrorDisplay(DevExpress.XtraEditors.TextEdit textEdit)
+        private void txbInvoiceNumber_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (textEdit == null) return;
 
-            string text = textEdit.Text?.Trim() ?? string.Empty;
-
-            // اگر خالی باشد → آیکن پاک شود (Required جداگانه مدیریت شود)
-            if (string.IsNullOrWhiteSpace(text))
-            {
-                textEdit.ErrorText = string.Empty;
-                return;
-            }
-
-            // اعتبارسنجی تاریخ شمسی
-            if (PersianDate.TryParse(text, out _, out string err))
-            {
-                textEdit.ErrorText = string.Empty;  // معتبر → آیکن پاک شود
-            }
-            else
-            {
-                textEdit.ErrorText = err;  // نامعتبر → آیکن قرمز + پیام فارسی
-            }
         }
 
-        private void persianDateEdit1_EditValueChanged(object sender, EventArgs e)
+        private void grdvOrderDetails_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
 
         }

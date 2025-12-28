@@ -13,28 +13,28 @@ namespace CncData.Seed
             if (!context.Customers.Any())
             {
                 context.Customers.AddRange(
-    new Customer { CustomerName = "آقای عباسی",           Phone = "09149691680", Address = "باکری روبروی بریده عارفیان", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای لطفی",            Phone = "09144476155", Address = "خیام جنوبی", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای صمد گلستان",      Phone = "09144461442", Address = "میدان بازار باش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای قادر",            Phone = "09147117316", Address = "باکری نبش اداره برق", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای داوود",           Phone = "0000000000",  Address = "میدان بازار باش", Description = "از طرف گلستان", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "حامد یگانه",           Phone = "09338259512", Address = "حافظ جنب مدرسه 16 آذر", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای بابایی (آتامان)", Phone = "09144418638", Address = "حافظ", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای سجاد",            Phone = "09143486895", Address = "باکر روبروی دانش (کشتگر)", Description = "تابلو ساز", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای علی جلیلی",       Phone = "0000000000",  Address = "", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای محمد گلستان",     Phone = "09143478274", Address = "میدان بازار باش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای امیر",            Phone = "09141469005", Address = "باکری", Description = "دوست سجاد", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای توحید گلستان",    Phone = "09144438519", Address = "میدان بازار باش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای آذری",            Phone = "09338259512", Address = "حافظ جنب مدرسه 16 آذر", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "چاپ ملل",              Phone = "09145450458", Address = "مدنی داخل کوچه آزمایشگاه میلان", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای آرش گلستان",      Phone = "09308358112", Address = "بازار باش بطرف بعثت", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای وحید شفق",        Phone = "09147107214", Address = "", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای محمدپور",         Phone = "09149688500", Address = "باکری نرسیده به وکیل باشی", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای محمد گلستان",     Phone = "09143895240", Address = "میدان بازار باش", Description = "(5240)", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای سلطانی",          Phone = "09199765273", Address = "بازار باش بطرف بعثت", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای شریفی",           Phone = "09143498039", Address = "باکری بریده وکیل باشی", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای حیدرزاده",        Phone = "09147250785", Address = "چهارراه عطایی بسمت بستنی داداش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
-    new Customer { CustomerName = "آقای فرشید حسن زاده",  Phone = "09143435282", Address = "سه راهی دانش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" }
+    new Customer { CustomerName = "آقای عباسی",           Hint = "" , Phone = "09149691680", Address = "باکری روبروی بریده عارفیان", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای لطفی",            Hint = "" , Phone = "09144476155", Address = "خیام جنوبی", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای صمد گلستان",      Hint = "" , Phone = "09144461442", Address = "میدان بازار باش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای قادر",            Hint = "" , Phone = "09147117316", Address = "باکری نبش اداره برق", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای داوود",           Hint = "" , Phone = "0000000000",  Address = "میدان بازار باش", Description = "از طرف گلستان", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "حامد یگانه",           Hint = "" , Phone = "09338259512", Address = "حافظ جنب مدرسه 16 آذر", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای بابایی (آتامان)", Hint = "" , Phone = "09144418638", Address = "حافظ", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای سجاد",            Hint = "" , Phone = "09143486895", Address = "باکر روبروی دانش (کشتگر)", Description = "تابلو ساز", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای علی جلیلی",       Hint = "" , Phone = "0000000000",  Address = "", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای محمد گلستان",     Hint = "" , Phone = "09143478274", Address = "میدان بازار باش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای امیر",            Hint = "" , Phone = "09141469005", Address = "باکری", Description = "دوست سجاد", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای توحید گلستان",    Hint = "" , Phone = "09144438519", Address = "میدان بازار باش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای آذری",            Hint = "" , Phone = "09338259512", Address = "حافظ جنب مدرسه 16 آذر", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "چاپ ملل",              Hint = "" , Phone = "09145450458", Address = "مدنی داخل کوچه آزمایشگاه میلان", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای آرش گلستان",      Hint = "" , Phone = "09308358112", Address = "بازار باش بطرف بعثت", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای وحید شفق",        Hint = "" , Phone = "09147107214", Address = "", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای محمدپور",         Hint = "" , Phone = "09149688500", Address = "باکری نرسیده به وکیل باشی", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای محمد گلستان",     Hint = "" , Phone = "09143895240", Address = "میدان بازار باش", Description = "(5240)", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای سلطانی",          Hint = "" , Phone = "09199765273", Address = "بازار باش بطرف بعثت", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای شریفی",           Hint = "" , Phone = "09143498039", Address = "باکری بریده وکیل باشی", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای حیدرزاده",        Hint = "" , Phone = "09147250785", Address = "چهارراه عطایی بسمت بستنی داداش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" },
+    new Customer { CustomerName = "آقای فرشید حسن زاده",  Hint = "" , Phone = "09143435282", Address = "سه راهی دانش", Description = "", Beginning_Balance = 0, MhkCustomerId = "" }
 );
 
             }
@@ -91,7 +91,7 @@ namespace CncData.Seed
             // ─── سفارش اول ───
             var order1 = new Order
             {
-                InvoiceNumber = "F1404-00125",
+                InvoiceNumber = "F04-0016",
                 CustomerId = 1,
                 OrderDate = new DateTime(2025, 11, 15),
                 DeliveryDate = new DateTime(2025, 11, 25),
@@ -120,7 +120,7 @@ namespace CncData.Seed
             // ─── سفارش دوم ───
             var order2 = new Order
             {
-                InvoiceNumber = "F1404-00126",
+                InvoiceNumber = "F04-0012",
                 CustomerId = 2,
                 OrderDate = new DateTime(2025, 11, 28),
                 DeliveryDate = null, // هنوز تحویل نشده

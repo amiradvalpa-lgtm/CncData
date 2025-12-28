@@ -43,6 +43,7 @@
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
             this.bbiEditCustomer = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiNewCustomer = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
@@ -63,7 +64,7 @@
             this.rpsBtnOpenFolder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
             this.label7 = new System.Windows.Forms.Label();
-            this.bbiNewCustomer = new DevExpress.XtraBars.BarButtonItem();
+            this.colHint = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
             this.groupControl7.SuspendLayout();
@@ -157,6 +158,15 @@
             this.bbiEditCustomer.Name = "bbiEditCustomer";
             this.bbiEditCustomer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEditCustomer_ItemClick);
             // 
+            // bbiNewCustomer
+            // 
+            this.bbiNewCustomer.Caption = "افزودن مشتری";
+            this.bbiNewCustomer.Id = 11;
+            this.bbiNewCustomer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiNewCustomer.ImageOptions.Image")));
+            this.bbiNewCustomer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNewCustomer.ImageOptions.LargeImage")));
+            this.bbiNewCustomer.Name = "bbiNewCustomer";
+            this.bbiNewCustomer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNewCustomer_ItemClick);
+            // 
             // mainRibbonPage
             // 
             this.mainRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -220,14 +230,15 @@
             this.colId,
             this.colMhkCustomerId,
             this.colCustomerName,
+            this.colHint,
             this.colPhone,
             this.colAddress,
             this.colDescription,
             this.colBeginning_Balance,
-            this.colOrders,
-            this.colReceipts,
             this.gridColumn1,
-            this.gridColumn2});
+            this.gridColumn2,
+            this.colOrders,
+            this.colReceipts});
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
@@ -263,14 +274,14 @@
             this.colPhone.FieldName = "Phone";
             this.colPhone.Name = "colPhone";
             this.colPhone.Visible = true;
-            this.colPhone.VisibleIndex = 2;
+            this.colPhone.VisibleIndex = 3;
             // 
             // colAddress
             // 
             this.colAddress.FieldName = "Address";
             this.colAddress.Name = "colAddress";
             this.colAddress.Visible = true;
-            this.colAddress.VisibleIndex = 3;
+            this.colAddress.VisibleIndex = 4;
             // 
             // colDescription
             // 
@@ -284,7 +295,7 @@
             this.colBeginning_Balance.FieldName = "Beginning_Balance";
             this.colBeginning_Balance.Name = "colBeginning_Balance";
             this.colBeginning_Balance.Visible = true;
-            this.colBeginning_Balance.VisibleIndex = 4;
+            this.colBeginning_Balance.VisibleIndex = 6;
             // 
             // colOrders
             // 
@@ -301,14 +312,14 @@
             this.gridColumn1.Caption = "مانده حساب";
             this.gridColumn1.Name = "gridColumn1";
             this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 6;
+            this.gridColumn1.VisibleIndex = 7;
             // 
             // gridColumn2
             // 
             this.gridColumn2.Caption = "ماهیت فعلی";
             this.gridColumn2.Name = "gridColumn2";
             this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 7;
+            this.gridColumn2.VisibleIndex = 8;
             // 
             // rpsBtnOpenFolder
             // 
@@ -350,14 +361,12 @@
             this.label7.TabIndex = 24;
             this.label7.Text = "مجموع قیمت خدمات :";
             // 
-            // bbiNewCustomer
+            // colHint
             // 
-            this.bbiNewCustomer.Caption = "افزودن مشتری";
-            this.bbiNewCustomer.Id = 11;
-            this.bbiNewCustomer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiNewCustomer.ImageOptions.Image")));
-            this.bbiNewCustomer.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNewCustomer.ImageOptions.LargeImage")));
-            this.bbiNewCustomer.Name = "bbiNewCustomer";
-            this.bbiNewCustomer.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNewCustomer_ItemClick);
+            this.colHint.FieldName = "Hint";
+            this.colHint.Name = "colHint";
+            this.colHint.Visible = true;
+            this.colHint.VisibleIndex = 2;
             // 
             // FrmCustomers
             // 
@@ -417,5 +426,6 @@
         private System.Windows.Forms.BindingSource customersBindingSource;
         private DevExpress.XtraBars.BarButtonItem bbiEditCustomer;
         private DevExpress.XtraBars.BarButtonItem bbiNewCustomer;
+        private DevExpress.XtraGrid.Columns.GridColumn colHint;
     }
 }
