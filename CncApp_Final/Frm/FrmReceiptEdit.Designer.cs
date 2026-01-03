@@ -39,10 +39,10 @@
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.txbDate = new CncApp_Final.Helper.PersianDateTextEdit();
+            this.receiptBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txbDescription = new DevExpress.XtraEditors.TextEdit();
             this.txbAmount = new DevExpress.XtraEditors.TextEdit();
-            this.receiptBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txbFaReceiptDate = new DevExpress.XtraEditors.TextEdit();
             this.lkpBanks = new DevExpress.XtraEditors.LookUpEdit();
             this.banksBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.lkpCustomer = new DevExpress.XtraEditors.LookUpEdit();
@@ -53,17 +53,18 @@
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbAmount.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbFaReceiptDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpBanks.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.banksBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpCustomer.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // mainRibbonControl
@@ -126,6 +127,7 @@
             this.bbiReset.Id = 5;
             this.bbiReset.ImageOptions.ImageUri.Uri = "Reset";
             this.bbiReset.Name = "bbiReset";
+            this.bbiReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReset_ItemClick_1);
             // 
             // bbiDelete
             // 
@@ -169,9 +171,9 @@
             this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.Controls.Add(this.txbDate);
             this.groupControl1.Controls.Add(this.txbDescription);
             this.groupControl1.Controls.Add(this.txbAmount);
-            this.groupControl1.Controls.Add(this.txbFaReceiptDate);
             this.groupControl1.Controls.Add(this.lkpBanks);
             this.groupControl1.Controls.Add(this.lkpCustomer);
             this.groupControl1.Controls.Add(this.labelControl5);
@@ -185,10 +187,28 @@
             this.groupControl1.TabIndex = 4;
             this.groupControl1.Text = "مشخصات مشتری";
             // 
+            // txbDate
+            // 
+            this.txbDate.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbDate.Appearance.Options.UseFont = true;
+            this.txbDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.receiptBindingSource, "Date", true));
+            this.txbDate.EditValue = null;
+            this.txbDate.Location = new System.Drawing.Point(19, 95);
+            this.txbDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txbDate.Name = "txbDate";
+            this.txbDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txbDate.Size = new System.Drawing.Size(286, 36);
+            this.txbDate.TabIndex = 1;
+            // 
+            // receiptBindingSource
+            // 
+            this.receiptBindingSource.DataSource = typeof(CncApp_Final.Entities.Receipt);
+            // 
             // txbDescription
             // 
             this.txbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDescription.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.receiptBindingSource, "Description", true));
             this.txbDescription.EditValue = "";
             this.txbDescription.EnterMoveNextControl = true;
             this.txbDescription.Location = new System.Drawing.Point(19, 242);
@@ -196,7 +216,7 @@
             this.txbDescription.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbDescription.Properties.Appearance.Options.UseFont = true;
             this.txbDescription.Size = new System.Drawing.Size(287, 36);
-            this.txbDescription.TabIndex = 8;
+            this.txbDescription.TabIndex = 4;
             // 
             // txbAmount
             // 
@@ -213,25 +233,7 @@
             this.txbAmount.Properties.MaskSettings.Set("mask", "n0");
             this.txbAmount.Properties.UseMaskAsDisplayFormat = true;
             this.txbAmount.Size = new System.Drawing.Size(287, 36);
-            this.txbAmount.TabIndex = 8;
-            // 
-            // receiptBindingSource
-            // 
-            this.receiptBindingSource.DataSource = typeof(CncApp_Final.Entities.Receipt);
-            // 
-            // txbFaReceiptDate
-            // 
-            this.txbFaReceiptDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbFaReceiptDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.receiptBindingSource, "FaReceiptDate", true));
-            this.txbFaReceiptDate.EditValue = "";
-            this.txbFaReceiptDate.EnterMoveNextControl = true;
-            this.txbFaReceiptDate.Location = new System.Drawing.Point(19, 95);
-            this.txbFaReceiptDate.Name = "txbFaReceiptDate";
-            this.txbFaReceiptDate.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbFaReceiptDate.Properties.Appearance.Options.UseFont = true;
-            this.txbFaReceiptDate.Size = new System.Drawing.Size(287, 36);
-            this.txbFaReceiptDate.TabIndex = 8;
+            this.txbAmount.TabIndex = 2;
             // 
             // lkpBanks
             // 
@@ -256,7 +258,7 @@
             this.lkpBanks.Properties.ValueMember = "Id";
             this.lkpBanks.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lkpBanks.Size = new System.Drawing.Size(287, 36);
-            this.lkpBanks.TabIndex = 7;
+            this.lkpBanks.TabIndex = 3;
             // 
             // banksBindingSource
             // 
@@ -277,16 +279,16 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lkpCustomer.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "Id", 26, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerName", "نام مشتری", 92, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CustomerFullName", "نام مشتری", 92, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.lkpCustomer.Properties.DataSource = this.customersBindingSource;
-            this.lkpCustomer.Properties.DisplayMember = "CustomerName";
+            this.lkpCustomer.Properties.DisplayMember = "CustomerFullName";
             this.lkpCustomer.Properties.DropDownItemHeight = 25;
             this.lkpCustomer.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
             this.lkpCustomer.Properties.ShowHeader = false;
             this.lkpCustomer.Properties.ValueMember = "Id";
             this.lkpCustomer.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lkpCustomer.Size = new System.Drawing.Size(287, 36);
-            this.lkpCustomer.TabIndex = 7;
+            this.lkpCustomer.TabIndex = 0;
             // 
             // customersBindingSource
             // 
@@ -341,6 +343,10 @@
             // 
             this.defaultLookAndFeel1.LookAndFeel.SkinName = "WXI";
             // 
+            // dxValidationProvider1
+            // 
+            this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
+            // 
             // FrmReceiptEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -359,14 +365,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
             this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbAmount.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.receiptBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbFaReceiptDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpBanks.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.banksBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpCustomer.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -390,12 +396,13 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LookUpEdit lkpCustomer;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
-        private DevExpress.XtraEditors.TextEdit txbFaReceiptDate;
         private DevExpress.XtraEditors.TextEdit txbDescription;
         private DevExpress.XtraEditors.TextEdit txbAmount;
         private DevExpress.XtraEditors.LookUpEdit lkpBanks;
         private System.Windows.Forms.BindingSource banksBindingSource;
         private System.Windows.Forms.BindingSource customersBindingSource;
         private System.Windows.Forms.BindingSource receiptBindingSource;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
+        private Helper.PersianDateTextEdit txbDate;
     }
 }

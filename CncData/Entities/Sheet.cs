@@ -34,9 +34,21 @@ namespace CncData.Entities
         [Description("قیمت کل ورق کامل")]
         public double SheetPrice { get; set; }
 
+        [DisplayName("فرمول قیمت کامل")]
+        [Description("فرمول قیمت ورق کامل")]
+        [Required(ErrorMessage = "فرمول قیمت ورق کامل الزامی است.")]
+        public string SheetPriceFormula { get; set; }
+
+
         [DisplayName("قیمت تکه")]
         [Description("قیمت هر تکه برش‌خورده از ورق")]
         public double PicesPrice { get; set; }
+
+        [DisplayName("فرمول قیمت تکه")]
+        [Description("فرمول قیمت ورق تکه")]
+        [Required(ErrorMessage = "فرمول قیمت ورق تکه الزامی است.")]
+        public string PicesPriceFormula { get; set; }
+
 
         [DisplayName("قیمت CNC (متر)")]
         [Description("هزینه خدمات CNC به ازای متر")]

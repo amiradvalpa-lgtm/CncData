@@ -71,6 +71,7 @@
             this.txbPiceArea = new DevExpress.XtraEditors.ButtonEdit();
             this.label11 = new System.Windows.Forms.Label();
             this.txbSheetCount = new DevExpress.XtraEditors.ButtonEdit();
+            this.orderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl8 = new DevExpress.XtraEditors.GroupControl();
@@ -103,8 +104,8 @@
             this.btnRecalculate = new DevExpress.XtraEditors.SimpleButton();
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
-            this.orderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sheetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label26 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.lkpMaterial.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpThickness.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgpSheetType.Properties)).BeginInit();
@@ -128,6 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetBasePrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPiceArea.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetCount.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).BeginInit();
@@ -150,7 +152,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -703,6 +704,10 @@
             this.txbSheetCount.TabIndex = 0;
             this.txbSheetCount.TabStop = false;
             // 
+            // orderDetailBindingSource
+            // 
+            this.orderDetailBindingSource.DataSource = typeof(CncApp_Final.Entities.OrderDetails);
+            // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -984,7 +989,7 @@
             this.btnOk.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btnOk.ImageOptions.ImageToTextIndent = 5;
             this.btnOk.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.btnOk.Location = new System.Drawing.Point(257, 495);
+            this.btnOk.Location = new System.Drawing.Point(395, 287);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(91, 28);
             this.btnOk.TabIndex = 5;
@@ -998,7 +1003,7 @@
             this.btnCancel.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.RightCenter;
             this.btnCancel.ImageOptions.ImageToTextIndent = 5;
             this.btnCancel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.btnCancel.Location = new System.Drawing.Point(37, 495);
+            this.btnCancel.Location = new System.Drawing.Point(285, 287);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(91, 28);
             this.btnCancel.TabIndex = 6;
@@ -1010,7 +1015,7 @@
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label12.Location = new System.Drawing.Point(385, 45);
+            this.label12.Location = new System.Drawing.Point(385, 87);
             this.label12.Name = "label12";
             this.label12.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label12.Size = new System.Drawing.Size(77, 13);
@@ -1022,12 +1027,12 @@
             this.txbDetailName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbDetailName.EnterMoveNextControl = true;
-            this.txbDetailName.Location = new System.Drawing.Point(106, 35);
+            this.txbDetailName.Location = new System.Drawing.Point(25, 77);
             this.txbDetailName.Name = "txbDetailName";
             this.txbDetailName.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbDetailName.Properties.Appearance.Options.UseFont = true;
-            this.txbDetailName.Size = new System.Drawing.Size(273, 36);
-            this.txbDetailName.TabIndex = 0;
+            this.txbDetailName.Size = new System.Drawing.Size(354, 36);
+            this.txbDetailName.TabIndex = 1;
             conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
             conditionValidationRule1.ErrorText = "عنوان سفارش را وارد کنید";
             this.dxValidationProvider1.SetValidationRule(this.txbDetailName, conditionValidationRule1);
@@ -1037,7 +1042,7 @@
             this.txbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txbDescription.EnterMoveNextControl = true;
-            this.txbDescription.Location = new System.Drawing.Point(21, 77);
+            this.txbDescription.Location = new System.Drawing.Point(21, 119);
             this.txbDescription.Name = "txbDescription";
             this.txbDescription.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
             this.txbDescription.Properties.Appearance.Options.UseFont = true;
@@ -1049,7 +1054,7 @@
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label14.Location = new System.Drawing.Point(385, 87);
+            this.label14.Location = new System.Drawing.Point(385, 129);
             this.label14.Name = "label14";
             this.label14.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label14.Size = new System.Drawing.Size(51, 13);
@@ -1061,11 +1066,12 @@
             this.groupControl3.Controls.Add(this.btnOpenFile);
             this.groupControl3.Controls.Add(this.txbDetailName);
             this.groupControl3.Controls.Add(this.txbDescription);
+            this.groupControl3.Controls.Add(this.label26);
             this.groupControl3.Controls.Add(this.label12);
             this.groupControl3.Controls.Add(this.label14);
-            this.groupControl3.Location = new System.Drawing.Point(10, 364);
+            this.groupControl3.Location = new System.Drawing.Point(10, 349);
             this.groupControl3.Name = "groupControl3";
-            this.groupControl3.Size = new System.Drawing.Size(470, 123);
+            this.groupControl3.Size = new System.Drawing.Size(470, 166);
             this.groupControl3.TabIndex = 4;
             this.groupControl3.Text = "مشخصات سفارش";
             // 
@@ -1079,10 +1085,12 @@
             editorButtonImageOptions1.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
             editorButtonImageOptions1.ImageToTextIndent = 5;
             this.btnOpenFile.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "فایل", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
-            this.btnOpenFile.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
-            this.btnOpenFile.Size = new System.Drawing.Size(75, 28);
-            this.btnOpenFile.TabIndex = 1;
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnOpenFile.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.btnOpenFile.Properties.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.btnOpenFile_Properties_CustomDisplayText);
+            this.btnOpenFile.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnOpenFile.Size = new System.Drawing.Size(351, 36);
+            this.btnOpenFile.TabIndex = 0;
             conditionValidationRule2.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
             conditionValidationRule2.ErrorText = "فایل مربوطه را انتخاب کنید";
             this.dxValidationProvider1.SetValidationRule(this.btnOpenFile, conditionValidationRule2);
@@ -1110,7 +1118,7 @@
             this.btnRecalculate.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRecalculate.ImageOptions.Image")));
             this.btnRecalculate.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftTop;
             this.btnRecalculate.ImageOptions.ImageToTextIndent = 10;
-            this.btnRecalculate.Location = new System.Drawing.Point(25, 287);
+            this.btnRecalculate.Location = new System.Drawing.Point(12, 277);
             this.btnRecalculate.Name = "btnRecalculate";
             this.btnRecalculate.Size = new System.Drawing.Size(162, 50);
             this.btnRecalculate.TabIndex = 3;
@@ -1125,13 +1133,21 @@
             // 
             this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
             // 
-            // orderDetailBindingSource
-            // 
-            this.orderDetailBindingSource.DataSource = typeof(CncApp_Final.Entities.OrderDetails);
-            // 
             // sheetsBindingSource
             // 
             this.sheetsBindingSource.DataSource = typeof(CncApp_Final.Entities.Sheet);
+            // 
+            // label26
+            // 
+            this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label26.Location = new System.Drawing.Point(382, 46);
+            this.label26.Name = "label26";
+            this.label26.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label26.Size = new System.Drawing.Size(62, 13);
+            this.label26.TabIndex = 5;
+            this.label26.Text = "انتخاب فایل:";
             // 
             // FrmOrderDetails
             // 
@@ -1180,6 +1196,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetBasePrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPiceArea.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetCount.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).EndInit();
@@ -1206,7 +1223,6 @@
             this.groupControl6.ResumeLayout(false);
             this.groupControl6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -1281,5 +1297,6 @@
         private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialog1;
         private DevExpress.XtraEditors.ButtonEdit btnOpenFile;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
+        private System.Windows.Forms.Label label26;
     }
 }

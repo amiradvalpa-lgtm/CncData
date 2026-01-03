@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReceipts));
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
             this.mainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSaveAndClose = new DevExpress.XtraBars.BarButtonItem();
@@ -42,6 +42,8 @@
             this.bbiReset = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiNewReceipt = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiEditReceipt = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.receiptsBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -52,6 +54,7 @@
             this.colAmount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colFaReceiptDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBankName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCustomerId = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -61,8 +64,6 @@
             this.rpsBtnOpenFolder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
             this.label7 = new System.Windows.Forms.Label();
-            this.bbiNewReceipt = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiEditReceipt = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receiptsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
@@ -147,6 +148,24 @@
             this.bbiClose.ImageOptions.ImageUri.Uri = "Close";
             this.bbiClose.Name = "bbiClose";
             // 
+            // bbiNewReceipt
+            // 
+            this.bbiNewReceipt.Caption = "افزودن سند دریافت";
+            this.bbiNewReceipt.Id = 10;
+            this.bbiNewReceipt.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiNewReceipt.ImageOptions.Image")));
+            this.bbiNewReceipt.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNewReceipt.ImageOptions.LargeImage")));
+            this.bbiNewReceipt.Name = "bbiNewReceipt";
+            this.bbiNewReceipt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNewReceipt_ItemClick);
+            // 
+            // bbiEditReceipt
+            // 
+            this.bbiEditReceipt.Caption = "ویرایش سند دریافت";
+            this.bbiEditReceipt.Id = 11;
+            this.bbiEditReceipt.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiEditReceipt.ImageOptions.Image")));
+            this.bbiEditReceipt.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiEditReceipt.ImageOptions.LargeImage")));
+            this.bbiEditReceipt.Name = "bbiEditReceipt";
+            this.bbiEditReceipt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEditReceipt_ItemClick);
+            // 
             // mainRibbonPage
             // 
             this.mainRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -212,6 +231,7 @@
             this.colAmount,
             this.colFaReceiptDate,
             this.colBankName,
+            this.colDescription,
             this.colId,
             this.colDate,
             this.colCustomerId,
@@ -239,6 +259,10 @@
             // 
             // colAmount
             // 
+            this.colAmount.AppearanceCell.Options.UseTextOptions = true;
+            this.colAmount.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colAmount.DisplayFormat.FormatString = "n0";
+            this.colAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colAmount.FieldName = "Amount";
             this.colAmount.Name = "colAmount";
             this.colAmount.Visible = true;
@@ -246,6 +270,8 @@
             // 
             // colFaReceiptDate
             // 
+            this.colFaReceiptDate.AppearanceCell.Options.UseTextOptions = true;
+            this.colFaReceiptDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colFaReceiptDate.FieldName = "FaReceiptDate";
             this.colFaReceiptDate.Name = "colFaReceiptDate";
             this.colFaReceiptDate.Visible = true;
@@ -259,6 +285,13 @@
             this.colBankName.Visible = true;
             this.colBankName.VisibleIndex = 3;
             // 
+            // colDescription
+            // 
+            this.colDescription.FieldName = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.Visible = true;
+            this.colDescription.VisibleIndex = 4;
+            // 
             // colId
             // 
             this.colId.FieldName = "Id";
@@ -271,6 +304,10 @@
             // 
             // colCustomerId
             // 
+            this.colCustomerId.AppearanceCell.Options.UseTextOptions = true;
+            this.colCustomerId.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colCustomerId.DisplayFormat.FormatString = "n0";
+            this.colCustomerId.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colCustomerId.FieldName = "CustomerId";
             this.colCustomerId.Name = "colCustomerId";
             // 
@@ -292,9 +329,9 @@
             // rpsBtnOpenFolder
             // 
             this.rpsBtnOpenFolder.AutoHeight = false;
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.rpsBtnOpenFolder.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rpsBtnOpenFolder.Name = "rpsBtnOpenFolder";
             this.rpsBtnOpenFolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -329,24 +366,6 @@
             this.label7.TabIndex = 24;
             this.label7.Text = "مجموع قیمت خدمات :";
             // 
-            // bbiNewReceipt
-            // 
-            this.bbiNewReceipt.Caption = "افزودن سند دریافت";
-            this.bbiNewReceipt.Id = 10;
-            this.bbiNewReceipt.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiNewReceipt.ImageOptions.Image")));
-            this.bbiNewReceipt.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiNewReceipt.ImageOptions.LargeImage")));
-            this.bbiNewReceipt.Name = "bbiNewReceipt";
-            this.bbiNewReceipt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiNewReceipt_ItemClick);
-            // 
-            // bbiEditReceipt
-            // 
-            this.bbiEditReceipt.Caption = "ویرایش سند دریافت";
-            this.bbiEditReceipt.Id = 11;
-            this.bbiEditReceipt.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiEditReceipt.ImageOptions.Image")));
-            this.bbiEditReceipt.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiEditReceipt.ImageOptions.LargeImage")));
-            this.bbiEditReceipt.Name = "bbiEditReceipt";
-            this.bbiEditReceipt.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiEditReceipt_ItemClick);
-            // 
             // FrmReceipts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,6 +379,7 @@
             this.Ribbon = this.mainRibbonControl;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmReceipts_FormClosing);
             this.Load += new System.EventHandler(this.FrmReceipts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receiptsBindingSource)).EndInit();
@@ -404,5 +424,6 @@
         private System.Windows.Forms.Label label7;
         private DevExpress.XtraBars.BarButtonItem bbiNewReceipt;
         private DevExpress.XtraBars.BarButtonItem bbiEditReceipt;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
     }
 }

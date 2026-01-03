@@ -20,6 +20,7 @@ namespace CncApp_Final.Entities
 
         [DisplayName("شناسه مشتری")]
         [Description("مشتری مربوط به رسید")]
+        [Required(ErrorMessage = "انتخاب مشتری الزامی است.")]
         public int CustomerId { get; set; }
 
         [DisplayName("مشتری")]
@@ -32,15 +33,18 @@ namespace CncApp_Final.Entities
 
         [DisplayName("مبلغ")]
         [Description("مقدار وجه پرداختی یا دریافت شده")]
+        [Required(ErrorMessage = "وارد کردن {0} الزامی است.")]
+        [Range(0.001, double.MaxValue, ErrorMessage = "{0} نمی‌تواند منفی باشد.")]
         public double Amount { get; set; }
 
         [DisplayName("شناسه حساب بانکی")]
         [Description("حساب بانکی مربوط به رسید")]
+        [Required(ErrorMessage = "انتخاب حساب بانکی الزامی است.")]
         public int BankAccountId { get; set; }
 
         [DisplayName("توضیحات")]
         [Description("توضیحات دریافت")]
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
 
         [DisplayName("حساب بانکی")]

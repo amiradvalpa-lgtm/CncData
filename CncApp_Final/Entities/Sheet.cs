@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace CncApp_Final.Entities
 {
@@ -34,9 +35,19 @@ namespace CncApp_Final.Entities
         [Description("قیمت کل ورق کامل")]
         public double SheetPrice { get; set; }
 
+        [DisplayName("فرمول قیمت کامل")]
+        [Description("فرمول قیمت ورق کامل")]
+        [Required(ErrorMessage = "فرمول قیمت ورق کامل الزامی است.")]
+        public string SheetPriceFormula { get; set; }
+
         [DisplayName("قیمت تکه")]
         [Description("قیمت هر تکه برش‌خورده از ورق")]
         public double PicesPrice { get; set; }
+
+        [DisplayName("فرمول قیمت تکه")]
+        [Description("فرمول قیمت ورق تکه")]
+        [Required(ErrorMessage = "فرمول قیمت ورق تکه الزامی است.")]
+        public string PicesPriceFormula { get; set; }
 
         [DisplayName("قیمت CNC (متر)")]
         [Description("هزینه خدمات CNC به ازای متر")]
@@ -78,6 +89,25 @@ namespace CncApp_Final.Entities
         [NotMapped]
         [DisplayName("سایز ورق")]
         public string SheetSize => $"{Length} * {Width}";
+
+        // ─── آخرین قیمت خرید (NotMapped) ─────────────────────────────────────
+        [NotMapped]
+        [DisplayName("آخرین قیمت خرید")]
+        [Description("آخرین قیمت خرید ثبت شده برای این ورق در انبار (بر اساس OrderDate)")]
+        public double? LastBuyPrice
+        {
+            get
+            {
+                // بررسی وجود داده در لیست انبار
+                if (Warehouses == null || !Warehouses.Any())
+                    return null;
+
+                // پیدا کردن آخرین رکورد بر اساس تاریخ خرید (OrderDate) و دریافت قیمت پایه (SheetBasePrice)
+                var lastWarehouseEntry = Warehouses.OrderByDescending(w => w.OrderDate).FirstOrDefault();
+
+                return lastWarehouseEntry?.SheetBasePrice;
+            }
+        }
 
 
         public object Clone()

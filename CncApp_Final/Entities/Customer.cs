@@ -69,6 +69,42 @@ namespace CncApp_Final.Entities
             }
         }
 
+
+
+        [NotMapped]
+        [DisplayName("-+مانده حساب")]
+        [Description("مانده حساب مشتری")]
+        public decimal Balance
+        {
+            get
+            {
+                decimal ordersTotal = Orders?.Sum(x => (decimal?)x.TotalAmount) ?? 0m;
+                decimal receiptsTotal = Receipts?.Sum(x => (decimal?)x.Amount) ?? 0m;
+                decimal beginning = (decimal)Beginning_Balance;
+
+                return (receiptsTotal + beginning) - ordersTotal;
+            }
+        }
+
+        [NotMapped]
+        [DisplayName("ماهیت حساب")]
+        [Description("ماهیت حساب مشتری")]
+        public string BalanceStatus
+        {
+            get
+            {
+                if (Balance == 0) return "بی حساب";
+                if (Balance < 0) return "بدهکار";
+                return "بستانکار";
+            }
+        }
+
+        // اگر می‌خوای مقدار قابل نمایش هم آماده داشته باشی
+        [NotMapped]
+        [DisplayName("مانده حساب")]
+        [Description("مانده حساب مشتری")]
+        public decimal DisplayBalance => Math.Abs(Balance);
+
         public Customer() 
         {
             Hint = string.Empty;

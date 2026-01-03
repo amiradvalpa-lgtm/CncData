@@ -26,35 +26,43 @@ namespace CncApp_Final.Frm
     {
 
         public int _Receipt_Id { get; private set; } = 0; // 0 for new receipt
-        public int _New_Receipt_Id { get; private set; } = 0; // برای نگهداری شناسه جدید پس از ذخیره
+        public int _NewCreatedReceiptId { get; private set; } = 0; // برای نگهداری شناسه جدید پس از ذخیره
         private readonly bool _IsReceiptReadonly = false;
 
         private AppDbContext _dbContext;
         private Receipt _currentReceipt;
 
-        // کامپوننت ValidationProvider (باید در Designer تعریف شده باشد)
-        private DXValidationProvider dxValidationProvider1;
-
+        private readonly Action<int> _reloadCallback;
 
 
         public FrmReceiptEdit()
         {
             InitializeComponent();
             _dbContext = new AppDbContext();
-            // مقداردهی اولیه dxValidationProvider1 (در صورت عدم تعریف در دیزاینر)
-            if (dxValidationProvider1 == null)
-                dxValidationProvider1 = new DXValidationProvider(this.components);
+            
         }
 
-        public FrmReceiptEdit(int receiptId, bool isReceiptReadonly)
+        public FrmReceiptEdit(int receiptId, bool isReceiptReadonly, Action<int> reloadCallback)
         {
             InitializeComponent();
             _Receipt_Id = receiptId;
             _IsReceiptReadonly = isReceiptReadonly;
             _dbContext = new AppDbContext();
-            if (dxValidationProvider1 == null)
-                dxValidationProvider1 = new DXValidationProvider(this.components);
+
+            _reloadCallback = reloadCallback;
         }
+
+        private void FrmReceiptEdit_Load(object sender, EventArgs e)
+        {
+            ControlExraInit.InitLookupEdit(lkpCustomer);
+            ControlExraInit.InitLookupEdit(lkpBanks);
+
+            DxValidationHelper.SetupValidation<Receipt>(this, dxValidationProvider1, receiptBindingSource);
+            ControlExraInit.ApplyFocusColor(this);
+            InitData();
+
+        }
+
 
         // ----------------- متدهای داخلی اصلی -----------------
 
@@ -82,8 +90,7 @@ namespace CncApp_Final.Frm
                 // مقداردهی اولیه فیلدهای جدید (همانند اصول قبلی برای جلوگیری از Null)
                 _currentReceipt.Date = DateTime.Now;
                 _currentReceipt.Amount = 0;
-                //_currentReceipt.TransactionType = string.Empty; // مقداردهی اولیه
-                //_currentReceipt.Description = string.Empty;
+                lkpCustomer.Focus();
             }
             else // حالت ویرایش یا فقط خواندنی (Edit or ReadOnly)
             {
@@ -100,9 +107,6 @@ namespace CncApp_Final.Frm
 
                 this.Text = $"ویرایش رسید: {_currentReceipt.Id}";
 
-                //// --- مدیریت مقادیر رشته‌ای NULL ---
-                //_currentReceipt.TransactionType = _currentReceipt.TransactionType ?? string.Empty;
-                //_currentReceipt.Description = _currentReceipt.Description ?? string.Empty;
             }
 
             // 3. اتصال نمونه Receipt به BindingSource (الگوی مستقیم فرم پایه)
@@ -115,12 +119,18 @@ namespace CncApp_Final.Frm
                 SetReadOnlyMode(true);
             }
 
-            // 5. اعمال قوانین اعتبارسنجی پویا
-            SetValidationRules();
-
-            // 6. به‌روزرسانی UI بر اساس نوع تراکنش
-            UpdateBankLookUpVisibility();
+            ClearValidation();
         }
+
+        private void ClearValidation()
+        {
+            foreach (var ctrl in this.groupControl1.Controls.OfType<BaseEdit>())
+            {
+                dxValidationProvider1.RemoveControlError(ctrl);
+            }
+            
+        }
+
 
         // 2. SetReadOnlyMode: اعمال حالت فقط خواندنی
         private void SetReadOnlyMode(bool isReadOnly)
@@ -138,60 +148,23 @@ namespace CncApp_Final.Frm
             }
         }
 
-        // 3. SetValidationRules: تعریف قوانین اعتبارسنجی
-        private void SetValidationRules()
-        {
-            // --- CustomerId (lkpCustomer) - اجباری ---
-            ConditionValidationRule ruleCustomer = new ConditionValidationRule();
-            ruleCustomer.ConditionOperator = ConditionOperator.IsNotBlank;
-            ruleCustomer.ErrorText = "انتخاب مشتری اجباری است.";
-            dxValidationProvider1.SetValidationRule(lkpCustomer, ruleCustomer);
 
-            // --- Amount (txbAmount) - اجباری و > 0 ---
-            ConditionValidationRule ruleAmount = new ConditionValidationRule();
-            ruleAmount.ConditionOperator = ConditionOperator.Greater;
-            ruleAmount.Value1 = 0.0;
-            ruleAmount.ErrorText = "مبلغ رسید باید مثبت باشد.";
-            dxValidationProvider1.SetValidationRule(txbAmount, ruleAmount);
-
-            //// --- TransactionType (cmbTransactionType) - اجباری ---
-            //ConditionValidationRule ruleType = new ConditionValidationRule();
-            //ruleType.ConditionOperator = ConditionOperator.IsNotBlank;
-            //ruleType.ErrorText = "انتخاب نوع واریز (نقد، کارت و ...) اجباری است.";
-            //dxValidationProvider1.SetValidationRule(cmbTransactionType, ruleType);
-
-            // --- BankAccountId (lkpBankAccount) - اعتبارسنجی شرطی ---
-            // این اعتبارسنجی پویا است و در SaveData و رویداد EditValueChanged مدیریت می‌شود.
-        }
-
-        // 4. SaveData: متد اصلی ذخیره‌سازی
         private bool SaveData()
         {
             receiptBindingSource.EndEdit();
 
-            // 1. اعتبارسنجی اولیه توسط DXValidationProvider
             if (!dxValidationProvider1.Validate())
             {
                 XtraMessageBox.Show("لطفاً اطلاعات ورودی را به درستی تکمیل کنید.", "خطای اعتبارسنجی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }
-
-            //// 2. اعتبارسنجی منطق کسب‌وکار (BankAccountId شرطی)
-            //string transactionType = _currentReceipt.TransactionType;
-            //if (transactionType != "Cash" && (_currentReceipt.BankAccountId == null || _currentReceipt.BankAccountId == 0))
-            //{
-            //    XtraMessageBox.Show("برای تراکنش‌های غیرنقدی، انتخاب حساب بانکی الزامی است.", "خطای اعتبارسنجی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    lkpBankAccount.Focus();
-            //    return false;
-            //}
-
-            // 3. ذخیره در دیتابیس
+                        
             try
             {
-                //_currentReceipt.Description = _currentReceipt.Description ?? string.Empty;
-
+                bool isNew = (_Receipt_Id == 0);   // 👈 تشخیص جدید/ویرایش
                 _dbContext.SaveChanges();
-                _New_Receipt_Id = _currentReceipt.Id;
+                _NewCreatedReceiptId = isNew ? _currentReceipt.Id : 0;   // 👈 همین خط مشکل را حل می‌کند
+
                 return true;
             }
             catch (DbEntityValidationException dbEx)
@@ -211,36 +184,7 @@ namespace CncApp_Final.Frm
             }
         }
 
-        // 5. UpdateBankLookUpVisibility: مدیریت نمایش LookUpEdit بانک بر اساس نوع تراکنش
-        private void UpdateBankLookUpVisibility()
-        {
-            if (_currentReceipt == null) return;
 
-            //// اگر نوع تراکنش 'Cash' باشد، فیلد حساب بانکی نامرتبط است
-            //bool isCash = _currentReceipt.TransactionType == "Cash";
-
-            //lblBankAccount.Visible = !isCash;
-            //lkpBankAccount.Visible = !isCash;
-
-            //if (isCash)
-            //{
-            //    // اگر نقدی است، مقدار BankAccountId را نال می‌کنیم
-            //    _currentReceipt.BankAccountId = null;
-            //}
-        }
-
-        // ----------------- رویدادهای فرم و کنترل‌ها -----------------
-
-        private void FrmReceiptEdit_Load(object sender, EventArgs e)
-        {
-            InitData();
-        }
-
-        private void cmbTransactionType_EditValueChanged(object sender, EventArgs e)
-        {
-            // به‌روزرسانی نمایش LookUpEdit بانک بر اساس تغییر نوع تراکنش
-            UpdateBankLookUpVisibility();
-        }
 
         // ----------------- رویدادهای Ribbon Bar -----------------
 
@@ -248,6 +192,8 @@ namespace CncApp_Final.Frm
         {
             if (SaveData())
             {
+                _reloadCallback?.Invoke(_NewCreatedReceiptId);
+
                 XtraMessageBox.Show("ذخیره سازی با موفقیت انجام شد.", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -265,6 +211,8 @@ namespace CncApp_Final.Frm
         {
             if (SaveData())
             {
+                _reloadCallback?.Invoke(_NewCreatedReceiptId);
+
                 XtraMessageBox.Show("ذخیره سازی با موفقیت انجام شد.", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // آماده سازی برای رسید جدید
@@ -354,9 +302,77 @@ namespace CncApp_Final.Frm
             }
         }
 
-        private void lkpCustomer_EditValueChanged(object sender, EventArgs e)
+        private void bbiReset_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            if (_Receipt_Id == 0)
+            {
+                // اگر در حالت ثبت رسید جدید هستیم
+                DialogResult dr = XtraMessageBox.Show(
+                    "اطلاعات وارد شده پاک شود و فرم به حالت جدید برگردد؟",
+                    "بازنشانی",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
 
+                if (dr == DialogResult.Yes)
+                {
+                    // Detach موجودیت فعلی
+                    if (_currentReceipt != null)
+                    {
+                        _dbContext.Entry(_currentReceipt).State = EntityState.Detached;
+                        _currentReceipt = null;
+                    }
+
+                    InitData();   // فرم را دوباره در حالت New آماده می‌کند
+                }
+
+                return;
+            }
+
+            // ---- حالت ویرایش (Edit) ----
+            DialogResult result = XtraMessageBox.Show(
+                "تغییرات انجام شده حذف و اطلاعات اصلی دوباره بارگذاری شود؟",
+                "بازنشانی تغییرات",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes)
+                return;
+
+            try
+            {
+                // موجودیت فعلی را از ردیابی خارج کن
+                if (_currentReceipt != null)
+                {
+                    _dbContext.Entry(_currentReceipt).State = EntityState.Detached;
+                    _currentReceipt = null;
+                }
+
+                // دوباره لود کن
+                _currentReceipt = _dbContext.Receipts
+                                            .FirstOrDefault(r => r.Id == _Receipt_Id);
+
+                if (_currentReceipt == null)
+                {
+                    XtraMessageBox.Show("رسید در دیتابیس یافت نشد.",
+                        "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                receiptBindingSource.DataSource = _currentReceipt;
+
+                XtraMessageBox.Show("تغییرات لغو و اطلاعات اصلی بازیابی شد.",
+                    "بازنشانی",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show($"خطا در بازنشانی: {ex.Message}",
+                    "خطا",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
+
     }
 }

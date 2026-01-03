@@ -30,14 +30,14 @@ namespace CncApp_Final.Frm
         // و تغییر نوع فیلد _Customer_Id به public برای دسترسی از فرم پدر (FrmCustomers.cs)
         // ------------------------------------------------------------------
         public int _Customer_Id { get; private set; } = 0; // 0 for new order
-        public int _New_Customer_Id { get; private set; } = 0; // برای نگهداری شناسه جدید پس از ذخیره
+        public int _NewCreatedCustomertId { get; private set; } = 0; // برای نگهداری شناسه جدید پس از ذخیره
         private readonly bool _IsCustomerReadonly = false;
 
         private AppDbContext _dbContext;
         private Customer _currenCustomer;
 
-
-
+        private readonly Action<int> _reloadCallback;
+        
 
         public FrmCustomerEdit()
         {
@@ -47,16 +47,37 @@ namespace CncApp_Final.Frm
 
 
 
-        public FrmCustomerEdit(int CustomerId, bool IsCustomerReadonly)
+        public FrmCustomerEdit(int CustomerId, bool IsCustomerReadonly, Action<int> reloadCallback)
         {
             InitializeComponent();
             _Customer_Id = CustomerId;
             _IsCustomerReadonly = IsCustomerReadonly;
             _dbContext = new AppDbContext();
+            _reloadCallback = reloadCallback;
         }
 
 
+        // ------------------------------------------------------------------
+        // تغییر 4: بازنویسی FrmCustomerEdit_Load برای فراخوانی InitData()
+        // ------------------------------------------------------------------
+        private void FrmCustomerEdit_Load(object sender, EventArgs e)
+        {
+            InitData();
+            DxValidationHelper.SetupValidation<Customer>(this, dxValidationProvider1, customerBindingSource);
+            ControlExraInit.ApplyFocusColor(this);
 
+            txbPhone.ErrorImageOptions.Alignment = ErrorIconAlignment.MiddleRight;
+            ClearValidation();
+        }
+
+        private void ClearValidation()
+        {
+            foreach (var ctrl in this.groupControl1.Controls.OfType<BaseEdit>())
+            {
+                dxValidationProvider1.RemoveControlError(ctrl);
+            }
+
+        }
 
 
         // ------------------------------------------------------------------
@@ -98,13 +119,16 @@ namespace CncApp_Final.Frm
                 SetReadOnlyMode(true);
             }
 
-
             if ((double)txbBeginning_Balance.EditValue == 0)
                 cmbBanalceMode.SelectedIndex = 0;
             else if ((double)txbBeginning_Balance.EditValue < 0)
                 cmbBanalceMode.SelectedIndex = 1;
             else if ((double)txbBeginning_Balance.EditValue > 0)
                 cmbBanalceMode.SelectedIndex = 2;
+
+            var x = cmbBanalceMode.EditValue;
+
+            txbBeginning_Balance.EditValue = Math.Abs((double)txbBeginning_Balance.EditValue);
         }
 
         // ------------------------------------------------------------------
@@ -133,43 +157,40 @@ namespace CncApp_Final.Frm
             }
         }
 
-        // ------------------------------------------------------------------
-        // تغییر 4: بازنویسی FrmCustomerEdit_Load برای فراخوانی InitData()
-        // ------------------------------------------------------------------
-        private void FrmCustomerEdit_Load(object sender, EventArgs e)
-        {
-            InitData();
-            DxValidationHelper.SetupValidation<Customer>(this, dxValidationProvider1, customerBindingSource);
-            ControlExraInit.ApplyFocusColor(this);
-
-            txbPhone.ErrorImageOptions.Alignment = ErrorIconAlignment.MiddleRight;
-        }
+        
 
         // ------------------------------------------------------------------
         // تغییر 5: پیاده‌سازی متد اصلی ذخیره
         // ------------------------------------------------------------------
         private bool SaveData()
         {
-            customerBindingSource.EndEdit();
 
             // اعتبارسنجی ساده
-            if (string.IsNullOrWhiteSpace(_currenCustomer.CustomerName))
+            if ((double)txbBeginning_Balance.EditValue != 0 && (double)cmbBanalceMode.EditValue == 0)
             {
-                XtraMessageBox.Show("نام مشتری نمی‌تواند خالی باشد.", "خطای اعتبارسنجی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txbCustomerName.Focus();
+                XtraMessageBox.Show("با توجه مقدار اول دوره نوع ماهیت را انتخاب کنید.", "خطای اعتبارسنجی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbBanalceMode.Focus();
                 return false;
             }
+            else
+            {
+                txbBeginning_Balance.EditValue = Math.Abs((double)txbBeginning_Balance.EditValue) * (double)cmbBanalceMode.EditValue;
+            }
 
+            if (!dxValidationProvider1.Validate())
+                return false;
+
+            customerBindingSource.EndEdit();
+            
             try
             {
                 // اگر مشتری جدید است، تغییرات توسط _dbContext.Customers.Add() در InitData ردیابی شده است.
                 // اگر مشتری موجود است، تغییرات به طور خودکار توسط BindingSource و EF ردیابی می‌شوند.
 
-                // ذخیره تغییرات در دیتابیس
+                bool isNew = (_Customer_Id == 0);   // 👈 تشخیص جدید/ویرایش
                 _dbContext.SaveChanges();
+                _NewCreatedCustomertId = isNew ? _currenCustomer.Id : 0;   // 👈 همین خط مشکل را حل می‌کند
 
-                // در صورت موفقیت، شناسه جدید را برای بازگشت به لیست اصلی ذخیره می‌کنیم
-                _New_Customer_Id = _currenCustomer.Id;
 
                 return true;
             }
@@ -208,6 +229,9 @@ namespace CncApp_Final.Frm
         {
             if (SaveData())
             {
+                _reloadCallback?.Invoke(_NewCreatedCustomertId);
+                txbBeginning_Balance.EditValue = Math.Abs((double)txbBeginning_Balance.EditValue);
+
                 XtraMessageBox.Show("ذخیره سازی با موفقیت انجام شد.", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -225,7 +249,8 @@ namespace CncApp_Final.Frm
         {
             if (SaveData())
             {
-                // نمایش موفقیت
+                _reloadCallback?.Invoke(_NewCreatedCustomertId);
+
                 XtraMessageBox.Show("ذخیره سازی با موفقیت انجام شد.", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // فرم را برای ورود مشتری جدید آماده می‌کند.

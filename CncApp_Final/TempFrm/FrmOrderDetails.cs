@@ -2,6 +2,7 @@
 using CncApp_Final.Entities;
 using CncApp_Final.Helper;
 using CncApp_Final.Models;
+using DevExpress.DataAccess.Native.Json;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.DXErrorProvider;
 using DevExpress.XtraPrinting;
@@ -898,7 +899,26 @@ namespace CncApp_Final.TempFrm
 
         private void btnOpenFile_EditValueChanged(object sender, EventArgs e)
         {
+            txbDetailName.EditValue = Path.GetFileNameWithoutExtension(btnOpenFile.Text);
+        }
 
+        private void btnOpenFile_Properties_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
+        {
+            if (e.Value == null)
+            {
+                e.DisplayText = string.Empty;
+                return;
+            }
+
+            var value = e.Value.ToString();
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                e.DisplayText = string.Empty;
+                return;
+            }
+
+            e.DisplayText = Path.GetFileName(value);
         }
     }
 

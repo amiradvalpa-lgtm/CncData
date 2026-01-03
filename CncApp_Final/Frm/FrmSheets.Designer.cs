@@ -29,31 +29,31 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSheets));
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
             this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.sheetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMaterial = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colThickness = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colWidth = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLength = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colThickness_mm = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSheetSize = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSheetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPicesPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCNCPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colThickness = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWidth = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLength = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOrderDetails = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colWarehouses = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rpsBtnOpenFolder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
             this.label7 = new System.Windows.Forms.Label();
-            this.colSheetSize = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colThickness_mm = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
             this.groupControl7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
@@ -139,20 +139,19 @@
             this.colMaterial.Visible = true;
             this.colMaterial.VisibleIndex = 0;
             // 
-            // colThickness
+            // colThickness_mm
             // 
-            this.colThickness.FieldName = "Thickness";
-            this.colThickness.Name = "colThickness";
+            this.colThickness_mm.FieldName = "Thickness_mm";
+            this.colThickness_mm.Name = "colThickness_mm";
+            this.colThickness_mm.Visible = true;
+            this.colThickness_mm.VisibleIndex = 1;
             // 
-            // colWidth
+            // colSheetSize
             // 
-            this.colWidth.FieldName = "Width";
-            this.colWidth.Name = "colWidth";
-            // 
-            // colLength
-            // 
-            this.colLength.FieldName = "Length";
-            this.colLength.Name = "colLength";
+            this.colSheetSize.FieldName = "SheetSize";
+            this.colSheetSize.Name = "colSheetSize";
+            this.colSheetSize.Visible = true;
+            this.colSheetSize.VisibleIndex = 2;
             // 
             // colSheetPrice
             // 
@@ -175,6 +174,21 @@
             this.colCNCPrice.Visible = true;
             this.colCNCPrice.VisibleIndex = 5;
             // 
+            // colThickness
+            // 
+            this.colThickness.FieldName = "Thickness";
+            this.colThickness.Name = "colThickness";
+            // 
+            // colWidth
+            // 
+            this.colWidth.FieldName = "Width";
+            this.colWidth.Name = "colWidth";
+            // 
+            // colLength
+            // 
+            this.colLength.FieldName = "Length";
+            this.colLength.Name = "colLength";
+            // 
             // colOrderDetails
             // 
             this.colOrderDetails.FieldName = "OrderDetails";
@@ -188,9 +202,9 @@
             // rpsBtnOpenFolder
             // 
             this.rpsBtnOpenFolder.AutoHeight = false;
-            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
             this.rpsBtnOpenFolder.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rpsBtnOpenFolder.Name = "rpsBtnOpenFolder";
             this.rpsBtnOpenFolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -224,20 +238,6 @@
             this.label7.Size = new System.Drawing.Size(142, 16);
             this.label7.TabIndex = 24;
             this.label7.Text = "مجموع قیمت خدمات :";
-            // 
-            // colSheetSize
-            // 
-            this.colSheetSize.FieldName = "SheetSize";
-            this.colSheetSize.Name = "colSheetSize";
-            this.colSheetSize.Visible = true;
-            this.colSheetSize.VisibleIndex = 2;
-            // 
-            // colThickness_mm
-            // 
-            this.colThickness_mm.FieldName = "Thickness_mm";
-            this.colThickness_mm.Name = "colThickness_mm";
-            this.colThickness_mm.Visible = true;
-            this.colThickness_mm.VisibleIndex = 1;
             // 
             // FrmSheets
             // 

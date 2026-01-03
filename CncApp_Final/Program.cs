@@ -18,9 +18,9 @@ namespace CncApp_Final
         [STAThread]
         static void Main()
         {
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("fa-IR");
-            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture;
-            InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(System.Threading.Thread.CurrentThread.CurrentCulture);
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("fa-IR");
+            //System.Threading.Thread.CurrentThread.CurrentUICulture = System.Threading.Thread.CurrentThread.CurrentCulture;
+            //InputLanguage.CurrentInputLanguage = InputLanguage.FromCulture(System.Threading.Thread.CurrentThread.CurrentCulture);
 
 
             //DevExpress.UserSkins.BonusSkins.Register();

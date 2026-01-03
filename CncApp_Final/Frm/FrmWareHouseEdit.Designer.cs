@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmWareHouseEdit));
             this.btnCopyPrice = new DevExpress.XtraEditors.SimpleButton();
-            this.SheetIdLookUpEdit = new DevExpress.XtraEditors.LookUpEdit();
             this.warehousesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
@@ -40,121 +39,67 @@
             this.bbiReset = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
             this.bbiClose = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiFormula = new DevExpress.XtraBars.BarButtonItem();
             this.mainRibbonPage = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.sheetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.FaOrderDateTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.SheetBasePriceTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.DescriptionTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.NewSheetPriceTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.PreSheetPriceTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.NewPicesPriceTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.PrePicesPriceTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForSheetId = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForFaOrderDate = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForSheetBasePrice = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForDescription = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.ItemForNewPicesPrice = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForNewSheetPrice = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForPreSheetPrice = new DevExpress.XtraLayout.LayoutControlItem();
-            this.ItemForPrePicesPrice = new DevExpress.XtraLayout.LayoutControlItem();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
-            this.dataLayoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SheetIdLookUpEdit.Properties)).BeginInit();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
+            this.lkpThickness = new DevExpress.XtraEditors.LookUpEdit();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lkpMaterial = new DevExpress.XtraEditors.LookUpEdit();
+            this.lkpSheetId = new DevExpress.XtraEditors.LookUpEdit();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txbOrderDate = new CncApp_Final.Helper.PersianDateTextEdit();
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FaOrderDateTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SheetBasePriceTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NewSheetPriceTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PreSheetPriceTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NewPicesPriceTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrePicesPriceTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForSheetId)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForFaOrderDate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForSheetBasePrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDescription)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForNewPicesPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForNewSheetPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForPreSheetPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForPrePicesPrice)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
+            this.groupControl5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpThickness.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpMaterial.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpSheetId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dataLayoutControl1
-            // 
-            this.dataLayoutControl1.AllowCustomization = false;
-            this.dataLayoutControl1.Controls.Add(this.btnCopyPrice);
-            this.dataLayoutControl1.Controls.Add(this.SheetIdLookUpEdit);
-            this.dataLayoutControl1.Controls.Add(this.FaOrderDateTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.SheetBasePriceTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.DescriptionTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.NewSheetPriceTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.PreSheetPriceTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.NewPicesPriceTextEdit);
-            this.dataLayoutControl1.Controls.Add(this.PrePicesPriceTextEdit);
-            this.dataLayoutControl1.DataSource = this.warehousesBindingSource;
-            this.dataLayoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataLayoutControl1.Location = new System.Drawing.Point(0, 201);
-            this.dataLayoutControl1.Name = "dataLayoutControl1";
-            this.dataLayoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(772, 262, 785, 400);
-            this.dataLayoutControl1.OptionsView.RightToLeftMirroringApplied = true;
-            this.dataLayoutControl1.Root = this.layoutControlGroup1;
-            this.dataLayoutControl1.Size = new System.Drawing.Size(396, 335);
-            this.dataLayoutControl1.TabIndex = 0;
             // 
             // btnCopyPrice
             // 
-            this.btnCopyPrice.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnCopyPrice.Location = new System.Drawing.Point(189, 228);
-            this.btnCopyPrice.MaximumSize = new System.Drawing.Size(20, 0);
-            this.btnCopyPrice.MinimumSize = new System.Drawing.Size(20, 73);
+            this.btnCopyPrice.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCopyPrice.ImageOptions.Image")));
+            this.btnCopyPrice.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnCopyPrice.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
+            this.btnCopyPrice.Location = new System.Drawing.Point(121, 42);
             this.btnCopyPrice.Name = "btnCopyPrice";
-            this.btnCopyPrice.Size = new System.Drawing.Size(20, 73);
-            this.btnCopyPrice.StyleController = this.dataLayoutControl1;
+            this.btnCopyPrice.Size = new System.Drawing.Size(36, 80);
             this.btnCopyPrice.TabIndex = 13;
+            this.btnCopyPrice.Text = "کپی";
             this.btnCopyPrice.Click += new System.EventHandler(this.btnCopyPrice_Click);
-            // 
-            // SheetIdLookUpEdit
-            // 
-            this.SheetIdLookUpEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "SheetId", true));
-            this.SheetIdLookUpEdit.EnterMoveNextControl = true;
-            this.SheetIdLookUpEdit.Location = new System.Drawing.Point(16, 16);
-            this.SheetIdLookUpEdit.MenuManager = this.mainRibbonControl;
-            this.SheetIdLookUpEdit.Name = "SheetIdLookUpEdit";
-            this.SheetIdLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.SheetIdLookUpEdit.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "شناسه ورق", 73, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SheetName", "نام ورق", 51, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Material", "جنس ورق", 63, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Thickness", "ضخامت", 51, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Width", "عرض", 41, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Length", "طول", 35, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SheetPrice", "قیمت کامل", 67, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("PicesPrice", "قیمت تکه", 60, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CNCPrice", "قیمت خدمات CNC", 100, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("OrderDetails", "جزئیات سفارش‌هایی که از این ورق استفاده کرده‌اند", 250, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Warehouses", "موجودی در انبار", 86, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Thickness_mm", "ضخامت ورق", 73, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SheetSize", "سایز ورق", 60, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.SheetIdLookUpEdit.Properties.DataSource = this.sheetsBindingSource;
-            this.SheetIdLookUpEdit.Properties.DisplayMember = "SheetName";
-            this.SheetIdLookUpEdit.Properties.NullText = "";
-            this.SheetIdLookUpEdit.Properties.ValueMember = "Id";
-            this.SheetIdLookUpEdit.Size = new System.Drawing.Size(279, 28);
-            this.SheetIdLookUpEdit.StyleController = this.dataLayoutControl1;
-            this.SheetIdLookUpEdit.TabIndex = 0;
             // 
             // warehousesBindingSource
             // 
@@ -170,12 +115,14 @@
             this.bbiSaveAndNew,
             this.bbiReset,
             this.bbiDelete,
-            this.bbiClose});
+            this.bbiClose,
+            this.bbiFormula});
             this.mainRibbonControl.Location = new System.Drawing.Point(0, 0);
-            this.mainRibbonControl.MaxItemId = 10;
+            this.mainRibbonControl.MaxItemId = 11;
             this.mainRibbonControl.Name = "mainRibbonControl";
             this.mainRibbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
-            this.mainRibbonPage});
+            this.mainRibbonPage,
+            this.ribbonPage1});
             this.mainRibbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.mainRibbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.mainRibbonControl.Size = new System.Drawing.Size(396, 201);
@@ -228,6 +175,15 @@
             this.bbiClose.Name = "bbiClose";
             this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClose_ItemClick);
             // 
+            // bbiFormula
+            // 
+            this.bbiFormula.Caption = "فرمول قیمت ورق";
+            this.bbiFormula.Id = 10;
+            this.bbiFormula.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiFormula.ImageOptions.Image")));
+            this.bbiFormula.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiFormula.ImageOptions.LargeImage")));
+            this.bbiFormula.Name = "bbiFormula";
+            this.bbiFormula.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFormula_ItemClick);
+            // 
             // mainRibbonPage
             // 
             this.mainRibbonPage.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -249,30 +205,32 @@
             this.mainRibbonPageGroup.Name = "mainRibbonPageGroup";
             this.mainRibbonPageGroup.Text = "Tasks";
             // 
+            // ribbonPage1
+            // 
+            this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1});
+            this.ribbonPage1.Name = "ribbonPage1";
+            this.ribbonPage1.Text = "Formula";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiFormula);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            // 
             // sheetsBindingSource
             // 
             this.sheetsBindingSource.DataSource = typeof(CncApp_Final.Entities.Sheet);
-            // 
-            // FaOrderDateTextEdit
-            // 
-            this.FaOrderDateTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "FaOrderDate", true));
-            this.FaOrderDateTextEdit.EnterMoveNextControl = true;
-            this.FaOrderDateTextEdit.Location = new System.Drawing.Point(16, 60);
-            this.FaOrderDateTextEdit.MenuManager = this.mainRibbonControl;
-            this.FaOrderDateTextEdit.Name = "FaOrderDateTextEdit";
-            this.FaOrderDateTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.FaOrderDateTextEdit.Size = new System.Drawing.Size(279, 28);
-            this.FaOrderDateTextEdit.StyleController = this.dataLayoutControl1;
-            this.FaOrderDateTextEdit.TabIndex = 1;
             // 
             // SheetBasePriceTextEdit
             // 
             this.SheetBasePriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "SheetBasePrice", true));
             this.SheetBasePriceTextEdit.EnterMoveNextControl = true;
-            this.SheetBasePriceTextEdit.Location = new System.Drawing.Point(16, 104);
+            this.SheetBasePriceTextEdit.Location = new System.Drawing.Point(16, 53);
             this.SheetBasePriceTextEdit.MenuManager = this.mainRibbonControl;
             this.SheetBasePriceTextEdit.Name = "SheetBasePriceTextEdit";
             this.SheetBasePriceTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.SheetBasePriceTextEdit.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.SheetBasePriceTextEdit.Properties.Appearance.Options.UseFont = true;
             this.SheetBasePriceTextEdit.Properties.DisplayFormat.FormatString = "n0";
             this.SheetBasePriceTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.SheetBasePriceTextEdit.Properties.EditFormat.FormatString = "n0";
@@ -281,30 +239,32 @@
             this.SheetBasePriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
             this.SheetBasePriceTextEdit.Properties.MaxLength = 9;
             this.SheetBasePriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
-            this.SheetBasePriceTextEdit.Size = new System.Drawing.Size(279, 28);
-            this.SheetBasePriceTextEdit.StyleController = this.dataLayoutControl1;
-            this.SheetBasePriceTextEdit.TabIndex = 2;
+            this.SheetBasePriceTextEdit.Size = new System.Drawing.Size(263, 36);
+            this.SheetBasePriceTextEdit.TabIndex = 1;
             // 
             // DescriptionTextEdit
             // 
             this.DescriptionTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "Description", true));
             this.DescriptionTextEdit.EnterMoveNextControl = true;
-            this.DescriptionTextEdit.Location = new System.Drawing.Point(16, 148);
+            this.DescriptionTextEdit.Location = new System.Drawing.Point(16, 95);
             this.DescriptionTextEdit.MenuManager = this.mainRibbonControl;
             this.DescriptionTextEdit.Name = "DescriptionTextEdit";
             this.DescriptionTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
-            this.DescriptionTextEdit.Size = new System.Drawing.Size(279, 28);
-            this.DescriptionTextEdit.StyleController = this.dataLayoutControl1;
-            this.DescriptionTextEdit.TabIndex = 3;
+            this.DescriptionTextEdit.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.DescriptionTextEdit.Properties.Appearance.Options.UseFont = true;
+            this.DescriptionTextEdit.Size = new System.Drawing.Size(262, 36);
+            this.DescriptionTextEdit.TabIndex = 2;
             // 
             // NewSheetPriceTextEdit
             // 
             this.NewSheetPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "NewSheetPrice", true));
             this.NewSheetPriceTextEdit.EnterMoveNextControl = true;
-            this.NewSheetPriceTextEdit.Location = new System.Drawing.Point(219, 228);
+            this.NewSheetPriceTextEdit.Location = new System.Drawing.Point(221, 42);
             this.NewSheetPriceTextEdit.MenuManager = this.mainRibbonControl;
             this.NewSheetPriceTextEdit.Name = "NewSheetPriceTextEdit";
             this.NewSheetPriceTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.NewSheetPriceTextEdit.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.NewSheetPriceTextEdit.Properties.Appearance.Options.UseFont = true;
             this.NewSheetPriceTextEdit.Properties.DisplayFormat.FormatString = "n0";
             this.NewSheetPriceTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.NewSheetPriceTextEdit.Properties.EditFormat.FormatString = "n0";
@@ -312,24 +272,28 @@
             this.NewSheetPriceTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.NewSheetPriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
             this.NewSheetPriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
-            this.NewSheetPriceTextEdit.Size = new System.Drawing.Size(83, 28);
-            this.NewSheetPriceTextEdit.StyleController = this.dataLayoutControl1;
-            this.NewSheetPriceTextEdit.TabIndex = 4;
+            this.NewSheetPriceTextEdit.Size = new System.Drawing.Size(99, 36);
+            this.NewSheetPriceTextEdit.TabIndex = 0;
             // 
             // PreSheetPriceTextEdit
             // 
             this.PreSheetPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "PreSheetPrice", true));
-            this.PreSheetPriceTextEdit.Location = new System.Drawing.Point(25, 228);
+            this.PreSheetPriceTextEdit.Location = new System.Drawing.Point(16, 42);
             this.PreSheetPriceTextEdit.MenuManager = this.mainRibbonControl;
             this.PreSheetPriceTextEdit.Name = "PreSheetPriceTextEdit";
+            this.PreSheetPriceTextEdit.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.PreSheetPriceTextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.PreSheetPriceTextEdit.Properties.Appearance.Options.UseFont = true;
+            this.PreSheetPriceTextEdit.Properties.Appearance.Options.UseForeColor = true;
+            this.PreSheetPriceTextEdit.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Red;
+            this.PreSheetPriceTextEdit.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.PreSheetPriceTextEdit.Properties.DisplayFormat.FormatString = "n0";
             this.PreSheetPriceTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.PreSheetPriceTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.PreSheetPriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
             this.PreSheetPriceTextEdit.Properties.ReadOnly = true;
             this.PreSheetPriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
-            this.PreSheetPriceTextEdit.Size = new System.Drawing.Size(79, 28);
-            this.PreSheetPriceTextEdit.StyleController = this.dataLayoutControl1;
+            this.PreSheetPriceTextEdit.Size = new System.Drawing.Size(99, 36);
             this.PreSheetPriceTextEdit.TabIndex = 9;
             this.PreSheetPriceTextEdit.TabStop = false;
             // 
@@ -337,10 +301,12 @@
             // 
             this.NewPicesPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "NewPicesPrice", true));
             this.NewPicesPriceTextEdit.EnterMoveNextControl = true;
-            this.NewPicesPriceTextEdit.Location = new System.Drawing.Point(219, 272);
+            this.NewPicesPriceTextEdit.Location = new System.Drawing.Point(221, 86);
             this.NewPicesPriceTextEdit.MenuManager = this.mainRibbonControl;
             this.NewPicesPriceTextEdit.Name = "NewPicesPriceTextEdit";
             this.NewPicesPriceTextEdit.Properties.AllowNullInput = DevExpress.Utils.DefaultBoolean.False;
+            this.NewPicesPriceTextEdit.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.NewPicesPriceTextEdit.Properties.Appearance.Options.UseFont = true;
             this.NewPicesPriceTextEdit.Properties.DisplayFormat.FormatString = "n0";
             this.NewPicesPriceTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.NewPicesPriceTextEdit.Properties.EditFormat.FormatString = "n0";
@@ -348,179 +314,282 @@
             this.NewPicesPriceTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.NewPicesPriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
             this.NewPicesPriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
-            this.NewPicesPriceTextEdit.Size = new System.Drawing.Size(83, 28);
-            this.NewPicesPriceTextEdit.StyleController = this.dataLayoutControl1;
-            this.NewPicesPriceTextEdit.TabIndex = 5;
+            this.NewPicesPriceTextEdit.Size = new System.Drawing.Size(99, 36);
+            this.NewPicesPriceTextEdit.TabIndex = 1;
             // 
             // PrePicesPriceTextEdit
             // 
             this.PrePicesPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "PrePicesPrice", true));
-            this.PrePicesPriceTextEdit.Location = new System.Drawing.Point(25, 272);
+            this.PrePicesPriceTextEdit.Location = new System.Drawing.Point(16, 86);
             this.PrePicesPriceTextEdit.MenuManager = this.mainRibbonControl;
             this.PrePicesPriceTextEdit.Name = "PrePicesPriceTextEdit";
+            this.PrePicesPriceTextEdit.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.PrePicesPriceTextEdit.Properties.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.PrePicesPriceTextEdit.Properties.Appearance.Options.UseFont = true;
+            this.PrePicesPriceTextEdit.Properties.Appearance.Options.UseForeColor = true;
+            this.PrePicesPriceTextEdit.Properties.AppearanceReadOnly.ForeColor = System.Drawing.Color.Red;
+            this.PrePicesPriceTextEdit.Properties.AppearanceReadOnly.Options.UseForeColor = true;
             this.PrePicesPriceTextEdit.Properties.DisplayFormat.FormatString = "n0";
             this.PrePicesPriceTextEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.PrePicesPriceTextEdit.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
             this.PrePicesPriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
             this.PrePicesPriceTextEdit.Properties.ReadOnly = true;
             this.PrePicesPriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
-            this.PrePicesPriceTextEdit.Size = new System.Drawing.Size(79, 28);
-            this.PrePicesPriceTextEdit.StyleController = this.dataLayoutControl1;
+            this.PrePicesPriceTextEdit.Size = new System.Drawing.Size(99, 36);
             this.PrePicesPriceTextEdit.TabIndex = 11;
             this.PrePicesPriceTextEdit.TabStop = false;
             // 
-            // layoutControlGroup1
+            // groupControl1
             // 
-            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.layoutControlGroup1.GroupBordersVisible = false;
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlGroup2});
-            this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(396, 335);
-            this.layoutControlGroup1.TextVisible = false;
+            this.groupControl1.Controls.Add(this.simpleButton1);
+            this.groupControl1.Controls.Add(this.PreSheetPriceTextEdit);
+            this.groupControl1.Controls.Add(this.PrePicesPriceTextEdit);
+            this.groupControl1.Controls.Add(this.label7);
+            this.groupControl1.Controls.Add(this.label6);
+            this.groupControl1.Controls.Add(this.NewPicesPriceTextEdit);
+            this.groupControl1.Controls.Add(this.NewSheetPriceTextEdit);
+            this.groupControl1.Controls.Add(this.btnCopyPrice);
+            this.groupControl1.Location = new System.Drawing.Point(15, 495);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(361, 132);
+            this.groupControl1.TabIndex = 2;
+            this.groupControl1.Text = "محاسبات (قیمت فروش ورق) براساس (قیمت خرید)";
             // 
-            // layoutControlGroup2
+            // simpleButton1
             // 
-            this.layoutControlGroup2.AllowDrawBackground = false;
-            this.layoutControlGroup2.GroupBordersVisible = false;
-            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForSheetId,
-            this.ItemForFaOrderDate,
-            this.ItemForSheetBasePrice,
-            this.ItemForDescription,
-            this.layoutControlGroup3});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup2.Name = "autoGeneratedGroup0";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(370, 309);
+            this.simpleButton1.Location = new System.Drawing.Point(171, 77);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
+            this.simpleButton1.TabIndex = 18;
+            this.simpleButton1.Text = "simpleButton1";
+            this.simpleButton1.Click += new System.EventHandler(this.btnEditPiecePrice_Click);
             // 
-            // ItemForSheetId
+            // label7
             // 
-            this.ItemForSheetId.Control = this.SheetIdLookUpEdit;
-            this.ItemForSheetId.Location = new System.Drawing.Point(0, 0);
-            this.ItemForSheetId.Name = "ItemForSheetId";
-            this.ItemForSheetId.OptionsToolTip.ToolTip = "ورق انتخاب شده برای سفارش";
-            this.ItemForSheetId.Size = new System.Drawing.Size(370, 44);
-            this.ItemForSheetId.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
-            this.ItemForSheetId.TextSize = new System.Drawing.Size(69, 13);
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label7.Location = new System.Drawing.Point(323, 96);
+            this.label7.Name = "label7";
+            this.label7.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label7.Size = new System.Drawing.Size(26, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "تکه:";
             // 
-            // ItemForFaOrderDate
+            // label6
             // 
-            this.ItemForFaOrderDate.Control = this.FaOrderDateTextEdit;
-            this.ItemForFaOrderDate.Location = new System.Drawing.Point(0, 44);
-            this.ItemForFaOrderDate.Name = "ItemForFaOrderDate";
-            this.ItemForFaOrderDate.Size = new System.Drawing.Size(370, 44);
-            this.ItemForFaOrderDate.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
-            this.ItemForFaOrderDate.TextSize = new System.Drawing.Size(69, 13);
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label6.Location = new System.Drawing.Point(323, 52);
+            this.label6.Name = "label6";
+            this.label6.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label6.Size = new System.Drawing.Size(33, 13);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "کامل:";
             // 
-            // ItemForSheetBasePrice
+            // groupControl5
             // 
-            this.ItemForSheetBasePrice.Control = this.SheetBasePriceTextEdit;
-            this.ItemForSheetBasePrice.Location = new System.Drawing.Point(0, 88);
-            this.ItemForSheetBasePrice.Name = "ItemForSheetBasePrice";
-            this.ItemForSheetBasePrice.OptionsToolTip.ToolTip = "قیمت پایه ورق";
-            this.ItemForSheetBasePrice.Size = new System.Drawing.Size(370, 44);
-            this.ItemForSheetBasePrice.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
-            this.ItemForSheetBasePrice.TextSize = new System.Drawing.Size(69, 13);
+            this.groupControl5.Controls.Add(this.lkpThickness);
+            this.groupControl5.Controls.Add(this.label15);
+            this.groupControl5.Controls.Add(this.lkpMaterial);
+            this.groupControl5.Controls.Add(this.lkpSheetId);
+            this.groupControl5.Controls.Add(this.label2);
+            this.groupControl5.Controls.Add(this.label1);
+            this.groupControl5.Location = new System.Drawing.Point(15, 230);
+            this.groupControl5.Name = "groupControl5";
+            this.groupControl5.ShowCaption = false;
+            this.groupControl5.Size = new System.Drawing.Size(361, 102);
+            this.groupControl5.TabIndex = 0;
+            this.groupControl5.Text = "groupControl4";
             // 
-            // ItemForDescription
+            // lkpThickness
             // 
-            this.ItemForDescription.Control = this.DescriptionTextEdit;
-            this.ItemForDescription.Location = new System.Drawing.Point(0, 132);
-            this.ItemForDescription.Name = "ItemForDescription";
-            this.ItemForDescription.OptionsToolTip.ToolTip = "توضیحات مربوط به خرید ورق";
-            this.ItemForDescription.Size = new System.Drawing.Size(370, 44);
-            this.ItemForDescription.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
-            this.ItemForDescription.TextSize = new System.Drawing.Size(69, 13);
+            this.lkpThickness.EnterMoveNextControl = true;
+            this.lkpThickness.Location = new System.Drawing.Point(16, 13);
+            this.lkpThickness.Name = "lkpThickness";
+            this.lkpThickness.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.lkpThickness.Properties.Appearance.Options.UseFont = true;
+            this.lkpThickness.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lkpThickness.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.lkpThickness.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkpThickness.Properties.DropDownItemHeight = 25;
+            this.lkpThickness.Properties.NullText = "  ؟";
+            this.lkpThickness.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.lkpThickness.Properties.ShowHeader = false;
+            this.lkpThickness.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lkpThickness.Size = new System.Drawing.Size(76, 36);
+            this.lkpThickness.TabIndex = 1;
             // 
-            // layoutControlGroup3
+            // label15
             // 
-            this.layoutControlGroup3.GroupStyle = DevExpress.Utils.GroupStyle.Card;
-            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.ItemForNewPicesPrice,
-            this.ItemForNewSheetPrice,
-            this.ItemForPreSheetPrice,
-            this.ItemForPrePicesPrice,
-            this.emptySpaceItem1,
-            this.layoutControlItem2});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 176);
-            this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
-            this.layoutControlGroup3.Size = new System.Drawing.Size(370, 133);
-            this.layoutControlGroup3.Text = "محاسبات قیمت ورق براساس قیمت پایه کامل";
+            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label15.Location = new System.Drawing.Point(285, 69);
+            this.label15.Name = "label15";
+            this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label15.Size = new System.Drawing.Size(55, 13);
+            this.label15.TabIndex = 17;
+            this.label15.Text = "سایز ورق:";
             // 
-            // ItemForNewPicesPrice
+            // lkpMaterial
             // 
-            this.ItemForNewPicesPrice.Control = this.NewPicesPriceTextEdit;
-            this.ItemForNewPicesPrice.Location = new System.Drawing.Point(194, 44);
-            this.ItemForNewPicesPrice.Name = "ItemForNewPicesPrice";
-            this.ItemForNewPicesPrice.OptionsToolTip.ToolTip = "SheetBasePrice * 1.15";
-            this.ItemForNewPicesPrice.Size = new System.Drawing.Size(158, 44);
-            this.ItemForNewPicesPrice.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
-            this.ItemForNewPicesPrice.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.ItemForNewPicesPrice.TextSize = new System.Drawing.Size(69, 13);
-            this.ItemForNewPicesPrice.TextToControlDistance = 0;
+            this.lkpMaterial.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lkpMaterial.EnterMoveNextControl = true;
+            this.lkpMaterial.Location = new System.Drawing.Point(171, 13);
+            this.lkpMaterial.Name = "lkpMaterial";
+            this.lkpMaterial.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.lkpMaterial.Properties.Appearance.Options.UseFont = true;
+            this.lkpMaterial.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lkpMaterial.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.lkpMaterial.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.lkpMaterial.Properties.BestFitRowCount = 5;
+            this.lkpMaterial.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkpMaterial.Properties.DropDownItemHeight = 25;
+            this.lkpMaterial.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.lkpMaterial.Properties.PopupWidth = 60;
+            this.lkpMaterial.Properties.ShowHeader = false;
+            this.lkpMaterial.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lkpMaterial.Size = new System.Drawing.Size(107, 36);
+            this.lkpMaterial.TabIndex = 0;
             // 
-            // ItemForNewSheetPrice
+            // lkpSheetId
             // 
-            this.ItemForNewSheetPrice.Control = this.NewSheetPriceTextEdit;
-            this.ItemForNewSheetPrice.Location = new System.Drawing.Point(194, 0);
-            this.ItemForNewSheetPrice.Name = "ItemForNewSheetPrice";
-            this.ItemForNewSheetPrice.OptionsToolTip.ToolTip = "SheetBasePrice * 1.25";
-            this.ItemForNewSheetPrice.Size = new System.Drawing.Size(158, 44);
-            this.ItemForNewSheetPrice.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
-            this.ItemForNewSheetPrice.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.ItemForNewSheetPrice.TextSize = new System.Drawing.Size(69, 13);
-            this.ItemForNewSheetPrice.TextToControlDistance = 0;
+            this.lkpSheetId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lkpSheetId.EnterMoveNextControl = true;
+            this.lkpSheetId.Location = new System.Drawing.Point(16, 55);
+            this.lkpSheetId.Name = "lkpSheetId";
+            this.lkpSheetId.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.lkpSheetId.Properties.Appearance.Options.UseFont = true;
+            this.lkpSheetId.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lkpSheetId.Properties.AppearanceFocused.Options.UseBackColor = true;
+            this.lkpSheetId.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
+            this.lkpSheetId.Properties.BestFitRowCount = 5;
+            this.lkpSheetId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lkpSheetId.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "شناسه ورق", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DisplayText", "DisplayText"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Width", "عرض", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Length", "طول", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SheetPrice", "قیمت کامل", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("PicesPrice", "قیمت تکه", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CNCPrice", "قیمت خدمات CNC", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SheetSize", "سایز ورق", 5, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.lkpSheetId.Properties.DropDownItemHeight = 25;
+            this.lkpSheetId.Properties.NullText = "  ؟";
+            this.lkpSheetId.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
+            this.lkpSheetId.Properties.PopupWidth = 60;
+            this.lkpSheetId.Properties.ShowHeader = false;
+            this.lkpSheetId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lkpSheetId.Size = new System.Drawing.Size(263, 36);
+            this.lkpSheetId.TabIndex = 2;
             // 
-            // ItemForPreSheetPrice
+            // label2
             // 
-            this.ItemForPreSheetPrice.Control = this.PreSheetPriceTextEdit;
-            this.ItemForPreSheetPrice.Location = new System.Drawing.Point(0, 0);
-            this.ItemForPreSheetPrice.Name = "ItemForPreSheetPrice";
-            this.ItemForPreSheetPrice.OptionsToolTip.ToolTip = "Sheet.SheetPrice";
-            this.ItemForPreSheetPrice.Size = new System.Drawing.Size(154, 44);
-            this.ItemForPreSheetPrice.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
-            this.ItemForPreSheetPrice.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.ItemForPreSheetPrice.TextSize = new System.Drawing.Size(69, 13);
-            this.ItemForPreSheetPrice.TextToControlDistance = 0;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label2.Location = new System.Drawing.Point(98, 24);
+            this.label2.Name = "label2";
+            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label2.Size = new System.Drawing.Size(68, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "ضخامت ورق:";
             // 
-            // ItemForPrePicesPrice
+            // label1
             // 
-            this.ItemForPrePicesPrice.Control = this.PrePicesPriceTextEdit;
-            this.ItemForPrePicesPrice.Location = new System.Drawing.Point(0, 44);
-            this.ItemForPrePicesPrice.Name = "ItemForPrePicesPrice";
-            this.ItemForPrePicesPrice.OptionsToolTip.ToolTip = "Sheet.PicesPrice";
-            this.ItemForPrePicesPrice.Size = new System.Drawing.Size(154, 44);
-            this.ItemForPrePicesPrice.Spacing = new DevExpress.XtraLayout.Utils.Padding(0, 0, 0, 10);
-            this.ItemForPrePicesPrice.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.CustomSize;
-            this.ItemForPrePicesPrice.TextSize = new System.Drawing.Size(69, 13);
-            this.ItemForPrePicesPrice.TextToControlDistance = 0;
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label1.Location = new System.Drawing.Point(285, 24);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "جنس ورق:";
             // 
-            // emptySpaceItem1
+            // txbOrderDate
             // 
-            this.emptySpaceItem1.Location = new System.Drawing.Point(154, 0);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(10, 88);
+            this.txbOrderDate.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbOrderDate.Appearance.Options.UseFont = true;
+            this.txbOrderDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "OrderDate", true));
+            this.txbOrderDate.EditValue = null;
+            this.txbOrderDate.Location = new System.Drawing.Point(16, 9);
+            this.txbOrderDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txbOrderDate.Name = "txbOrderDate";
+            this.txbOrderDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.txbOrderDate.Size = new System.Drawing.Size(262, 36);
+            this.txbOrderDate.TabIndex = 0;
             // 
-            // layoutControlItem2
+            // dxValidationProvider1
             // 
-            this.layoutControlItem2.Control = this.btnCopyPrice;
-            this.layoutControlItem2.Location = new System.Drawing.Point(164, 0);
-            this.layoutControlItem2.MaxSize = new System.Drawing.Size(30, 79);
-            this.layoutControlItem2.MinSize = new System.Drawing.Size(30, 79);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(30, 88);
-            this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem2.TextVisible = false;
+            this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label3.Location = new System.Drawing.Point(285, 20);
+            this.label3.Name = "label3";
+            this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label3.Size = new System.Drawing.Size(56, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "تاریخ خرید:";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label4.Location = new System.Drawing.Point(285, 63);
+            this.label4.Name = "label4";
+            this.label4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "قیمت خرید:";
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label5.Location = new System.Drawing.Point(284, 105);
+            this.label5.Name = "label5";
+            this.label5.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "توضیحات:";
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.txbOrderDate);
+            this.groupControl2.Controls.Add(this.DescriptionTextEdit);
+            this.groupControl2.Controls.Add(this.label5);
+            this.groupControl2.Controls.Add(this.SheetBasePriceTextEdit);
+            this.groupControl2.Controls.Add(this.label4);
+            this.groupControl2.Controls.Add(this.label3);
+            this.groupControl2.Location = new System.Drawing.Point(15, 343);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.ShowCaption = false;
+            this.groupControl2.Size = new System.Drawing.Size(361, 146);
+            this.groupControl2.TabIndex = 1;
+            this.groupControl2.Text = "groupControl2";
             // 
             // FrmWareHouseEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(396, 536);
-            this.Controls.Add(this.dataLayoutControl1);
+            this.ClientSize = new System.Drawing.Size(396, 632);
+            this.Controls.Add(this.groupControl2);
+            this.Controls.Add(this.groupControl5);
+            this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.mainRibbonControl);
             this.IconOptions.ShowIcon = false;
             this.MaximizeBox = false;
@@ -530,40 +599,34 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmWareHouseEdit_FormClosing);
             this.Load += new System.EventHandler(this.FrmWareHouseEdit_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
-            this.dataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SheetIdLookUpEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.FaOrderDateTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SheetBasePriceTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DescriptionTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NewSheetPriceTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PreSheetPriceTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NewPicesPriceTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrePicesPriceTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForSheetId)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForFaOrderDate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForSheetBasePrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForDescription)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForNewPicesPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForNewSheetPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForPreSheetPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemForPrePicesPrice)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
+            this.groupControl5.ResumeLayout(false);
+            this.groupControl5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpThickness.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpMaterial.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lkpSheetId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            this.groupControl2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private DevExpress.XtraDataLayout.DataLayoutControl dataLayoutControl1;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraBars.Ribbon.RibbonControl mainRibbonControl;
         private DevExpress.XtraBars.Ribbon.RibbonPage mainRibbonPage;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup mainRibbonPageGroup;
@@ -573,28 +636,34 @@
         private DevExpress.XtraBars.BarButtonItem bbiReset;
         private DevExpress.XtraBars.BarButtonItem bbiDelete;
         private DevExpress.XtraBars.BarButtonItem bbiClose;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private System.Windows.Forms.BindingSource warehousesBindingSource;
-        private DevExpress.XtraEditors.LookUpEdit SheetIdLookUpEdit;
-        private DevExpress.XtraEditors.TextEdit FaOrderDateTextEdit;
         private DevExpress.XtraEditors.TextEdit SheetBasePriceTextEdit;
         private DevExpress.XtraEditors.TextEdit DescriptionTextEdit;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForSheetId;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForFaOrderDate;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForSheetBasePrice;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForDescription;
         private System.Windows.Forms.BindingSource sheetsBindingSource;
         private DevExpress.XtraEditors.TextEdit NewSheetPriceTextEdit;
         private DevExpress.XtraEditors.TextEdit PreSheetPriceTextEdit;
         private DevExpress.XtraEditors.TextEdit NewPicesPriceTextEdit;
         private DevExpress.XtraEditors.TextEdit PrePicesPriceTextEdit;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForNewSheetPrice;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForPreSheetPrice;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForNewPicesPrice;
-        private DevExpress.XtraLayout.LayoutControlItem ItemForPrePicesPrice;
-        private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
-        private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
         private DevExpress.XtraEditors.SimpleButton btnCopyPrice;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraEditors.GroupControl groupControl5;
+        private DevExpress.XtraEditors.LookUpEdit lkpThickness;
+        private DevExpress.XtraEditors.LookUpEdit lkpMaterial;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label15;
+        private DevExpress.XtraEditors.LookUpEdit lkpSheetId;
+        private Helper.PersianDateTextEdit txbOrderDate;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label6;
+        private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.BarButtonItem bbiFormula;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }

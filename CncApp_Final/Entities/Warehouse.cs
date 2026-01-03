@@ -18,6 +18,7 @@ namespace CncApp_Final.Entities
         public int Id { get; set; }
 
         [DisplayName("شناسه ورق"),Display(Order = 1)]
+        [Required(ErrorMessage = "انتخاب ورق الزامی است.")]
         [Description("ورق انتخاب شده برای سفارش")]
         public int SheetId { get; set; }
 
@@ -31,14 +32,14 @@ namespace CncApp_Final.Entities
             
 
         [DisplayName("قیمت پایه کامل"),
-            Required, Display(Order = 3),
-            Range(1, 1000000000)]
+            Required(ErrorMessage = "وارد کردن {0} الزامی است."), Display(Order = 3),
+            Range(0.001, 1000000000)]
         [Description("قیمت پایه ورق")]
         public double SheetBasePrice { get; set; }
 
-        [DisplayName("توضیحات"), Display(Order = 4),Required(AllowEmptyStrings = false)] 
+        [DisplayName("توضیحات"), Display(Order = 4),] 
         [Description("توضیحات مربوط به خرید ورق")]
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         // ─── نام ورق (NotMapped) ─────────────────────────────────────
         [NotMapped]
@@ -101,19 +102,19 @@ namespace CncApp_Final.Entities
 
         [NotMapped]
         [DisplayName("کامل جدید"),
-            Required, Display(Order = 5),
+            Required(ErrorMessage = "وارد کردن {0} الزامی است."), Display(Order = 5),
             DisplayFormat(DataFormatString = "n0", ApplyFormatInEditMode = true),
             Range(1, 999999999)]
         [Description("SheetBasePrice * 1.25")]
-        public double NewSheetPrice => SheetBasePrice * 1.25;
+        public double NewSheetPrice => SheetBasePrice * 1.15;
 
         [NotMapped]
         [DisplayName("تکه جدید"),
-            Required, Display(Order = 7),
+            Required(ErrorMessage = "وارد کردن {0} الزامی است."), Display(Order = 7),
             DisplayFormat(DataFormatString = "n0", ApplyFormatInEditMode = true),
             Range(1, 999999999)]
-        [Description("SheetBasePrice * 1.15")]
-        public double NewPicesPrice => SheetBasePrice * 1.15;
+        [Description("SheetBasePrice * 1.25")]
+        public double NewPicesPrice => SheetBasePrice * 1.25;
         // ────────────────────────────────────────────────────────────────────────────
 
 

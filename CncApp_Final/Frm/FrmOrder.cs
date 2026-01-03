@@ -340,7 +340,7 @@ namespace CncApp_Final.Frm
 
         private void btnNewCustomer_Click(object sender, EventArgs e)
         {
-            FrmCustomerEdit newFrmCustomers = new FrmCustomerEdit(0, false);
+            FrmCustomerEdit newFrmCustomers = new FrmCustomerEdit(0, false, null);
             newFrmCustomers.ShowDialog();
 
             if (newFrmCustomers.DialogResult == DialogResult.OK)
@@ -349,7 +349,7 @@ namespace CncApp_Final.Frm
                 _dbContext.Customers.Load();
                 customersBindingSource.DataSource = _dbContext.Customers.Local.ToBindingList();
                 lueCustomer.Refresh();
-                lueCustomer.EditValue = newFrmCustomers._New_Customer_Id;
+                lueCustomer.EditValue = newFrmCustomers._NewCreatedCustomertId;
                 // اگر مشتری جدیدی ثبت شده باشد، می‌توانید EditValue را به آن مشتری جدید تنظیم کنید.
             }
         }
@@ -579,7 +579,7 @@ namespace CncApp_Final.Frm
                     newDetail.Id = 0;
                     newDetail.OrderId = currentOrder.Id;
 
-                    _dbContext.Entry(newDetail).Reference(x => x.Sheet).Load();
+                    //_dbContext.Entry(newDetail).Reference(x => x.Sheet).Load();
 
                     currentOrder.OrderDetails.Add(newDetail);
                     orderDetailsBindingSource.ResetBindings(false);

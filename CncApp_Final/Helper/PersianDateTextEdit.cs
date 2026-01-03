@@ -28,6 +28,7 @@ namespace CncApp_Final.Helper
             InitializeComponent();
 
             textEdit1.EditValueChanged += TextEdit1_EditValueChanged;
+            textEdit1.ErrorImageOptions.Alignment = ErrorIconAlignment.MiddleRight;
         }
 
         // ===================== EditValue =====================

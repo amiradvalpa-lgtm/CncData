@@ -30,11 +30,21 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomers));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            this.colBalanceStatus = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBeginning_Balance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.mainRibbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSaveAndClose = new DevExpress.XtraBars.BarButtonItem();
@@ -53,18 +63,16 @@
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMhkCustomerId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colHint = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPhone = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colAddress = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colBeginning_Balance = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDisplayBalance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colOrders = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colReceipts = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn2 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rpsBtnOpenFolder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
             this.label7 = new System.Windows.Forms.Label();
-            this.colHint = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
             this.groupControl7.SuspendLayout();
@@ -74,6 +82,27 @@
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSumNetPrice.Properties)).BeginInit();
             this.SuspendLayout();
+            // 
+            // colBalanceStatus
+            // 
+            this.colBalanceStatus.AppearanceCell.Options.UseTextOptions = true;
+            this.colBalanceStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colBalanceStatus.Caption = "ماهیت فعلی";
+            this.colBalanceStatus.FieldName = "BalanceStatus";
+            this.colBalanceStatus.Name = "colBalanceStatus";
+            this.colBalanceStatus.Visible = true;
+            this.colBalanceStatus.VisibleIndex = 8;
+            // 
+            // colBeginning_Balance
+            // 
+            this.colBeginning_Balance.AppearanceCell.Options.UseTextOptions = true;
+            this.colBeginning_Balance.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colBeginning_Balance.DisplayFormat.FormatString = "#,###;#,###;0";
+            this.colBeginning_Balance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colBeginning_Balance.FieldName = "Beginning_Balance";
+            this.colBeginning_Balance.Name = "colBeginning_Balance";
+            this.colBeginning_Balance.Visible = true;
+            this.colBeginning_Balance.VisibleIndex = 6;
             // 
             // mainRibbonControl
             // 
@@ -103,7 +132,7 @@
             this.mainRibbonControl.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.mainRibbonControl.ShowMoreCommandsButton = DevExpress.Utils.DefaultBoolean.False;
             this.mainRibbonControl.ShowToolbarCustomizeItem = false;
-            this.mainRibbonControl.Size = new System.Drawing.Size(798, 201);
+            this.mainRibbonControl.Size = new System.Drawing.Size(931, 201);
             this.mainRibbonControl.Toolbar.ShowCustomizeItem = false;
             this.mainRibbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -195,7 +224,7 @@
             this.groupControl7.Location = new System.Drawing.Point(12, 224);
             this.groupControl7.Name = "groupControl7";
             this.groupControl7.ShowCaption = false;
-            this.groupControl7.Size = new System.Drawing.Size(774, 363);
+            this.groupControl7.Size = new System.Drawing.Size(907, 363);
             this.groupControl7.TabIndex = 6;
             this.groupControl7.Text = "groupControl7";
             // 
@@ -208,7 +237,7 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rpsBtnOpenFolder});
-            this.gridControl.Size = new System.Drawing.Size(770, 359);
+            this.gridControl.Size = new System.Drawing.Size(903, 359);
             this.gridControl.TabIndex = 25;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -235,11 +264,47 @@
             this.colAddress,
             this.colDescription,
             this.colBeginning_Balance,
-            this.gridColumn1,
-            this.gridColumn2,
+            this.colDisplayBalance,
+            this.colBalanceStatus,
             this.colOrders,
             this.colReceipts});
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
+            gridFormatRule1.Column = this.colBalanceStatus;
+            gridFormatRule1.Enabled = false;
+            gridFormatRule1.Name = "BalanceStatusNegative";
+            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Red;
+            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Value1 = "بدهکار";
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            gridFormatRule2.Column = this.colBalanceStatus;
+            gridFormatRule2.Enabled = false;
+            gridFormatRule2.Name = "BalanceStatusPositive";
+            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue2.Value1 = "بستانکار";
+            gridFormatRule2.Rule = formatConditionRuleValue2;
+            gridFormatRule3.Column = this.colBeginning_Balance;
+            gridFormatRule3.Enabled = false;
+            gridFormatRule3.Name = "Beginning_BalanceNegative";
+            formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.Red;
+            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Greater;
+            formatConditionRuleValue3.Value1 = "0";
+            gridFormatRule3.Rule = formatConditionRuleValue3;
+            gridFormatRule4.Column = this.colBeginning_Balance;
+            gridFormatRule4.Enabled = false;
+            gridFormatRule4.Name = "Beginning_BalancePositive";
+            formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
+            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Less;
+            formatConditionRuleValue4.Value1 = 0D;
+            gridFormatRule4.Rule = formatConditionRuleValue4;
+            this.gridView.FormatRules.Add(gridFormatRule1);
+            this.gridView.FormatRules.Add(gridFormatRule2);
+            this.gridView.FormatRules.Add(gridFormatRule3);
+            this.gridView.FormatRules.Add(gridFormatRule4);
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
@@ -247,8 +312,11 @@
             this.gridView.OptionsFind.AlwaysVisible = true;
             this.gridView.OptionsFind.FindDelay = 500;
             this.gridView.OptionsFind.FindNullPrompt = "برای جستجو در فاکتورها، کلمه مورد نظر را وارد کنید...";
+            this.gridView.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.RowHeight = 30;
+            this.gridView.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gridView_CustomDrawCell);
+            this.gridView.CustomColumnDisplayText += new DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventHandler(this.gridView_CustomColumnDisplayText);
             // 
             // colId
             // 
@@ -257,6 +325,7 @@
             // 
             // colMhkCustomerId
             // 
+            this.colMhkCustomerId.Caption = "کد محک";
             this.colMhkCustomerId.FieldName = "MhkCustomerId";
             this.colMhkCustomerId.Name = "colMhkCustomerId";
             this.colMhkCustomerId.Visible = true;
@@ -269,8 +338,17 @@
             this.colCustomerName.Visible = true;
             this.colCustomerName.VisibleIndex = 1;
             // 
+            // colHint
+            // 
+            this.colHint.FieldName = "Hint";
+            this.colHint.Name = "colHint";
+            this.colHint.Visible = true;
+            this.colHint.VisibleIndex = 2;
+            // 
             // colPhone
             // 
+            this.colPhone.AppearanceCell.Options.UseTextOptions = true;
+            this.colPhone.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.colPhone.FieldName = "Phone";
             this.colPhone.Name = "colPhone";
             this.colPhone.Visible = true;
@@ -290,12 +368,17 @@
             this.colDescription.Visible = true;
             this.colDescription.VisibleIndex = 5;
             // 
-            // colBeginning_Balance
+            // colDisplayBalance
             // 
-            this.colBeginning_Balance.FieldName = "Beginning_Balance";
-            this.colBeginning_Balance.Name = "colBeginning_Balance";
-            this.colBeginning_Balance.Visible = true;
-            this.colBeginning_Balance.VisibleIndex = 6;
+            this.colDisplayBalance.AppearanceCell.Options.UseTextOptions = true;
+            this.colDisplayBalance.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colDisplayBalance.Caption = "مانده حساب";
+            this.colDisplayBalance.DisplayFormat.FormatString = "n0";
+            this.colDisplayBalance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colDisplayBalance.FieldName = "DisplayBalance";
+            this.colDisplayBalance.Name = "colDisplayBalance";
+            this.colDisplayBalance.Visible = true;
+            this.colDisplayBalance.VisibleIndex = 7;
             // 
             // colOrders
             // 
@@ -307,26 +390,12 @@
             this.colReceipts.FieldName = "Receipts";
             this.colReceipts.Name = "colReceipts";
             // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "مانده حساب";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 7;
-            // 
-            // gridColumn2
-            // 
-            this.gridColumn2.Caption = "ماهیت فعلی";
-            this.gridColumn2.Name = "gridColumn2";
-            this.gridColumn2.Visible = true;
-            this.gridColumn2.VisibleIndex = 8;
-            // 
             // rpsBtnOpenFolder
             // 
             this.rpsBtnOpenFolder.AutoHeight = false;
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions1.Image")));
             this.rpsBtnOpenFolder.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rpsBtnOpenFolder.Name = "rpsBtnOpenFolder";
             this.rpsBtnOpenFolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -361,19 +430,12 @@
             this.label7.TabIndex = 24;
             this.label7.Text = "مجموع قیمت خدمات :";
             // 
-            // colHint
-            // 
-            this.colHint.FieldName = "Hint";
-            this.colHint.Name = "colHint";
-            this.colHint.Visible = true;
-            this.colHint.VisibleIndex = 2;
-            // 
             // FrmCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ClientSize = new System.Drawing.Size(798, 599);
+            this.ClientSize = new System.Drawing.Size(931, 599);
             this.Controls.Add(this.groupControl7);
             this.Controls.Add(this.mainRibbonControl);
             this.IconOptions.ShowIcon = false;
@@ -381,6 +443,7 @@
             this.Ribbon = this.mainRibbonControl;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmCustomers_FormClosing);
             this.Load += new System.EventHandler(this.FrmCustomerEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
@@ -418,8 +481,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colBeginning_Balance;
         private DevExpress.XtraGrid.Columns.GridColumn colOrders;
         private DevExpress.XtraGrid.Columns.GridColumn colReceipts;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn colDisplayBalance;
+        private DevExpress.XtraGrid.Columns.GridColumn colBalanceStatus;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit rpsBtnOpenFolder;
         private DevExpress.XtraEditors.ButtonEdit txbSumNetPrice;
         private System.Windows.Forms.Label label7;

@@ -115,8 +115,8 @@ namespace CncApp_Final.Helper
                         {
                             ConditionOperator = (minVal.Equals(0.0)) ? ConditionOperator.GreaterOrEqual : ConditionOperator.Greater,
                             Value1 = minVal,
-                            ErrorText = $"مقدار {displayName} نمی‌تواند منفی باشد.",
-                            ErrorType = ErrorType.Warning
+                            ErrorText = $"مقدار {displayName} باید بزرگتر از 0 باشد.",
+                            ErrorType = ErrorType.Critical
                         };
                         // باید اطمینان حاصل کنیم که قانون قبلی (Required) را بازنویسی نمی‌کنیم، بلکه آن را اضافه می‌کنیم.
                         validationProvider.SetValidationRule(control, nonNegativeRule);
