@@ -18,6 +18,7 @@ using DevExpress.XtraGrid.Views.Grid;
 using static DevExpress.Utils.Diagnostics.GUIResources;
 using System.Data.Entity;
 using CncApp_Final.Frm;
+using CncApp_Final.Helper;
 
 //using Holoo1Space.Frm.Host;
 
@@ -25,7 +26,15 @@ namespace CncApp_Final
 {
     public partial class MainForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-
+        //private async bool WarmupHeavyForm()
+        //{
+        //    using (var frm = new FrmSheetFormulaEditor("[طول]",""))
+        //    {
+        //        frm.Show();
+        //        frm.Hide();
+        //        return true;// یا frm.Visible = false;
+        //    }
+        //}
 
         public MainForm()
         {
@@ -41,7 +50,7 @@ namespace CncApp_Final
             ordersBindingSource.DataSource = dbContext.Orders.Local.ToBindingList();
             bsiRecordsCount.Caption = "RECORDS : " + dbContext.Orders.Local.Count;
 
-
+            
 
 
         }
@@ -50,6 +59,12 @@ namespace CncApp_Final
         private void XfrmVCF_Load(object sender, EventArgs e)
         {
             RefreshVCFX();
+        }
+
+        private async void MainForm_Shown(object sender, EventArgs e)
+        {
+            //await Task.Yield(); // اجازه بده UI نفس بکشه 😮‍💨
+            //await WarmupHeavyForm();
         }
 
         private void RefreshVCFX()
@@ -147,7 +162,7 @@ namespace CncApp_Final
 
         private void bbiPrintSelected_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //ReportHelper.PrintCurrent((int)gridView.GetFocusedRowCellValue(colVCF_Id));
+            ReportHelper.PrintCurrent((int)gridView.GetFocusedRowCellValue(colId));
         }
 
         private void bbiPrintAll_ItemClick(object sender, ItemClickEventArgs e)
@@ -200,7 +215,7 @@ namespace CncApp_Final
 
         private void bbiCustomers_ItemClick(object sender, ItemClickEventArgs e)
         {
-            FrmCustomers frmCustomers = new FrmCustomers();
+            FrmCustomerList frmCustomers = new FrmCustomerList();
             frmCustomers.ShowDialog();
         }
 
@@ -218,7 +233,7 @@ namespace CncApp_Final
 
         private void bbiwareHouse_ItemClick(object sender, ItemClickEventArgs e)
         {
-            FrmWareHouse frmWareHouse = new FrmWareHouse();
+            FrmWareHouseList frmWareHouse = new FrmWareHouseList();
             frmWareHouse.ShowDialog();
         }
 
@@ -227,5 +242,7 @@ namespace CncApp_Final
             TempFrm.tmpEditForm frmCustomerEdit = new TempFrm.tmpEditForm();
             frmCustomerEdit.ShowDialog();
         }
+
+        
     }
 }

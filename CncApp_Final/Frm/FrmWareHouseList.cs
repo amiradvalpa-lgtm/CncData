@@ -16,18 +16,20 @@ using CncApp_Final.Helper;
 
 namespace CncApp_Final.Frm
 {
-    public partial class FrmWareHouse : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class FrmWareHouseList : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private int focusedRowHandel;
         private int topRowIndex;
 
-        public FrmWareHouse()
+        public FrmWareHouseList()
         {
             InitializeComponent();
 
             CncApp_Final.Data.AppDbContext dbContext = new CncApp_Final.Data.AppDbContext();
             dbContext.Warehouses.Load();
             warehousesBindingSource.DataSource = dbContext.Warehouses.Local.ToBindingList();
+            
+            bsiRecordsCount.Caption = "RECORDS : " + dbContext.Warehouses.Local.Count;
 
             InitFormExtraConfig();
         }
@@ -38,9 +40,12 @@ namespace CncApp_Final.Frm
             ControlExraInit.InitGridView(gridView, "لیست انبار");
         }
 
-        private void FrmWareHouse_Load(object sender, EventArgs e)
+        private void FrmWareHouseList_Load(object sender, EventArgs e)
         {
-
+            //GridLayoutHelper.LoadLayout(
+            //                            gridView,
+            //                            1,
+            //                            this.Name);
         }
 
 
@@ -121,7 +126,7 @@ namespace CncApp_Final.Frm
 
         private void bbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            ReLoadList();
         }
 
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)

@@ -118,6 +118,23 @@ namespace CncApp_Final.Entities
         // ────────────────────────────────────────────────────────────────────────────
 
 
-        //[Required(AllowEmptyStrings = false)]
+        [NotMapped]
+        [DisplayName("کامل جدید"),
+            Required(ErrorMessage = "وارد کردن {0} الزامی است."), Display(Order = 5),
+            DisplayFormat(DataFormatString = "n0", ApplyFormatInEditMode = true),
+            Range(1, 999999999)]
+        [Description("SheetBasePrice * 1.25")]
+        public double NewSheetPrice1
+        {
+            get => Sheet?.SheetPrice ?? 0;
+            set
+            {
+                if (Sheet != null)
+                    Sheet.SheetPrice = value;
+            }
+        }
+
+
+        
     }
 }

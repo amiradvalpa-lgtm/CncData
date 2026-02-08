@@ -1,4 +1,4 @@
-﻿namespace CncApp_Final.Frm
+﻿namespace CncApp_Final.Frms
 {
     partial class FrmCustomerEdit
     {
@@ -57,7 +57,7 @@
             this.txbDescription = new DevExpress.XtraEditors.TextEdit();
             this.txbAddress = new DevExpress.XtraEditors.TextEdit();
             this.txbPhone = new DevExpress.XtraEditors.TextEdit();
-            this.txbHint = new DevExpress.XtraEditors.TextEdit();
+            this.textEdit1 = new DevExpress.XtraEditors.TextEdit();
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbCustomerName.Properties)).BeginInit();
@@ -71,7 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbAddress.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPhone.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbHint.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,7 +111,6 @@
             this.bbiSave.Id = 2;
             this.bbiSave.ImageOptions.ImageUri.Uri = "Save";
             this.bbiSave.Name = "bbiSave";
-            this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSave_ItemClick);
             // 
             // bbiSaveAndClose
             // 
@@ -119,7 +118,6 @@
             this.bbiSaveAndClose.Id = 3;
             this.bbiSaveAndClose.ImageOptions.ImageUri.Uri = "SaveAndClose";
             this.bbiSaveAndClose.Name = "bbiSaveAndClose";
-            this.bbiSaveAndClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveAndClose_ItemClick);
             // 
             // bbiSaveAndNew
             // 
@@ -127,16 +125,13 @@
             this.bbiSaveAndNew.Id = 4;
             this.bbiSaveAndNew.ImageOptions.ImageUri.Uri = "SaveAndNew";
             this.bbiSaveAndNew.Name = "bbiSaveAndNew";
-            this.bbiSaveAndNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveAndNew_ItemClick);
             // 
             // bbiReset
             // 
             this.bbiReset.Caption = "Reset Changes";
-            this.bbiReset.Enabled = false;
             this.bbiReset.Id = 5;
             this.bbiReset.ImageOptions.ImageUri.Uri = "Reset";
             this.bbiReset.Name = "bbiReset";
-            this.bbiReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReset_ItemClick);
             // 
             // bbiDelete
             // 
@@ -144,7 +139,6 @@
             this.bbiDelete.Id = 6;
             this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
             this.bbiDelete.Name = "bbiDelete";
-            this.bbiDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDelete_ItemClick);
             // 
             // bbiClose
             // 
@@ -152,7 +146,6 @@
             this.bbiClose.Id = 7;
             this.bbiClose.ImageOptions.ImageUri.Uri = "Close";
             this.bbiClose.Name = "bbiClose";
-            this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClose_ItemClick);
             // 
             // mainRibbonPage
             // 
@@ -187,7 +180,7 @@
             this.txbCustomerName.Properties.ValidateOnEnterKey = true;
             this.txbCustomerName.Size = new System.Drawing.Size(166, 36);
             this.txbCustomerName.TabIndex = 0;
-            this.txbCustomerName.EditValueChanged += new System.EventHandler(this.txbCustomerName_EditValueChanged);
+            this.txbCustomerName.EditValueChanged += new System.EventHandler(this.txb_must_Trim_EditValueChanged);
             // 
             // customerBindingSource
             // 
@@ -212,7 +205,7 @@
             this.groupControl1.Controls.Add(this.txbDescription);
             this.groupControl1.Controls.Add(this.txbAddress);
             this.groupControl1.Controls.Add(this.txbPhone);
-            this.groupControl1.Controls.Add(this.txbHint);
+            this.groupControl1.Controls.Add(this.textEdit1);
             this.groupControl1.Controls.Add(this.txbCustomerName);
             this.groupControl1.Location = new System.Drawing.Point(12, 220);
             this.groupControl1.Name = "groupControl1";
@@ -361,7 +354,7 @@
             this.txbAddress.Properties.Appearance.Options.UseFont = true;
             this.txbAddress.Size = new System.Drawing.Size(324, 36);
             this.txbAddress.TabIndex = 3;
-            this.txbAddress.EditValueChanged += new System.EventHandler(this.txbAddress_EditValueChanged);
+            this.txbAddress.EditValueChanged += new System.EventHandler(this.txb_must_Trim_EditValueChanged);
             // 
             // txbPhone
             // 
@@ -381,18 +374,18 @@
             this.txbPhone.Size = new System.Drawing.Size(324, 36);
             this.txbPhone.TabIndex = 2;
             // 
-            // txbHint
+            // textEdit1
             // 
-            this.txbHint.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "Hint", true));
-            this.txbHint.EnterMoveNextControl = true;
-            this.txbHint.Location = new System.Drawing.Point(19, 46);
-            this.txbHint.Name = "txbHint";
-            this.txbHint.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbHint.Properties.Appearance.Options.UseFont = true;
-            this.txbHint.Properties.ValidateOnEnterKey = true;
-            this.txbHint.Size = new System.Drawing.Size(113, 36);
-            this.txbHint.TabIndex = 1;
-            this.txbHint.EditValueChanged += new System.EventHandler(this.txbCustomerName_EditValueChanged);
+            this.textEdit1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "Hint", true));
+            this.textEdit1.EnterMoveNextControl = true;
+            this.textEdit1.Location = new System.Drawing.Point(19, 46);
+            this.textEdit1.Name = "textEdit1";
+            this.textEdit1.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.textEdit1.Properties.Appearance.Options.UseFont = true;
+            this.textEdit1.Properties.ValidateOnEnterKey = true;
+            this.textEdit1.Size = new System.Drawing.Size(113, 36);
+            this.textEdit1.TabIndex = 1;
+            this.textEdit1.EditValueChanged += new System.EventHandler(this.txb_must_Trim_EditValueChanged);
             // 
             // dxValidationProvider1
             // 
@@ -414,7 +407,6 @@
             this.Ribbon = this.mainRibbonControl;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.FrmCustomerEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbCustomerName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
@@ -428,11 +420,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbDescription.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbAddress.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPhone.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbHint.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void BbiDelete_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
 
         #endregion
@@ -464,6 +461,6 @@
         private System.Windows.Forms.BindingSource customerBindingSource;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
         private DevExpress.XtraEditors.LabelControl labelControl8;
-        private DevExpress.XtraEditors.TextEdit txbHint;
+        private DevExpress.XtraEditors.TextEdit textEdit1;
     }
 }

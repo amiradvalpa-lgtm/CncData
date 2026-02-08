@@ -71,7 +71,6 @@
             this.txbPiceArea = new DevExpress.XtraEditors.ButtonEdit();
             this.label11 = new System.Windows.Forms.Label();
             this.txbSheetCount = new DevExpress.XtraEditors.ButtonEdit();
-            this.orderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label5 = new System.Windows.Forms.Label();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.groupControl8 = new DevExpress.XtraEditors.GroupControl();
@@ -98,14 +97,15 @@
             this.label14 = new System.Windows.Forms.Label();
             this.groupControl3 = new DevExpress.XtraEditors.GroupControl();
             this.btnOpenFile = new DevExpress.XtraEditors.ButtonEdit();
+            this.label26 = new System.Windows.Forms.Label();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.groupControl6 = new DevExpress.XtraEditors.GroupControl();
             this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.btnRecalculate = new DevExpress.XtraEditors.SimpleButton();
             this.xtraOpenFileDialog1 = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
+            this.orderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.sheetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label26 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.lkpMaterial.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lkpThickness.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgpSheetType.Properties)).BeginInit();
@@ -129,7 +129,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetBasePrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPiceArea.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetCount.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).BeginInit();
@@ -152,6 +151,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl6)).BeginInit();
             this.groupControl6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -704,10 +704,6 @@
             this.txbSheetCount.TabIndex = 0;
             this.txbSheetCount.TabStop = false;
             // 
-            // orderDetailBindingSource
-            // 
-            this.orderDetailBindingSource.DataSource = typeof(CncApp_Final.Entities.OrderDetails);
-            // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1097,6 +1093,18 @@
             this.btnOpenFile.EditValueChanged += new System.EventHandler(this.btnOpenFile_EditValueChanged);
             this.btnOpenFile.Click += new System.EventHandler(this.btnOpenFile_Click);
             // 
+            // label26
+            // 
+            this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label26.Location = new System.Drawing.Point(382, 46);
+            this.label26.Name = "label26";
+            this.label26.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label26.Size = new System.Drawing.Size(62, 13);
+            this.label26.TabIndex = 5;
+            this.label26.Text = "انتخاب فایل:";
+            // 
             // groupControl6
             // 
             this.groupControl6.Controls.Add(this.txbCncCost);
@@ -1133,21 +1141,13 @@
             // 
             this.dxValidationProvider1.ValidationMode = DevExpress.XtraEditors.DXErrorProvider.ValidationMode.Auto;
             // 
+            // orderDetailBindingSource
+            // 
+            this.orderDetailBindingSource.DataSource = typeof(CncApp_Final.Entities.OrderDetails);
+            // 
             // sheetsBindingSource
             // 
             this.sheetsBindingSource.DataSource = typeof(CncApp_Final.Entities.Sheet);
-            // 
-            // label26
-            // 
-            this.label26.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label26.Location = new System.Drawing.Point(382, 46);
-            this.label26.Name = "label26";
-            this.label26.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label26.Size = new System.Drawing.Size(62, 13);
-            this.label26.TabIndex = 5;
-            this.label26.Text = "انتخاب فایل:";
             // 
             // FrmOrderDetails
             // 
@@ -1196,7 +1196,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetBasePrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbPiceArea.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txbSheetCount.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.groupControl8)).EndInit();
@@ -1223,6 +1222,7 @@
             this.groupControl6.ResumeLayout(false);
             this.groupControl6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).EndInit();
             this.ResumeLayout(false);
 

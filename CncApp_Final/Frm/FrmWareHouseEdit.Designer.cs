@@ -51,23 +51,18 @@
             this.PreSheetPriceTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.NewPicesPriceTextEdit = new DevExpress.XtraEditors.TextEdit();
             this.PrePicesPriceTextEdit = new DevExpress.XtraEditors.TextEdit();
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.grpSheetPrice = new DevExpress.XtraEditors.GroupControl();
+            this.ckbUpdateSheetPrice = new DevExpress.XtraEditors.CheckEdit();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.groupControl5 = new DevExpress.XtraEditors.GroupControl();
-            this.lkpThickness = new DevExpress.XtraEditors.LookUpEdit();
-            this.label15 = new System.Windows.Forms.Label();
-            this.lkpMaterial = new DevExpress.XtraEditors.LookUpEdit();
-            this.lkpSheetId = new DevExpress.XtraEditors.LookUpEdit();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnCalcPrices = new DevExpress.XtraEditors.SimpleButton();
             this.txbOrderDate = new CncApp_Final.Helper.PersianDateTextEdit();
             this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.sheetSelector1 = new CncApp_Final.UserControl.SheetSelector();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).BeginInit();
@@ -77,13 +72,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.PreSheetPriceTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NewPicesPriceTextEdit.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrePicesPriceTextEdit.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
-            this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).BeginInit();
-            this.groupControl5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpThickness.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpMaterial.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpSheetId.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpSheetPrice)).BeginInit();
+            this.grpSheetPrice.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckbUpdateSheetPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
@@ -96,8 +87,8 @@
             this.btnCopyPrice.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
             this.btnCopyPrice.Location = new System.Drawing.Point(121, 42);
             this.btnCopyPrice.Name = "btnCopyPrice";
-            this.btnCopyPrice.Size = new System.Drawing.Size(36, 80);
-            this.btnCopyPrice.TabIndex = 13;
+            this.btnCopyPrice.Size = new System.Drawing.Size(28, 80);
+            this.btnCopyPrice.TabIndex = 3;
             this.btnCopyPrice.Text = "کپی";
             this.btnCopyPrice.Click += new System.EventHandler(this.btnCopyPrice_Click);
             // 
@@ -257,7 +248,6 @@
             // 
             // NewSheetPriceTextEdit
             // 
-            this.NewSheetPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "NewSheetPrice", true));
             this.NewSheetPriceTextEdit.EnterMoveNextControl = true;
             this.NewSheetPriceTextEdit.Location = new System.Drawing.Point(221, 42);
             this.NewSheetPriceTextEdit.MenuManager = this.mainRibbonControl;
@@ -273,11 +263,10 @@
             this.NewSheetPriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
             this.NewSheetPriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
             this.NewSheetPriceTextEdit.Size = new System.Drawing.Size(99, 36);
-            this.NewSheetPriceTextEdit.TabIndex = 0;
+            this.NewSheetPriceTextEdit.TabIndex = 1;
             // 
             // PreSheetPriceTextEdit
             // 
-            this.PreSheetPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "PreSheetPrice", true));
             this.PreSheetPriceTextEdit.Location = new System.Drawing.Point(16, 42);
             this.PreSheetPriceTextEdit.MenuManager = this.mainRibbonControl;
             this.PreSheetPriceTextEdit.Name = "PreSheetPriceTextEdit";
@@ -299,7 +288,6 @@
             // 
             // NewPicesPriceTextEdit
             // 
-            this.NewPicesPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "NewPicesPrice", true));
             this.NewPicesPriceTextEdit.EnterMoveNextControl = true;
             this.NewPicesPriceTextEdit.Location = new System.Drawing.Point(221, 86);
             this.NewPicesPriceTextEdit.MenuManager = this.mainRibbonControl;
@@ -315,11 +303,10 @@
             this.NewPicesPriceTextEdit.Properties.MaskSettings.Set("mask", "n0");
             this.NewPicesPriceTextEdit.Properties.UseMaskAsDisplayFormat = true;
             this.NewPicesPriceTextEdit.Size = new System.Drawing.Size(99, 36);
-            this.NewPicesPriceTextEdit.TabIndex = 1;
+            this.NewPicesPriceTextEdit.TabIndex = 2;
             // 
             // PrePicesPriceTextEdit
             // 
-            this.PrePicesPriceTextEdit.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "PrePicesPrice", true));
             this.PrePicesPriceTextEdit.Location = new System.Drawing.Point(16, 86);
             this.PrePicesPriceTextEdit.MenuManager = this.mainRibbonControl;
             this.PrePicesPriceTextEdit.Name = "PrePicesPriceTextEdit";
@@ -339,30 +326,32 @@
             this.PrePicesPriceTextEdit.TabIndex = 11;
             this.PrePicesPriceTextEdit.TabStop = false;
             // 
-            // groupControl1
+            // grpSheetPrice
             // 
-            this.groupControl1.Controls.Add(this.simpleButton1);
-            this.groupControl1.Controls.Add(this.PreSheetPriceTextEdit);
-            this.groupControl1.Controls.Add(this.PrePicesPriceTextEdit);
-            this.groupControl1.Controls.Add(this.label7);
-            this.groupControl1.Controls.Add(this.label6);
-            this.groupControl1.Controls.Add(this.NewPicesPriceTextEdit);
-            this.groupControl1.Controls.Add(this.NewSheetPriceTextEdit);
-            this.groupControl1.Controls.Add(this.btnCopyPrice);
-            this.groupControl1.Location = new System.Drawing.Point(15, 495);
-            this.groupControl1.Name = "groupControl1";
-            this.groupControl1.Size = new System.Drawing.Size(361, 132);
-            this.groupControl1.TabIndex = 2;
-            this.groupControl1.Text = "محاسبات (قیمت فروش ورق) براساس (قیمت خرید)";
+            this.grpSheetPrice.Controls.Add(this.PreSheetPriceTextEdit);
+            this.grpSheetPrice.Controls.Add(this.PrePicesPriceTextEdit);
+            this.grpSheetPrice.Controls.Add(this.label7);
+            this.grpSheetPrice.Controls.Add(this.label6);
+            this.grpSheetPrice.Controls.Add(this.NewPicesPriceTextEdit);
+            this.grpSheetPrice.Controls.Add(this.NewSheetPriceTextEdit);
+            this.grpSheetPrice.Controls.Add(this.btnCalcPrices);
+            this.grpSheetPrice.Controls.Add(this.btnCopyPrice);
+            this.grpSheetPrice.Location = new System.Drawing.Point(15, 495);
+            this.grpSheetPrice.Name = "grpSheetPrice";
+            this.grpSheetPrice.Size = new System.Drawing.Size(361, 132);
+            this.grpSheetPrice.TabIndex = 3;
+            this.grpSheetPrice.Text = "ا    محاسبات (قیمت فروش ورق) براساس (قیمت خرید) برای ورق انتخابی";
             // 
-            // simpleButton1
+            // ckbUpdateSheetPrice
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(171, 77);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
-            this.simpleButton1.TabIndex = 18;
-            this.simpleButton1.Text = "simpleButton1";
-            this.simpleButton1.Click += new System.EventHandler(this.btnEditPiecePrice_Click);
+            this.ckbUpdateSheetPrice.EditValue = true;
+            this.ckbUpdateSheetPrice.Location = new System.Drawing.Point(352, 499);
+            this.ckbUpdateSheetPrice.MenuManager = this.mainRibbonControl;
+            this.ckbUpdateSheetPrice.Name = "ckbUpdateSheetPrice";
+            this.ckbUpdateSheetPrice.Properties.Caption = "";
+            this.ckbUpdateSheetPrice.Size = new System.Drawing.Size(22, 22);
+            this.ckbUpdateSheetPrice.TabIndex = 2;
+            this.ckbUpdateSheetPrice.CheckedChanged += new System.EventHandler(this.ckbUpdateSheetPrice_CheckedChanged);
             // 
             // label7
             // 
@@ -388,130 +377,19 @@
             this.label6.TabIndex = 17;
             this.label6.Text = "کامل:";
             // 
-            // groupControl5
+            // btnCalcPrices
             // 
-            this.groupControl5.Controls.Add(this.lkpThickness);
-            this.groupControl5.Controls.Add(this.label15);
-            this.groupControl5.Controls.Add(this.lkpMaterial);
-            this.groupControl5.Controls.Add(this.lkpSheetId);
-            this.groupControl5.Controls.Add(this.label2);
-            this.groupControl5.Controls.Add(this.label1);
-            this.groupControl5.Location = new System.Drawing.Point(15, 230);
-            this.groupControl5.Name = "groupControl5";
-            this.groupControl5.ShowCaption = false;
-            this.groupControl5.Size = new System.Drawing.Size(361, 102);
-            this.groupControl5.TabIndex = 0;
-            this.groupControl5.Text = "groupControl4";
-            // 
-            // lkpThickness
-            // 
-            this.lkpThickness.EnterMoveNextControl = true;
-            this.lkpThickness.Location = new System.Drawing.Point(16, 13);
-            this.lkpThickness.Name = "lkpThickness";
-            this.lkpThickness.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.lkpThickness.Properties.Appearance.Options.UseFont = true;
-            this.lkpThickness.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lkpThickness.Properties.AppearanceFocused.Options.UseBackColor = true;
-            this.lkpThickness.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lkpThickness.Properties.DropDownItemHeight = 25;
-            this.lkpThickness.Properties.NullText = "  ؟";
-            this.lkpThickness.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
-            this.lkpThickness.Properties.ShowHeader = false;
-            this.lkpThickness.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lkpThickness.Size = new System.Drawing.Size(76, 36);
-            this.lkpThickness.TabIndex = 1;
-            // 
-            // label15
-            // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label15.Location = new System.Drawing.Point(285, 69);
-            this.label15.Name = "label15";
-            this.label15.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label15.Size = new System.Drawing.Size(55, 13);
-            this.label15.TabIndex = 17;
-            this.label15.Text = "سایز ورق:";
-            // 
-            // lkpMaterial
-            // 
-            this.lkpMaterial.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lkpMaterial.EnterMoveNextControl = true;
-            this.lkpMaterial.Location = new System.Drawing.Point(171, 13);
-            this.lkpMaterial.Name = "lkpMaterial";
-            this.lkpMaterial.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.lkpMaterial.Properties.Appearance.Options.UseFont = true;
-            this.lkpMaterial.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lkpMaterial.Properties.AppearanceFocused.Options.UseBackColor = true;
-            this.lkpMaterial.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            this.lkpMaterial.Properties.BestFitRowCount = 5;
-            this.lkpMaterial.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lkpMaterial.Properties.DropDownItemHeight = 25;
-            this.lkpMaterial.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
-            this.lkpMaterial.Properties.PopupWidth = 60;
-            this.lkpMaterial.Properties.ShowHeader = false;
-            this.lkpMaterial.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lkpMaterial.Size = new System.Drawing.Size(107, 36);
-            this.lkpMaterial.TabIndex = 0;
-            // 
-            // lkpSheetId
-            // 
-            this.lkpSheetId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lkpSheetId.EnterMoveNextControl = true;
-            this.lkpSheetId.Location = new System.Drawing.Point(16, 55);
-            this.lkpSheetId.Name = "lkpSheetId";
-            this.lkpSheetId.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.lkpSheetId.Properties.Appearance.Options.UseFont = true;
-            this.lkpSheetId.Properties.AppearanceFocused.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lkpSheetId.Properties.AppearanceFocused.Options.UseBackColor = true;
-            this.lkpSheetId.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
-            this.lkpSheetId.Properties.BestFitRowCount = 5;
-            this.lkpSheetId.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lkpSheetId.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Id", "شناسه ورق", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("DisplayText", "DisplayText"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Width", "عرض", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Length", "طول", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SheetPrice", "قیمت کامل", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("PicesPrice", "قیمت تکه", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CNCPrice", "قیمت خدمات CNC", 5, DevExpress.Utils.FormatType.Numeric, "", false, DevExpress.Utils.HorzAlignment.Far, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SheetSize", "سایز ورق", 5, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
-            this.lkpSheetId.Properties.DropDownItemHeight = 25;
-            this.lkpSheetId.Properties.NullText = "  ؟";
-            this.lkpSheetId.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
-            this.lkpSheetId.Properties.PopupWidth = 60;
-            this.lkpSheetId.Properties.ShowHeader = false;
-            this.lkpSheetId.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.lkpSheetId.Size = new System.Drawing.Size(263, 36);
-            this.lkpSheetId.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(98, 24);
-            this.label2.Name = "label2";
-            this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label2.Size = new System.Drawing.Size(68, 13);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "ضخامت ورق:";
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label1.Location = new System.Drawing.Point(285, 24);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(58, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "جنس ورق:";
+            this.btnCalcPrices.Appearance.Options.UseTextOptions = true;
+            this.btnCalcPrices.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.btnCalcPrices.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnCalcPrices.ImageOptions.Image")));
+            this.btnCalcPrices.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnCalcPrices.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.TopCenter;
+            this.btnCalcPrices.Location = new System.Drawing.Point(168, 42);
+            this.btnCalcPrices.Name = "btnCalcPrices";
+            this.btnCalcPrices.Size = new System.Drawing.Size(47, 80);
+            this.btnCalcPrices.TabIndex = 3;
+            this.btnCalcPrices.Text = "محاسبه قیمت";
+            this.btnCalcPrices.Click += new System.EventHandler(this.btnCalcPrices_Click);
             // 
             // txbOrderDate
             // 
@@ -581,18 +459,29 @@
             this.groupControl2.TabIndex = 1;
             this.groupControl2.Text = "groupControl2";
             // 
+            // sheetSelector1
+            // 
+            this.sheetSelector1.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.warehousesBindingSource, "SheetId", true));
+            this.sheetSelector1.Location = new System.Drawing.Point(15, 235);
+            this.sheetSelector1.Name = "sheetSelector1";
+            this.sheetSelector1.Size = new System.Drawing.Size(361, 102);
+            this.sheetSelector1.TabIndex = 0;
+            // 
             // FrmWareHouseEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.ClientSize = new System.Drawing.Size(396, 632);
+            this.Controls.Add(this.ckbUpdateSheetPrice);
+            this.Controls.Add(this.sheetSelector1);
             this.Controls.Add(this.groupControl2);
-            this.Controls.Add(this.groupControl5);
-            this.Controls.Add(this.groupControl1);
+            this.Controls.Add(this.grpSheetPrice);
             this.Controls.Add(this.mainRibbonControl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.IconOptions.ShowIcon = false;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmWareHouseEdit";
             this.Ribbon = this.mainRibbonControl;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -608,15 +497,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.PreSheetPriceTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NewPicesPriceTextEdit.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PrePicesPriceTextEdit.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
-            this.groupControl1.ResumeLayout(false);
-            this.groupControl1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.groupControl5)).EndInit();
-            this.groupControl5.ResumeLayout(false);
-            this.groupControl5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpThickness.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpMaterial.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lkpSheetId.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grpSheetPrice)).EndInit();
+            this.grpSheetPrice.ResumeLayout(false);
+            this.grpSheetPrice.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckbUpdateSheetPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
@@ -645,14 +529,7 @@
         private DevExpress.XtraEditors.TextEdit NewPicesPriceTextEdit;
         private DevExpress.XtraEditors.TextEdit PrePicesPriceTextEdit;
         private DevExpress.XtraEditors.SimpleButton btnCopyPrice;
-        private DevExpress.XtraEditors.GroupControl groupControl1;
-        private DevExpress.XtraEditors.GroupControl groupControl5;
-        private DevExpress.XtraEditors.LookUpEdit lkpThickness;
-        private DevExpress.XtraEditors.LookUpEdit lkpMaterial;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label15;
-        private DevExpress.XtraEditors.LookUpEdit lkpSheetId;
+        private DevExpress.XtraEditors.GroupControl grpSheetPrice;
         private Helper.PersianDateTextEdit txbOrderDate;
         private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
         private System.Windows.Forms.Label label3;
@@ -664,6 +541,8 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem bbiFormula;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private UserControl.SheetSelector sheetSelector1;
+        private DevExpress.XtraEditors.SimpleButton btnCalcPrices;
+        private DevExpress.XtraEditors.CheckEdit ckbUpdateSheetPrice;
     }
 }

@@ -29,213 +29,78 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, null, true, true, true);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSheetFormulaEditor));
             this.unboundExpressionPanel1 = new Standalone_ExpressionEditor.UnboundExpressionPanel();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.sheetsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.gridControl = new DevExpress.XtraGrid.GridControl();
+            this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMaterial = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colThickness = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colWidth = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colLength = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSheetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colThickness_mm = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSheetSize = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLastBuyPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colSheetPriceFormula = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPicesPrice = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSheetPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colPicesPriceFormula = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colPicesPrice = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCNCPriceByMeter = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCNCPriceBySheet = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCNCPriceByPice = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.defaultLookAndFeel1 = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
-            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
-            this.vGridControl1 = new DevExpress.XtraVerticalGrid.VGridControl();
-            this.rowId = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowMaterial = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowThickness = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowWidth = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowLength = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowSheetPrice = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowSheetPriceFormula = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowPicesPrice = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowPicesPriceFormula = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowCNCPriceByMeter = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowCNCPriceBySheet = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowCNCPriceByPice = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowDescription = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowOrderDetails = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowWarehouses = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowSheetName = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowThickness_mm = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.rowSheetSize = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
-            this.row = new DevExpress.XtraVerticalGrid.Rows.EditorRow();
+            this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colOrderDetails = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWarehouses = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colSheetName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colThickness = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLength = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colWidth = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTempExpression = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
+            this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.splitterItem1 = new DevExpress.XtraLayout.SplitterItem();
             ((System.ComponentModel.ISupportInitialize)(this.unboundExpressionPanel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
+            this.groupControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
+            this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).BeginInit();
             this.SuspendLayout();
+            // 
+            // splashScreenManager1
+            // 
+            splashScreenManager1.ClosingDelay = 500;
             // 
             // unboundExpressionPanel1
             // 
             this.unboundExpressionPanel1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.unboundExpressionPanel1.Location = new System.Drawing.Point(5, 5);
+            this.unboundExpressionPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.unboundExpressionPanel1.ExpressionText = null;
+            this.unboundExpressionPanel1.Location = new System.Drawing.Point(2, 23);
             this.unboundExpressionPanel1.Name = "unboundExpressionPanel1";
-            this.unboundExpressionPanel1.Size = new System.Drawing.Size(569, 426);
+            this.unboundExpressionPanel1.Size = new System.Drawing.Size(572, 447);
             this.unboundExpressionPanel1.TabIndex = 1;
+            this.unboundExpressionPanel1.ExpressionChanged += new Standalone_ExpressionEditor.ExpressionChangedHandler(this.unboundExpressionPanel1_ExpressionChanged);
+            this.unboundExpressionPanel1.VisibleChanged += new System.EventHandler(this.unboundExpressionPanel1_VisibleChanged);
             this.unboundExpressionPanel1.Resize += new System.EventHandler(this.unboundExpressionPanel1_Resize);
-            // 
-            // gridControl1
-            // 
-            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.DataSource = this.sheetsBindingSource;
-            this.gridControl1.Location = new System.Drawing.Point(12, 66);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(393, 335);
-            this.gridControl1.TabIndex = 2;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
             // 
             // sheetsBindingSource
             // 
             this.sheetsBindingSource.DataSource = typeof(CncApp_Final.Entities.Sheet);
-            // 
-            // gridView1
-            // 
-            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colId,
-            this.colMaterial,
-            this.colThickness,
-            this.colWidth,
-            this.colLength,
-            this.colSheetPrice,
-            this.colSheetPriceFormula,
-            this.colPicesPrice,
-            this.colPicesPriceFormula,
-            this.colCNCPriceByMeter,
-            this.colCNCPriceBySheet,
-            this.colCNCPriceByPice,
-            this.gridColumn1});
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
-            this.gridView1.OptionsView.ShowGroupPanel = false;
-            this.gridView1.CustomUnboundColumnData += new DevExpress.XtraGrid.Views.Base.CustomColumnDataEventHandler(this.gridView1_CustomUnboundColumnData);
-            // 
-            // colId
-            // 
-            this.colId.FieldName = "Id";
-            this.colId.Name = "colId";
-            this.colId.OptionsColumn.ShowInExpressionEditor = false;
-            this.colId.ShowUnboundExpressionMenu = true;
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 0;
-            // 
-            // colMaterial
-            // 
-            this.colMaterial.FieldName = "Material";
-            this.colMaterial.Name = "colMaterial";
-            this.colMaterial.Visible = true;
-            this.colMaterial.VisibleIndex = 1;
-            // 
-            // colThickness
-            // 
-            this.colThickness.FieldName = "Thickness";
-            this.colThickness.Name = "colThickness";
-            this.colThickness.Visible = true;
-            this.colThickness.VisibleIndex = 2;
-            // 
-            // colWidth
-            // 
-            this.colWidth.FieldName = "Width";
-            this.colWidth.Name = "colWidth";
-            this.colWidth.Visible = true;
-            this.colWidth.VisibleIndex = 3;
-            // 
-            // colLength
-            // 
-            this.colLength.FieldName = "Length";
-            this.colLength.Name = "colLength";
-            this.colLength.Visible = true;
-            this.colLength.VisibleIndex = 4;
-            // 
-            // colSheetPrice
-            // 
-            this.colSheetPrice.FieldName = "SheetPrice";
-            this.colSheetPrice.Name = "colSheetPrice";
-            this.colSheetPrice.ShowUnboundExpressionMenu = true;
-            this.colSheetPrice.UnboundDataType = typeof(double);
-            this.colSheetPrice.UnboundExpression = "[Length] + 1";
-            this.colSheetPrice.Visible = true;
-            this.colSheetPrice.VisibleIndex = 5;
-            // 
-            // colSheetPriceFormula
-            // 
-            this.colSheetPriceFormula.FieldName = "SheetPriceFormula";
-            this.colSheetPriceFormula.Name = "colSheetPriceFormula";
-            this.colSheetPriceFormula.Visible = true;
-            this.colSheetPriceFormula.VisibleIndex = 6;
-            // 
-            // colPicesPrice
-            // 
-            this.colPicesPrice.FieldName = "PicesPrice";
-            this.colPicesPrice.Name = "colPicesPrice";
-            this.colPicesPrice.Visible = true;
-            this.colPicesPrice.VisibleIndex = 7;
-            // 
-            // colPicesPriceFormula
-            // 
-            this.colPicesPriceFormula.FieldName = "PicesPriceFormula";
-            this.colPicesPriceFormula.Name = "colPicesPriceFormula";
-            this.colPicesPriceFormula.Visible = true;
-            this.colPicesPriceFormula.VisibleIndex = 8;
-            // 
-            // colCNCPriceByMeter
-            // 
-            this.colCNCPriceByMeter.FieldName = "CNCPriceByMeter";
-            this.colCNCPriceByMeter.Name = "colCNCPriceByMeter";
-            this.colCNCPriceByMeter.Visible = true;
-            this.colCNCPriceByMeter.VisibleIndex = 9;
-            // 
-            // colCNCPriceBySheet
-            // 
-            this.colCNCPriceBySheet.FieldName = "CNCPriceBySheet";
-            this.colCNCPriceBySheet.Name = "colCNCPriceBySheet";
-            this.colCNCPriceBySheet.Visible = true;
-            this.colCNCPriceBySheet.VisibleIndex = 10;
-            // 
-            // colCNCPriceByPice
-            // 
-            this.colCNCPriceByPice.FieldName = "CNCPriceByPice";
-            this.colCNCPriceByPice.Name = "colCNCPriceByPice";
-            this.colCNCPriceByPice.Visible = true;
-            this.colCNCPriceByPice.VisibleIndex = 11;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "gridColumn1";
-            this.gridColumn1.FieldName = "gridColumn1";
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.ShowUnboundExpressionMenu = true;
-            this.gridColumn1.UnboundDataType = typeof(double);
-            this.gridColumn1.UnboundExpression = "[Width] + 10";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 12;
-            // 
-            // comboBoxEdit1
-            // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(12, 27);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(393, 28);
-            this.comboBoxEdit1.TabIndex = 3;
-            this.comboBoxEdit1.SelectedIndexChanged += new System.EventHandler(this.comboBoxEdit1_SelectedIndexChanged);
             // 
             // defaultLookAndFeel1
             // 
@@ -243,214 +108,362 @@
             // 
             // groupControl1
             // 
-            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl1.CaptionLocation = DevExpress.Utils.Locations.Top;
+            this.groupControl1.Controls.Add(this.gridControl);
             this.groupControl1.Controls.Add(this.unboundExpressionPanel1);
-            this.groupControl1.Location = new System.Drawing.Point(427, 12);
+            this.groupControl1.GroupStyle = DevExpress.Utils.GroupStyle.Light;
+            this.groupControl1.Location = new System.Drawing.Point(16, 140);
             this.groupControl1.Name = "groupControl1";
-            this.groupControl1.ShowCaption = false;
-            this.groupControl1.Size = new System.Drawing.Size(579, 437);
+            this.groupControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.groupControl1.Size = new System.Drawing.Size(576, 472);
             this.groupControl1.TabIndex = 4;
-            this.groupControl1.Text = "groupControl1";
+            this.groupControl1.Text = "فرمول";
             // 
-            // vGridControl1
+            // gridControl
             // 
-            this.vGridControl1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.vGridControl1.DataSource = this.sheetsBindingSource;
-            this.vGridControl1.LayoutStyle = DevExpress.XtraVerticalGrid.LayoutViewStyle.SingleRecordView;
-            this.vGridControl1.Location = new System.Drawing.Point(411, 34);
-            this.vGridControl1.Name = "vGridControl1";
-            this.vGridControl1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.vGridControl1.Rows.AddRange(new DevExpress.XtraVerticalGrid.Rows.BaseRow[] {
-            this.rowId,
-            this.rowMaterial,
-            this.rowThickness,
-            this.rowWidth,
-            this.rowLength,
-            this.rowSheetPrice,
-            this.rowSheetPriceFormula,
-            this.rowPicesPrice,
-            this.rowPicesPriceFormula,
-            this.rowCNCPriceByMeter,
-            this.rowCNCPriceBySheet,
-            this.rowCNCPriceByPice,
-            this.rowDescription,
-            this.rowOrderDetails,
-            this.rowWarehouses,
-            this.rowSheetName,
-            this.rowThickness_mm,
-            this.rowSheetSize,
-            this.row});
-            this.vGridControl1.Size = new System.Drawing.Size(400, 406);
-            this.vGridControl1.TabIndex = 5;
-            this.vGridControl1.CustomUnboundData += new DevExpress.XtraVerticalGrid.Events.CustomDataEventHandler(this.vGridControl1_CustomUnboundData);
-            this.vGridControl1.Click += new System.EventHandler(this.vGridControl1_Click);
+            this.gridControl.DataSource = this.sheetsBindingSource;
+            this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridControl.Location = new System.Drawing.Point(2, 23);
+            this.gridControl.MainView = this.gridView;
+            this.gridControl.Name = "gridControl";
+            this.gridControl.Size = new System.Drawing.Size(572, 447);
+            this.gridControl.TabIndex = 3;
+            this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView});
+            this.gridControl.Visible = false;
             // 
-            // rowId
+            // gridView
             // 
-            this.rowId.Name = "rowId";
-            this.rowId.Properties.FieldName = "Id";
-            this.rowId.Properties.ShowUnboundExpressionMenu = true;
-            this.rowId.Visible = false;
+            this.gridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colId,
+            this.colMaterial,
+            this.colThickness_mm,
+            this.colSheetSize,
+            this.colLastBuyPrice,
+            this.colSheetPriceFormula,
+            this.colSheetPrice,
+            this.colPicesPriceFormula,
+            this.colPicesPrice,
+            this.colCNCPriceByMeter,
+            this.colCNCPriceBySheet,
+            this.colCNCPriceByPice,
+            this.colDescription,
+            this.colOrderDetails,
+            this.colWarehouses,
+            this.colSheetName,
+            this.colThickness,
+            this.colLength,
+            this.colWidth,
+            this.colTempExpression});
+            this.gridView.GridControl = this.gridControl;
+            this.gridView.Name = "gridView";
+            this.gridView.OptionsBehavior.Editable = false;
+            this.gridView.OptionsBehavior.ReadOnly = true;
             // 
-            // rowMaterial
+            // colId
             // 
-            this.rowMaterial.Name = "rowMaterial";
-            this.rowMaterial.Properties.FieldName = "Material";
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            this.colId.OptionsColumn.ShowInExpressionEditor = false;
             // 
-            // rowThickness
+            // colMaterial
             // 
-            this.rowThickness.Name = "rowThickness";
-            this.rowThickness.Properties.FieldName = "Thickness";
+            this.colMaterial.FieldName = "Material";
+            this.colMaterial.Name = "colMaterial";
+            this.colMaterial.OptionsColumn.ShowInExpressionEditor = false;
+            this.colMaterial.Visible = true;
+            this.colMaterial.VisibleIndex = 0;
             // 
-            // rowWidth
+            // colThickness_mm
             // 
-            this.rowWidth.Name = "rowWidth";
-            this.rowWidth.Properties.FieldName = "Width";
+            this.colThickness_mm.FieldName = "Thickness_mm";
+            this.colThickness_mm.Name = "colThickness_mm";
+            this.colThickness_mm.OptionsColumn.ReadOnly = true;
+            this.colThickness_mm.OptionsColumn.ShowInExpressionEditor = false;
+            this.colThickness_mm.Visible = true;
+            this.colThickness_mm.VisibleIndex = 1;
             // 
-            // rowLength
+            // colSheetSize
             // 
-            this.rowLength.Name = "rowLength";
-            this.rowLength.Properties.FieldName = "Length";
+            this.colSheetSize.FieldName = "SheetSize";
+            this.colSheetSize.Name = "colSheetSize";
+            this.colSheetSize.OptionsColumn.ReadOnly = true;
+            this.colSheetSize.OptionsColumn.ShowInExpressionEditor = false;
+            this.colSheetSize.Visible = true;
+            this.colSheetSize.VisibleIndex = 2;
             // 
-            // rowSheetPrice
+            // colLastBuyPrice
             // 
-            this.rowSheetPrice.Name = "rowSheetPrice";
-            this.rowSheetPrice.Properties.FieldName = "SheetPrice";
+            this.colLastBuyPrice.AppearanceCell.Options.UseTextOptions = true;
+            this.colLastBuyPrice.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colLastBuyPrice.DisplayFormat.FormatString = "n0";
+            this.colLastBuyPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colLastBuyPrice.FieldName = "LastBuyPrice";
+            this.colLastBuyPrice.Name = "colLastBuyPrice";
+            this.colLastBuyPrice.Visible = true;
+            this.colLastBuyPrice.VisibleIndex = 3;
             // 
-            // rowSheetPriceFormula
+            // colSheetPriceFormula
             // 
-            this.rowSheetPriceFormula.Name = "rowSheetPriceFormula";
-            this.rowSheetPriceFormula.Properties.FieldName = "SheetPriceFormula";
+            this.colSheetPriceFormula.FieldName = "SheetPriceFormula";
+            this.colSheetPriceFormula.Name = "colSheetPriceFormula";
+            this.colSheetPriceFormula.OptionsColumn.ShowInExpressionEditor = false;
+            this.colSheetPriceFormula.Visible = true;
+            this.colSheetPriceFormula.VisibleIndex = 4;
             // 
-            // rowPicesPrice
+            // colSheetPrice
             // 
-            this.rowPicesPrice.Name = "rowPicesPrice";
-            this.rowPicesPrice.Properties.FieldName = "PicesPrice";
+            this.colSheetPrice.AppearanceCell.Options.UseTextOptions = true;
+            this.colSheetPrice.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colSheetPrice.DisplayFormat.FormatString = "n0";
+            this.colSheetPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colSheetPrice.FieldName = "SheetPrice";
+            this.colSheetPrice.Name = "colSheetPrice";
+            this.colSheetPrice.Visible = true;
+            this.colSheetPrice.VisibleIndex = 5;
             // 
-            // rowPicesPriceFormula
+            // colPicesPriceFormula
             // 
-            this.rowPicesPriceFormula.Name = "rowPicesPriceFormula";
-            this.rowPicesPriceFormula.Properties.FieldName = "PicesPriceFormula";
+            this.colPicesPriceFormula.FieldName = "PicesPriceFormula";
+            this.colPicesPriceFormula.Name = "colPicesPriceFormula";
+            this.colPicesPriceFormula.OptionsColumn.ShowInExpressionEditor = false;
+            this.colPicesPriceFormula.Visible = true;
+            this.colPicesPriceFormula.VisibleIndex = 6;
             // 
-            // rowCNCPriceByMeter
+            // colPicesPrice
             // 
-            this.rowCNCPriceByMeter.Name = "rowCNCPriceByMeter";
-            this.rowCNCPriceByMeter.Properties.FieldName = "CNCPriceByMeter";
+            this.colPicesPrice.AppearanceCell.Options.UseTextOptions = true;
+            this.colPicesPrice.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colPicesPrice.DisplayFormat.FormatString = "n0";
+            this.colPicesPrice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colPicesPrice.FieldName = "PicesPrice";
+            this.colPicesPrice.Name = "colPicesPrice";
+            this.colPicesPrice.Visible = true;
+            this.colPicesPrice.VisibleIndex = 7;
             // 
-            // rowCNCPriceBySheet
+            // colCNCPriceByMeter
             // 
-            this.rowCNCPriceBySheet.Name = "rowCNCPriceBySheet";
-            this.rowCNCPriceBySheet.Properties.FieldName = "CNCPriceBySheet";
+            this.colCNCPriceByMeter.AppearanceCell.Options.UseTextOptions = true;
+            this.colCNCPriceByMeter.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colCNCPriceByMeter.DisplayFormat.FormatString = "n0";
+            this.colCNCPriceByMeter.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colCNCPriceByMeter.FieldName = "CNCPriceByMeter";
+            this.colCNCPriceByMeter.Name = "colCNCPriceByMeter";
+            this.colCNCPriceByMeter.Visible = true;
+            this.colCNCPriceByMeter.VisibleIndex = 8;
             // 
-            // rowCNCPriceByPice
+            // colCNCPriceBySheet
             // 
-            this.rowCNCPriceByPice.Name = "rowCNCPriceByPice";
-            this.rowCNCPriceByPice.Properties.FieldName = "CNCPriceByPice";
+            this.colCNCPriceBySheet.AppearanceCell.Options.UseTextOptions = true;
+            this.colCNCPriceBySheet.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colCNCPriceBySheet.DisplayFormat.FormatString = "n0";
+            this.colCNCPriceBySheet.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colCNCPriceBySheet.FieldName = "CNCPriceBySheet";
+            this.colCNCPriceBySheet.Name = "colCNCPriceBySheet";
+            this.colCNCPriceBySheet.Visible = true;
+            this.colCNCPriceBySheet.VisibleIndex = 9;
             // 
-            // rowDescription
+            // colCNCPriceByPice
             // 
-            this.rowDescription.Name = "rowDescription";
-            this.rowDescription.Properties.FieldName = "Description";
+            this.colCNCPriceByPice.AppearanceCell.Options.UseTextOptions = true;
+            this.colCNCPriceByPice.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colCNCPriceByPice.DisplayFormat.FormatString = "n0";
+            this.colCNCPriceByPice.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colCNCPriceByPice.FieldName = "CNCPriceByPice";
+            this.colCNCPriceByPice.Name = "colCNCPriceByPice";
+            this.colCNCPriceByPice.Visible = true;
+            this.colCNCPriceByPice.VisibleIndex = 10;
             // 
-            // rowOrderDetails
+            // colDescription
             // 
-            this.rowOrderDetails.Name = "rowOrderDetails";
-            this.rowOrderDetails.Properties.FieldName = "OrderDetails";
+            this.colDescription.FieldName = "Description";
+            this.colDescription.Name = "colDescription";
+            this.colDescription.OptionsColumn.ShowInExpressionEditor = false;
+            this.colDescription.Visible = true;
+            this.colDescription.VisibleIndex = 11;
             // 
-            // rowWarehouses
+            // colOrderDetails
             // 
-            this.rowWarehouses.Name = "rowWarehouses";
-            this.rowWarehouses.Properties.FieldName = "Warehouses";
+            this.colOrderDetails.FieldName = "OrderDetails";
+            this.colOrderDetails.Name = "colOrderDetails";
+            this.colOrderDetails.OptionsColumn.ShowInExpressionEditor = false;
             // 
-            // rowSheetName
+            // colWarehouses
             // 
-            this.rowSheetName.Name = "rowSheetName";
-            this.rowSheetName.Properties.FieldName = "SheetName";
+            this.colWarehouses.FieldName = "Warehouses";
+            this.colWarehouses.Name = "colWarehouses";
+            this.colWarehouses.OptionsColumn.ShowInExpressionEditor = false;
             // 
-            // rowThickness_mm
+            // colSheetName
             // 
-            this.rowThickness_mm.Name = "rowThickness_mm";
-            this.rowThickness_mm.Properties.FieldName = "Thickness_mm";
+            this.colSheetName.FieldName = "SheetName";
+            this.colSheetName.Name = "colSheetName";
+            this.colSheetName.OptionsColumn.ReadOnly = true;
+            this.colSheetName.OptionsColumn.ShowInExpressionEditor = false;
             // 
-            // rowSheetSize
+            // colThickness
             // 
-            this.rowSheetSize.Name = "rowSheetSize";
-            this.rowSheetSize.Properties.FieldName = "SheetSize";
+            this.colThickness.FieldName = "Thickness";
+            this.colThickness.Name = "colThickness";
+            this.colThickness.OptionsColumn.ShowInExpressionEditor = false;
             // 
-            // row
+            // colLength
             // 
-            this.row.Name = "row";
-            this.row.Properties.Caption = "row";
-            this.row.Properties.FieldName = "row0";
-            this.row.Properties.ShowUnboundExpressionMenu = true;
-            this.row.Properties.UnboundDataType = typeof(double);
-            this.row.Properties.UnboundExpression = "[Thickness] * 10";
+            this.colLength.FieldName = "Length";
+            this.colLength.Name = "colLength";
+            // 
+            // colWidth
+            // 
+            this.colWidth.FieldName = "Width";
+            this.colWidth.Name = "colWidth";
+            // 
+            // colTempExpression
+            // 
+            this.colTempExpression.Caption = "gridColumn1";
+            this.colTempExpression.Name = "colTempExpression";
+            this.colTempExpression.OptionsColumn.ShowInExpressionEditor = false;
+            // 
+            // memoEdit1
+            // 
+            this.memoEdit1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.memoEdit1.Location = new System.Drawing.Point(14, 26);
+            this.memoEdit1.Name = "memoEdit1";
+            this.memoEdit1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.memoEdit1.Size = new System.Drawing.Size(541, 62);
+            this.memoEdit1.TabIndex = 5;
+            // 
+            // groupControl2
+            // 
+            this.groupControl2.Controls.Add(this.memoEdit1);
+            this.groupControl2.GroupStyle = DevExpress.Utils.GroupStyle.Light;
+            this.groupControl2.Location = new System.Drawing.Point(16, 16);
+            this.groupControl2.Name = "groupControl2";
+            this.groupControl2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.groupControl2.Size = new System.Drawing.Size(576, 102);
+            this.groupControl2.TabIndex = 6;
+            this.groupControl2.Text = "توضیحات محاسبات فرمول";
+            // 
+            // layoutControl1
+            // 
+            this.layoutControl1.Controls.Add(this.groupControl1);
+            this.layoutControl1.Controls.Add(this.groupControl2);
+            this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutControl1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControl1.Name = "layoutControl1";
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(858, 304, 650, 400);
+            this.layoutControl1.Root = this.Root;
+            this.layoutControl1.Size = new System.Drawing.Size(608, 628);
+            this.layoutControl1.TabIndex = 7;
+            this.layoutControl1.Text = "layoutControl1";
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1,
+            this.layoutControlItem2,
+            this.splitterItem1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(608, 628);
+            this.Root.TextVisible = false;
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.groupControl2;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(582, 108);
+            this.layoutControlItem1.TextVisible = false;
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.groupControl1;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 124);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(582, 478);
+            this.layoutControlItem2.TextVisible = false;
+            // 
+            // splitterItem1
+            // 
+            this.splitterItem1.Location = new System.Drawing.Point(0, 108);
+            this.splitterItem1.Name = "splitterItem1";
+            this.splitterItem1.Size = new System.Drawing.Size(582, 16);
             // 
             // FrmSheetFormulaEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1018, 457);
-            this.Controls.Add(this.vGridControl1);
-            this.Controls.Add(this.groupControl1);
-            this.Controls.Add(this.comboBoxEdit1);
-            this.Controls.Add(this.gridControl1);
+            this.ClientSize = new System.Drawing.Size(608, 628);
+            this.Controls.Add(this.layoutControl1);
+            this.IconOptions.Image = ((System.Drawing.Image)(resources.GetObject("FrmSheetFormulaEditor.IconOptions.Image")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmSheetFormulaEditor";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "محاسبات ورق";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmSheetFormulaEditor_FormClosing);
             this.Load += new System.EventHandler(this.FrmSheetFormulaEditor_Load);
+            this.Shown += new System.EventHandler(this.FrmSheetFormulaEditor_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.unboundExpressionPanel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
             this.groupControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.vGridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
+            this.groupControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
+            this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private Standalone_ExpressionEditor.UnboundExpressionPanel unboundExpressionPanel1;
-        private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeel1;
         private DevExpress.XtraEditors.GroupControl groupControl1;
         private System.Windows.Forms.BindingSource sheetsBindingSource;
+        private DevExpress.XtraGrid.GridControl gridControl;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colMaterial;
-        private DevExpress.XtraGrid.Columns.GridColumn colThickness;
-        private DevExpress.XtraGrid.Columns.GridColumn colWidth;
-        private DevExpress.XtraGrid.Columns.GridColumn colLength;
-        private DevExpress.XtraGrid.Columns.GridColumn colSheetPrice;
+        private DevExpress.XtraGrid.Columns.GridColumn colThickness_mm;
+        private DevExpress.XtraGrid.Columns.GridColumn colSheetSize;
+        private DevExpress.XtraGrid.Columns.GridColumn colLastBuyPrice;
         private DevExpress.XtraGrid.Columns.GridColumn colSheetPriceFormula;
-        private DevExpress.XtraGrid.Columns.GridColumn colPicesPrice;
+        private DevExpress.XtraGrid.Columns.GridColumn colSheetPrice;
         private DevExpress.XtraGrid.Columns.GridColumn colPicesPriceFormula;
+        private DevExpress.XtraGrid.Columns.GridColumn colPicesPrice;
         private DevExpress.XtraGrid.Columns.GridColumn colCNCPriceByMeter;
         private DevExpress.XtraGrid.Columns.GridColumn colCNCPriceBySheet;
         private DevExpress.XtraGrid.Columns.GridColumn colCNCPriceByPice;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraVerticalGrid.VGridControl vGridControl1;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowId;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowMaterial;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowThickness;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowWidth;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowLength;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSheetPrice;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSheetPriceFormula;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowPicesPrice;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowPicesPriceFormula;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowCNCPriceByMeter;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowCNCPriceBySheet;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowCNCPriceByPice;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowDescription;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowOrderDetails;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowWarehouses;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSheetName;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowThickness_mm;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow rowSheetSize;
-        private DevExpress.XtraVerticalGrid.Rows.EditorRow row;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
+        private DevExpress.XtraGrid.Columns.GridColumn colOrderDetails;
+        private DevExpress.XtraGrid.Columns.GridColumn colWarehouses;
+        private DevExpress.XtraGrid.Columns.GridColumn colSheetName;
+        private DevExpress.XtraGrid.Columns.GridColumn colThickness;
+        private DevExpress.XtraGrid.Columns.GridColumn colLength;
+        private DevExpress.XtraGrid.Columns.GridColumn colWidth;
+        private DevExpress.XtraGrid.Columns.GridColumn colTempExpression;
+        private DevExpress.XtraEditors.MemoEdit memoEdit1;
+        private DevExpress.XtraEditors.GroupControl groupControl2;
+        private DevExpress.XtraLayout.LayoutControl layoutControl1;
+        private DevExpress.XtraLayout.LayoutControlGroup Root;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private DevExpress.XtraLayout.SplitterItem splitterItem1;
     }
 }
 

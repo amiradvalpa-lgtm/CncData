@@ -25,10 +25,6 @@ namespace CncApp_Final.Frm
 {
     public partial class FrmCustomerEdit : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-        // ------------------------------------------------------------------
-        // تغییر 1: اضافه کردن فیلد برای نگهداری شناسه جدید (برای بازگشت به لیست)
-        // و تغییر نوع فیلد _Customer_Id به public برای دسترسی از فرم پدر (FrmCustomers.cs)
-        // ------------------------------------------------------------------
         public int _Customer_Id { get; private set; } = 0; // 0 for new order
         public int _NewCreatedCustomertId { get; private set; } = 0; // برای نگهداری شناسه جدید پس از ذخیره
         private readonly bool _IsCustomerReadonly = false;
@@ -352,45 +348,6 @@ namespace CncApp_Final.Frm
         //*****************************************************************************************************************************************
         //*****************************************************************************************************************************************
         //*****************************************************************************************************************************************
-
-
-
-
-        private void txbCustomerName_Leave(object sender, EventArgs e)
-        {
-            //var x = txbCustomerName.EditValue;
-            ////var z = string.IsNullOrWhiteSpace(x);
-            //var s = x.GetType();
-
-            
-            
-            
-        }
-
-        
-
-        private void dxValidationProvider1_ValidationFailed(object sender, ValidationFailedEventArgs e)
-        {
-            
-        }
-
-        private void txbCustomerName_Validating(object sender, CancelEventArgs e)
-        { 
-            ////e.Cancel = true;
-            //txbCustomerName.EditValue = txbCustomerName.Text.Trim();
-            //var x = txbCustomerName.EditValue.GetType();
-            //if (string.IsNullOrEmpty(txbCustomerName.Text))
-            //{
-            //    txbCustomerName.EditValue = null;
-            //    dxValidationProvider1.Validate();
-            //}
-        }
-
-        private void txbCustomerName_Validated(object sender, EventArgs e)
-        {
-            
-        }
-
 
 
         private void txbCustomerName_EditValueChanged(object sender, EventArgs e)

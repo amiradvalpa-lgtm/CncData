@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace CncApp_Final.TempFrm
 {
-    public class PersianDateTextEdit : UserControl
+    public class PersianDateTextEdit : XtraUserControl
     {
         private readonly TextEdit textEdit;
         private readonly DXErrorProvider errorProvider;

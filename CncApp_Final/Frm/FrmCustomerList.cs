@@ -1,4 +1,9 @@
-﻿using CncApp_Final.Helpers;
+﻿using CncApp_Final.Data;
+using CncApp_Final.Entities;
+using CncApp_Final.Frm.Base;
+using CncApp_Final.Frms.Base;
+using CncApp_Final.Helpers;
+using CncApp_Final.Services;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraLayout;
@@ -18,13 +23,13 @@ using System.Windows.Forms;
 
 namespace CncApp_Final.Frm
 {
-    public partial class FrmCustomers : DevExpress.XtraBars.Ribbon.RibbonForm
+    public partial class FrmCustomerList : DevExpress.XtraBars.Ribbon.RibbonForm
     {
 
         private int focusedRowHandel;
         private int topRowIndex;
 
-        public FrmCustomers()
+        public FrmCustomerList()
         {
             InitializeComponent();
             CncApp_Final.Data.AppDbContext dbContext = new CncApp_Final.Data.AppDbContext();
@@ -32,7 +37,7 @@ namespace CncApp_Final.Frm
             customersBindingSource.DataSource = dbContext.Customers.Local.ToBindingList();
         }
 
-        private void FrmCustomerEdit_Load(object sender, EventArgs e)
+        private void FrmCustomerList_Load(object sender, EventArgs e)
         {
             GridLayoutHelper.LoadLayout(
                                         gridView,
@@ -42,17 +47,37 @@ namespace CncApp_Final.Frm
 
         private void bbiEditCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //int customer_Id = (int)gridView.GetFocusedRowCellValue(colId);
+            //Frm.FrmCustomerEdit frmCustomerEdit = new Frm.FrmCustomerEdit(customer_Id, false, ReLoadList);
+            //frmCustomerEdit.ShowDialog();
+
             int customer_Id = (int)gridView.GetFocusedRowCellValue(colId);
-            Frm.FrmCustomerEdit frmCustomerEdit = new Frm.FrmCustomerEdit(customer_Id, false, ReLoadList);
-            frmCustomerEdit.ShowDialog();
+            var service = new EfCrudService<Customer>(new AppDbContext());
+            var frm = new Frms.FrmCustomerEdit(customer_Id, false, service);
+            frm.ChangesSaved += (s, args) =>
+            {
+                ReLoadList(customer_Id);
+            };
+            frm.ShowDialog();
         }
 
         private void bbiNewCustomer_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Frm.FrmCustomerEdit frmCustomerEdit = new Frm.FrmCustomerEdit(0, false, ReLoadList);
-            frmCustomerEdit.ShowDialog();
+            //Frm.FrmCustomerEdit frmCustomerEdit = new Frm.FrmCustomerEdit(0, false, ReLoadList);
+            //frmCustomerEdit.ShowDialog();
+
+
+
+            var service = new EfCrudService<Customer>(new AppDbContext());
+            var frm = new Frms.FrmCustomerEdit(0, false, service);
+            frm.ChangesSaved += (s, args) =>
+            {
+                ReLoadList(args.RecordId);
+            };
+            frm.ShowDialog();
         }
 
+       
 
 
         //***********************************************************************************************************************************

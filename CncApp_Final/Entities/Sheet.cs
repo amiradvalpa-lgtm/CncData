@@ -33,6 +33,8 @@ namespace CncApp_Final.Entities
 
         [DisplayName("قیمت کامل")]
         [Description("قیمت کل ورق کامل")]
+        [Required(ErrorMessage = "وارد کردن {0} الزامی است.")]
+        [Range(0.001, double.MaxValue, ErrorMessage = "{0} باید بزرگتر از 0 باشد.")]
         public double SheetPrice { get; set; }
 
         [DisplayName("فرمول قیمت کامل")]
@@ -42,6 +44,8 @@ namespace CncApp_Final.Entities
 
         [DisplayName("قیمت تکه")]
         [Description("قیمت هر تکه برش‌خورده از ورق")]
+        [Required(ErrorMessage = "وارد کردن {0} الزامی است.")]
+        [Range(0.001, double.MaxValue, ErrorMessage = "{0} باید بزرگتر از 0 باشد.")]
         public double PicesPrice { get; set; }
 
         [DisplayName("فرمول قیمت تکه")]
@@ -51,14 +55,20 @@ namespace CncApp_Final.Entities
 
         [DisplayName("قیمت CNC (متر)")]
         [Description("هزینه خدمات CNC به ازای متر")]
+        [Required(ErrorMessage = "وارد کردن {0} الزامی است.")]
+        [Range(0.001, double.MaxValue, ErrorMessage = "{0} باید بزرگتر از 0 باشد.")]
         public double CNCPriceByMeter { get; set; }
 
         [DisplayName("قیمت CNC (ورق)")]
         [Description("هزینه خدمات CNC به ازای ورق کامل")]
+        [Required(ErrorMessage = "وارد کردن {0} الزامی است.")]
+        [Range(0.001, double.MaxValue, ErrorMessage = "{0} باید بزرگتر از 0 باشد.")]
         public double CNCPriceBySheet { get; set; }
 
         [DisplayName("قیمت CNC (تکه)")]
         [Description("هزینه خدمات CNC به ازای ورق تکه")]
+        [Required(ErrorMessage = "وارد کردن {0} الزامی است.")]
+        [Range(0.001, double.MaxValue, ErrorMessage = "{0} باید بزرگتر از 0 باشد.")]
         public double CNCPriceByPice { get; set; }
 
         [DisplayName("توضیحات")]
@@ -88,8 +98,40 @@ namespace CncApp_Final.Entities
         // ─── سایز ورق (NotMapped) ─────────────────────────────────────
         [NotMapped]
         [DisplayName("سایز ورق")]
-        public string SheetSize => $"{Length} * {Width}";
+        public string SheetSize
+        {
+            get => $"{Length} * {Width}";
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    Length = 0;
+                    Width = 0;
+                    return;
+                }
 
+                // حذف احتمالی فضای خالی اضافی
+                var trimmed = value.Trim();
+
+                // جدا کردن با علامت * (می‌تونید × یا دیگر جداکننده‌ها رو هم پشتیبانی کنید)
+                var parts = trimmed.Split(new[] { '*', '×', 'x', 'X' }, StringSplitOptions.RemoveEmptyEntries);
+
+                double length=0, width = 0;
+                if (parts.Length != 2 ||
+                    !double.TryParse(parts[0].Trim(), out  length) ||
+                    !double.TryParse(parts[1].Trim(), out  width))
+                {
+                    //throw new ArgumentException("فرمت سایز ورق نامعتبر است. باید به شکل 'طول * عرض' باشد، مثلاً '1000 * 2000'.");
+                    var x = 0;
+                }
+
+                Length = length;
+                Width = width;
+            }
+        }
+
+
+        private double? _lastBuyPrice;
         // ─── آخرین قیمت خرید (NotMapped) ─────────────────────────────────────
         [NotMapped]
         [DisplayName("آخرین قیمت خرید")]
@@ -98,6 +140,10 @@ namespace CncApp_Final.Entities
         {
             get
             {
+                // اگر مقدار دستی ست شده باشد، همان را برگردان
+                if (_lastBuyPrice.HasValue)
+                    return _lastBuyPrice;
+
                 // بررسی وجود داده در لیست انبار
                 if (Warehouses == null || !Warehouses.Any())
                     return null;
@@ -106,6 +152,11 @@ namespace CncApp_Final.Entities
                 var lastWarehouseEntry = Warehouses.OrderByDescending(w => w.OrderDate).FirstOrDefault();
 
                 return lastWarehouseEntry?.SheetBasePrice;
+            }
+
+            set
+            {
+                _lastBuyPrice = value;
             }
         }
 

@@ -1,4 +1,7 @@
-﻿using DevExpress.XtraEditors;
+﻿using CncApp_Final.Data;
+using CncApp_Final.Entities;
+using CncApp_Final.Helper;
+using DevExpress.XtraEditors;
 using DevExpress.XtraLayout;
 using DevExpress.XtraLayout.Helpers;
 using System;
@@ -6,23 +9,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CncApp_Final.Data;
-using CncApp_Final.Helper;
-using CncApp_Final.Entities;
-using System.Data.Entity;
 
 namespace CncApp_Final.Frm
 {
     public partial class FrmWareHouseEdit : DevExpress.XtraBars.Ribbon.RibbonForm
     {
 
-        private CncApp_Final.Data.AppDbContext dbContext = new CncApp_Final.Data.AppDbContext();
         public int _New_Row_Id;
         private bool _Save_SuccesFull = false;
 
@@ -33,6 +33,7 @@ namespace CncApp_Final.Frm
 
         private AppDbContext _dbContext;
         private Warehouse _currentWareHouse;
+        private Sheet _currentSheet;
 
         private readonly Action<int> _reloadCallback;
         //**********************************************************************
@@ -41,16 +42,6 @@ namespace CncApp_Final.Frm
         public FrmWareHouseEdit()
         {
             InitializeComponent();
-
-            ControlExraInit.InitRibonControl(mainRibbonControl, "ورود به انبار جدید");
-            ControlExraInit.InitLookupEdit(lkpSheetId);
-
-            
-            dbContext.Warehouses.Load();
-            warehousesBindingSource.DataSource = dbContext.Warehouses.Local.ToBindingList();
-            
-            dbContext.Sheets.Load();
-            sheetsBindingSource.DataSource = dbContext.Sheets.Local.ToBindingList();
         }
 
 
@@ -69,55 +60,35 @@ namespace CncApp_Final.Frm
         private void FrmWareHouseEdit_Load(object sender, EventArgs e)
         {
             InitData();
-            InitFillMaterial();
             DxValidationHelper.SetupValidation<Warehouse>(this, dxValidationProvider1, warehousesBindingSource);
             ControlExraInit.ApplyFocusColor(this);
-
-            
         }
 
-        private void InitFillMaterial()
-        {
-            this.lkpMaterial.EditValueChanged += new System.EventHandler(this.lkpMaterial_EditValueChanged);
-            this.lkpThickness.EditValueChanged += new System.EventHandler(this.lkpThickness_EditValueChanged);
-            this.lkpSheetId.EditValueChanged += new System.EventHandler(this.lkpSheetId_EditValueChanged);
-
-            FillMaterial();
-
-            if (_currentWareHouse.SheetId == 0)
-            {
-                int defoultSheetId = AppSettingsHelper.Get<int>(AppSettingKey.DefoultSheetId);
-                _sheet = GetSheetInfo(defoultSheetId);
-                lkpMaterial.EditValue = _sheet.Material;
-                lkpThickness.EditValue = _sheet.Thickness;
-                lkpSheetId.EditValue = defoultSheetId;
-            }
-            else
-            {
-                int currentWareHouse = _currentWareHouse.SheetId;
-                _sheet = GetSheetInfo(currentWareHouse);
-                lkpMaterial.EditValue = _sheet.Material;
-                lkpThickness.EditValue = _sheet.Thickness;
-                lkpSheetId.EditValue = currentWareHouse;
-
-            }
-        }
-        private Sheet _sheet;
-        private Sheet GetSheetInfo(int sheetId)
-        {
-            _sheet = _dbContext.Sheets
-                .FirstOrDefault(s => s.Id == sheetId);
-            return _sheet;
-        }
+        
+        
+       
         private void InitData()
         {
-            ControlExraInit.InitRibonControl(mainRibbonControl, _WareHouse_Id == 0 ? "ورود به انبار جدید" : "ویرایش ورودی انبار");
-            ControlExraInit.InitLookupEdit(lkpMaterial);
-            ControlExraInit.InitLookupEdit(lkpThickness);
-            ControlExraInit.InitLookupEdit(lkpSheetId);
+            sheetSelector1.EditValueChanged += SheetSelector_EditValueChanged;
+            ckbUpdateSheetPrice.Checked = false;
 
-            dbContext.Sheets.Load();
-            sheetsBindingSource.DataSource = dbContext.Sheets.Local.ToBindingList();
+            NewSheetPriceTextEdit.DataBindings.Add(
+                            new System.Windows.Forms.Binding(
+                                "EditValue", warehousesBindingSource, "Sheet.SheetPrice", true)
+                            );
+
+            NewPicesPriceTextEdit.DataBindings.Add(
+                            new System.Windows.Forms.Binding(
+                                "EditValue", warehousesBindingSource, "Sheet.PicesPrice", true)
+                            );
+
+
+
+
+            ControlExraInit.InitRibonControl(mainRibbonControl, _WareHouse_Id == 0 ? "ورود به انبار جدید" : "ویرایش ورودی انبار");
+            
+            //dbContext.Sheets.Load();
+            //sheetsBindingSource.DataSource = dbContext.Sheets.Local.ToBindingList();
 
             if (_WareHouse_Id > 0)
             {
@@ -145,14 +116,14 @@ namespace CncApp_Final.Frm
                 bbiDelete.Visibility = DevExpress.XtraBars.BarItemVisibility.Never; // حذف برای مورد جدید نمایش داده نشود
 
                 _currentWareHouse.OrderDate = DateTime.Now;
-                lkpMaterial.Focus();
+                sheetSelector1.Focus();
             }
             warehousesBindingSource.DataSource = _currentWareHouse;
 
             // 🆕 اعمال تنظیمات ReadOnly
             SetReadOnly(_IsWareHouseReadonly);
 
-            lkpSheetId.EditValueChanged += SheetIdLookUpEdit_EditValueChanged;
+            
         }
 
 
@@ -163,71 +134,29 @@ namespace CncApp_Final.Frm
         //*************************************************************************************************************************************
 
 
-
-
-
-        /// <summary>
-        /// 🆕 راه‌حل نهایی: به‌روزرسانی شیء Sheet و رفرش Binding با قطع و وصل موقت اتصال LookUpEdit
-        /// </summary>
-        private void SheetIdLookUpEdit_EditValueChanged(object sender, EventArgs e)
+        private void SheetSelector_EditValueChanged(object sender, EventArgs e)
         {
-            if (lkpSheetId.EditValue != null)
+            if (sheetSelector1.EditValue != null)
             {
-                _currentWareHouse.SheetId = (int)lkpSheetId.EditValue;
+                _currentWareHouse.SheetId = (int)sheetSelector1.EditValue;
                 warehousesBindingSource.EndEdit();
                 _dbContext.Entry(_currentWareHouse).Reference(x => x.Sheet).Load();
                 warehousesBindingSource.ResetBindings(false);
+
+                PreSheetPriceTextEdit.Text = _currentWareHouse.Sheet.SheetPrice.ToString();
+                PrePicesPriceTextEdit.Text = _currentWareHouse.Sheet.PicesPrice.ToString();
             }
+            else
+            {
+                PreSheetPriceTextEdit.ResetText();
+                PrePicesPriceTextEdit.ResetText();
 
-            //if (lkpSheetId.EditValue == null || lkpSheetId.EditValue == DBNull.Value) return;
+                NewSheetPriceTextEdit.ResetText();
+                NewPicesPriceTextEdit.ResetText();
 
-            //if (warehousesBindingSource.Current is Warehouse currentWarehouse)
-            //{
-            //    int newSheetId = (int)lkpSheetId.EditValue;
-
-            //    // اگر SheetId واقعاً تغییر نکرده و شیء Sheet وجود دارد، کاری نکنیم
-            //    if (currentWarehouse.SheetId == newSheetId && currentWarehouse.Sheet != null)
-            //    {
-            //        return;
-            //    }
-
-            //    Sheet newSheet = dbContext.Sheets.Local.FirstOrDefault(s => s.Id == newSheetId);
-
-            //    if (newSheet != null)
-            //    {
-            //        // 2. قطع اتصال LookUpEdit به BindingSource
-            //        // این کار از فراخوانی مجدد EditValueChanged در حین ResetBindings جلوگیری می‌کند
-            //        Binding lookUpBinding = lkpSheetId.DataBindings["EditValue"];
-            //        lkpSheetId.DataBindings.Clear();
-
-            //        try
-            //        {
-            //            // 3. انتساب شیء Sheet جدید و به‌روزرسانی SheetId در مدل
-            //            currentWarehouse.Sheet = newSheet;
-            //            // اگرچه LookUpEdit قطع شده، این خط مقدار نهایی را در مدل ذخیره می‌کند
-            //            currentWarehouse.SheetId = newSheetId;
-
-            //            warehousesBindingSource.ResetBindings(false);
-            //        }
-            //        catch (Exception ex)
-            //        {
-            //            XtraMessageBox.Show($"خطا در به‌روزرسانی قیمت‌های ورق: {ex.Message}", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //        }
-            //        finally
-            //        {
-            //            // 5. اتصال مجدد LookUpEdit
-            //            if (lookUpBinding != null)
-            //            {
-            //                lkpSheetId.DataBindings.Add(lookUpBinding);
-            //            }
-            //        }
-            //    }
-            //}
+                //_currentWareHouse.SheetId = 0;
+            }
         }
-        
-
-
-
 
 
         //*************************************************************************************************************************************
@@ -244,7 +173,6 @@ namespace CncApp_Final.Frm
         /// </summary>
         private bool IsValid()
         {
-            // طبق درخواست شما، اعتبارسنجی انجام نمی‌شود
             return true;
         }
 
@@ -271,26 +199,17 @@ namespace CncApp_Final.Frm
 
                     bool isNewRecord = currentWarehouse.Id == 0; //
 
-                    // 1. به‌روزرسانی قیمت‌های NewSheetPrice و NewPicesPrice در جدول Sheet
-                    // اگر شیء Sheet قبلاً از طریق Include بارگذاری شده باشد، این خط کار می‌کند:
                     Sheet sheetToUpdate = currentWarehouse.Sheet;
-
-                    // اگر نه، باید دوباره آن را از دیتابیس بگیریم (در سازنده با include بارگذاری شده است)
                     if (sheetToUpdate == null)
                     {
-                        sheetToUpdate = _dbContext.Sheets.Find(currentWarehouse.SheetId);
+                        XtraMessageBox.Show($"sheetToUpdate is null", "sheetToUpdate", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
                     if (sheetToUpdate != null)
                     {
-                        sheetToUpdate.SheetPrice = currentWarehouse.NewSheetPrice;
-                        sheetToUpdate.PicesPrice = currentWarehouse.NewPicesPrice;
-
                         // اطمینان از پیوستگی شیء برای ویرایش
                         _dbContext.Entry(sheetToUpdate).State = EntityState.Modified;
                     }
 
-                    // 2. اگر رکورد جدید است، آن را به DbSet اضافه کنید
                     if (currentWarehouse.Id == 0)
                     {
                         _dbContext.Warehouses.Add(currentWarehouse);
@@ -304,6 +223,17 @@ namespace CncApp_Final.Frm
                     }
                     _Save_SuccesFull = true;
                     return true;
+                }
+                catch (DbEntityValidationException dbEx)
+                {
+                    // مدیریت خطاهای اعتبارسنجی Entity Framework
+                    var errorMessages = dbEx.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => $"{x.PropertyName}: {x.ErrorMessage}");
+
+                    var fullErrorMessage = string.Join(Environment.NewLine, errorMessages);
+                    XtraMessageBox.Show($"خطای اعتبارسنجی در هنگام ذخیره:{Environment.NewLine}{fullErrorMessage}", "خطای ذخیره", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
                 }
                 catch (Exception ex)
                 {
@@ -378,8 +308,8 @@ namespace CncApp_Final.Frm
                 if (XtraMessageBox.Show("آیا مطمئن هستید که می‌خواهید این مورد را حذف کنید؟", "تأیید حذف", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
                     // از Local حذف نکنید، مستقیماً از DbContext حذف کنید
-                    dbContext.Warehouses.Remove(currentWarehouse);
-                    dbContext.SaveChanges();
+                    _dbContext.Warehouses.Remove(currentWarehouse);
+                    _dbContext.SaveChanges();
 
                     this.DialogResult = DialogResult.OK;
                     this.Close();
@@ -392,24 +322,16 @@ namespace CncApp_Final.Frm
             this.Close();
         }
 
-        private void btnCopyPrice_Click(object sender, EventArgs e)
-        {
-            NewSheetPriceTextEdit.EditValue = PreSheetPriceTextEdit.EditValue;
-            NewPicesPriceTextEdit.EditValue = PrePicesPriceTextEdit.EditValue;
-        }
-
+        
         private void FrmWareHouseEdit_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (_Save_SuccesFull )
+            if (_Save_SuccesFull)
             {
                 DialogResult = DialogResult.OK;
             }
         }
 
 
-
-
-
         //**********************************************************************************************************************
         //**********************************************************************************************************************
         //**********************************************************************************************************************
@@ -419,145 +341,51 @@ namespace CncApp_Final.Frm
 
 
 
-        #region FillLookUp
 
-        private void lkpMaterial_EditValueChanged(object sender, EventArgs e)
+        private void btnCopyPrice_Click(object sender, EventArgs e)
         {
-            FillThicknessByMaterial();
-            FillSizeByMaterialAndThickness();
-        }
-
-        private void lkpThickness_EditValueChanged(object sender, EventArgs e)
-        {
-            FillSizeByMaterialAndThickness();
-
-        }
-
-        private void lkpSheetId_EditValueChanged(object sender, EventArgs e)
-        {
-            //if (_isLoading) return;
-            if (lkpSheetId.EditValue == null) return;
-
-            int sheetId = Convert.ToInt32(lkpSheetId.EditValue);
-            LoadSheetInfo(sheetId);
-
-        }
-        private void LoadSheetInfo(int sheetId)
-        {
-            var sheet = _dbContext.Sheets.FirstOrDefault(s => s.Id == sheetId);
-            if (sheet == null) return;
-
-            //_calcModel.SheetId = sheetId;
-            //_calcModel.CNCPriceByMeter = sheet.CNCPriceByMeter;
-            //_calcModel.CNCPriceBySheet = sheet.CNCPriceBySheet;
-            //_calcModel.CNCPriceByPice = sheet.CNCPriceByPice;
-            //_calcModel.SheetBasePrice = sheet.SheetPrice;
-            //_calcModel.PiceBasePrice = sheet.PicesPrice;
-
-            //// بعد از تزریق قیمت‌ها، محاسبه انجام می‌شود
-            //_calcModel.Recalculate();
+            NewSheetPriceTextEdit.EditValue = PreSheetPriceTextEdit.EditValue;
+            NewPicesPriceTextEdit.EditValue = PrePicesPriceTextEdit.EditValue;
         }
 
 
-
-        //**********************************************************************************************************************
-        //**********************************************************************************************************************
-
-
-
-        private void FillMaterial()
+        private void btnCalcPrices_Click(object sender, EventArgs e)
         {
-            var materials = _dbContext.Sheets
-                .Where(s => !string.IsNullOrEmpty(s.Material))
-                .Select(s => s.Material)
-                .Distinct()
-                .OrderBy(s => s)
-                .ToList();
+            Sheet _sheet = (Sheet)_currentWareHouse.Sheet;
+            _sheet.LastBuyPrice = _currentWareHouse.SheetBasePrice;
+            SheetCalculator.Calculate(_sheet);
+            warehousesBindingSource.ResetBindings(false);
+        }
 
-            lkpMaterial.Properties.DataSource = materials;
-            lkpMaterial.Properties.DisplayMember = "";
-            lkpMaterial.Properties.ValueMember = "";
-
-            if (materials.Any())
-                lkpMaterial.EditValue = materials.First();
+        private void ckbUpdateSheetPrice_CheckedChanged(object sender, EventArgs e)
+        {
+            NewPicesPriceTextEdit.Enabled = ckbUpdateSheetPrice.Checked;
+            NewSheetPriceTextEdit.Enabled = ckbUpdateSheetPrice.Checked;
+            btnCalcPrices.Enabled = ckbUpdateSheetPrice.Checked;
+            btnCopyPrice.Enabled = ckbUpdateSheetPrice.Checked;
         }
 
 
 
 
 
-        private void FillThicknessByMaterial()
-        {
-            if (lkpMaterial.EditValue == null)
-                return;
-
-            string material = lkpMaterial.EditValue.ToString();
-
-            var thicknesses = _dbContext.Sheets
-                .Where(s => s.Material == material)
-                .Select(s => s.Thickness)
-                .Distinct()
-                .OrderBy(t => t)
-                .ToList();
-
-            lkpThickness.Properties.DataSource = thicknesses;
-            lkpThickness.Properties.DisplayMember = "";
-            lkpThickness.Properties.ValueMember = "";
-
-            if (thicknesses.Any())
-            {
-                //////lkpThickness.EditValue = thicknesses.First();
-                lkpThickness.EditValue = null;
-            }
-        }
+        //**********************************************************************************************************************
+        //**********************************************************************************************************************
+        //**********************************************************************************************************************
+        //**********************************************************************************************************************
+        //**********************************************************************************************************************
+        //**********************************************************************************************************************
 
 
 
+        #region Temp
 
 
-
-        private void FillSizeByMaterialAndThickness()
-        {
-            if (lkpMaterial.EditValue == null || lkpThickness.EditValue == null)
-            {
-                lkpSheetId.EditValue = null;
-                return;
-            }
-
-            string material = lkpMaterial.EditValue.ToString();
-            int thickness = Convert.ToInt32(lkpThickness.EditValue);
-
-            var sheets = _dbContext.Sheets
-                                            .Where(s => s.Material == material && s.Thickness == thickness)
-                                            .Select(s => new
-                                            {
-                                                s.Id,
-                                                s.Width,
-                                                s.Length
-                                            })
-                                            .AsEnumerable()   // ⬅️ از اینجا به بعد LINQ معمولی
-                                            .Select(s => new
-                                            {
-                                                s.Id,
-                                                DisplayText = $"{s.Width} × {s.Length}"
-                                            })
-                                            .ToList();
-
-            lkpSheetId.Properties.DataSource = sheets;
-            lkpSheetId.Properties.DisplayMember = "DisplayText";
-            lkpSheetId.Properties.ValueMember = "Id";
-
-            if (sheets.Any())
-            {
-                lkpSheetId.EditValue = null;
-                //////lkpSheetId.EditValue = sheets.First().Id;
-            }
-        }
 
         private void bbiFormula_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmSheetFormulaEditor frmSheetFormulaEditor = new FrmSheetFormulaEditor();
-            frmSheetFormulaEditor.ShowDialog();
+            //////FrmSheetFormulaEditor frmSheetFormulaEditor = new FrmSheetFormulaEditor();
+            //////frmSheetFormulaEditor.ShowDialog();
 
 
 
@@ -582,42 +410,13 @@ namespace CncApp_Final.Frm
 
         }
 
-        private void btnEditSheetPrice_Click(object sender, EventArgs e)
-        {
-            //// باز کردن Expression Editor
-            //SheetExpressionHelper.ShowExpressionEditor(_sheet, SheetFormulaType.SheetPrice);
-
-            //// محاسبه جدید بعد از تغییر فرمول
-            //var price = SheetExpressionHelper.Evaluate(_sheet, SheetFormulaType.SheetPrice);
-            //if (price.HasValue)
-            //    _sheet.SheetPrice = price.Value;
-
-            //// نمایش به Label یا Grid
-            ////////lblSheetPrice.Text = price?.ToString("N2") ?? "فرمول خالی است";
-        }
-
-        private void btnEditPiecePrice_Click(object sender, EventArgs e)
-        {
-            //SheetExpressionHelper.ShowExpressionEditor(_sheet, SheetFormulaType.PicesPrice);
-            //var piece = SheetExpressionHelper.Evaluate(_sheet, SheetFormulaType.PicesPrice);
-            //if (piece.HasValue)
-            //    _sheet.PicesPrice = piece.Value;
-            //////lblPiecePrice.Text = piece?.ToString("N2") ?? "فرمول خالی است";
-            ///
-
-
-            SheetCalculator.Calculate(_sheet);
-
-        }
-
-
-
+        
 
         #endregion
 
 
-        //**********************************************************************************************************************
-        //**********************************************************************************************************************
+        ////**********************************************************************************************************************
+        ////**********************************************************************************************************************
 
     }
 }

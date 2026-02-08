@@ -355,7 +355,10 @@
             this.ClientSize = new System.Drawing.Size(423, 531);
             this.Controls.Add(this.groupControl1);
             this.Controls.Add(this.mainRibbonControl);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.IconOptions.ShowIcon = false;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FrmReceiptEdit";
             this.Ribbon = this.mainRibbonControl;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;

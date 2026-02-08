@@ -1,7 +1,10 @@
-﻿using DevExpress.Data.Filtering;
+﻿using CncApp_Final.Entities;
+using DevExpress.Data.Filtering;
 using DevExpress.Data.Filtering.Helpers;
 using System;
-using CncApp_Final.Entities;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Reflection;
 
 namespace CncApp_Final.Helper
 {
@@ -41,7 +44,10 @@ namespace CncApp_Final.Helper
         {
             try
             {
-                CriteriaOperator op = CriteriaOperator.Parse(formula);
+                string translatedFormula =
+            TranslateCaptionToFieldName(formula, source.GetType());
+
+                CriteriaOperator op = CriteriaOperator.Parse(translatedFormula);
 
                 // دقیقاً همون روشی که خودت گفتی و در داکیومنت توصیه شده
                 var contextDescriptor = new EvaluatorContextDescriptorDefault(source.GetType());
@@ -64,6 +70,46 @@ namespace CncApp_Final.Helper
                 return default(T);
             }
         }
+
+
+        private static string TranslateCaptionToFieldName(string formula, Type sourceType)
+        {
+            if (string.IsNullOrWhiteSpace(formula))
+                return formula;
+
+            var props = sourceType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+
+            foreach (var prop in props)
+            {
+                string fieldName = prop.Name;
+                string caption = GetPropertyCaption(prop);
+
+                if (string.IsNullOrEmpty(caption))
+                    continue;
+
+                // فقط داخل کروشه Replace می‌کنیم که متن‌های عادی خراب نشوند
+                formula = formula.Replace($"[{caption}]", $"[{fieldName}]");
+            }
+
+            return formula;
+        }
+
+        private static string GetPropertyCaption(PropertyInfo prop)
+        {
+            // 1. DevExpress DisplayName
+            var dxAttr = prop.GetCustomAttribute<DisplayNameAttribute>();
+            if (dxAttr != null && !string.IsNullOrWhiteSpace(dxAttr.DisplayName))
+                return dxAttr.DisplayName;
+
+            // 2. استاندارد .NET
+            var displayAttr = prop.GetCustomAttribute<DisplayAttribute>();
+            if (displayAttr != null && !string.IsNullOrWhiteSpace(displayAttr.Name))
+                return displayAttr.Name;
+
+            // 3. اگر هیچ کپشنی نبود، از اسم خود پراپرتی استفاده نکن
+            return null;
+        }
+
     }
 }
 ////using System;

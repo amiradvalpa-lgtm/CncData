@@ -117,27 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="sheetsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>358, 17</value>
-  </metadata>
-  <metadata name="defaultLookAndFeel1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>192, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>39</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="FrmSheetFormulaEditor.IconOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACV0RVh0VGl0
-        bGUASW5zZXJ0VGFibGVPZkVxdWF0aW9ucztGb3JtdWxhOwvSvgwAAAGESURBVDhPpdLZUQJBFIXhkwKv
-        igq4yyqNgOxLs+NexEIKk4IpkAIpTAqm0Clcz7V6KB7GKikffrrmzFcND0BE/lXseEiYPX1oGRYyYZ9+
-        W/ktMpgutfdwsng3k8UbxvO33QUb5lhAFBJZIke0UjSavcJOX34aTp5Xg/GT64+WtmeXgL/JEbk99EUU
-        EEFRd7hAZzBHuz9DqzdFszsJGp1xWG+NAKINkRAJUUhkiYTIeiS1ppVqY7h9eBxIpd7fmFrPlqs9KVW6
-        FkQgckSOCERrIiEyRCDaFk1HCuV2kL9v2VypiWyxYW7zj3KTq6/hkSNyRCAKiIQoQQQic52tydVdNby8
-        fcDFTQXn1yaRuTKSviwH8MgROSIQrYmEyBCBCKmL+/DsvCTMnmaKOEkXTDJVkGQqv4ZHjsgRwCMhskRQ
-        dHym5eToNLdlCWaZPlvwY+MftJDppmfgT92//BmZ6B0Ux6Xf4Nhqb4vSTd+p+fUCzbDoF+2n2+7i2P/3
-        IcWOhxQ7/j3BN24poeOOx2UiAAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

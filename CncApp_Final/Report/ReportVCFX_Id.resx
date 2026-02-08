@@ -117,27 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="sheetsBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>358, 17</value>
-  </metadata>
-  <metadata name="defaultLookAndFeel1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>192, 17</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>39</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="FrmSheetFormulaEditor.IconOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACV0RVh0VGl0
-        bGUASW5zZXJ0VGFibGVPZkVxdWF0aW9ucztGb3JtdWxhOwvSvgwAAAGESURBVDhPpdLZUQJBFIXhkwKv
-        igq4yyqNgOxLs+NexEIKk4IpkAIpTAqm0Clcz7V6KB7GKikffrrmzFcND0BE/lXseEiYPX1oGRYyYZ9+
-        W/ktMpgutfdwsng3k8UbxvO33QUb5lhAFBJZIke0UjSavcJOX34aTp5Xg/GT64+WtmeXgL/JEbk99EUU
-        EEFRd7hAZzBHuz9DqzdFszsJGp1xWG+NAKINkRAJUUhkiYTIeiS1ppVqY7h9eBxIpd7fmFrPlqs9KVW6
-        FkQgckSOCERrIiEyRCDaFk1HCuV2kL9v2VypiWyxYW7zj3KTq6/hkSNyRCAKiIQoQQQic52tydVdNby8
-        fcDFTQXn1yaRuTKSviwH8MgROSIQrYmEyBCBCKmL+/DsvCTMnmaKOEkXTDJVkGQqv4ZHjsgRwCMhskRQ
-        dHym5eToNLdlCWaZPlvwY+MftJDppmfgT92//BmZ6B0Ux6Xf4Nhqb4vSTd+p+fUCzbDoF+2n2+7i2P/3
-        IcWOhxQ7/j3BN24poeOOx2UiAAAAAElFTkSuQmCC
-</value>
+  <data name="customSqlQuery1.Sql" xml:space="preserve">
+    <value>SELECT        CUSTOMER.C_Name, dbo.MiladiToShamsi(VCFX.VCF_Date) AS VCF_Date, dbo.MiladiToShamsi(VCFX.VCF_RDate) AS VCF_RDate, VCFX.VCF_Time, VCFX.CustomerX, VCFX.VCF_CommentTitr, dbo.MiladiToShamsi(GETDATE()) 
+                         AS Date, CONVERT(char(5), GETDATE(), 108) AS Time, VCFX.VCF_Id, VCFX.VCF_Price
+FROM            CUSTOMER INNER JOIN
+                         VCFX ON CUSTOMER.C_Code = VCFX.C_Code</value>
+  </data>
+  <data name="sqlDataSource1.ResultSchemaSerializable" xml:space="preserve">
+    <value>PERhdGFTZXQgTmFtZT0ic3FsRGF0YVNvdXJjZTEiPjxWaWV3IE5hbWU9IlZDRl9GcmFtZSI+PEZpZWxkIE5hbWU9IkZyYW1lTmFtZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJGcmFtZVNpemUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUHJpY2UiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJDb3VudCIgVHlwZT0iSW50MzIiIC8+PEZpZWxkIE5hbWU9IkFkZHJlc3MiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVW5pdFByaWNlIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iRGlzY291bnRlZFByaWNlIiBUeXBlPSJJbnQzMiIgLz48RmllbGQgTmFtZT0iQ29tbWVudCIgVHlwZT0iU3RyaW5nIiAvPjwvVmlldz48VmlldyBOYW1lPSJWQ0ZfQ29zdCI+PEZpZWxkIE5hbWU9IkNvbW1lbnQiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iUHJpY2UiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJEaXNDb3VudGVkUHJpY2UiIFR5cGU9IkludDMyIiAvPjwvVmlldz48VmlldyBOYW1lPSJWQ0ZYIj48RmllbGQgTmFtZT0iQ19OYW1lIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlZDRl9EYXRlIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IlZDRl9SRGF0ZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJWQ0ZfVGltZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJDdXN0b21lclgiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVkNGX0NvbW1lbnRUaXRyIiBUeXBlPSJTdHJpbmciIC8+PEZpZWxkIE5hbWU9IkRhdGUiIFR5cGU9IlN0cmluZyIgLz48RmllbGQgTmFtZT0iVGltZSIgVHlwZT0iU3RyaW5nIiAvPjxGaWVsZCBOYW1lPSJWQ0ZfSWQiIFR5cGU9IkludDMyIiAvPjxGaWVsZCBOYW1lPSJWQ0ZfUHJpY2UiIFR5cGU9IkRvdWJsZSIgLz48L1ZpZXc+PC9EYXRhU2V0Pg==</value>
   </data>
 </root>

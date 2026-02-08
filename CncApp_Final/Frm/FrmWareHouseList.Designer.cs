@@ -1,6 +1,6 @@
 ﻿namespace CncApp_Final.Frm
 {
-    partial class FrmWareHouse
+    partial class FrmWareHouseList
     {
         /// <summary>
         /// Required designer variable.
@@ -266,7 +266,7 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.StatusBar = this.ribbonStatusBar;
-            this.Load += new System.EventHandler(this.FrmWareHouse_Load);
+            this.Load += new System.EventHandler(this.FrmWareHouseList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.warehousesBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();

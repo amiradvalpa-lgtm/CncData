@@ -37,6 +37,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v25.1.Core, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.CodeParser.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -47,17 +48,25 @@
     <Reference Include="DevExpress.Images.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Office.v25.1.Core, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Pdf.v25.1.Core, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v25.1.Core, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v25.1.Core, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v25.1.Core, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v25.1.Export, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Sparkline.v25.1.Core, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v25.1.UI, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Xpf.ExpressionEditor.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Xpo.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraDialogs.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraEditors.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGauges.v25.1.Core, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraGrid.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraPrinting.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraReports.v25.1.Extensions, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraRichEdit.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraVerticalGrid.v25.1, Version=25.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -104,6 +113,27 @@
     <Compile Include="Entities\SupplierType.cs" />
     <Compile Include="Entities\UserGridLayout.cs" />
     <Compile Include="Entities\Warehouse.cs" />
+    <Compile Include="Frms\Base\BaseEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms\Base\BaseEditFormDesignerSafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms\FrmCustomerEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms\FrmCustomerEdit.Designer.cs">
+      <DependentUpon>FrmCustomerEdit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\Base\BaseEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Base\FrmCustomerEditB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\Base\FrmCustomerEditB.Designer.cs">
+      <DependentUpon>FrmCustomerEditB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frm\FrmCustomerEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,17 +158,11 @@
     <Compile Include="Frm\FrmSheetList.Designer.cs">
       <DependentUpon>FrmSheetList.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm\FrmSheets.cs">
+    <Compile Include="Frm\FrmWareHouseList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm\FrmSheets.Designer.cs">
-      <DependentUpon>FrmSheets.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Frm\FrmWareHouse.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Frm\FrmWareHouse.Designer.cs">
-      <DependentUpon>FrmWareHouse.cs</DependentUpon>
+    <Compile Include="Frm\FrmWareHouseList.Designer.cs">
+      <DependentUpon>FrmWareHouseList.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\FrmWareHouseEdit.cs">
       <SubType>Form</SubType>
@@ -146,11 +170,11 @@
     <Compile Include="Frm\FrmWareHouseEdit.Designer.cs">
       <DependentUpon>FrmWareHouseEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frm\FrmCustomers.cs">
+    <Compile Include="Frm\FrmCustomerList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frm\FrmCustomers.Designer.cs">
-      <DependentUpon>FrmCustomers.cs</DependentUpon>
+    <Compile Include="Frm\FrmCustomerList.Designer.cs">
+      <DependentUpon>FrmCustomerList.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\FrmReceiptEdit.cs">
       <SubType>Form</SubType>
@@ -163,6 +187,18 @@
     </Compile>
     <Compile Include="Frm\FrmReceipts.Designer.cs">
       <DependentUpon>FrmReceipts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\SplashScreen1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\SplashScreen1.Designer.cs">
+      <DependentUpon>SplashScreen1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frm\WaitForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frm\WaitForm1.Designer.cs">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
     </Compile>
     <Compile Include="Helper\AppSettingHelper.cs" />
     <Compile Include="Helper\CalendarHelper.cs" />
@@ -181,11 +217,27 @@
     <Compile Include="Helper\PersianDateTextEdit.Designer.cs">
       <DependentUpon>PersianDateTextEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ReportHelper.cs" />
     <Compile Include="Helper\SetupValidationProvider.cs" />
     <Compile Include="Helper\SheetExpressionHelper.cs" />
     <Compile Include="Helper\TextEditHelper.cs" />
     <Compile Include="Helper\UnboundExpressionPanel.cs" />
     <Compile Include="Models\OrderDetailsCalcModel.cs" />
+    <Compile Include="Report\ReportVCFX_Id.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\ReportVCFX_Id.Designer.cs">
+      <DependentUpon>ReportVCFX_Id.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\XtraReport1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Report\XtraReport1.Designer.cs">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Services\DummyCrudService.cs" />
+    <Compile Include="Services\EfCrudService.cs" />
+    <Compile Include="Services\ICrudService.cs" />
     <Compile Include="TempFrm\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +303,24 @@
     <Compile Include="TempFrm\XtraForm1.Designer.cs">
       <DependentUpon>XtraForm1.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControl\SheetSelector.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\SheetSelector.Designer.cs">
+      <DependentUpon>SheetSelector.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl\SheetDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\SheetDetails.Designer.cs">
+      <DependentUpon>SheetDetails.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Frms\FrmCustomerEdit.resx">
+      <DependentUpon>FrmCustomerEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\Base\FrmCustomerEditB.resx">
+      <DependentUpon>FrmCustomerEditB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmCustomerEdit.resx">
       <DependentUpon>FrmCustomerEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -263,17 +333,14 @@
     <EmbeddedResource Include="Frm\FrmSheetList.resx">
       <DependentUpon>FrmSheetList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmSheets.resx">
-      <DependentUpon>FrmSheets.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmWareHouse.resx">
-      <DependentUpon>FrmWareHouse.cs</DependentUpon>
+    <EmbeddedResource Include="Frm\FrmWareHouseList.resx">
+      <DependentUpon>FrmWareHouseList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmWareHouseEdit.resx">
       <DependentUpon>FrmWareHouseEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frm\FrmCustomers.resx">
-      <DependentUpon>FrmCustomers.cs</DependentUpon>
+    <EmbeddedResource Include="Frm\FrmCustomerList.resx">
+      <DependentUpon>FrmCustomerList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\FrmReceiptEdit.resx">
       <DependentUpon>FrmReceiptEdit.cs</DependentUpon>
@@ -281,8 +348,20 @@
     <EmbeddedResource Include="Frm\FrmReceipts.resx">
       <DependentUpon>FrmReceipts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frm\SplashScreen1.resx">
+      <DependentUpon>SplashScreen1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frm\WaitForm1.resx">
+      <DependentUpon>WaitForm1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Helper\PersianDateTextEdit.resx">
       <DependentUpon>PersianDateTextEdit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\ReportVCFX_Id.resx">
+      <DependentUpon>ReportVCFX_Id.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\XtraReport1.resx">
+      <DependentUpon>XtraReport1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TempFrm\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -328,6 +407,12 @@
       <Link>CncData.db</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="UserControl\SheetSelector.resx">
+      <DependentUpon>SheetSelector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControl\SheetDetails.resx">
+      <DependentUpon>SheetDetails.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
