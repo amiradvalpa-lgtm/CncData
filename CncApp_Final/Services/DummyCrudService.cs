@@ -1,10 +1,11 @@
-﻿using System;
+﻿using CncApp_Final.Entities;
+using CncApp_Final.Services;
+using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CncApp_Final.Entities;
-using CncApp_Final.Services;
 
 namespace CncApp_Final.Services
 {
@@ -42,6 +43,8 @@ namespace CncApp_Final.Services
         {
             // کاری انجام نمی‌دهد
         }
+
+        public DbContext Context => null;   // ⭐ پیاده‌سازی پراپرتی جدید
     }
 
 }

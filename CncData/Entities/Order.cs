@@ -47,7 +47,11 @@ namespace CncData.Entities
         [DisplayName("تخفیف")]
         [Description("هتخفیف فاکتور")]
         public double Discount { get; set; }
-        
+
+        [DisplayName("مسیر فایل")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = " {0} را مشخص کنید.")]
+        [Description("مسیر فایل مربوط به این جزئیات سفارش")]
+        public string FilePath { get; set; }
 
         [DisplayName("توضیحات")]
         [Description("توضیحات اضافی سفارش")]

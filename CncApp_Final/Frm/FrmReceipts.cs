@@ -1,5 +1,11 @@
 ﻿using CncApp_Final.Frm;
 using CncApp_Final.Helpers;
+using CncApp_Final.Services;
+using CncApp_Final.Data;
+using CncApp_Final.Entities;
+using CncApp_Final.Frm.Base;
+using CncApp_Final.Frms.Base;
+
 using CncApp_Final.TempFrm;
 using DevExpress.XtraEditors;
 using DevExpress.XtraGrid.Views.Grid;
@@ -45,15 +51,35 @@ namespace CncApp_Final.Frm
 
         private void bbiNewReceipt_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            FrmReceiptEdit frmReceiptEdit = new FrmReceiptEdit(0, false, ReLoadList);
-            frmReceiptEdit.ShowDialog();
+            //FrmReceiptEdit frmReceiptEdit = new FrmReceiptEdit(0, false, ReLoadList);
+            //frmReceiptEdit.ShowDialog();
+
+            var service = new EfCrudService<Receipt>(new AppDbContext());
+            var frm = new Frms.EditForms.FrmReceiptEdit(0, false, service);
+            frm.ChangesSaved += (s, args) =>
+            {
+                ReLoadList(args.RecordId);
+            };
+            frm.ShowDialog();
+
+
         }
 
         private void bbiEditReceipt_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            //int receipt_Id = (int)gridView.GetFocusedRowCellValue(colId);
+            //FrmReceiptEdit frmReceiptEdit = new FrmReceiptEdit(receipt_Id, false, ReLoadList);
+            //frmReceiptEdit.ShowDialog();
+
+
             int receipt_Id = (int)gridView.GetFocusedRowCellValue(colId);
-            FrmReceiptEdit frmReceiptEdit = new FrmReceiptEdit(receipt_Id, false, ReLoadList);
-            frmReceiptEdit.ShowDialog();
+            var service = new EfCrudService<Receipt>(new AppDbContext());
+            var frm = new Frms.EditForms.FrmReceiptEdit(receipt_Id, false, service);
+            frm.ChangesSaved += (s, args) =>
+            {
+                ReLoadList(receipt_Id);
+            };
+            frm.ShowDialog();
         }
 
         //***********************************************************************************************************************************

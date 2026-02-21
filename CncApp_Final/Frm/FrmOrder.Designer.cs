@@ -43,6 +43,7 @@ namespace CncApp_Final.Frm
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule conditionValidationRule1 = new DevExpress.XtraEditors.DXErrorProvider.ConditionValidationRule();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
@@ -113,6 +114,11 @@ namespace CncApp_Final.Frm
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject62 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject63 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject64 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions17 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject65 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject66 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject67 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject68 = new DevExpress.Utils.SerializableAppearanceObject();
             this.rpsBtnDeleteRow = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.lueCustomer = new DevExpress.XtraEditors.LookUpEdit();
             this.orderBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -128,8 +134,11 @@ namespace CncApp_Final.Frm
             this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
             this.behaviorManager1 = new DevExpress.Utils.Behaviors.BehaviorManager(this.components);
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
+            this.btnOpenFile = new DevExpress.XtraEditors.ButtonEdit();
             this.txbFaDeliveryDate = new CncApp_Final.Helper.PersianDateTextEdit();
+            this.label8 = new System.Windows.Forms.Label();
             this.txbFaOrderDate = new CncApp_Final.Helper.PersianDateTextEdit();
+            this.btnImportFromCorel = new DevExpress.XtraEditors.SimpleButton();
             this.btnNewDetail = new DevExpress.XtraEditors.SimpleButton();
             this.groupControl2 = new DevExpress.XtraEditors.GroupControl();
             this.txbTotalAmount = new DevExpress.XtraEditors.TextEdit();
@@ -145,8 +154,8 @@ namespace CncApp_Final.Frm
             this.label10 = new System.Windows.Forms.Label();
             this.txbTotalCncCost = new DevExpress.XtraEditors.TextEdit();
             this.label12 = new System.Windows.Forms.Label();
-            this.txbDescription = new DevExpress.XtraEditors.MemoEdit();
             this.label2 = new System.Windows.Forms.Label();
+            this.txbDescription = new DevExpress.XtraEditors.TextEdit();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiSave = new DevExpress.XtraBars.BarButtonItem();
             this.bbiDelete = new DevExpress.XtraBars.BarButtonItem();
@@ -217,6 +226,7 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.behaviorManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOpenFile.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).BeginInit();
             this.groupControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txbTotalAmount.Properties)).BeginInit();
@@ -310,7 +320,7 @@ namespace CncApp_Final.Frm
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label3.Location = new System.Drawing.Point(656, 112);
+            this.label3.Location = new System.Drawing.Point(483, 71);
             this.label3.Name = "label3";
             this.label3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label3.Size = new System.Drawing.Size(61, 13);
@@ -398,7 +408,7 @@ namespace CncApp_Final.Frm
             this.btnNewCustomer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewCustomer.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNewCustomer.ImageOptions.Image")));
             this.btnNewCustomer.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
-            this.btnNewCustomer.Location = new System.Drawing.Point(387, 15);
+            this.btnNewCustomer.Location = new System.Drawing.Point(378, 15);
             this.btnNewCustomer.Name = "btnNewCustomer";
             this.btnNewCustomer.Size = new System.Drawing.Size(38, 36);
             this.btnNewCustomer.TabIndex = 16;
@@ -441,25 +451,49 @@ namespace CncApp_Final.Frm
             // 
             this.groupControl4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupControl4.Controls.Add(this.btnOpenFile);
             this.groupControl4.Controls.Add(this.txbFaDeliveryDate);
+            this.groupControl4.Controls.Add(this.label8);
             this.groupControl4.Controls.Add(this.txbFaOrderDate);
+            this.groupControl4.Controls.Add(this.btnImportFromCorel);
             this.groupControl4.Controls.Add(this.btnNewDetail);
             this.groupControl4.Controls.Add(this.groupControl2);
             this.groupControl4.Controls.Add(this.groupControl1);
-            this.groupControl4.Controls.Add(this.txbDescription);
             this.groupControl4.Controls.Add(this.lueCustomer);
             this.groupControl4.Controls.Add(this.label1);
             this.groupControl4.Controls.Add(this.btnNewCustomer);
             this.groupControl4.Controls.Add(this.label2);
             this.groupControl4.Controls.Add(this.label3);
             this.groupControl4.Controls.Add(this.label4);
+            this.groupControl4.Controls.Add(this.txbDescription);
             this.groupControl4.Location = new System.Drawing.Point(14, 196);
             this.groupControl4.Name = "groupControl4";
             this.groupControl4.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.groupControl4.ShowCaption = false;
-            this.groupControl4.Size = new System.Drawing.Size(730, 282);
+            this.groupControl4.Size = new System.Drawing.Size(730, 290);
             this.groupControl4.TabIndex = 26;
             this.groupControl4.Text = "groupControl4";
+            // 
+            // btnOpenFile
+            // 
+            this.btnOpenFile.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "FilePath", true));
+            this.btnOpenFile.Location = new System.Drawing.Point(378, 180);
+            this.btnOpenFile.MinimumSize = new System.Drawing.Size(60, 36);
+            this.btnOpenFile.Name = "btnOpenFile";
+            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions2.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            editorButtonImageOptions2.ImageToTextIndent = 5;
+            this.btnOpenFile.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            this.btnOpenFile.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.btnOpenFile.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnOpenFile_Properties_ButtonClick);
+            this.btnOpenFile.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.btnOpenFile.Size = new System.Drawing.Size(272, 28);
+            this.btnOpenFile.TabIndex = 30;
+            conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
+            conditionValidationRule1.ErrorText = "فایل مربوطه را انتخاب کنید";
+            this.dxValidationProvider1.SetValidationRule(this.btnOpenFile, conditionValidationRule1);
+            this.btnOpenFile.CustomDisplayText += new DevExpress.XtraEditors.Controls.CustomDisplayTextEventHandler(this.btnOpenFile_CustomDisplayText);
             // 
             // txbFaDeliveryDate
             // 
@@ -467,13 +501,25 @@ namespace CncApp_Final.Frm
             this.txbFaDeliveryDate.Appearance.Options.UseFont = true;
             this.txbFaDeliveryDate.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "DeliveryDate", true));
             this.txbFaDeliveryDate.EditValue = null;
-            this.txbFaDeliveryDate.Location = new System.Drawing.Point(551, 100);
+            this.txbFaDeliveryDate.Location = new System.Drawing.Point(378, 59);
             this.txbFaDeliveryDate.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txbFaDeliveryDate.Name = "txbFaDeliveryDate";
             this.txbFaDeliveryDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.txbFaDeliveryDate.Size = new System.Drawing.Size(98, 36);
             this.txbFaDeliveryDate.TabIndex = 23;
             this.txbFaDeliveryDate.TabStop = false;
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
+            this.label8.Location = new System.Drawing.Point(656, 190);
+            this.label8.Name = "label8";
+            this.label8.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label8.Size = new System.Drawing.Size(54, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "فایل کورل:";
             // 
             // txbFaOrderDate
             // 
@@ -488,15 +534,28 @@ namespace CncApp_Final.Frm
             this.txbFaOrderDate.Size = new System.Drawing.Size(98, 36);
             this.txbFaOrderDate.TabIndex = 1;
             // 
+            // btnImportFromCorel
+            // 
+            this.btnImportFromCorel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnImportFromCorel.ImageOptions.Image")));
+            this.btnImportFromCorel.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnImportFromCorel.ImageOptions.ImageToTextIndent = 3;
+            this.btnImportFromCorel.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
+            this.btnImportFromCorel.Location = new System.Drawing.Point(378, 222);
+            this.btnImportFromCorel.Name = "btnImportFromCorel";
+            this.btnImportFromCorel.Size = new System.Drawing.Size(109, 59);
+            this.btnImportFromCorel.TabIndex = 3;
+            this.btnImportFromCorel.Text = "افزودن لیست از کورل";
+            this.btnImportFromCorel.Click += new System.EventHandler(this.btnImportFromCorel_Click);
+            // 
             // btnNewDetail
             // 
             this.btnNewDetail.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNewDetail.ImageOptions.Image")));
-            this.btnNewDetail.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
-            this.btnNewDetail.ImageOptions.ImageToTextIndent = 10;
+            this.btnNewDetail.ImageOptions.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.TopCenter;
+            this.btnNewDetail.ImageOptions.ImageToTextIndent = 3;
             this.btnNewDetail.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleRight;
-            this.btnNewDetail.Location = new System.Drawing.Point(387, 213);
+            this.btnNewDetail.Location = new System.Drawing.Point(541, 222);
             this.btnNewDetail.Name = "btnNewDetail";
-            this.btnNewDetail.Size = new System.Drawing.Size(263, 64);
+            this.btnNewDetail.Size = new System.Drawing.Size(109, 59);
             this.btnNewDetail.TabIndex = 3;
             this.btnNewDetail.Text = "افزودن ردیف جدید";
             this.btnNewDetail.Click += new System.EventHandler(this.btnNewDetail_Click);
@@ -505,7 +564,7 @@ namespace CncApp_Final.Frm
             // 
             this.groupControl2.Controls.Add(this.txbTotalAmount);
             this.groupControl2.Controls.Add(this.label13);
-            this.groupControl2.Location = new System.Drawing.Point(35, 227);
+            this.groupControl2.Location = new System.Drawing.Point(35, 234);
             this.groupControl2.Name = "groupControl2";
             this.groupControl2.ShowCaption = false;
             this.groupControl2.Size = new System.Drawing.Size(298, 47);
@@ -718,29 +777,29 @@ namespace CncApp_Final.Frm
             this.label12.TabIndex = 3;
             this.label12.Text = "تخفیف:";
             // 
-            // txbDescription
-            // 
-            this.txbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txbDescription.Location = new System.Drawing.Point(387, 141);
-            this.txbDescription.Name = "txbDescription";
-            this.txbDescription.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
-            this.txbDescription.Properties.Appearance.Options.UseFont = true;
-            this.txbDescription.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txbDescription.Size = new System.Drawing.Size(263, 51);
-            this.txbDescription.TabIndex = 2;
-            this.txbDescription.TabStop = false;
-            // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(178)));
-            this.label2.Location = new System.Drawing.Point(656, 148);
+            this.label2.Location = new System.Drawing.Point(656, 118);
             this.label2.Name = "label2";
             this.label2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 3;
             this.label2.Text = "توضیحات :";
+            // 
+            // txbDescription
+            // 
+            this.txbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDescription.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.orderBindingSource, "Description", true));
+            this.txbDescription.Location = new System.Drawing.Point(378, 103);
+            this.txbDescription.Name = "txbDescription";
+            this.txbDescription.Properties.Appearance.Font = new System.Drawing.Font("IRANSans", 9.75F);
+            this.txbDescription.Properties.Appearance.Options.UseFont = true;
+            this.txbDescription.Size = new System.Drawing.Size(272, 36);
+            this.txbDescription.TabIndex = 2;
+            this.txbDescription.TabStop = false;
             // 
             // ribbonControl1
             // 
@@ -950,7 +1009,7 @@ namespace CncApp_Final.Frm
             // 
             // ribbonStatusBar1
             // 
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 619);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 643);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
             this.ribbonStatusBar1.Size = new System.Drawing.Size(761, 37);
@@ -961,7 +1020,7 @@ namespace CncApp_Final.Frm
             this.groupControl7.Controls.Add(this.gridControl);
             this.groupControl7.Controls.Add(this.txbSumNetPrice);
             this.groupControl7.Controls.Add(this.label7);
-            this.groupControl7.Location = new System.Drawing.Point(14, 484);
+            this.groupControl7.Location = new System.Drawing.Point(14, 500);
             this.groupControl7.Name = "groupControl7";
             this.groupControl7.ShowCaption = false;
             this.groupControl7.Size = new System.Drawing.Size(732, 161);
@@ -1142,9 +1201,9 @@ namespace CncApp_Final.Frm
             // rpsBtnOpenFolder
             // 
             this.rpsBtnOpenFolder.AutoHeight = false;
-            editorButtonImageOptions2.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions2.Image")));
+            editorButtonImageOptions3.Image = ((System.Drawing.Image)(resources.GetObject("editorButtonImageOptions3.Image")));
             this.rpsBtnOpenFolder.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "Open", -1, true, true, false, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.rpsBtnOpenFolder.Name = "rpsBtnOpenFolder";
             this.rpsBtnOpenFolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
@@ -1211,10 +1270,10 @@ namespace CncApp_Final.Frm
             this.repositoryItemRibbonSearchEdit1.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit1.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions3.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions4.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit1.Name = "repositoryItemRibbonSearchEdit1";
             this.repositoryItemRibbonSearchEdit1.NullText = "Search";
             // 
@@ -1223,10 +1282,10 @@ namespace CncApp_Final.Frm
             this.repositoryItemRibbonSearchEdit2.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit2.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions5.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions6.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions5, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject17, serializableAppearanceObject18, serializableAppearanceObject19, serializableAppearanceObject20, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions6, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject21, serializableAppearanceObject22, serializableAppearanceObject23, serializableAppearanceObject24, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit2.Name = "repositoryItemRibbonSearchEdit2";
             this.repositoryItemRibbonSearchEdit2.NullText = "Search";
             // 
@@ -1235,10 +1294,10 @@ namespace CncApp_Final.Frm
             this.repositoryItemRibbonSearchEdit3.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit3.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit3.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions7.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions8.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit3.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions7, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject25, serializableAppearanceObject26, serializableAppearanceObject27, serializableAppearanceObject28, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions8, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject29, serializableAppearanceObject30, serializableAppearanceObject31, serializableAppearanceObject32, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions8, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject29, serializableAppearanceObject30, serializableAppearanceObject31, serializableAppearanceObject32, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions9, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject33, serializableAppearanceObject34, serializableAppearanceObject35, serializableAppearanceObject36, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit3.Name = "repositoryItemRibbonSearchEdit3";
             this.repositoryItemRibbonSearchEdit3.NullText = "Search";
             // 
@@ -1253,10 +1312,10 @@ namespace CncApp_Final.Frm
             this.repositoryItemRibbonSearchEdit4.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit4.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit4.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions9.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions10.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit4.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions9, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject33, serializableAppearanceObject34, serializableAppearanceObject35, serializableAppearanceObject36, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions10, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject37, serializableAppearanceObject38, serializableAppearanceObject39, serializableAppearanceObject40, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions10, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject37, serializableAppearanceObject38, serializableAppearanceObject39, serializableAppearanceObject40, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions11, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject41, serializableAppearanceObject42, serializableAppearanceObject43, serializableAppearanceObject44, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit4.Name = "repositoryItemRibbonSearchEdit4";
             this.repositoryItemRibbonSearchEdit4.NullText = "Search";
             // 
@@ -1265,10 +1324,10 @@ namespace CncApp_Final.Frm
             this.repositoryItemRibbonSearchEdit5.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit5.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit5.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions11.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions12.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit5.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions11, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject41, serializableAppearanceObject42, serializableAppearanceObject43, serializableAppearanceObject44, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions12, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject45, serializableAppearanceObject46, serializableAppearanceObject47, serializableAppearanceObject48, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions12, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject45, serializableAppearanceObject46, serializableAppearanceObject47, serializableAppearanceObject48, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions13, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject49, serializableAppearanceObject50, serializableAppearanceObject51, serializableAppearanceObject52, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit5.Name = "repositoryItemRibbonSearchEdit5";
             this.repositoryItemRibbonSearchEdit5.NullText = "Search";
             // 
@@ -1281,10 +1340,10 @@ namespace CncApp_Final.Frm
             this.repositoryItemRibbonSearchEdit6.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit6.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit6.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions13.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions14.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit6.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions13, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject49, serializableAppearanceObject50, serializableAppearanceObject51, serializableAppearanceObject52, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions14, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject53, serializableAppearanceObject54, serializableAppearanceObject55, serializableAppearanceObject56, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions14, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject53, serializableAppearanceObject54, serializableAppearanceObject55, serializableAppearanceObject56, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions15, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject57, serializableAppearanceObject58, serializableAppearanceObject59, serializableAppearanceObject60, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit6.Name = "repositoryItemRibbonSearchEdit6";
             this.repositoryItemRibbonSearchEdit6.NullText = "Search";
             // 
@@ -1293,10 +1352,10 @@ namespace CncApp_Final.Frm
             this.repositoryItemRibbonSearchEdit7.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit7.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit7.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions15.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions16.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit7.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions15, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject57, serializableAppearanceObject58, serializableAppearanceObject59, serializableAppearanceObject60, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions16, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject61, serializableAppearanceObject62, serializableAppearanceObject63, serializableAppearanceObject64, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions16, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject61, serializableAppearanceObject62, serializableAppearanceObject63, serializableAppearanceObject64, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions17, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject65, serializableAppearanceObject66, serializableAppearanceObject67, serializableAppearanceObject68, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit7.Name = "repositoryItemRibbonSearchEdit7";
             this.repositoryItemRibbonSearchEdit7.NullText = "Search";
             // 
@@ -1313,7 +1372,7 @@ namespace CncApp_Final.Frm
             this.AllowFormGlass = DevExpress.Utils.DefaultBoolean.True;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(761, 656);
+            this.ClientSize = new System.Drawing.Size(761, 680);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.groupControl4);
             this.Controls.Add(this.groupControl7);
@@ -1341,6 +1400,7 @@ namespace CncApp_Final.Frm
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnOpenFile.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl2)).EndInit();
             this.groupControl2.ResumeLayout(false);
             this.groupControl2.PerformLayout();
@@ -1422,7 +1482,6 @@ namespace CncApp_Final.Frm
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private DevExpress.XtraBars.SkinRibbonGalleryBarItem skinRibbonGalleryBarItem1;
         private DevExpress.XtraBars.BarButtonItem bbiSaveClose;
-        private DevExpress.XtraEditors.MemoEdit txbDescription;
         private System.Windows.Forms.Label label2;
         private DevExpress.XtraBars.Ribbon.Internal.RepositoryItemRibbonSearchEdit repositoryItemRibbonSearchEdit6;
         private DevExpress.XtraBars.Ribbon.Internal.RepositoryItemRibbonSearchEdit repositoryItemRibbonSearchEdit7;
@@ -1475,5 +1534,9 @@ namespace CncApp_Final.Frm
         private Helper.PersianDateTextEdit txbFaDeliveryDate;
         private Helper.PersianDateTextEdit txbFaOrderDate;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+        private DevExpress.XtraEditors.SimpleButton btnImportFromCorel;
+        private Label label8;
+        private DevExpress.XtraEditors.ButtonEdit btnOpenFile;
+        private DevExpress.XtraEditors.TextEdit txbDescription;
     }
 }

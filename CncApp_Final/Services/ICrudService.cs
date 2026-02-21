@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,5 +16,7 @@ namespace CncApp_Final.Services
         bool HasChanges();
         void SaveChanges();
         void Reload(T entity);
+
+        DbContext Context { get; }   // ⭐ این خط اضافه شود
     }
 }

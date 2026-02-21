@@ -30,7 +30,7 @@ namespace CncApp_Final.Entities
         [DisplayName("مسیر فایل")]
         [Required(AllowEmptyStrings = false, ErrorMessage = " {0} را مشخص کنید.")]
         [Description("مسیر فایل مربوط به این جزئیات سفارش")]
-        public string FilePath { get; set; }
+        public string FilePath { get; set; } = "+" ;
 
         [DisplayName("شناسه ورق")]
         [Description("ورق انتخاب شده برای این جزئیات")]
@@ -92,6 +92,9 @@ namespace CncApp_Final.Entities
         // (این بخش بدون تغییر باقی می‌ماند)
 
         [NotMapped]
+        public bool IsCncCostEdited { get; set; } = false;
+
+        [NotMapped]
         [DisplayName("مشخصات ورق")]
         public string SheetDetails => Sheet != null
             ? $"{Sheet.Material} {Sheet.Thickness}mm {Sheet.Width}*{Sheet.Length}"
@@ -147,9 +150,21 @@ namespace CncApp_Final.Entities
         //    ? $"{Sheet.Material} {Sheet.Thickness}mm {Sheet.Width}*{Sheet.Length}  ا  {SheetCount} عدد"
         //    : "ورق انتخاب نشده";
 
-
-
         [NotMapped]
+        [DisplayName("تعداد")]
+        public string DisplaySheetCount
+        {
+            get
+            {
+                if (SheetCount > 0)
+                    return $"{SheetCount} عدد";
+                else
+                    return $"1 عدد";
+            }
+        }
+
+
+            [NotMapped]
         [DisplayName("مشخصات ورق برشی")]
         public string CutSheetDetails
         {
@@ -158,23 +173,23 @@ namespace CncApp_Final.Entities
                 if (Sheet == null)
                     return "ورق انتخاب نشده";
 
-                var baseInfo = $"{Sheet.Material} {Sheet.Thickness}mm";
+                var baseInfo = $"{Sheet.Material}_{Sheet.Thickness}mm";
 
                 bool hasSheetCount = SheetCount > 0;
                 bool hasCutSize = (CutWidth > 0 && CutLength > 0);
 
                 // فقط SheetCount
                 if (hasSheetCount && !hasCutSize)
-                    return $"{baseInfo} {Sheet.Width}*{Sheet.Length} - {SheetCount} pcs";
+                    return $"{baseInfo}   {Sheet.Width}*{Sheet.Length} Cm";
 
                 // فقط Cut Size
                 if (!hasSheetCount && hasCutSize)
-                    return $"{baseInfo} {CutWidth}*{CutLength} Cm";
+                    return $"{baseInfo}   {CutWidth:n0}*{CutLength:n0} Cm";
 
                 // هر دو برقرار → دو خط
                 if (hasSheetCount && hasCutSize)
                 {
-                    string line1 = $"{baseInfo} {Sheet.Width}*{Sheet.Length} - {SheetCount} pcs";
+                    string line1 = $"{baseInfo} {Sheet.Width}*{Sheet.Length}";
                     string line2 = $"{baseInfo} {CutWidth}*{CutLength} Cm";
                     return line1 + Environment.NewLine + line2;
                 }

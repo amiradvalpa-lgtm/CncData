@@ -2,6 +2,7 @@
 using CncApp_Final.Data;
 using CncApp_Final.Entities;
 using CncApp_Final.Frm;
+using CncApp_Final.Frms;
 using CncApp_Final.Helper; // فرض می‌کنیم این فضای نام برای کلاس‌های کمکی است.
 using CncApp_Final.Helpers;
 using DevExpress.Utils;
@@ -15,8 +16,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -30,6 +34,8 @@ namespace CncApp_Final.Frm
 {
     public partial class FrmOrder : DevExpress.XtraBars.Ribbon.RibbonForm
     {
+
+        public VGCore.Document SelectedDocument;
 
         // خصوصیات برای نگهداری شناسه و وضعیت سفارش
         public int _Order_Id { get; private set; } = 0; // 0 for new order
@@ -407,6 +413,28 @@ namespace CncApp_Final.Frm
             // 4. SaveChanges - تراکنش نهایی
             try
             {
+                var changedSheets = _dbContext.ChangeTracker.Entries()
+    .Where(e => e.State == EntityState.Added && e.Entity.GetType().Name.Contains("Sheet"))
+    .ToList();
+
+                var changedSheets1 = _dbContext.ChangeTracker.Entries();
+                if (changedSheets.Any())
+                {
+                    foreach (var entry in changedSheets)
+                    {
+                        var props = entry.CurrentValues.PropertyNames
+                            .Where(p => entry.Property(p).IsModified)
+                            .ToList();
+
+                        string msg = $"Sheet تغییر کرده در فیلدهای: {string.Join(", ", props)}";
+                        MessageBox.Show(msg);
+                        // اینجا لاگ کن یا MessageBox بزن
+                    }
+                }
+
+
+
+
                 _dbContext.SaveChanges();
 
                 _Save_SuccesFull = true;
@@ -419,13 +447,27 @@ namespace CncApp_Final.Frm
                     ribbonControl1.ApplicationCaption = "ویرایش سفارش";
                     // مطمئن شوید که txbVCF_Id (شماره فاکتور) هم به‌روز شده است
                 }
+
+                SaveDocumentToResources(SelectedDocument, currentOrder.FilePath);
                 return true;
             }
-            // مدیریت خطاهای اعتبارسنجی
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
+            catch (DbEntityValidationException dbEx)
             {
-                // ... (منطق نمایش خطای DbEntityValidationException)
-                XtraMessageBox.Show("خطای اعتبارسنجی در Entity Framework. جزئیات را چک کنید.", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                var sb = new StringBuilder("خطاهای اعتبارسنجی:\n\n");
+
+                foreach (var eve in dbEx.EntityValidationErrors)
+                {
+                    string entityName = eve.Entry.Entity.GetType().Name;
+                    sb.AppendLine($"→ موجودیت: {entityName} (وضعیت: {eve.Entry.State})");
+
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        sb.AppendLine($"   • {ve.PropertyName,-20} : {ve.ErrorMessage}");
+                    }
+                    sb.AppendLine();
+                }
+
+                XtraMessageBox.Show(sb.ToString(), "خطای اعتبارسنجی", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             catch (Exception ex)
@@ -634,6 +676,110 @@ namespace CncApp_Final.Frm
         private void grdvOrderDetails_CustomColumnDisplayText(object sender, DevExpress.XtraGrid.Views.Base.CustomColumnDisplayTextEventArgs e)
         {
 
+        }
+
+        private void btnImportFromCorel_Click(object sender, EventArgs e)
+        {
+            FrmCorelDataImporter frmCorelDataImporter = new FrmCorelDataImporter(_dbContext);
+            frmCorelDataImporter.ShowDialog();
+
+            Order currentOrder = orderBindingSource.Current as Order;
+            foreach (var detail in frmCorelDataImporter._orderDetails)
+            {
+                // مهم: اگر OrderDetails جدید است، حتماً OrderId را ست کنید
+                if (detail.OrderId == 0)   // یا هر شرطی که نشان‌دهنده جدید بودن است
+                {
+                    detail.OrderId = currentOrder.Id;
+                }
+                currentOrder.OrderDetails.Add(detail);
+            }
+
+            currentOrder.FilePath = GetCorelFileFullPath(frmCorelDataImporter.SelectedDocument.FileName, currentOrder.CustomerId);
+            SelectedDocument = frmCorelDataImporter.SelectedDocument;
+            orderDetailsBindingSource.ResetBindings(false);
+            orderBindingSource.ResetBindings(false);
+        }
+
+        private void btnOpenFile_CustomDisplayText(object sender, DevExpress.XtraEditors.Controls.CustomDisplayTextEventArgs e)
+        {
+            if (e.Value == null)
+            {
+                e.DisplayText = string.Empty;
+                return;
+            }
+
+            var value = e.Value.ToString();
+
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                e.DisplayText = string.Empty;
+                return;
+            }
+
+            e.DisplayText = Path.GetFileName(value);
+        }
+
+        /// =================
+        /// ذخیره سند کورل در پوشه Resources\CorelFiles با نام یکتا
+        /// فایل با فرمت CDR ذخیره می‌شود
+        /// =================
+        /// <param name="selectedDocument">سند کورل برای ذخیره</param>
+        /// <returns>مسیر کامل فایل ذخیره شده</returns>
+        /// <exception cref="InvalidOperationException">اگر سند null باشد</exception>
+        /// <exception cref="Exception">اگر ذخیره‌سازی با خطا مواجه شود</exception>
+        public static string SaveDocumentToResources(VGCore.Document selectedDocument, string fullPath)
+        {
+            if (selectedDocument == null)
+                throw new InvalidOperationException("سند کورل معتبر نیست.");
+            
+            try
+            {
+                // ساخت تنظیمات ذخیره‌سازی
+                var opt = new VGCore.StructSaveAsOptions();
+                opt.Version = VGCore.cdrFileVersion.cdrVersion17;     // ورژن 17 = CorelDRAW X7
+                opt.Overwrite = true;   // بازنویسی فایل در صورت وجود
+                opt.EmbedICCProfile = false; // بدون پروفایل رنگی
+                opt.EmbedVBAProject = false; // بدون پروژه VBA
+                opt.IncludeCMXData = false; // بدون داده CMX
+                opt.Range = VGCore.cdrExportRange.cdrAllPages;
+
+                selectedDocument.SaveAs(fullPath, opt);
+                return fullPath;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("خطا در ذخیره فایل کورل:\n" + ex.Message, ex);
+            }
+
+
+        }
+
+        private static string GetCorelFileFullPath(string DocName , int UserId)
+        {
+            // مسیر bin\Debug یا bin\Release
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            // مسیر نهایی: Resources\CorelFiles
+            string targetFolder = Path.Combine(basePath, "Resources", "CorelFiles", $"User{UserId}");
+
+            // اگر فولدر وجود نداشت بساز
+            if (!Directory.Exists(targetFolder))
+                Directory.CreateDirectory(targetFolder);
+
+            string fullPath = Path.Combine(targetFolder, DocName);
+            return fullPath;
+        }
+
+        private void btnOpenFile_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            string filePath = btnOpenFile.EditValue.ToString();
+            if (string.IsNullOrWhiteSpace(filePath))
+                throw new ArgumentException("File path is empty.");
+
+            if (!File.Exists(filePath))
+                throw new FileNotFoundException("File not found.", filePath);
+
+            Process.Start("explorer.exe", $"/select,\"{filePath}\"");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace CncApp_Final.Frm
+﻿namespace CncApp_Final.Frms.EditForms
 {
     partial class FrmSheetEdit
     {
@@ -72,6 +72,7 @@
             this.memoEdit1 = new DevExpress.XtraEditors.MemoEdit();
             this.groupControl4 = new DevExpress.XtraEditors.GroupControl();
             this.sheetDetails = new CncApp_Final.UserControl.SheetDetails();
+            this.dxValidationProvider1 = new DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SheetBasePriceTextEdit.Properties)).BeginInit();
@@ -91,6 +92,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.memoEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).BeginInit();
             this.groupControl4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // mainRibbonControl
@@ -120,7 +122,6 @@
             this.bbiSave.Id = 2;
             this.bbiSave.ImageOptions.ImageUri.Uri = "Save";
             this.bbiSave.Name = "bbiSave";
-            this.bbiSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSave_ItemClick);
             // 
             // bbiSaveAndClose
             // 
@@ -128,7 +129,6 @@
             this.bbiSaveAndClose.Id = 3;
             this.bbiSaveAndClose.ImageOptions.ImageUri.Uri = "SaveAndClose";
             this.bbiSaveAndClose.Name = "bbiSaveAndClose";
-            this.bbiSaveAndClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveAndClose_ItemClick);
             // 
             // bbiSaveAndNew
             // 
@@ -136,7 +136,6 @@
             this.bbiSaveAndNew.Id = 4;
             this.bbiSaveAndNew.ImageOptions.ImageUri.Uri = "SaveAndNew";
             this.bbiSaveAndNew.Name = "bbiSaveAndNew";
-            this.bbiSaveAndNew.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSaveAndNew_ItemClick);
             // 
             // bbiReset
             // 
@@ -144,7 +143,6 @@
             this.bbiReset.Id = 5;
             this.bbiReset.ImageOptions.ImageUri.Uri = "Reset";
             this.bbiReset.Name = "bbiReset";
-            this.bbiReset.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReset_ItemClick);
             // 
             // bbiDelete
             // 
@@ -152,7 +150,6 @@
             this.bbiDelete.Id = 6;
             this.bbiDelete.ImageOptions.ImageUri.Uri = "Delete";
             this.bbiDelete.Name = "bbiDelete";
-            this.bbiDelete.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiDelete_ItemClick);
             // 
             // bbiClose
             // 
@@ -160,7 +157,6 @@
             this.bbiClose.Id = 7;
             this.bbiClose.ImageOptions.ImageUri.Uri = "Close";
             this.bbiClose.Name = "bbiClose";
-            this.bbiClose.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiClose_ItemClick);
             // 
             // mainRibbonPage
             // 
@@ -537,7 +533,6 @@
             this.Ribbon = this.mainRibbonControl;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Load += new System.EventHandler(this.FrmSheetEdit_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.sheetsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SheetBasePriceTextEdit.Properties)).EndInit();
@@ -561,6 +556,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl4)).EndInit();
             this.groupControl4.ResumeLayout(false);
             this.groupControl4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dxValidationProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -599,5 +595,6 @@
         private DevExpress.XtraEditors.GroupControl groupControl4;
         private System.Windows.Forms.BindingSource sheetsBindingSource;
         private UserControl.SheetDetails sheetDetails;
+        private DevExpress.XtraEditors.DXErrorProvider.DXValidationProvider dxValidationProvider1;
     }
 }

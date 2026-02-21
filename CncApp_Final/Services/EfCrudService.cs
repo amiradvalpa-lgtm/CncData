@@ -11,6 +11,8 @@ namespace CncApp_Final.Services
         private readonly AppDbContext _dbContext;
         private readonly DbSet<T> _dbSet;
 
+        public DbContext Context => _dbContext;   // ⭐ پیاده‌سازی پراپرتی جدید
+
         public EfCrudService(AppDbContext dbContext)
         {
             _dbContext = dbContext;

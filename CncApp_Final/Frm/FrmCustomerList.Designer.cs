@@ -73,6 +73,7 @@
             this.rpsBtnOpenFolder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
             this.label7 = new System.Windows.Forms.Label();
+            this.colBalanceType = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
             this.groupControl7.SuspendLayout();
@@ -267,7 +268,8 @@
             this.colDisplayBalance,
             this.colBalanceStatus,
             this.colOrders,
-            this.colReceipts});
+            this.colReceipts,
+            this.colBalanceType});
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
             gridFormatRule1.Column = this.colBalanceStatus;
             gridFormatRule1.Enabled = false;
@@ -285,7 +287,8 @@
             formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
             formatConditionRuleValue2.Value1 = "بستانکار";
             gridFormatRule2.Rule = formatConditionRuleValue2;
-            gridFormatRule3.Column = this.colBeginning_Balance;
+            gridFormatRule3.Column = this.colBalanceType;
+            gridFormatRule3.ColumnApplyTo = this.colBeginning_Balance;
             gridFormatRule3.Enabled = false;
             gridFormatRule3.Name = "Beginning_BalanceNegative";
             formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.Red;
@@ -293,7 +296,8 @@
             formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Greater;
             formatConditionRuleValue3.Value1 = "0";
             gridFormatRule3.Rule = formatConditionRuleValue3;
-            gridFormatRule4.Column = this.colBeginning_Balance;
+            gridFormatRule4.Column = this.colBalanceType;
+            gridFormatRule4.ColumnApplyTo = this.colBeginning_Balance;
             gridFormatRule4.Enabled = false;
             gridFormatRule4.Name = "Beginning_BalancePositive";
             formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -430,7 +434,12 @@
             this.label7.TabIndex = 24;
             this.label7.Text = "مجموع قیمت خدمات :";
             // 
-            // FrmCustomers
+            // colBalanceType
+            // 
+            this.colBalanceType.FieldName = "BalanceType";
+            this.colBalanceType.Name = "colBalanceType";
+            // 
+            // FrmCustomerList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -439,7 +448,7 @@
             this.Controls.Add(this.groupControl7);
             this.Controls.Add(this.mainRibbonControl);
             this.IconOptions.ShowIcon = false;
-            this.Name = "FrmCustomers";
+            this.Name = "FrmCustomerList";
             this.Ribbon = this.mainRibbonControl;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -490,5 +499,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiEditCustomer;
         private DevExpress.XtraBars.BarButtonItem bbiNewCustomer;
         private DevExpress.XtraGrid.Columns.GridColumn colHint;
+        private DevExpress.XtraGrid.Columns.GridColumn colBalanceType;
     }
 }

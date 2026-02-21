@@ -37,6 +37,11 @@ namespace CncData.Entities
         [DisplayName("حساب اول دوره")]
         [Description("حساب اول دوره")]
         public double Beginning_Balance { get; set; }
+        
+        [DisplayName("ماهیت اول دوره")]
+        [Description("ماهیت اول دوره - بدهکار،بی حساب،بستانکار")]
+
+        public double BalanceType { get; set; }
 
         [DisplayName("توضیحات")]
         [Description("توضیحات مربوط به مشتری")]

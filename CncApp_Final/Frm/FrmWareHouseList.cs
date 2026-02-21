@@ -1,18 +1,21 @@
-﻿using DevExpress.XtraBars;
+﻿using CncApp_Final.Helper;
+using CncApp_Final.Services;
+using CncApp_Final.Data;
+using CncApp_Final.Entities;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Entity;
-using DevExpress.XtraGrid.Views.Grid;
-using CncApp_Final.Helper;
 
 namespace CncApp_Final.Frm
 {
@@ -56,15 +59,17 @@ namespace CncApp_Final.Frm
 
 
 
-        private void ReLoadList()
+        public void ReLoadList(int _NewRow_Id)
         {
             SavePosition();
 
             CncApp_Final.Data.AppDbContext dbContext = new CncApp_Final.Data.AppDbContext();
             dbContext.Warehouses.Load();
             warehousesBindingSource.DataSource = dbContext.Warehouses.Local.ToBindingList();
-
-            RestorePosition();
+            if (_NewRow_Id == 0)
+                RestorePosition();
+            else
+                RestorePosition(_NewRow_Id);
         }
 
         public void SavePosition()
@@ -86,7 +91,6 @@ namespace CncApp_Final.Frm
         }
 
 
-
         //***********************************************************************************************************************************
         //***********************************************************************************************************************************
         //***********************************************************************************************************************************
@@ -97,26 +101,45 @@ namespace CncApp_Final.Frm
 
         private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
-            FrmWareHouseEdit frmWareHouseEdit = new FrmWareHouseEdit(0, false);
-            frmWareHouseEdit.ShowDialog();
-            if (frmWareHouseEdit.DialogResult == DialogResult.OK)
+            //FrmWareHouseEdit frmWareHouseEdit = new FrmWareHouseEdit(0, false);
+            //frmWareHouseEdit.ShowDialog();
+            //if (frmWareHouseEdit.DialogResult == DialogResult.OK)
+            //{
+            //    ReLoadList();
+            //    RestorePosition(frmWareHouseEdit._New_Row_Id); 
+            //}
+
+
+            var service = new EfCrudService<Warehouse>(new AppDbContext());
+            var frm = new Frms.EditForms.FrmWareHouseEdit(0, false, service);
+            frm.ChangesSaved += (s, args) =>
             {
-                ReLoadList();
-                RestorePosition(frmWareHouseEdit._New_Row_Id); 
-            }
+                ReLoadList(args.RecordId);
+            };
+            frm.ShowDialog();
         }
 
         private void bbiEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ribbonControl.BeginInit();
-            int wareHouse_Id = (int)gridView.GetFocusedRowCellValue(colId);
-            FrmWareHouseEdit frmWareHouseEdit = new FrmWareHouseEdit(wareHouse_Id, false);
-            frmWareHouseEdit.ShowDialog();
-            if (frmWareHouseEdit.DialogResult == DialogResult.OK)
+            //ribbonControl.BeginInit();
+            //int wareHouse_Id = (int)gridView.GetFocusedRowCellValue(colId);
+            //FrmWareHouseEdit frmWareHouseEdit = new FrmWareHouseEdit(wareHouse_Id, false);
+            //frmWareHouseEdit.ShowDialog();
+            //if (frmWareHouseEdit.DialogResult == DialogResult.OK)
+            //{
+            //    ReLoadList();
+            //}
+            //ribbonControl.EndInit();
+
+
+            int warehouse_Id = (int)gridView.GetFocusedRowCellValue(colId);
+            var service = new EfCrudService<Warehouse>(new AppDbContext());
+            var frm = new Frms.EditForms.FrmWareHouseEdit(warehouse_Id, false, service);
+            frm.ChangesSaved += (s, args) =>
             {
-                ReLoadList();
-            }
-            ribbonControl.EndInit();
+                ReLoadList(warehouse_Id);
+            };
+            frm.ShowDialog();
         }
 
         private void bbiDelete_ItemClick(object sender, ItemClickEventArgs e)
@@ -126,7 +149,7 @@ namespace CncApp_Final.Frm
 
         private void bbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ReLoadList();
+           // ReLoadList();
         }
 
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)

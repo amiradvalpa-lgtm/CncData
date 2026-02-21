@@ -37,9 +37,16 @@ namespace CncApp_Final.Entities
         [Required(AllowEmptyStrings = false, ErrorMessage = "وارد کردن {0} الزامی است.")]
         public string Address { get; set; }
 
-        [DisplayName("حساب اول دوره")]
-        [Description("حساب اول دوره")]
+        [DisplayName("مانده اول دوره")]
+        [Description("مانده اول دوره")]
+        [Required(ErrorMessage = "وارد کردن {0} الزامی است.")]
+        [Range(0.001, double.MaxValue, ErrorMessage = "{0} نمی‌تواند منفی باشد.")]
         public double Beginning_Balance { get; set; }
+
+        [DisplayName("ماهیت اول دوره")]
+        [Description("ماهیت اول دوره - بدهکار،بی حساب،بستانکار")]
+
+        public double BalanceType { get; set; }
 
         [DisplayName("توضیحات")]
         [Description("توضیحات مربوط به مشتری")]
@@ -80,7 +87,7 @@ namespace CncApp_Final.Entities
             {
                 decimal ordersTotal = Orders?.Sum(x => (decimal?)x.TotalAmount) ?? 0m;
                 decimal receiptsTotal = Receipts?.Sum(x => (decimal?)x.Amount) ?? 0m;
-                decimal beginning = (decimal)Beginning_Balance;
+                decimal beginning = (decimal)Beginning_Balance*(decimal)BalanceType;
 
                 return (receiptsTotal + beginning) - ordersTotal;
             }

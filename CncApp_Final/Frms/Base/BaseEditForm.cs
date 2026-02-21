@@ -1,4 +1,5 @@
 ﻿using CncApp_Final.Services;
+using DevExpress.Data;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Ribbon;
 using DevExpress.XtraEditors;
@@ -8,6 +9,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 
 
@@ -80,6 +82,10 @@ namespace CncApp_Final.Frms.Base
             }
 
             EntityBindingSource.DataSource = CurrentEntity;
+            EntityBindingSource.ResetBindings(false);
+
+            EntityBindingSource.CurrentItemChanged += (_, __) => UpdateResetButtonState();
+            EntityBindingSource.ListChanged += (_, __) => UpdateResetButtonState();
         }
 
         // ======================================================
@@ -175,6 +181,7 @@ namespace CncApp_Final.Frms.Base
                 {
                     DialogResult = DialogResult.OK;
                     Close();
+                    BarItemExtensions.SetEnablility(GetResetButton(), false);
                     return true;
                 }
 
@@ -183,17 +190,26 @@ namespace CncApp_Final.Frms.Base
                     RecordId = 0;
                     InitializeEntity();
                 }
+                BarItemExtensions.SetEnablility(GetResetButton(), false);
                 return true;
             }
             catch (DbEntityValidationException dbEx)
             {
-                // مدیریت خطاهای اعتبارسنجی Entity Framework
-                var errorMessages = dbEx.EntityValidationErrors
-                    .SelectMany(x => x.ValidationErrors)
-                    .Select(x => $"{x.PropertyName}: {x.ErrorMessage}");
+                var sb = new StringBuilder("خطاهای اعتبارسنجی:\n\n");
 
-                var fullErrorMessage = string.Join(Environment.NewLine, errorMessages);
-                XtraMessageBox.Show($"خطای اعتبارسنجی در هنگام ذخیره:{Environment.NewLine}{fullErrorMessage}", "خطای اعتبارسنجی", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                foreach (var eve in dbEx.EntityValidationErrors)
+                {
+                    string entityName = eve.Entry.Entity.GetType().Name;
+                    sb.AppendLine($"→ موجودیت: {entityName} (وضعیت: {eve.Entry.State})");
+
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        sb.AppendLine($"   • {ve.PropertyName,-20} : {ve.ErrorMessage}");
+                    }
+                    sb.AppendLine();
+                }
+
+                XtraMessageBox.Show(sb.ToString(), "خطای اعتبارسنجی", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             catch (Exception ex)
@@ -226,6 +242,27 @@ namespace CncApp_Final.Frms.Base
 
         protected virtual void ResetCore()
         {
+            DialogResult dr;
+            if (RecordId == 0)
+            {
+                dr = XtraMessageBox.Show(
+                    "اطلاعات وارد شده پاک شود و فرم به حالت جدید برگردد؟",
+                    "بازنشانی",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+            }
+            else
+            {
+                dr = XtraMessageBox.Show(
+                "تغییرات انجام شده حذف و اطلاعات اصلی دوباره بارگذاری شود؟",
+                "بازنشانی تغییرات",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+            }
+            if (dr != DialogResult.Yes)
+                return;
+
+
             if (!BeforeReset()) return;
 
             CrudService.Reload(CurrentEntity);
@@ -266,6 +303,13 @@ namespace CncApp_Final.Frms.Base
         //        Close();
         //    }
         //}
+
+        protected void UpdateResetButtonState()
+        {
+            var btn = GetResetButton();
+            if (btn != null)
+                btn.Enabled = CrudService.HasChanges();
+        }
 
         protected virtual bool CloseCore()
         {
@@ -389,6 +433,12 @@ namespace CncApp_Final.Frms.Base
         {
             if (item != null)
                 item.Visibility = visibility;
+        }
+
+        public static void SetEnablility(this BarButtonItem item, bool Enabled)
+        {
+            if (item != null)
+                item.Enabled = Enabled;
         }
     }
 }

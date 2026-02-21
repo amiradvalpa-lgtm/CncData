@@ -1,24 +1,25 @@
-﻿using DevExpress.XtraBars;
+﻿using CncApp_Final.Frm;
+using CncApp_Final.Helper;
+//using Holoo1Space.Frm;
+//using Holoo1Space.Class;
+using DevExpress.Utils;
+using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using DevExpress.XtraGrid.Views.Grid;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//using Holoo1Space.Frm;
-//using Holoo1Space.Class;
-using DevExpress.Utils;
-using DevExpress.XtraGrid.Views.Grid.ViewInfo;
-using DevExpress.XtraGrid.Views.Grid;
 using static DevExpress.Utils.Diagnostics.GUIResources;
-using System.Data.Entity;
-using CncApp_Final.Frm;
-using CncApp_Final.Helper;
 
 //using Holoo1Space.Frm.Host;
 
@@ -73,6 +74,10 @@ namespace CncApp_Final
 
             //// TODO: This line of code loads data into the 'alpaDataSet.VCFX_Summary' table. You can move, or remove it, as needed.
             //this.vCFX_SummaryTableAdapter.Fill(this.alpaDataSet.VCFX_Summary);
+            CncApp_Final.Data.AppDbContext dbContext = new CncApp_Final.Data.AppDbContext();
+            dbContext.Orders.Load();
+            ordersBindingSource.DataSource = dbContext.Orders.Local.ToBindingList();
+            ordersBindingSource.ResetBindings(false);
 
             RestorePosition();
         }

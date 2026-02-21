@@ -29,7 +29,7 @@ namespace CncApp_Final.Entities
 
         [DisplayName("تاریخ")]
         [Description("تاریخ صدور رسید")]
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
 
         [DisplayName("مبلغ")]
         [Description("مقدار وجه پرداختی یا دریافت شده")]

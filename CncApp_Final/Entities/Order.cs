@@ -57,9 +57,14 @@ namespace CncApp_Final.Entities
         public double Discount { get; set; }
 
 
+        [DisplayName("مسیر فایل")]
+        [Required(AllowEmptyStrings = false, ErrorMessage = " {0} را مشخص کنید.")]
+        [Description("مسیر فایل مربوط به این جزئیات سفارش")]
+        public string FilePath { get; set; }
+
         [DisplayName("توضیحات")]
         [Description("توضیحات اضافی سفارش")]
-        public string Description { get; set; }
+        public string Description { get; set; } = string.Empty;
 
         public virtual ICollection<OrderDetails> OrderDetails { get; set; } = new List<OrderDetails>();
 

@@ -53,7 +53,7 @@ namespace CncApp_Final.Frm
 
             int customer_Id = (int)gridView.GetFocusedRowCellValue(colId);
             var service = new EfCrudService<Customer>(new AppDbContext());
-            var frm = new Frms.FrmCustomerEdit(customer_Id, false, service);
+            var frm = new Frms.EditForms.FrmCustomerEdit(customer_Id, false, service);
             frm.ChangesSaved += (s, args) =>
             {
                 ReLoadList(customer_Id);
@@ -69,7 +69,7 @@ namespace CncApp_Final.Frm
 
 
             var service = new EfCrudService<Customer>(new AppDbContext());
-            var frm = new Frms.FrmCustomerEdit(0, false, service);
+            var frm = new Frms.EditForms.FrmCustomerEdit(0, false, service);
             frm.ChangesSaved += (s, args) =>
             {
                 ReLoadList(args.RecordId);
@@ -146,7 +146,8 @@ namespace CncApp_Final.Frm
         {
             if (e.Column.FieldName == colBeginning_Balance.FieldName)
             {
-                var val = Convert.ToDecimal(e.CellValue);
+                //var val = Convert.ToDecimal(e.CellValue);
+                var val = Convert.ToDecimal(((GridView)sender).GetRowCellValue(e.RowHandle, colBalanceType));
                 if (val > 0)
                     e.Appearance.ForeColor = Color.FromArgb(0, 192, 0);
                 else if (val < 0)

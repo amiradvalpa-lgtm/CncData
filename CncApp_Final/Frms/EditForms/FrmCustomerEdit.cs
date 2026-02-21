@@ -9,15 +9,15 @@ using System;
 using System.Data.Entity;
 using System.Windows.Forms;
 
-namespace CncApp_Final.Frms
+namespace CncApp_Final.Frms.EditForms
 {
     //public partial class FrmCustomerEdit : BaseEditForm<Customer>
     //{
         public partial class FrmCustomerEdit :
             #if DEBUG
-                    BaseEditFormDesignerSafe
+                    BaseEditForm<Customer>
             #else
-                BaseEditForm<Customer>
+                    BaseEditFormDesignerSafe
             #endif
         {
 
@@ -33,7 +33,6 @@ namespace CncApp_Final.Frms
 
         //    this.Load += BaseForm_Load;
         //}
-               
 
 
 
@@ -45,18 +44,35 @@ namespace CncApp_Final.Frms
             this.Load += BaseForm_Load;
         }
 
-        // =================== عنوان فرم ===================
+        
+
+
+
+#if !DEBUG
+        // ======================================================
+        // متن های مخصوص فرم
+        // ======================================================
         protected override string GetNewTitle() => "مشتری جدید";
-        //////protected override string GetEditTitle() => $"ویرایش مشتری: {CurrentEntity.CustomerName}";
+        protected override string GetEditTitle() => $"ویرایش مشتری: {CurrentEntity.CustomerName}";
+        protected override string GetEntityDeleteMessge() => $"{CurrentEntity.CustomerName}";
+
+#else
+        // ======================================================
+        // متن های مخصوص DesignerSafe
+        // ======================================================
+        protected override string GetNewTitle() => "مشتری جدید";
         protected override string GetEditTitle() => $"ویرایش مشتری";
+        protected override string GetEntityDeleteMessge() => string.Empty;
+
+#endif
 
 
-        // =================== نام مشتری ===================
-        ////protected override string GetEntityDeleteMessge() => $"{CurrentEntity.CustomerName}";
-        protected override string GetEntityDeleteMessge() => $"";
 
 
-        // =================== کنترل ها ===================
+        // ======================================================
+        //  کنترل ها
+        // ======================================================
+
         protected override void SetControlsReadOnly(bool readOnly)
         {
             foreach (Control control in groupControl1.Controls)
@@ -72,7 +88,11 @@ namespace CncApp_Final.Frms
             }
         }
 
-        // =================== بارگذاری فرم ===================
+
+        // ======================================================
+        // بارگذاری فرم
+        // ======================================================
+
         protected override void OnAfterLoad()
         {
             base.OnAfterLoad();   // ← خیلی مهم
@@ -82,39 +102,54 @@ namespace CncApp_Final.Frms
 
             txbPhone.ErrorImageOptions.Alignment = System.Windows.Forms.ErrorIconAlignment.MiddleRight;
 
-            // تنظیم Balance Mode بر اساس Beginning_Balance
-            if ((double)txbBeginning_Balance.EditValue == 0)
-                cmbBanalceMode.SelectedIndex = 0;
-            else if ((double)txbBeginning_Balance.EditValue < 0)
-                cmbBanalceMode.SelectedIndex = 1;
-            else
-                cmbBanalceMode.SelectedIndex = 2;
+            //// تنظیم Balance Mode بر اساس Beginning_Balance
+            //if ((double)txbBeginning_Balance.EditValue == 0)
+            //    cmbBanalceMode.SelectedIndex = 0;
+            //else if ((double)txbBeginning_Balance.EditValue < 0)
+            //    cmbBanalceMode.SelectedIndex = 1;
+            //else
+            //    cmbBanalceMode.SelectedIndex = 2;
 
             txbBeginning_Balance.EditValue = Math.Abs((double)txbBeginning_Balance.EditValue);
+
         }
 
-        // =================== قبل از ذخیره ===================
+
+
+        // ======================================================
+        // قبل از ذخیره
+        // ======================================================
         protected override bool BeforeSave()
         {
             // اعتبارسنجی Balance
             if ((double)txbBeginning_Balance.EditValue != 0 && (double)cmbBanalceMode.EditValue == 0)
             {
-                XtraMessageBox.Show("با توجه مقدار اول دوره نوع ماهیت را انتخاب کنید.", "خطای اعتبارسنجی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                XtraMessageBox.Show("با توجه به مقدار اول دوره، نوع ماهیت را انتخاب کنید.", "خطای اعتبارسنجی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cmbBanalceMode.Focus();
                 return false;
             }
 
-            // اصلاح مقدار Balance بر اساس Combo
-            txbBeginning_Balance.EditValue = Math.Abs((double)txbBeginning_Balance.EditValue) * (double)cmbBanalceMode.EditValue;
+            // اعتبارسنجی Balance
+            if ((double)txbBeginning_Balance.EditValue == 0 && (double)cmbBanalceMode.EditValue != 0)
+            {
+                XtraMessageBox.Show("با توجه به ماهیت اول دوره، مقدار اول دوره نمیتواند صفر باشد.", "خطای اعتبارسنجی", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txbBeginning_Balance.Focus();
+                return false;
+            }
+
+            //// اصلاح مقدار Balance بر اساس Combo
+            //txbBeginning_Balance.EditValue = Math.Abs((double)txbBeginning_Balance.EditValue) * (double)cmbBanalceMode.EditValue;
 
             // اعتبارسنجی DevExpress
             return dxValidationProvider1.Validate();
         }
 
-        // =================== بعد از ذخیره ===================
+
+        // ======================================================
+        // بعد از ذخیره 
+        // ======================================================
         protected override void AfterSave()
         {
-            // پیام مشابه فرم اصلی
             if (RecordId == 0) // اگر جدید بود
             {
                 //XtraMessageBox.Show($"مشتری جدید با کد {NewCreatedRecordId} ثبت شد.", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -123,6 +158,10 @@ namespace CncApp_Final.Frms
         }
 
 
+
+        // ======================================================
+        // قبل از حذف 
+        // ======================================================
         protected override bool BeforeDelete()
         {
             DialogResult dialogResult = XtraMessageBox.Show(
@@ -135,15 +174,6 @@ namespace CncApp_Final.Frms
                 return base.BeforeDelete();
             return false;
         }
-
-        // =================== دکمه‌ها ===================
-        protected override BarButtonItem GetSaveButton() => bbiSave;
-        protected override BarButtonItem GetSaveAndCloseButton() => bbiSaveAndClose;
-        protected override BarButtonItem GetSaveAndNewButton() => bbiSaveAndNew;
-        protected override BarButtonItem GetDeleteButton() => bbiDelete;
-        protected override BarButtonItem GetResetButton() => bbiReset;
-        protected override BarButtonItem GetCloseButton() => bbiClose;
-
 
 
         //*****************************************************************************************************************************************
@@ -159,5 +189,28 @@ namespace CncApp_Final.Frms
                 textEdit.EditValue = textEdit.Text.Trim();
             }
         }
+
+
+
+        //*****************************************************************************************************************************************
+        //*****************************************************************************************************************************************
+
+        #region قسمت مربوط به دکمه های فرم  --  در تمام فرمها  ثابت  است و تغییر نکند
+
+        // ======================================================
+        //  دکمه‌های اصلی BaseEditForm
+        // ======================================================
+        protected override BarButtonItem GetSaveButton() => bbiSave;
+        protected override BarButtonItem GetSaveAndCloseButton() => bbiSaveAndClose;
+        protected override BarButtonItem GetSaveAndNewButton() => bbiSaveAndNew;
+        protected override BarButtonItem GetDeleteButton() => bbiDelete;
+        protected override BarButtonItem GetResetButton() => bbiReset;
+        protected override BarButtonItem GetCloseButton() => bbiClose;
+
+        #endregion
+
+        //*****************************************************************************************************************************************
+        //*****************************************************************************************************************************************
+
     }
 }

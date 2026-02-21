@@ -1,4 +1,4 @@
-﻿namespace CncApp_Final.Frms
+﻿namespace CncApp_Final.Frms.EditForms
 {
     partial class FrmCustomerEdit
     {
@@ -129,6 +129,7 @@
             // bbiReset
             // 
             this.bbiReset.Caption = "Reset Changes";
+            this.bbiReset.Enabled = false;
             this.bbiReset.Id = 5;
             this.bbiReset.ImageOptions.ImageUri.Uri = "Reset";
             this.bbiReset.Name = "bbiReset";
@@ -215,6 +216,7 @@
             // 
             // cmbBanalceMode
             // 
+            this.cmbBanalceMode.DataBindings.Add(new System.Windows.Forms.Binding("EditValue", this.customerBindingSource, "BalanceType", true));
             this.cmbBanalceMode.EnterMoveNextControl = true;
             this.cmbBanalceMode.Location = new System.Drawing.Point(19, 214);
             this.cmbBanalceMode.MenuManager = this.mainRibbonControl;

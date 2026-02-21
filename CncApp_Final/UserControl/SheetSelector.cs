@@ -171,13 +171,15 @@ namespace CncApp_Final.UserControl
             FillThickness();
             lkpThickness.EditValue = sheet.Thickness;
 
+            var oldvalue = lkpSheetId.EditValue;
             // SheetSizes
             FillSheetSizes();
             lkpSheetId.EditValue = sheet.Id;
 
             SelectedSheet = sheet;
 
-            OnEditValueChanged();
+            if(!object.Equals(lkpSheetId.EditValue, oldvalue))
+                OnEditValueChanged();
 
             _isLoading = false;
         }

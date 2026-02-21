@@ -139,5 +139,65 @@ namespace CncApp_Final.Helper
             }
 
         }
+
+
+        /// <summary>
+        /// DXValidationProvider را برای تمام کنترل‌های بایند شده به یک نوع Model (Entity/ViewModel) خاص تنظیم می‌کند.
+        /// </summary>
+        /// <typeparam name="TModel">نوع کلاس Entity یا ViewModel (مانند Order یا OrderDetails)</typeparam>
+        /// <param name="form">فرم فعال که حاوی کنترل‌ها است (معمولاً this)</param>
+        /// <param name="validationProvider">نمونه DXValidationProvider روی فرم</param>
+        /// <param name="bindingSource">BindingSource که به TModel بایند شده است.</param>
+        public static void RemoveControlError<TModel>(
+            Form form,
+            DXValidationProvider validationProvider,
+            BindingSource bindingSource) where TModel : class
+        {
+            if (validationProvider == null || bindingSource == null) return;
+
+            //validationProvider.ClearValidations();
+            Type modelType = typeof(TModel);
+
+            // بازیابی تمام کنترل‌های بایند شده از فرم
+            var boundControls = GetAllControls(form)
+                                .OfType<BaseEdit>()
+                                .Where(c => c.DataBindings.Count > 0);
+
+
+            foreach (BaseEdit control in boundControls)
+            {
+                validationProvider.RemoveControlError(control);
+
+            }
+
+            // اضافه کردن قانون مخصوص PersianDateTextEdit
+            var persianDateTextEditBoundControls = GetAllControls(form)
+                                .OfType<PersianDateTextEdit>()
+                                .Where(c => c.DataBindings.Count > 0);
+
+
+            foreach (var control in persianDateTextEditBoundControls)
+            {
+                validationProvider.RemoveControlError(control);
+
+                //private void UpdateControlErrors(Control control, string errorText, ErrorType type)
+                //{
+                //    BaseEdit baseEdit = control as BaseEdit;
+                //    if (type == ErrorType.None)
+                //    {
+                //        errorText = "";
+                //    }
+
+                //    baseEdit.ErrorText = errorText;
+                //    if (errorText != null && errorText.Length != 0)
+                //    {
+                //        baseEdit.SetErrorIcon(GetErrorIconInternal(type, baseEdit.LookAndFeel, baseEdit.ScaleDPI), type, useInternalIcon: true);
+                //    }
+
+                //    baseEdit.OnErrorInfoChanged();
+                //}
+            }
+
+        }
     }
 }

@@ -28,8 +28,8 @@ namespace CncApp_Final.Entities
 
         [DisplayName("تاریخ خرید")]
         [Description("تاریخ خرید")]
-        public DateTime OrderDate { get; set; }
-            
+        public DateTime OrderDate { get; set; } = DateTime.Now;
+
 
         [DisplayName("قیمت پایه کامل"),
             Required(ErrorMessage = "وارد کردن {0} الزامی است."), Display(Order = 3),
