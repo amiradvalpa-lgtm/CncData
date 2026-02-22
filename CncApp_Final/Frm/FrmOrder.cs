@@ -447,7 +447,7 @@ namespace CncApp_Final.Frm
                     ribbonControl1.ApplicationCaption = "ویرایش سفارش";
                     // مطمئن شوید که txbVCF_Id (شماره فاکتور) هم به‌روز شده است
                 }
-
+                SetCorelFileFullPath();
                 SaveDocumentToResources(SelectedDocument, currentOrder.FilePath);
                 return true;
             }
@@ -694,8 +694,8 @@ namespace CncApp_Final.Frm
                 currentOrder.OrderDetails.Add(detail);
             }
 
-            currentOrder.FilePath = GetCorelFileFullPath(frmCorelDataImporter.SelectedDocument.FileName, currentOrder.CustomerId);
             SelectedDocument = frmCorelDataImporter.SelectedDocument;
+            currentOrder.FilePath = SelectedDocument.FileName;
             orderDetailsBindingSource.ResetBindings(false);
             orderBindingSource.ResetBindings(false);
         }
@@ -754,25 +754,40 @@ namespace CncApp_Final.Frm
 
         }
 
-        private static string GetCorelFileFullPath(string DocName , int UserId)
+        private void SetCorelFileFullPath()
         {
+            Order currentOrder = orderBindingSource.Current as Order;
+
             // مسیر bin\Debug یا bin\Release
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
 
             // مسیر نهایی: Resources\CorelFiles
-            string targetFolder = Path.Combine(basePath, "Resources", "CorelFiles", $"User{UserId}");
+            string targetFolder = Path.Combine(basePath, "Resources", "CorelFiles", $"User{currentOrder.CustomerId}");
 
             // اگر فولدر وجود نداشت بساز
             if (!Directory.Exists(targetFolder))
                 Directory.CreateDirectory(targetFolder);
 
-            string fullPath = Path.Combine(targetFolder, DocName);
-            return fullPath;
+            string fullPath = Path.Combine(targetFolder, SelectedDocument.FileName);
+            currentOrder.FilePath = fullPath;
+            
         }
 
         private void btnOpenFile_Properties_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            string filePath = btnOpenFile.EditValue.ToString();
+            Order currentOrder = orderBindingSource.Current as Order;
+
+            string fileName = btnOpenFile.EditValue.ToString();
+
+            // مسیر bin\Debug یا bin\Release
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            // مسیر نهایی: Resources\CorelFiles
+            string targetFolder = Path.Combine(basePath, "Resources", "CorelFiles", $"User{currentOrder.CustomerId}");
+
+            string filePath = Path.Combine(targetFolder, fileName);
+
+
             if (string.IsNullOrWhiteSpace(filePath))
                 throw new ArgumentException("File path is empty.");
 

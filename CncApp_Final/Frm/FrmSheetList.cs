@@ -55,8 +55,9 @@ namespace CncApp_Final.Frm
 
         private void InitFormExtraConfig()
         {
-            ControlExraInit.InitRibonControl(ribbonControl, "لیست ورق ها");
-            ControlExraInit.InitGridView(gridView, "لیست ورق ها");
+            string formName = "لیست ورق ها";
+            ControlExraInit.InitRibonControl(ribbonControl, formName);
+            ControlExraInit.InitGridView(gridView, formName);
         }
 
         private void FrmSheetList_Load(object sender, EventArgs e)
@@ -116,14 +117,6 @@ namespace CncApp_Final.Frm
 
         private void bbiNew_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //FrmSheetEdit frmsheetEdit = new FrmSheetEdit(0, false,ReLoadList);
-            //frmsheetEdit.ShowDialog();
-            //if (frmsheetEdit.DialogResult == DialogResult.OK)
-            //{
-            //    ReLoadList(frmsheetEdit._NewCreatedRecordtId);
-            //}
-
-
             var service = new EfCrudService<Sheet>(new AppDbContext());
             var frm = new Frms.EditForms.FrmSheetEdit(0, false, service);
             frm.ChangesSaved += (s, args) =>
@@ -135,17 +128,6 @@ namespace CncApp_Final.Frm
 
         private void bbiEdit_ItemClick(object sender, ItemClickEventArgs e)
         {
-            //ribbonControl.BeginInit();
-            //int sheet_Id = (int)gridView.GetFocusedRowCellValue(colId);
-            //FrmSheetEdit frmsheetEdit = new FrmSheetEdit(sheet_Id, false, ReLoadList);
-            //frmsheetEdit.ShowDialog();
-            //if (frmsheetEdit.DialogResult == DialogResult.OK)
-            //{
-            //    ReLoadList(0);
-            //}
-            //ribbonControl.EndInit();
-
-
             int sheet_Id = (int)gridView.GetFocusedRowCellValue(colId);
             var service = new EfCrudService<Sheet>(new AppDbContext());
             var frm = new Frms.EditForms.FrmSheetEdit(sheet_Id, false, service);
@@ -163,7 +145,8 @@ namespace CncApp_Final.Frm
 
         private void bbiRefresh_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ReLoadList(0);
+            int sheet_Id = (int)gridView.GetFocusedRowCellValue(colId);
+            ReLoadList(sheet_Id);
         }
 
         void bbiPrintPreview_ItemClick(object sender, ItemClickEventArgs e)

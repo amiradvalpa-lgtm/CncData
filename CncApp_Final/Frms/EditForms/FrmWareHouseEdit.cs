@@ -14,7 +14,7 @@ namespace CncApp_Final.Frms.EditForms
 {
     public partial class FrmWareHouseEdit :
 #if DEBUG
-                BaseEditForm<Warehouse>
+                BaseFormEdit<Warehouse>
 #else
                     BaseEditFormDesignerSafe
 #endif

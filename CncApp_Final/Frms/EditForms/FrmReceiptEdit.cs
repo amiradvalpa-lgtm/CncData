@@ -14,7 +14,7 @@ namespace CncApp_Final.Frms.EditForms
 {
     public partial class FrmReceiptEdit :
 #if DEBUG
-                BaseEditForm<Receipt>
+                BaseFormEdit<Receipt>
 #else
                     BaseEditFormDesignerSafe
 #endif

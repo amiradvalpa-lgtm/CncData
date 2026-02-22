@@ -16,7 +16,7 @@ namespace CncApp_Final.Frms.EditForms
 {
     public partial class FrmSheetEdit :
 #if DEBUG
-                BaseEditForm<Sheet>
+                BaseFormEdit<Sheet>
 #else
                     BaseEditFormDesignerSafe
 #endif

@@ -20,7 +20,7 @@ namespace CncApp_Final.Frms.Base
     /// تمام منطق 5 دکمه اصلی داخل بیس
     /// و فقط هوک‌های Before/After در فرم‌های مشتق‌شده
     /// </summary>
-    public abstract class BaseEditForm<T> : RibbonForm where T : class, new()
+    public abstract class BaseFormEdit<T> : RibbonForm, IEditForm where T : class, new()
     {
         protected T CurrentEntity { get; private set; }
         protected ICrudService<T> CrudService { get; }
@@ -33,13 +33,13 @@ namespace CncApp_Final.Frms.Base
         public event EventHandler<RecordSavedEventArgs> ChangesSaved;
 
 
-        protected BaseEditForm()
+        protected BaseFormEdit()
         {
             if (LicenseManager.UsageMode == LicenseUsageMode.Designtime)
                 return;
         }
 
-        protected BaseEditForm(int recordId, bool isReadOnly, ICrudService<T> crudService)
+        protected BaseFormEdit(int recordId, bool isReadOnly, ICrudService<T> crudService)
         {
             RecordId = recordId;
             IsReadOnly = isReadOnly;

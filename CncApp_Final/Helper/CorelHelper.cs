@@ -81,42 +81,7 @@ namespace CncApp_Final.Helper
         public SupplierType Supplier { get; set; }
     }
 
-    ///// =================
-    ///// کلاس موقت OrderDetail - تا زمان ارائه کلاس اصلی
-    ///// پراپرتی‌ها از CorelSheetInfo کپی شده‌اند
-    ///// =================
-    //public class OrderDetail
-    //{
-    //    /// =================
-    //    /// طول مسیر برش به سانتی‌متر
-    //    /// =================
-    //    public double CutLength { get; set; }
 
-    //    /// =================
-    //    /// طول فریم به سانتی‌متر
-    //    /// =================
-    //    public double FrameLength { get; set; }
-
-    //    /// =================
-    //    /// عرض فریم به سانتی‌متر
-    //    /// =================
-    //    public double FrameWidth { get; set; }
-
-    //    /// =================
-    //    /// نوع متریال
-    //    /// =================
-    //    public string Material { get; set; } = string.Empty;
-
-    //    /// =================
-    //    /// ضخامت ورق به میلی‌متر
-    //    /// =================
-    //    public double Thickness { get; set; }
-
-    //    /// =================
-    //    /// منبع ورق: انبار یا مشتری
-    //    /// =================
-    //    public SupplierType Supplier { get; set; }
-    //}
 
     /// =================
     /// کلاس کمکی static برای ارتباط با CorelDRAW

@@ -244,8 +244,8 @@ namespace CncApp_Final
 
         private void bbiTmpForm_ItemClick(object sender, ItemClickEventArgs e)
         {
-            TempFrm.tmpEditForm frmCustomerEdit = new TempFrm.tmpEditForm();
-            frmCustomerEdit.ShowDialog();
+            Frms.ListForms.FrmCustomerList frmCustomerList = new Frms.ListForms.FrmCustomerList();
+            frmCustomerList.ShowDialog();
         }
 
         

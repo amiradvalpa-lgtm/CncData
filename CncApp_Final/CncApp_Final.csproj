@@ -129,12 +129,19 @@
     <Compile Include="Entities\SupplierType.cs" />
     <Compile Include="Entities\UserGridLayout.cs" />
     <Compile Include="Entities\Warehouse.cs" />
-    <Compile Include="Frms\Base\BaseEditForm.cs">
+    <Compile Include="Frms\Base\BaseFormEdit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Frms\Base\BaseEditFormDesignerSafe.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Frms\Base\BaseFormList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms\Base\BaseFormListDesignerSafe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms\Base\IEditForm.cs" />
     <Compile Include="Frms\EditForms\FrmCustomerEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -170,6 +177,12 @@
     </Compile>
     <Compile Include="Frms\FrmCorelDataImporter.Designer.cs">
       <DependentUpon>FrmCorelDataImporter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frms\ListForms\FrmCustomerList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms\ListForms\FrmCustomerList.Designer.cs">
+      <DependentUpon>FrmCustomerList.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\Base\BaseEditForm.cs">
       <SubType>Form</SubType>
@@ -284,7 +297,9 @@
     </Compile>
     <Compile Include="Services\DummyCrudService.cs" />
     <Compile Include="Services\EfCrudService.cs" />
+    <Compile Include="Services\EfListService.cs" />
     <Compile Include="Services\ICrudService.cs" />
+    <Compile Include="Services\IListService.cs" />
     <Compile Include="TempFrm\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -379,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frms\FrmCorelDataImporter.resx">
       <DependentUpon>FrmCorelDataImporter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frms\ListForms\FrmCustomerList.resx">
+      <DependentUpon>FrmCustomerList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Base\FrmCustomerEditB.resx">
       <DependentUpon>FrmCustomerEditB.cs</DependentUpon>
@@ -504,7 +522,6 @@
     <Analyzer Include="C:\Program Files\DevExpress 25.1\Components\Offline Packages\devexpress.data\25.1.5\analyzers\dotnet\DevExpress.Generator.dll" Visible="false" Condition="Exists('C:\Program Files\DevExpress 25.1\Components\Offline Packages\devexpress.data\25.1.5\analyzers\dotnet\DevExpress.Generator.dll')" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Frms\ListForms\" />
     <Folder Include="Resources\CorelFiles\" />
   </ItemGroup>
   <ItemGroup>

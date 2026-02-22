@@ -15,7 +15,7 @@ namespace CncApp_Final.Frms.EditForms
     //{
         public partial class FrmCustomerEdit :
             #if DEBUG
-                    BaseEditForm<Customer>
+                    BaseFormEdit<Customer>
             #else
                     BaseEditFormDesignerSafe
             #endif
