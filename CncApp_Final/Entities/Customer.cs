@@ -40,7 +40,7 @@ namespace CncApp_Final.Entities
         [DisplayName("مانده اول دوره")]
         [Description("مانده اول دوره")]
         [Required(ErrorMessage = "وارد کردن {0} الزامی است.")]
-        [Range(0.001, double.MaxValue, ErrorMessage = "{0} نمی‌تواند منفی باشد.")]
+        [Range(0, double.MaxValue, ErrorMessage = "{0} نمی‌تواند منفی باشد.")]
         public double Beginning_Balance { get; set; }
 
         [DisplayName("ماهیت اول دوره")]

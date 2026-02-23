@@ -24,6 +24,7 @@ namespace CncApp_Final.Entities
         [DisplayName("شناسه مشتری")]
         [Description("شناسه مشتری مربوط به سفارش")]
         [Required(ErrorMessage = "انتخاب مشتری الزامی است.")]
+        [Range(1, int.MaxValue, ErrorMessage = "انتخاب مشتری الزامی است.")]
         public int CustomerId { get; set; }
 
         [DisplayName("مشتری")]

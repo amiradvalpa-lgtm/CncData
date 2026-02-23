@@ -30,6 +30,8 @@ namespace CncApp_Final.Helper
             gridView.OptionsFind.FindNullPrompt = $"برای جستجو در {formName}، کلمه مورد نظر را وارد کنید...";
             //gridView.OptionsView.ShowGroupPanel = false;
             gridView.RowHeight = 30;
+            gridView.OptionsFind.AlwaysVisible = true;
+            gridView.OptionsView.ShowGroupPanel = false;
         }
 
         public static void InitRibonControl(DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl, string ApplicationCaption)

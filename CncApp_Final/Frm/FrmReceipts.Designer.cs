@@ -48,6 +48,8 @@
             this.mainRibbonPageGroup = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.receiptsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupControl7 = new DevExpress.XtraEditors.GroupControl();
+            this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
+            this.label7 = new System.Windows.Forms.Label();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -62,16 +64,14 @@
             this.colBankAccountId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBankAccount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rpsBtnOpenFolder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
-            this.txbSumNetPrice = new DevExpress.XtraEditors.ButtonEdit();
-            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.mainRibbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receiptsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).BeginInit();
             this.groupControl7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txbSumNetPrice.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbSumNetPrice.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // mainRibbonControl
@@ -202,9 +202,39 @@
             this.groupControl7.TabIndex = 6;
             this.groupControl7.Text = "groupControl7";
             // 
+            // txbSumNetPrice
+            // 
+            this.txbSumNetPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.txbSumNetPrice.EditValue = 0;
+            this.txbSumNetPrice.Location = new System.Drawing.Point(11, 315);
+            this.txbSumNetPrice.Name = "txbSumNetPrice";
+            this.txbSumNetPrice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.txbSumNetPrice.Properties.Appearance.Options.UseFont = true;
+            this.txbSumNetPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Redo)});
+            this.txbSumNetPrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
+            this.txbSumNetPrice.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
+            this.txbSumNetPrice.Properties.MaskSettings.Set("mask", "c0");
+            this.txbSumNetPrice.Properties.MaskSettings.Set("autoHideDecimalSeparator", false);
+            this.txbSumNetPrice.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.txbSumNetPrice.Properties.UseMaskAsDisplayFormat = true;
+            this.txbSumNetPrice.Size = new System.Drawing.Size(137, 30);
+            this.txbSumNetPrice.TabIndex = 23;
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.White;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(149, 322);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(142, 16);
+            this.label7.TabIndex = 24;
+            this.label7.Text = "مجموع قیمت خدمات :";
+            // 
             // gridControl
             // 
-            this.gridControl.DataSource = this.receiptsBindingSource;
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(2, 2);
             this.gridControl.MainView = this.gridView;
@@ -213,7 +243,7 @@
             this.rpsBtnOpenFolder});
             this.gridControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.gridControl.Size = new System.Drawing.Size(744, 351);
-            this.gridControl.TabIndex = 25;
+            this.gridControl.TabIndex = 27;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
             // 
@@ -251,51 +281,61 @@
             // 
             // colCustomerName
             // 
+            this.colCustomerName.Caption = "نام مشتری";
             this.colCustomerName.FieldName = "CustomerName";
             this.colCustomerName.Name = "colCustomerName";
             this.colCustomerName.OptionsColumn.ReadOnly = true;
             this.colCustomerName.Visible = true;
-            this.colCustomerName.VisibleIndex = 0;
+            this.colCustomerName.VisibleIndex = 1;
             // 
             // colAmount
             // 
             this.colAmount.AppearanceCell.Options.UseTextOptions = true;
             this.colAmount.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colAmount.Caption = "مبلغ";
             this.colAmount.DisplayFormat.FormatString = "n0";
             this.colAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colAmount.FieldName = "Amount";
             this.colAmount.Name = "colAmount";
             this.colAmount.Visible = true;
-            this.colAmount.VisibleIndex = 1;
+            this.colAmount.VisibleIndex = 2;
             // 
             // colFaReceiptDate
             // 
             this.colFaReceiptDate.AppearanceCell.Options.UseTextOptions = true;
             this.colFaReceiptDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colFaReceiptDate.Caption = "تاریخ";
             this.colFaReceiptDate.FieldName = "FaReceiptDate";
             this.colFaReceiptDate.Name = "colFaReceiptDate";
             this.colFaReceiptDate.Visible = true;
-            this.colFaReceiptDate.VisibleIndex = 2;
+            this.colFaReceiptDate.VisibleIndex = 3;
             // 
             // colBankName
             // 
+            this.colBankName.Caption = "نام حساب";
             this.colBankName.FieldName = "BankName";
             this.colBankName.Name = "colBankName";
             this.colBankName.OptionsColumn.ReadOnly = true;
             this.colBankName.Visible = true;
-            this.colBankName.VisibleIndex = 3;
+            this.colBankName.VisibleIndex = 4;
             // 
             // colDescription
             // 
+            this.colDescription.Caption = "توضیحات";
             this.colDescription.FieldName = "Description";
             this.colDescription.Name = "colDescription";
             this.colDescription.Visible = true;
-            this.colDescription.VisibleIndex = 4;
+            this.colDescription.VisibleIndex = 5;
             // 
             // colId
             // 
+            this.colId.AppearanceCell.Options.UseTextOptions = true;
+            this.colId.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colId.Caption = "کد رسید";
             this.colId.FieldName = "Id";
             this.colId.Name = "colId";
+            this.colId.Visible = true;
+            this.colId.VisibleIndex = 0;
             // 
             // colDate
             // 
@@ -335,37 +375,6 @@
             this.rpsBtnOpenFolder.Name = "rpsBtnOpenFolder";
             this.rpsBtnOpenFolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
-            // txbSumNetPrice
-            // 
-            this.txbSumNetPrice.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txbSumNetPrice.EditValue = 0;
-            this.txbSumNetPrice.Location = new System.Drawing.Point(11, 315);
-            this.txbSumNetPrice.Name = "txbSumNetPrice";
-            this.txbSumNetPrice.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.txbSumNetPrice.Properties.Appearance.Options.UseFont = true;
-            this.txbSumNetPrice.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Redo)});
-            this.txbSumNetPrice.Properties.MaskSettings.Set("MaskManagerType", typeof(DevExpress.Data.Mask.NumericMaskManager));
-            this.txbSumNetPrice.Properties.MaskSettings.Set("MaskManagerSignature", "allowNull=False");
-            this.txbSumNetPrice.Properties.MaskSettings.Set("mask", "c0");
-            this.txbSumNetPrice.Properties.MaskSettings.Set("autoHideDecimalSeparator", false);
-            this.txbSumNetPrice.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.txbSumNetPrice.Properties.UseMaskAsDisplayFormat = true;
-            this.txbSumNetPrice.Size = new System.Drawing.Size(137, 30);
-            this.txbSumNetPrice.TabIndex = 23;
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.White;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold);
-            this.label7.Location = new System.Drawing.Point(149, 322);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(142, 16);
-            this.label7.TabIndex = 24;
-            this.label7.Text = "مجموع قیمت خدمات :";
-            // 
             // FrmReceipts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -386,10 +395,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.groupControl7)).EndInit();
             this.groupControl7.ResumeLayout(false);
             this.groupControl7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txbSumNetPrice.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txbSumNetPrice.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,12 +416,17 @@
         private DevExpress.XtraBars.BarButtonItem bbiClose;
         private System.Windows.Forms.BindingSource receiptsBindingSource;
         private DevExpress.XtraEditors.GroupControl groupControl7;
+        private DevExpress.XtraEditors.ButtonEdit txbSumNetPrice;
+        private System.Windows.Forms.Label label7;
+        private DevExpress.XtraBars.BarButtonItem bbiNewReceipt;
+        private DevExpress.XtraBars.BarButtonItem bbiEditReceipt;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
         private DevExpress.XtraGrid.Columns.GridColumn colCustomerName;
         private DevExpress.XtraGrid.Columns.GridColumn colAmount;
         private DevExpress.XtraGrid.Columns.GridColumn colFaReceiptDate;
         private DevExpress.XtraGrid.Columns.GridColumn colBankName;
+        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
         private DevExpress.XtraGrid.Columns.GridColumn colId;
         private DevExpress.XtraGrid.Columns.GridColumn colDate;
         private DevExpress.XtraGrid.Columns.GridColumn colCustomerId;
@@ -420,10 +434,5 @@
         private DevExpress.XtraGrid.Columns.GridColumn colBankAccountId;
         private DevExpress.XtraGrid.Columns.GridColumn colBankAccount;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit rpsBtnOpenFolder;
-        private DevExpress.XtraEditors.ButtonEdit txbSumNetPrice;
-        private System.Windows.Forms.Label label7;
-        private DevExpress.XtraBars.BarButtonItem bbiNewReceipt;
-        private DevExpress.XtraBars.BarButtonItem bbiEditReceipt;
-        private DevExpress.XtraGrid.Columns.GridColumn colDescription;
     }
 }

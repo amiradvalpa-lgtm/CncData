@@ -32,26 +32,26 @@ namespace CncApp_Final
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions2 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject5 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject6 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject7 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject8 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions3 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject9 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject10 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject11 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject12 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions4 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject13 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject14 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject15 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject16 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions13 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject49 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject50 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject51 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject52 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions14 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject53 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject54 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject55 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject56 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions15 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject57 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject58 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject59 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject60 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions16 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject61 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject62 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject63 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject64 = new DevExpress.Utils.SerializableAppearanceObject();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.ordersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -91,12 +91,17 @@ namespace CncApp_Final
             this.bbiReceipts = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.bbiwareHouse = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiTmpForm = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiOrders = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiCustomerWarehouse = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiBank = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiBackup = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiSetting = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup9 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup8 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup10 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup4 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -318,9 +323,13 @@ namespace CncApp_Final
             this.bbiReceipts,
             this.barButtonItem1,
             this.bbiwareHouse,
-            this.bbiTmpForm});
+            this.bbiOrders,
+            this.bbiCustomerWarehouse,
+            this.bbiBank,
+            this.bbiBackup,
+            this.bbiSetting});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.MaxItemId = 34;
+            this.ribbonControl.MaxItemId = 39;
             this.ribbonControl.Name = "ribbonControl";
             this.ribbonControl.OptionsPageCategories.ShowCaptions = false;
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -446,8 +455,7 @@ namespace CncApp_Final
             // 
             this.bbiCustomers.Caption = "مشتریان";
             this.bbiCustomers.Id = 29;
-            this.bbiCustomers.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiCustomers.ImageOptions.Image")));
-            this.bbiCustomers.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiCustomers.ImageOptions.LargeImage")));
+            this.bbiCustomers.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiCustomers.ImageOptions.SvgImage")));
             this.bbiCustomers.Name = "bbiCustomers";
             this.bbiCustomers.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCustomers_ItemClick);
             // 
@@ -455,8 +463,8 @@ namespace CncApp_Final
             // 
             this.bbiReceipts.Caption = "لیست دریافت";
             this.bbiReceipts.Id = 30;
-            this.bbiReceipts.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiReceipts.ImageOptions.Image")));
-            this.bbiReceipts.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiReceipts.ImageOptions.LargeImage")));
+            this.bbiReceipts.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiReceipts.ImageOptions.SvgImage")));
+            this.bbiReceipts.LargeWidth = 70;
             this.bbiReceipts.Name = "bbiReceipts";
             this.bbiReceipts.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiReceipts_ItemClick);
             // 
@@ -464,8 +472,7 @@ namespace CncApp_Final
             // 
             this.barButtonItem1.Caption = "لیست ورق ها";
             this.barButtonItem1.Id = 31;
-            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
-            this.barButtonItem1.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.LargeImage")));
+            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSheets_ItemClick);
             // 
@@ -473,39 +480,80 @@ namespace CncApp_Final
             // 
             this.bbiwareHouse.Caption = "لیست ورود به انبار";
             this.bbiwareHouse.Id = 32;
-            this.bbiwareHouse.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiwareHouse.ImageOptions.Image")));
-            this.bbiwareHouse.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiwareHouse.ImageOptions.LargeImage")));
+            this.bbiwareHouse.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiwareHouse.ImageOptions.SvgImage")));
             this.bbiwareHouse.Name = "bbiwareHouse";
             this.bbiwareHouse.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiwareHouse_ItemClick);
             // 
-            // bbiTmpForm
+            // bbiOrders
             // 
-            this.bbiTmpForm.Caption = "barButtonItem2";
-            this.bbiTmpForm.Id = 33;
-            this.bbiTmpForm.Name = "bbiTmpForm";
-            this.bbiTmpForm.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTmpForm_ItemClick);
+            this.bbiOrders.Caption = "لیست سفارشات";
+            this.bbiOrders.Id = 34;
+            this.bbiOrders.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("bbiOrders.ImageOptions.Image")));
+            this.bbiOrders.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("bbiOrders.ImageOptions.LargeImage")));
+            this.bbiOrders.LargeWidth = 60;
+            this.bbiOrders.Name = "bbiOrders";
+            this.bbiOrders.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiOrders_ItemClick);
+            // 
+            // bbiCustomerWarehouse
+            // 
+            this.bbiCustomerWarehouse.Caption = "ورق های مشتری";
+            this.bbiCustomerWarehouse.Id = 35;
+            this.bbiCustomerWarehouse.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiCustomerWarehouse.ImageOptions.SvgImage")));
+            this.bbiCustomerWarehouse.Name = "bbiCustomerWarehouse";
+            this.bbiCustomerWarehouse.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiCustomerWarehouse_ItemClick);
+            // 
+            // bbiBank
+            // 
+            this.bbiBank.Caption = "حساب بانک";
+            this.bbiBank.Id = 36;
+            this.bbiBank.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiBank.ImageOptions.SvgImage")));
+            this.bbiBank.Name = "bbiBank";
+            this.bbiBank.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiBank_ItemClick);
+            // 
+            // bbiBackup
+            // 
+            this.bbiBackup.Caption = "پشتیان گیری دیتابیس";
+            this.bbiBackup.Id = 37;
+            this.bbiBackup.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiBackup.ImageOptions.SvgImage")));
+            this.bbiBackup.Name = "bbiBackup";
+            this.bbiBackup.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiBackup_ItemClick);
+            // 
+            // bbiSetting
+            // 
+            this.bbiSetting.Caption = "تنظیمات نرم افزار";
+            this.bbiSetting.Id = 38;
+            this.bbiSetting.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bbiSetting.ImageOptions.SvgImage")));
+            this.bbiSetting.Name = "bbiSetting";
+            this.bbiSetting.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSetting_ItemClick);
             // 
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.ribbonPageGroup2,
+            this.ribbonPageGroup9,
             this.ribbonPageGroup8,
-            this.ribbonPageGroup9});
+            this.ribbonPageGroup2,
+            this.ribbonPageGroup10,
+            this.ribbonPageGroup1});
             this.ribbonPage1.MergeOrder = 0;
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "Home";
             // 
-            // ribbonPageGroup1
+            // ribbonPageGroup9
             // 
-            this.ribbonPageGroup1.AllowTextClipping = false;
-            this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiEdit);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiDelete);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbiRefresh);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Tasks";
+            this.ribbonPageGroup9.ItemLinks.Add(this.bbiOrders);
+            this.ribbonPageGroup9.ItemLinks.Add(this.bbiReceipts);
+            this.ribbonPageGroup9.ItemLinks.Add(this.bbiwareHouse);
+            this.ribbonPageGroup9.ItemLinks.Add(this.bbiCustomerWarehouse);
+            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
+            this.ribbonPageGroup9.Text = "ثبت اطلاعات";
+            // 
+            // ribbonPageGroup8
+            // 
+            this.ribbonPageGroup8.ItemLinks.Add(this.bbiCustomers);
+            this.ribbonPageGroup8.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup8.ItemLinks.Add(this.bbiBank);
+            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
+            this.ribbonPageGroup8.Text = "اطلاعات پایه";
             // 
             // ribbonPageGroup2
             // 
@@ -515,22 +563,24 @@ namespace CncApp_Final
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiPrintSelected);
             this.ribbonPageGroup2.ItemLinks.Add(this.bbiPrintAll);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Print and Export";
+            this.ribbonPageGroup2.Text = "چاپ";
             // 
-            // ribbonPageGroup8
+            // ribbonPageGroup10
             // 
-            this.ribbonPageGroup8.ItemLinks.Add(this.bbiCustomers);
-            this.ribbonPageGroup8.ItemLinks.Add(this.bbiReceipts);
-            this.ribbonPageGroup8.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup8.ItemLinks.Add(this.bbiwareHouse);
-            this.ribbonPageGroup8.Name = "ribbonPageGroup8";
-            this.ribbonPageGroup8.Text = "ribbonPageGroup8";
+            this.ribbonPageGroup10.ItemLinks.Add(this.bbiSetting);
+            this.ribbonPageGroup10.ItemLinks.Add(this.bbiBackup);
+            this.ribbonPageGroup10.Name = "ribbonPageGroup10";
+            this.ribbonPageGroup10.Text = "نرم افزار";
             // 
-            // ribbonPageGroup9
+            // ribbonPageGroup1
             // 
-            this.ribbonPageGroup9.ItemLinks.Add(this.bbiTmpForm);
-            this.ribbonPageGroup9.Name = "ribbonPageGroup9";
-            this.ribbonPageGroup9.Text = "ribbonPageGroup9";
+            this.ribbonPageGroup1.AllowTextClipping = false;
+            this.ribbonPageGroup1.CaptionButtonVisible = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiNew);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiEdit);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbiDelete);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "موقت";
             // 
             // ribbonPage2
             // 
@@ -622,10 +672,10 @@ namespace CncApp_Final
             this.repositoryItemRibbonSearchEdit1.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit1.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions1.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions13.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions1, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, serializableAppearanceObject2, serializableAppearanceObject3, serializableAppearanceObject4, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions2, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject5, serializableAppearanceObject6, serializableAppearanceObject7, serializableAppearanceObject8, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions13, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject49, serializableAppearanceObject50, serializableAppearanceObject51, serializableAppearanceObject52, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions14, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject53, serializableAppearanceObject54, serializableAppearanceObject55, serializableAppearanceObject56, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit1.Name = "repositoryItemRibbonSearchEdit1";
             this.repositoryItemRibbonSearchEdit1.NullText = "Search";
             // 
@@ -634,10 +684,10 @@ namespace CncApp_Final
             this.repositoryItemRibbonSearchEdit2.AllowFocused = false;
             this.repositoryItemRibbonSearchEdit2.AutoHeight = false;
             this.repositoryItemRibbonSearchEdit2.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            editorButtonImageOptions3.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
+            editorButtonImageOptions15.AllowGlyphSkinning = DevExpress.Utils.DefaultBoolean.True;
             this.repositoryItemRibbonSearchEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions3, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject9, serializableAppearanceObject10, serializableAppearanceObject11, serializableAppearanceObject12, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions4, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject13, serializableAppearanceObject14, serializableAppearanceObject15, serializableAppearanceObject16, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, true, editorButtonImageOptions15, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject57, serializableAppearanceObject58, serializableAppearanceObject59, serializableAppearanceObject60, "", null, null, DevExpress.Utils.ToolTipAnchor.Default),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Clear, "", -1, true, false, false, editorButtonImageOptions16, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject61, serializableAppearanceObject62, serializableAppearanceObject63, serializableAppearanceObject64, "", null, null, DevExpress.Utils.ToolTipAnchor.Default)});
             this.repositoryItemRibbonSearchEdit2.Name = "repositoryItemRibbonSearchEdit2";
             this.repositoryItemRibbonSearchEdit2.NullText = "Search";
             // 
@@ -743,7 +793,12 @@ namespace CncApp_Final
         private DevExpress.XtraBars.BarButtonItem bbiReceipts;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem bbiwareHouse;
-        private DevExpress.XtraBars.BarButtonItem bbiTmpForm;
+        private DevExpress.XtraBars.BarButtonItem bbiOrders;
+        private DevExpress.XtraBars.BarButtonItem bbiCustomerWarehouse;
+        private DevExpress.XtraBars.BarButtonItem bbiBank;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup9;
+        private DevExpress.XtraBars.BarButtonItem bbiBackup;
+        private DevExpress.XtraBars.BarButtonItem bbiSetting;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup10;
     }
 }

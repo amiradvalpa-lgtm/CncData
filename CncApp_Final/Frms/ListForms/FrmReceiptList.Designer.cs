@@ -1,6 +1,6 @@
 ﻿namespace CncApp_Final.Frms.ListForms
 {
-    partial class FrmCustomerList
+    partial class FrmReceiptList
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule3 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue3 = new DevExpress.XtraEditors.FormatConditionRuleValue();
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule4 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue4 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             DevExpress.XtraEditors.Controls.EditorButtonImageOptions editorButtonImageOptions1 = new DevExpress.XtraEditors.Controls.EditorButtonImageOptions();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCustomerList));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmReceiptList));
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
-            this.colBalanceStatus = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colBalanceType = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colBeginning_Balance = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ribbonControl = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbiPrintPreview = new DevExpress.XtraBars.BarButtonItem();
             this.bsiRecordsCount = new DevExpress.XtraBars.BarStaticItem();
@@ -58,49 +47,23 @@
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.gridControl = new DevExpress.XtraGrid.GridControl();
             this.gridView = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colMhkCustomerId = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCustomerName = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colHint = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colPhone = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colAddress = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colAmount = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colFaReceiptDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBankName = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDescription = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colDisplayBalance = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colOrders = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colReceipts = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomerId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colCustomer = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBankAccountId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colBankAccount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.rpsBtnOpenFolder = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rpsBtnOpenFolder)).BeginInit();
             this.SuspendLayout();
-            // 
-            // colBalanceStatus
-            // 
-            this.colBalanceStatus.AppearanceCell.Options.UseTextOptions = true;
-            this.colBalanceStatus.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colBalanceStatus.Caption = "ماهیت فعلی";
-            this.colBalanceStatus.FieldName = "BalanceStatus";
-            this.colBalanceStatus.Name = "colBalanceStatus";
-            this.colBalanceStatus.Visible = true;
-            this.colBalanceStatus.VisibleIndex = 9;
-            // 
-            // colBalanceType
-            // 
-            this.colBalanceType.FieldName = "BalanceType";
-            this.colBalanceType.Name = "colBalanceType";
-            // 
-            // colBeginning_Balance
-            // 
-            this.colBeginning_Balance.AppearanceCell.Options.UseTextOptions = true;
-            this.colBeginning_Balance.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.colBeginning_Balance.Caption = "حساب اول دوره";
-            this.colBeginning_Balance.DisplayFormat.FormatString = "#,###;#,###;0";
-            this.colBeginning_Balance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colBeginning_Balance.FieldName = "Beginning_Balance";
-            this.colBeginning_Balance.Name = "colBeginning_Balance";
-            this.colBeginning_Balance.Visible = true;
-            this.colBeginning_Balance.VisibleIndex = 7;
             // 
             // ribbonControl
             // 
@@ -120,7 +83,7 @@
             this.ribbonPage1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
-            this.ribbonControl.Size = new System.Drawing.Size(998, 201);
+            this.ribbonControl.Size = new System.Drawing.Size(790, 201);
             this.ribbonControl.StatusBar = this.ribbonStatusBar;
             this.ribbonControl.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
             // 
@@ -196,10 +159,10 @@
             // ribbonStatusBar
             // 
             this.ribbonStatusBar.ItemLinks.Add(this.bsiRecordsCount);
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 612);
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 562);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(998, 37);
+            this.ribbonStatusBar.Size = new System.Drawing.Size(790, 37);
             // 
             // gridControl
             // 
@@ -209,7 +172,8 @@
             this.gridControl.Name = "gridControl";
             this.gridControl.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.rpsBtnOpenFolder});
-            this.gridControl.Size = new System.Drawing.Size(998, 411);
+            this.gridControl.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.gridControl.Size = new System.Drawing.Size(790, 361);
             this.gridControl.TabIndex = 26;
             this.gridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView});
@@ -224,123 +188,67 @@
             this.gridView.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.gridView.ColumnPanelRowHeight = 50;
             this.gridView.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.colId,
-            this.colMhkCustomerId,
             this.colCustomerName,
-            this.colHint,
-            this.colPhone,
-            this.colAddress,
+            this.colAmount,
+            this.colFaReceiptDate,
+            this.colBankName,
             this.colDescription,
-            this.colBeginning_Balance,
-            this.colDisplayBalance,
-            this.colBalanceStatus,
-            this.colOrders,
-            this.colReceipts,
-            this.colBalanceType});
+            this.colId,
+            this.colDate,
+            this.colCustomerId,
+            this.colCustomer,
+            this.colBankAccountId,
+            this.colBankAccount});
             this.gridView.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFullFocus;
-            gridFormatRule1.Column = this.colBalanceStatus;
-            gridFormatRule1.Enabled = false;
-            gridFormatRule1.Name = "BalanceStatusNegative";
-            formatConditionRuleValue1.Appearance.ForeColor = System.Drawing.Color.Red;
-            formatConditionRuleValue1.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue1.Value1 = "بدهکار";
-            gridFormatRule1.Rule = formatConditionRuleValue1;
-            gridFormatRule2.Column = this.colBalanceStatus;
-            gridFormatRule2.Enabled = false;
-            gridFormatRule2.Name = "BalanceStatusPositive";
-            formatConditionRuleValue2.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            formatConditionRuleValue2.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue2.Value1 = "بستانکار";
-            gridFormatRule2.Rule = formatConditionRuleValue2;
-            gridFormatRule3.Column = this.colBalanceType;
-            gridFormatRule3.ColumnApplyTo = this.colBeginning_Balance;
-            gridFormatRule3.Enabled = false;
-            gridFormatRule3.Name = "Beginning_BalanceNegative";
-            formatConditionRuleValue3.Appearance.ForeColor = System.Drawing.Color.Red;
-            formatConditionRuleValue3.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue3.Condition = DevExpress.XtraEditors.FormatCondition.Greater;
-            formatConditionRuleValue3.Value1 = "0";
-            gridFormatRule3.Rule = formatConditionRuleValue3;
-            gridFormatRule4.Column = this.colBalanceType;
-            gridFormatRule4.ColumnApplyTo = this.colBeginning_Balance;
-            gridFormatRule4.Enabled = false;
-            gridFormatRule4.Name = "Beginning_BalancePositive";
-            formatConditionRuleValue4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            formatConditionRuleValue4.Appearance.Options.UseForeColor = true;
-            formatConditionRuleValue4.Condition = DevExpress.XtraEditors.FormatCondition.Less;
-            formatConditionRuleValue4.Value1 = 0D;
-            gridFormatRule4.Rule = formatConditionRuleValue4;
-            this.gridView.FormatRules.Add(gridFormatRule1);
-            this.gridView.FormatRules.Add(gridFormatRule2);
-            this.gridView.FormatRules.Add(gridFormatRule3);
-            this.gridView.FormatRules.Add(gridFormatRule4);
             this.gridView.GridControl = this.gridControl;
-            this.gridView.IndicatorWidth = 50;
             this.gridView.Name = "gridView";
             this.gridView.OptionsBehavior.Editable = false;
             this.gridView.OptionsBehavior.ReadOnly = true;
             this.gridView.OptionsFind.AlwaysVisible = true;
             this.gridView.OptionsFind.FindDelay = 500;
             this.gridView.OptionsFind.FindNullPrompt = "برای جستجو در فاکتورها، کلمه مورد نظر را وارد کنید...";
-            this.gridView.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.gridView.OptionsView.ShowGroupPanel = false;
             this.gridView.RowHeight = 30;
-            // 
-            // colId
-            // 
-            this.colId.AppearanceCell.Options.UseTextOptions = true;
-            this.colId.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colId.Caption = "کد مشتری";
-            this.colId.FieldName = "Id";
-            this.colId.Name = "colId";
-            this.colId.Visible = true;
-            this.colId.VisibleIndex = 0;
-            // 
-            // colMhkCustomerId
-            // 
-            this.colMhkCustomerId.AppearanceCell.Options.UseTextOptions = true;
-            this.colMhkCustomerId.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colMhkCustomerId.Caption = "کد محک";
-            this.colMhkCustomerId.FieldName = "MhkCustomerId";
-            this.colMhkCustomerId.Name = "colMhkCustomerId";
-            this.colMhkCustomerId.Visible = true;
-            this.colMhkCustomerId.VisibleIndex = 1;
             // 
             // colCustomerName
             // 
             this.colCustomerName.Caption = "نام مشتری";
             this.colCustomerName.FieldName = "CustomerName";
             this.colCustomerName.Name = "colCustomerName";
+            this.colCustomerName.OptionsColumn.ReadOnly = true;
             this.colCustomerName.Visible = true;
-            this.colCustomerName.VisibleIndex = 2;
+            this.colCustomerName.VisibleIndex = 1;
             // 
-            // colHint
+            // colAmount
             // 
-            this.colHint.Caption = "راهنما";
-            this.colHint.FieldName = "Hint";
-            this.colHint.Name = "colHint";
-            this.colHint.Visible = true;
-            this.colHint.VisibleIndex = 3;
+            this.colAmount.AppearanceCell.Options.UseTextOptions = true;
+            this.colAmount.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colAmount.Caption = "مبلغ";
+            this.colAmount.DisplayFormat.FormatString = "n0";
+            this.colAmount.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colAmount.FieldName = "Amount";
+            this.colAmount.Name = "colAmount";
+            this.colAmount.Visible = true;
+            this.colAmount.VisibleIndex = 2;
             // 
-            // colPhone
+            // colFaReceiptDate
             // 
-            this.colPhone.AppearanceCell.Options.UseTextOptions = true;
-            this.colPhone.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.colPhone.Caption = "موبایل";
-            this.colPhone.FieldName = "Phone";
-            this.colPhone.Name = "colPhone";
-            this.colPhone.Visible = true;
-            this.colPhone.VisibleIndex = 4;
+            this.colFaReceiptDate.AppearanceCell.Options.UseTextOptions = true;
+            this.colFaReceiptDate.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colFaReceiptDate.Caption = "تاریخ";
+            this.colFaReceiptDate.FieldName = "FaReceiptDate";
+            this.colFaReceiptDate.Name = "colFaReceiptDate";
+            this.colFaReceiptDate.Visible = true;
+            this.colFaReceiptDate.VisibleIndex = 3;
             // 
-            // colAddress
+            // colBankName
             // 
-            this.colAddress.Caption = "آدرس";
-            this.colAddress.FieldName = "Address";
-            this.colAddress.Name = "colAddress";
-            this.colAddress.Visible = true;
-            this.colAddress.VisibleIndex = 5;
+            this.colBankName.Caption = "نام حساب";
+            this.colBankName.FieldName = "BankName";
+            this.colBankName.Name = "colBankName";
+            this.colBankName.OptionsColumn.ReadOnly = true;
+            this.colBankName.Visible = true;
+            this.colBankName.VisibleIndex = 4;
             // 
             // colDescription
             // 
@@ -348,29 +256,46 @@
             this.colDescription.FieldName = "Description";
             this.colDescription.Name = "colDescription";
             this.colDescription.Visible = true;
-            this.colDescription.VisibleIndex = 6;
+            this.colDescription.VisibleIndex = 5;
             // 
-            // colDisplayBalance
+            // colId
             // 
-            this.colDisplayBalance.AppearanceCell.Options.UseTextOptions = true;
-            this.colDisplayBalance.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.colDisplayBalance.Caption = "مانده حساب";
-            this.colDisplayBalance.DisplayFormat.FormatString = "n0";
-            this.colDisplayBalance.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.colDisplayBalance.FieldName = "DisplayBalance";
-            this.colDisplayBalance.Name = "colDisplayBalance";
-            this.colDisplayBalance.Visible = true;
-            this.colDisplayBalance.VisibleIndex = 8;
+            this.colId.AppearanceCell.Options.UseTextOptions = true;
+            this.colId.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.colId.Caption = "کد رسید";
+            this.colId.FieldName = "Id";
+            this.colId.Name = "colId";
+            this.colId.Visible = true;
+            this.colId.VisibleIndex = 0;
             // 
-            // colOrders
+            // colDate
             // 
-            this.colOrders.FieldName = "Orders";
-            this.colOrders.Name = "colOrders";
+            this.colDate.FieldName = "Date";
+            this.colDate.Name = "colDate";
             // 
-            // colReceipts
+            // colCustomerId
             // 
-            this.colReceipts.FieldName = "Receipts";
-            this.colReceipts.Name = "colReceipts";
+            this.colCustomerId.AppearanceCell.Options.UseTextOptions = true;
+            this.colCustomerId.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.colCustomerId.DisplayFormat.FormatString = "n0";
+            this.colCustomerId.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.colCustomerId.FieldName = "CustomerId";
+            this.colCustomerId.Name = "colCustomerId";
+            // 
+            // colCustomer
+            // 
+            this.colCustomer.FieldName = "Customer";
+            this.colCustomer.Name = "colCustomer";
+            // 
+            // colBankAccountId
+            // 
+            this.colBankAccountId.FieldName = "BankAccountId";
+            this.colBankAccountId.Name = "colBankAccountId";
+            // 
+            // colBankAccount
+            // 
+            this.colBankAccount.FieldName = "BankAccount";
+            this.colBankAccount.Name = "colBankAccount";
             // 
             // rpsBtnOpenFolder
             // 
@@ -381,15 +306,15 @@
             this.rpsBtnOpenFolder.Name = "rpsBtnOpenFolder";
             this.rpsBtnOpenFolder.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
             // 
-            // FrmCustomerList
+            // FrmReceiptList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(998, 649);
+            this.ClientSize = new System.Drawing.Size(790, 599);
             this.Controls.Add(this.gridControl);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.ribbonControl);
-            this.Name = "FrmCustomerList";
+            this.Name = "FrmReceiptList";
             this.Ribbon = this.ribbonControl;
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StatusBar = this.ribbonStatusBar;
@@ -416,19 +341,17 @@
         private DevExpress.XtraBars.BarButtonItem bbiRefresh;
         private DevExpress.XtraGrid.GridControl gridControl;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView;
-        private DevExpress.XtraGrid.Columns.GridColumn colId;
-        private DevExpress.XtraGrid.Columns.GridColumn colMhkCustomerId;
         private DevExpress.XtraGrid.Columns.GridColumn colCustomerName;
-        private DevExpress.XtraGrid.Columns.GridColumn colHint;
-        private DevExpress.XtraGrid.Columns.GridColumn colPhone;
-        private DevExpress.XtraGrid.Columns.GridColumn colAddress;
+        private DevExpress.XtraGrid.Columns.GridColumn colAmount;
+        private DevExpress.XtraGrid.Columns.GridColumn colFaReceiptDate;
+        private DevExpress.XtraGrid.Columns.GridColumn colBankName;
         private DevExpress.XtraGrid.Columns.GridColumn colDescription;
-        private DevExpress.XtraGrid.Columns.GridColumn colBeginning_Balance;
-        private DevExpress.XtraGrid.Columns.GridColumn colDisplayBalance;
-        private DevExpress.XtraGrid.Columns.GridColumn colBalanceStatus;
-        private DevExpress.XtraGrid.Columns.GridColumn colOrders;
-        private DevExpress.XtraGrid.Columns.GridColumn colReceipts;
-        private DevExpress.XtraGrid.Columns.GridColumn colBalanceType;
+        private DevExpress.XtraGrid.Columns.GridColumn colId;
+        private DevExpress.XtraGrid.Columns.GridColumn colDate;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomerId;
+        private DevExpress.XtraGrid.Columns.GridColumn colCustomer;
+        private DevExpress.XtraGrid.Columns.GridColumn colBankAccountId;
+        private DevExpress.XtraGrid.Columns.GridColumn colBankAccount;
         private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit rpsBtnOpenFolder;
     }
 }

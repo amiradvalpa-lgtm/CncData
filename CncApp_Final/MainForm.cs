@@ -218,28 +218,35 @@ namespace CncApp_Final
 
         }
 
+
+        private void bbiOrders_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Frms.ListForms.FrmOrderList EditForm = new Frms.ListForms.FrmOrderList();
+            EditForm.ShowDialog();
+        }
+
         private void bbiCustomers_ItemClick(object sender, ItemClickEventArgs e)
         {
-            FrmCustomerList frmCustomers = new FrmCustomerList();
-            frmCustomers.ShowDialog();
+            Frms.ListForms.FrmCustomerList EditForm = new Frms.ListForms.FrmCustomerList();
+            EditForm.ShowDialog();
         }
 
         private void bbiReceipts_ItemClick(object sender, ItemClickEventArgs e)
         {
-            FrmReceipts frmReceipts = new FrmReceipts();
-            frmReceipts.ShowDialog();
+            Frms.ListForms.FrmReceiptList EditForm = new Frms.ListForms.FrmReceiptList();
+            EditForm.ShowDialog();
         }
 
         private void bbiSheets_ItemClick(object sender, ItemClickEventArgs e)
         {
-            FrmSheetList frmSheetList = new FrmSheetList();
-            frmSheetList.ShowDialog();
+            Frms.ListForms.FrmSheetList EditForm = new Frms.ListForms.FrmSheetList();
+            EditForm.ShowDialog();
         }
 
         private void bbiwareHouse_ItemClick(object sender, ItemClickEventArgs e)
         {
-            FrmWareHouseList frmWareHouse = new FrmWareHouseList();
-            frmWareHouse.ShowDialog();
+            Frms.ListForms.FrmWareHouseList EditForm = new Frms.ListForms.FrmWareHouseList();
+            EditForm.ShowDialog();
         }
 
         private void bbiTmpForm_ItemClick(object sender, ItemClickEventArgs e)
@@ -248,6 +255,29 @@ namespace CncApp_Final
             frmCustomerList.ShowDialog();
         }
 
-        
+        private void bbiCustomerWarehouse_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UnderCostraction();
+        }
+
+        private void bbiBank_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UnderCostraction();
+        }
+
+        private void bbiSetting_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UnderCostraction();
+        }
+
+        private void bbiBackup_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            UnderCostraction();
+        }
+
+        private void UnderCostraction()
+        {
+            XtraMessageBox.Show("صبر داشته باشید نرم افزار در مرحله تکمیل است", "اخطار", MessageBoxButtons.OK,MessageBoxIcon.Stop);
+        }
     }
 }

@@ -148,6 +148,12 @@
     <Compile Include="Frms\EditForms\FrmCustomerEdit.Designer.cs">
       <DependentUpon>FrmCustomerEdit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Frms\EditForms\FrmOrderEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms\EditForms\FrmOrderEdit.Designer.cs">
+      <DependentUpon>FrmOrderEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frms\EditForms\FrmReceiptEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,30 @@
     </Compile>
     <Compile Include="Frms\ListForms\FrmCustomerList.Designer.cs">
       <DependentUpon>FrmCustomerList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frms\ListForms\FrmOrderList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms\ListForms\FrmOrderList.Designer.cs">
+      <DependentUpon>FrmOrderList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frms\ListForms\FrmReceiptList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms\ListForms\FrmReceiptList.Designer.cs">
+      <DependentUpon>FrmReceiptList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frms\ListForms\FrmSheetList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms\ListForms\FrmSheetList.Designer.cs">
+      <DependentUpon>FrmSheetList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frms\ListForms\FrmWareHouseList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frms\ListForms\FrmWareHouseList.Designer.cs">
+      <DependentUpon>FrmWareHouseList.cs</DependentUpon>
     </Compile>
     <Compile Include="Frm\Base\BaseEditForm.cs">
       <SubType>Form</SubType>
@@ -380,6 +410,9 @@
     <EmbeddedResource Include="Frms\EditForms\FrmCustomerEdit.resx">
       <DependentUpon>FrmCustomerEdit.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Frms\EditForms\FrmOrderEdit.resx">
+      <DependentUpon>FrmOrderEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frms\EditForms\FrmReceiptEdit.resx">
       <DependentUpon>FrmReceiptEdit.cs</DependentUpon>
     </EmbeddedResource>
@@ -397,6 +430,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Frms\ListForms\FrmCustomerList.resx">
       <DependentUpon>FrmCustomerList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frms\ListForms\FrmOrderList.resx">
+      <DependentUpon>FrmOrderList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frms\ListForms\FrmReceiptList.resx">
+      <DependentUpon>FrmReceiptList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frms\ListForms\FrmSheetList.resx">
+      <DependentUpon>FrmSheetList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frms\ListForms\FrmWareHouseList.resx">
+      <DependentUpon>FrmWareHouseList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frm\Base\FrmCustomerEditB.resx">
       <DependentUpon>FrmCustomerEditB.cs</DependentUpon>

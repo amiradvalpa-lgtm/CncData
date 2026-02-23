@@ -488,7 +488,7 @@ namespace CncApp_Final.Frm
             this.btnOpenFile.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.btnOpenFile.Properties.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnOpenFile_Properties_ButtonClick);
             this.btnOpenFile.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btnOpenFile.Size = new System.Drawing.Size(272, 28);
+            this.btnOpenFile.Size = new System.Drawing.Size(272, 36);
             this.btnOpenFile.TabIndex = 30;
             conditionValidationRule1.ConditionOperator = DevExpress.XtraEditors.DXErrorProvider.ConditionOperator.IsNotBlank;
             conditionValidationRule1.ErrorText = "فایل مربوطه را انتخاب کنید";
@@ -804,7 +804,7 @@ namespace CncApp_Final.Frm
             // ribbonControl1
             // 
             this.ribbonControl1.ApplicationCaption = "---";
-            this.ribbonControl1.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.False;
+            this.ribbonControl1.DrawGroupCaptions = DevExpress.Utils.DefaultBoolean.True;
             this.ribbonControl1.ExpandCollapseItem.Id = 0;
             this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl1.ExpandCollapseItem,
@@ -840,7 +840,7 @@ namespace CncApp_Final.Frm
             this.ribbonControl1.ShowExpandCollapseButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControl1.ShowToolbarCustomizeItem = false;
-            this.ribbonControl1.Size = new System.Drawing.Size(761, 181);
+            this.ribbonControl1.Size = new System.Drawing.Size(761, 201);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
             // 
